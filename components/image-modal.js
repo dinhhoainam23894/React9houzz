@@ -1,0 +1,32 @@
+import React from 'react'
+import ImageDetail from './image-detail'
+import Layout from './layout'
+export default class extends React.Component{
+    static async getInitialProps({ query }) {
+        return { id: query.id }
+    }
+    dismiss (e) {
+        if (this._lbClose === e.target) {
+            e.preventDefault()
+
+          if (this.props.onDismiss) {
+            this.props.onDismiss()
+          }
+        }
+      }
+    render(){
+        console.log(this.props.id)
+        return(
+            <div id="lightbox" className="modal Ifade show" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div id="lbMainControls" className="trackMe">
+                    <div>
+                        <a ref={el => (this._lbClose = el)} className="lbCloseButton lbClose" href=""  onClick={(e) => this.dismiss(e)}></a>
+                    </div>
+                    
+                </div>
+                <ImageDetail id={this.props.id}></ImageDetail>
+            </div>
+        )
+    }
+
+}
