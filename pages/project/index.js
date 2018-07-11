@@ -44,7 +44,7 @@ export default class Project extends Component {
         e.preventDefault()
         Router.push(`/project?id=${this.props.id}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
     }
-    dismissModal (id) {
+    dismissModal (id , slug) {
         Router.push(`/du-an/${id}-${slug}`)
       }
     render() { 
@@ -56,6 +56,7 @@ export default class Project extends Component {
                     url.query.photoId &&
                     <ImageModal
                         id={url.query.photoId}
+                        slug={url.query.slug}
                         onDismiss={() => this.dismissModal(url.query.id,url.query.slug)}
                     />
                 }

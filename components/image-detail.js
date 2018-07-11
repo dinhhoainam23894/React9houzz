@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export default class Image extends React.Component{
     static async getInitialProps({ query }) {
-        return { id: query.id }
+        return { id: query.id , slug : query.slug}
     }
     constructor(props) {
         super(props)
@@ -105,6 +105,7 @@ export default class Image extends React.Component{
         this.setState({currentValue : this.state.images[lastIndex]})
     }
     render(){
+        const { id , slug } = this.props
         return(
             <div>
                 <div className="lgBg"></div>
@@ -233,7 +234,7 @@ class ImageInfo extends React.PureComponent{
                                 <ul className="list-unstyled clearfix thumb-grid grid-5">
                                    {
                                        images && images.map((value,index) =>(
-                                            <li className="thumb project-thumb" data-id={value.id} ref="'image'+image.id" data-slug="image.image_slug" key={index}>
+                                            <li className="thumb project-thumb" data-id={value.id} ref="'image'+image.id" data-slug={value.slug} key={index}>
                                                 <a className="link" onClick={(e) =>  this.changeImage(e,value)}>
                                                     <div className="img-responsive-wrapper img-responsive-square progressive">
                                                         {value.small_path && <img src={value.small_path} alt="image.name" className="img-respontive" id="'image-'+image.id" width="71" height="71"></img>}

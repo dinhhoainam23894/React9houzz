@@ -3,7 +3,7 @@ import ImageDetail from './image-detail'
 import Layout from './layout'
 export default class extends React.Component{
     static async getInitialProps({ query }) {
-        return { id: query.id }
+        return { id: query.id ,slug : query.slug}
     }
     dismiss (e) {
         e.preventDefault()
@@ -16,6 +16,7 @@ export default class extends React.Component{
         }
       }
     render(){
+        const { id , slug } = this.props
         return(
             <div id="lightbox" className="modal Ifade show" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div id="lbMainControls" className="trackMe">
@@ -24,7 +25,7 @@ export default class extends React.Component{
                     </div>
                     
                 </div>
-                <ImageDetail id={this.props.id}></ImageDetail>
+                <ImageDetail id={this.props.id} slug={slug}></ImageDetail>
             </div>
         )
     }
