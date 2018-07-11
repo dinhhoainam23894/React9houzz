@@ -4,7 +4,7 @@ import ProviderDetail from '../../components/pro-detail';
 import ProviderSidebar from '../../components/provider-sidebar';
 import ListProject from '../../components/list-project';
 import axios from 'axios'
-import {standardText} from '../../libraries/helpers'
+import $ from 'jquery';
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class Pro extends Component {
   static async getInitialProps({ query }) {
@@ -29,6 +29,32 @@ export default class Pro extends Component {
     }
   componentDidMount = async () =>{
     await this.getValue()
+        var $max = 220;
+        var $height = $('#readMoreText').css('height','auto').height();
+        if($height < $max){
+            $("#readMoreBtn").hide();
+        }else{
+            var $height = $('#readMoreText').css('height','220px');
+            var $readMore = $("#readMoreBtnText").text();
+            var $readLess = $("#readLessBtnText").text();
+            $("#readMoreBtn").text($readMore);
+            $("#readMoreBtn").append("<span class=\"fa fa-angle-down font-15\"></span>");
+            $('#readMoreBtn').click(function(){
+                var $this = $(this);
+                $("#readMoreBtn").text($readMore);
+                if($this.data('expanded') == "yes"){
+                    $this.data('expanded',"no");
+                    $("#readMoreBtn").text($readMore);
+                    $("#readMoreBtn").append("<span class=\"fa fa-angle-down font-15\" ></span>");
+                    $('#readMoreText').animate({height:'220px'});
+                }else{
+                    $this.data('expanded',"yes");
+                    $('#readMoreText').css({height:'auto'});
+                    $("#readMoreBtn").text($readLess);
+                    $("#readMoreBtn").append("<span class=\"fa fa-angle-up font-15\"></span>");
+                }
+            });
+        }
   }
   
   render() {  
@@ -69,6 +95,9 @@ export default class Pro extends Component {
                                     </div>
                                     <div className="readMoreGradient"></div>
                                 </div>
+                                <button id="readMoreBtn" className="float-left mt-4"></button>
+                                <span id="readLessBtnText" style={ {display: "none" } }>Rút gọn <span className="fa fa-angle-up"></span></span>
+                                <span id="readMoreBtnText" style={ {display: "none" } }>Xem thêm <span className="fa fa-angle-down"></span></span>
                             </div>
                         </div>
                     </div>

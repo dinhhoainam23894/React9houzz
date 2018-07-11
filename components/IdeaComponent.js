@@ -1,11 +1,11 @@
-    import React from 'react'
+import React from 'react'
 import axios from 'axios'
 import Layout from './layout';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroller'
 import ImageModal from './image-modal';
 import {mapObject , ucfirst} from '../libraries/helpers'
-// const APIURL = 'http://9houzz.stag:89/api/'
+import $ from 'jquery';
 const APIURL = process.env.DOMAIN + process.env.APIURI
 var currentPath = '/'
 var asPath = '/'
@@ -19,7 +19,8 @@ export default class IdeaComponent extends React.Component{
             nextUrl : null,
             hasMoreItems: true,
             h1 : null,
-            filter_default : []
+            filter_default : [],
+            listBadge : []
         }
         currentPath = this.props.path
         asPath = this.props.asPath
@@ -38,11 +39,41 @@ export default class IdeaComponent extends React.Component{
                     color : data.colors,
                     images: data.images.data,
                     nextUrl: data.images.next_page_url,
+                    listBadge : data.listBadge
                 })
             })
     }
     componentDidMount = async () => {
         await this.getValue(this)
+        var showChar = 150;  // How many characters are shown by default
+        var ellipsestext = "";
+        var moretext = "Xem thêm >";
+        var lesstext = "Rút gọn <";
+        $('.moreDes').each(function(e) {
+            var content = $(this).html();
+            if(content.length > showChar) {
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar, content.length - showChar);
+                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                $(this).html(html);
+            }
+
+        });
+
+        $(".morelink").click(function(e){
+            e.preventDefault()
+            if($(this).hasClass("less")) {
+                $(this).removeClass("less");
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            // $('.grid').masonry.on('layoutComplete', this.handleLayoutComplete);
+            return false;
+        });
       }
     loadItems(page) {
         var self = this;
@@ -75,9 +106,9 @@ export default class IdeaComponent extends React.Component{
         }
        
     }
-    showPhoto (e, id) {
+    showPhoto (e, id , slug) {
         e.preventDefault()
-        Router.push(`${currentPath}?photoId=${id}`,`/anh/${id}`)
+        Router.push(`${currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
     }
     dismissModal (id) {
         Router.push(currentPath,asPath)
@@ -87,14 +118,15 @@ export default class IdeaComponent extends React.Component{
             gutter: '.grid__gutter-sizer',
             isOriginLeft: true
         };
-       const { images , h1 ,filter_default , color} = this.state
-       const { photoId } = this.props;
+       const { images , h1 ,filter_default , color , listBadge} = this.state
+       const { photoId , slug } = this.props;
        return(
         <Layout {...this.props} navmenu={false} container={false}>
         {
             photoId &&
             <ImageModal
                 id={photoId}
+                slug={slug}
                 onDismiss={() => this.dismissModal(photoId)}
             />
         }
@@ -106,6 +138,14 @@ export default class IdeaComponent extends React.Component{
                 <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
                     <div className="bg-white px-3 py-4">
                     <h1 className="text-dark title ml-1 pt-3">{ h1 && h1 }</h1>
+                        <div className="list-tag">
+                    {
+                        listBadge && 
+                        listBadge.map((value,index) => (
+                                <a href={value.uri}><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                        ))
+                    }
+                        </div>
                     <InfiniteScroll
                         pageStart={0}
                         loadMore={this.loadItems.bind(this)}
@@ -125,9 +165,8 @@ export default class IdeaComponent extends React.Component{
                                 <div className="grid__item rounded p-1" key={index}>
                                     <div className="grid__images">
                                         <div className="position-relative">
-                                            <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> </span>
-                                            
-                                            <a  onClick={(e) =>  this.showPhoto(e, value.id)}>
+                                            <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
+                                            <a  onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
                                                 <img className="rounded" src={value.medium_path} alt="{{ $element->name }}" />
                                             </a>
                                             

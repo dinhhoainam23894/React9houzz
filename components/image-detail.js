@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-const APIURL = 'http://9houzz.stag:89/api/image/'
+const APIURL = process.env.DOMAIN + process.env.APIURI + 'image/'
 import {rating}  from '../libraries/helpers'
 import $ from 'jquery';
 import Router from 'next/router';
@@ -56,7 +56,7 @@ export default class Image extends React.Component{
             }
         });
     }
-    nextImage= async (e) => {
+    nextImage= async (e ,id , slug) => {
         e.preventDefault()
         var image_size = this.state.image_thumb.length - 1;
         var currentIndex = this.state.currentImage;
@@ -79,6 +79,7 @@ export default class Image extends React.Component{
         var nextSlug  = lastImage.data('slug');
         this.setState({currentImage : $('img.currentImage')});
         this.setState({currentValue : this.state.images[lastIndex]})
+        // Router.push(`/project?photoId=${id}&id=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
     }
     backImage = async (e) => {
         e.preventDefault()
@@ -106,6 +107,7 @@ export default class Image extends React.Component{
     }
     render(){
         const { id , slug } = this.props
+        console.log(slug)
         return(
             <div>
                 <div className="lgBg"></div>
@@ -121,7 +123,7 @@ export default class Image extends React.Component{
                         }
                     </div>
                     <div className="lb-navDiv">
-                        <a className="link next lbNavigation nav-arrow" onClick={(e) =>  this.nextImage(e)}>
+                        <a className="link next lbNavigation nav-arrow" onClick={(e) =>  this.nextImage(e,id,slug)}>
                             <div className="">
                                 <span className="fa fa-angle-right"></span>
                             </div>

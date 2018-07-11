@@ -8,7 +8,6 @@ export default class extends React.Component{
     
    render(){
        const { url } = this.props
-       console.log(url)
        return(
             <IdeaComponent 
                 photoId={this.props.url.query && this.props.url.query.photoId}
