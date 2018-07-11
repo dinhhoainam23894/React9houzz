@@ -5,9 +5,10 @@ export default class extends React.Component{
         super(props)
     }
     render(){
+        const {project} = this.props
         return (
             <div className="rounded-2">
-            <Link prefetch href={ "/du-an/"+this.props.project.id }>
+            <Link prefetch href={ `/du-an/${project.id}-${project.slug}` }>
                 <a className="nav-link border-0 font-14 font-weight-bold">
                     <div className="rounded-2 border provider-project">
                         <div className="row project position-relative mx-auto">

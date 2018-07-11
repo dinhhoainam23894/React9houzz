@@ -29,6 +29,7 @@ export default class extends React.Component {
 	// 	return data
 	// }
   render() {
+	  const { id,slug } = this.props
       return(
 		<Layout {...this.props} navmenu={false} container={false}>
         <div className="container-fluid px-4 bg-gray provider-main">
@@ -40,9 +41,11 @@ export default class extends React.Component {
 				</div>
 				<div className="container position-relative">
 					<div className="position-absolute provider-info">
-						<a href="{{ route('provider-about',['id' => $provider->id , 'name' => standardText($provider->name)]) }}" className="provider-name text-white font-weight-bold">
-							<h1 className="font-22 mb-1">{ this.props.data.provider && this.props.data.provider.name }</h1>	
-						</a>
+						<Link prefetch href={ `/pro/${id}-${slug}` }>
+							<a className="provider-name text-white font-weight-bold">
+								<h1 className="font-22 mb-1">{ this.props.data.provider && this.props.data.provider.name }</h1>	
+							</a>
+						</Link>
 						<div className="star-rating">
 							{this.props.data.provider && rating(this.props.data.provider.avg_rate)}
 							<span className="text-yellow font-weight-bold"> 0(0) đánh giá) </span>
@@ -56,13 +59,13 @@ export default class extends React.Component {
 						<div className="col-md-9 col-lg-9 provider-nav">
 							<ul className="nav nav-tabs border-0" id="myTab" role="tablist">
 								<li className="nav-item position-relative {{ active_if('provider-about') }}">
-									<Link prefetch href={ "/pro/"+this.props.id }><a className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
+									<Link prefetch href={ `/pro/${id}-${slug}` }><a className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative {{ active_if('provider-project') }} {{ Request::is('du-an/*') ? 'active' : '' }}">
-                                <Link prefetch href={ "/pro/"+this.props.id+"/dự-án" }><a className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
+                                <Link prefetch href={ `/pro/${id}-${slug}/dự-án` }><a className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative {{ active_if('provider-comment') }}">
-                                <Link prefetch href={"/pro/"+this.props.id+"/nhận-xét"}><a className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
+                                <Link prefetch href={`/pro/${id}-${slug}/nhận-xét`}><a className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative">
 									<a className="nav-link border-0 font-14 font-weight-bold" href="#">Sổ tay ý tưởng</a>

@@ -2,7 +2,7 @@ import React from 'react'
 import ProviderDetail from '../../components/pro-detail';
 import ListProject from '../../components/list-project';
 import axios from 'axios'
-const APIURL = 'http://9houzz.stag:89/api/provider/'
+const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 
 export default class extends React.Component {
     static getInitialProps ({ query: { id } }) {
@@ -29,7 +29,7 @@ export default class extends React.Component {
       await this.getValue()
     }
       render () {
-
+        const { provider } = this.state
         var list_project = [];
           const moreProject = [];
           if(this.state.projects.length > 0){
@@ -40,7 +40,7 @@ export default class extends React.Component {
               })
           }
         return (
-            <ProviderDetail id={this.props.id} data={this.state.data}>
+            <ProviderDetail id={this.props.id} slug={provider.slug} data={this.state.data}>
             <div className="container mt-3">
               <h2 className="text-dark font-30 text-center">{this.state.data.project_count} dự án</h2>
               <div className="row">

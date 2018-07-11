@@ -4,6 +4,8 @@ const APIURL = 'http://9houzz.stag:89/api/image/'
 import {rating}  from '../libraries/helpers'
 import $ from 'jquery';
 import Router from 'next/router';
+import Link from 'next/link'
+
 
 export default class Image extends React.Component{
     static async getInitialProps({ query }) {
@@ -202,7 +204,7 @@ class ImageInfo extends React.PureComponent{
                                     { provider.auth_avatar && <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" /> }
                                     <div className="media-body">
                                         <div className="media-content">
-                                            <a href="javascript:void(0)" className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a>
+                                            <Link prefetch href={ `/pro/${provider.id}-${provider.slug}` }><a className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a></Link>
 
                                             <div className="star-rating font-14">
                                                 <span className="text-black-100 font-14">{provider.avg_rate && rating(provider.avg_rate)} ({ provider.total_rate ? provider.total_rate : 0 } người đánh giá)</span>

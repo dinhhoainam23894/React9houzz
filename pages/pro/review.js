@@ -3,8 +3,7 @@ import ProviderDetail from '../../components/pro-detail'
 import ProviderSidebar from '../../components/provider-sidebar'
 import {rating}  from '../../libraries/helpers'
 import axios from 'axios'
-const APIURL = 'http://9houzz.stag:89/api/provider/'
-
+const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class extends React.Component {
     static async getInitialProps({ query }) {
         return { id: query.id}
@@ -32,9 +31,10 @@ export default class extends React.Component {
         await this.getValue()
       }
     render() {
+        const { provider } = this.state 
         return (
             // <ProviderDetail id={this.props.id} ref={(e)=>this.ProviderDetail = e}>
-            <ProviderDetail id={this.props.id} data={this.state.data}>
+            <ProviderDetail id={this.props.id} slug={provider.slug} data={this.state.data}>
 
                 <div className="container comment mt-3">
                     <div className="row">

@@ -4,7 +4,8 @@ import ProviderDetail from '../../components/pro-detail';
 import ProviderSidebar from '../../components/provider-sidebar';
 import ListProject from '../../components/list-project';
 import axios from 'axios'
-const APIURL = 'http://9houzz.stag:89/api/provider/'
+import {standardText} from '../../libraries/helpers'
+const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class Pro extends Component {
   static async getInitialProps({ query }) {
     return { id: query.id}
@@ -31,6 +32,8 @@ export default class Pro extends Component {
   }
   
   render() {  
+
+    const { provider } = this.state
     const movieItems = [];
     const moreProject = [];
     if(this.state.projects.length > 0){
@@ -46,11 +49,11 @@ export default class Pro extends Component {
     }
     if(this.state.data.project_count > 6){
         moreProject.push(<div className="col-md-4 offset-md-4 mt-3" key="project_count">
-            <Link href={ "/pro/"+this.props.id+"/dự-án" } target="_blank"><button className="btn btn-outline-primary w-100 font-weight-normal bg-white">Xem thêm <span className="number-project">({this.state.data.project_count - 6})</span> dự án</button></Link>
+            <Link href={ `/pro/${this.props.id}-${provider.slug}/dự-án` }><button className="btn btn-outline-primary w-100 font-weight-normal bg-white">Xem thêm <span className="number-project">({this.state.data.project_count - 6})</span> dự án</button></Link>
         </div>);
     }
     return (
-      <ProviderDetail id={this.props.id} data={this.state.data}>
+      <ProviderDetail id={this.props.id} slug={provider.slug} data={this.state.data}>
       <div className="container">
               <div className="row">
                   <div className="col-0 col-md-3 col-lg-3 provider-sidebar p-0 mt-2" id="sidebar">

@@ -1,6 +1,7 @@
-// const withCss = require('@zeit/next-css'); module.exports = withCss({});
+const { parsed: localEnv } = require('dotenv').config()
+const webpack = require('webpack')
 module.exports = {
-  webpack: (config, { dev }) => {
+  webpack: (config) => {
     config.module.rules.push(
       {
         test: /\.(css|scss)/,
@@ -18,8 +19,9 @@ module.exports = {
         loader: 'babel-loader!raw-loader!sass-loader'
       }
     )
-     
-    
+    config.plugins.push(
+      new webpack.EnvironmentPlugin(localEnv)
+    )
     return config
   }
 }

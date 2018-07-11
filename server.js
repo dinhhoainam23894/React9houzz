@@ -28,28 +28,28 @@ app.prepare().then(() => {
     const queryParams = { params: req.params.params }
     renderAndCache(req, res, '/idea-filter' , queryParams)
   })
-  server.get('/pro/:id/d%E1%BB%B1-%C3%A1n', (req, res) => {
-    const queryParams = { id: req.params.id }
+  server.get('/pro/:id-:slug/d%E1%BB%B1-%C3%A1n', (req, res) => {
+    const queryParams = { id: req.params.id ,slug : req.params.slug }
     renderAndCache(req, res, '/pro/project', queryParams)
   })
 
-  server.get('/pro/:id/nh%E1%BA%ADn-x%C3%A9t', (req, res) => {
-    const queryParams = { id: req.params.id }
+  server.get('/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t', (req, res) => {
+    const queryParams = { id: req.params.id,slug : req.params.slug }
     renderAndCache(req, res, '/pro/review', queryParams)
   })
 
-  server.get('/pro/:id', (req, res) => {
-    const queryParams = { id: req.params.id }
+  server.get('/pro/:id-:slug', (req, res) => {
+    const queryParams = { id: req.params.id,slug : req.params.slug }
     renderAndCache(req, res, '/pro', queryParams)
   })
 
-  server.get('/du-an/:id', (req, res) => {
-    const queryParams = { id: req.params.id }
+  server.get('/du-an/:id-:slug', (req, res) => {
+    const queryParams = { id: req.params.id,slug : req.params.slug }
     renderAndCache(req, res, '/project', queryParams)
   })
 
-  server.get('/anh/:id', (req, res) => {
-    const queryParams = { id: req.params.id }
+  server.get('/anh/:id-:slug', (req, res) => {
+    const queryParams = { id: req.params.id,slug : req.params.slug }
     renderAndCache(req, res, '/image', queryParams)
   })
   server.get('*', (req, res) => {

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default class nav extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ export default class nav extends React.Component {
               <li className="offset-0 offset-md-1 nav-item py-1 px-1">
                 <div className="d-flex w-100">
                   <i className="fa fa-lightbulb-o my-auto" aria-hidden="true"></i>
-                  <a className="nav-link mr-auto" href="{{ route('frontend.idea.list.home',[],false) }}">Ý TƯỞNG</a>
+                  <Link prefetch  href='/y-tuong'><a className="nav-link mr-auto">Ý TƯỞNG</a></Link>
                   <a className="navbar-toggler menu-toggle" data-toggle="collapse" data-target="#nav-product-2" aria-controls="collapse-login" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="fa fa-chevron-right"></span></a>
                 </div>

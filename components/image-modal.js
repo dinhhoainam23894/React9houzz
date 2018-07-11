@@ -6,6 +6,7 @@ export default class extends React.Component{
         return { id: query.id }
     }
     dismiss (e) {
+        e.preventDefault()
         if (this._lbClose === e.target) {
             e.preventDefault()
 
@@ -15,7 +16,6 @@ export default class extends React.Component{
         }
       }
     render(){
-        console.log(this.props.id)
         return(
             <div id="lightbox" className="modal Ifade show" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div id="lbMainControls" className="trackMe">

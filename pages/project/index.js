@@ -4,8 +4,10 @@ import ProviderDetail from '../../components/pro-detail';
 import ImageModal from '../../components/image-modal';
 import axios from 'axios'
 import {mapObject , ucfirst} from '../../libraries/helpers'
-const APIURL = 'http://9houzz.stag:89/api/project/'
-const APIPRO = 'http://9houzz.stag:89/api/provider/'
+const APIURL = process.env.DOMAIN + process.env.APIURI
+
+const APIPROJECT = APIURL + 'project/'
+const APIPRO = APIURL + 'provider/'
 import Router from 'next/router';
 
 
@@ -24,7 +26,7 @@ export default class Project extends Component {
     }
     async getValue() {
         let data;
-        await axios.get(APIURL + this.props.id)
+        await axios.get(APIPROJECT + this.props.id)
             .then(res => {
                 data = res.data;
                 this.setState({ project: data.project, images: data.project.images  })
@@ -38,22 +40,23 @@ export default class Project extends Component {
     componentDidMount = async () => {
         await this.getValue()
     }
-    showPhoto (e, id) {
+    showPhoto (e, id , slug) {
         e.preventDefault()
-        Router.push(`/project?id=${this.props.id}&photoId=${id}`,`/anh/${id}`)
+        Router.push(`/project?id=${this.props.id}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
     }
     dismissModal (id) {
-        Router.push(`/du-an/${id}`)
+        Router.push(`/du-an/${id}-${slug}`)
       }
-    render() {
+    render() { 
+        const { provider } = this.state
         const { url } = this.props
         return (
-            <ProviderDetail id={this.state.provider.id} data={this.state.data}>
+            <ProviderDetail id={provider.id} slug={provider.slug} data={this.state.data}>
                 {
                     url.query.photoId &&
                     <ImageModal
                         id={url.query.photoId}
-                        onDismiss={() => this.dismissModal(url.query.id)}
+                        onDismiss={() => this.dismissModal(url.query.id,url.query.slug)}
                     />
                 }
                 <div className="mt-3 project-detail" id="cat">
@@ -83,7 +86,7 @@ export default class Project extends Component {
                                                             <div className="px-0">
                                                                 <div className="project-image position-relative">
                                                                     <Link href={`/anh/?id=${value.id}`}>
-                                                                        <a className='photoLink' onClick={(e) =>  this.showPhoto(e, value.id)}>
+                                                                        <a className='photoLink' onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
                                                                             <picture>
                                                                                 <source srcSet={value.large_path} media="(max-width: 768px)" />
                                                                                 <source srcSet={value.large_path} media="(min-width: 768px)" />
