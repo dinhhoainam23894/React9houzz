@@ -2,18 +2,29 @@ import { Component } from 'react'
 import Link from 'next/link'
 import ProviderDetail from '../../components/pro-detail';
 import ImageModal from '../../components/image-modal';
-import axios from 'axios'
+import 'isomorphic-fetch'
 import {mapObject , ucfirst} from '../../libraries/helpers'
 const APIURL = process.env.DOMAIN + process.env.APIURI
 
 const APIPROJECT = APIURL + 'project/'
 const APIPRO = APIURL + 'provider/'
-import Router from 'next/router';
+// import Router from 'next/router';
+import {Router} from '../../routes'
 
 
 export default class Project extends Component {
     static async getInitialProps({ query }) {
-        return { id: query.id }
+        const res = await fetch(APIPROJECT+query.id)
+        const data = await res.json()
+
+        const resPro = await fetch(APIPRO+data.project.user_id)
+        const dataPro = await resPro.json()
+        return { id: query.id 
+                , data:dataPro 
+                , provider : dataPro.provider 
+                , project : data.project 
+                , images: data.project.images 
+                , slug : query.slug}
     }
     constructor(props) {
         super(props)
@@ -24,34 +35,17 @@ export default class Project extends Component {
             images: []
         }
     }
-    async getValue() {
-        let data;
-        await axios.get(APIPROJECT + this.props.id)
-            .then(res => {
-                data = res.data;
-                this.setState({ project: data.project, images: data.project.images  })
-            })
-        await axios.get(APIPRO + this.state.project.user_id)
-        .then(res => {
-            data = res.data;
-            this.setState({ data: data , provider: data.provider })
-        })
-    }
-    componentDidMount = async () => {
-        await this.getValue()
-    }
     showPhoto (e, id , slug) {
         e.preventDefault()
         Router.push(`/project?id=${this.props.id}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
     }
     dismissModal (id , slug) {
-        Router.push(`/du-an/${id}-${slug}`)
+        Router.pushRoute('project.detail', {id: id , slug : `${slug}`})
       }
     render() { 
-        const { provider } = this.state
-        const { url } = this.props
+        const { url , provider ,data , project, images} = this.props
         return (
-            <ProviderDetail id={provider.id} slug={provider.slug} data={this.state.data}>
+            <ProviderDetail id={provider.id} slug={provider.slug} data={data}>
                 {
                     url.query.photoId &&
                     <ImageModal
@@ -65,12 +59,12 @@ export default class Project extends Component {
                         <div className="offset-md-1 col-12 col-md-10 col-lg-10 offset-md-1">
                             <div className="px-4 bg-white idea-content">
                                 <div className="about">
-                                    <h1 className="font-25 font-weight-normal">{this.state.project.name}</h1>
-                                    <h3 className="font-14 font-weight-normal mb-3">{this.state.project.descriptions}</h3>
-                                    <h3 className="font-14 font-weight-normal"><strong>Địa chỉ</strong>: {this.state.project.address}</h3>
-                                    <h3 className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>:<a href={this.state.project.source_url} rel="nofollow" target="_blank" className="text-dark"> {this.state.project.source_url}</a></h3>
+                                    <h1 className="font-25 font-weight-normal">{project.name}</h1>
+                                    <h3 className="font-14 font-weight-normal mb-3">{project.descriptions}</h3>
+                                    <h3 className="font-14 font-weight-normal"><strong>Địa chỉ</strong>: {project.address}</h3>
+                                    <h3 className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>:<a href={project.source_url} rel="nofollow" target="_blank" className="text-dark"> {project.source_url}</a></h3>
                                     {
-                                        this.state.project.more_infos && mapObject(this.state.project.more_infos, function (index, value) {
+                                        project.more_infos && mapObject(project.more_infos, function (index, value) {
                                             if(value != '')
                                             return <h3 className="font-14 font-weight-normal" key={index}><strong>{ucfirst(index)} </strong> : { value }</h3>
 
@@ -81,7 +75,7 @@ export default class Project extends Component {
                                 <div className="about bg-white py-3">
                                     <ul className="list-unstyled">
                                         {
-                                            this.state.images && this.state.images.map((value,index) => (
+                                            images && images.map((value,index) => (
                                                 <li className="media border border-bottom-0 border-right-0 border-left-0 border-gray py-3 position-relative container w-100 mb-2 px-0" key={index}>
                                                         <div className="row w-100 m-0">
                                                             <div className="px-0">

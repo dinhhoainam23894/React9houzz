@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import 'isomorphic-fetch'
 import Layout from './layout';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroller'
@@ -31,6 +32,7 @@ export default class IdeaComponent extends React.Component{
         if(this.props.ideaParams){
             url = APIURL + 'y-tuong/' + this.props.ideaParams
         }
+        
        await axios.get(url).then(resp => {
                 var data = resp.data
                 this.setState({
@@ -123,12 +125,12 @@ export default class IdeaComponent extends React.Component{
        return(
         <Layout {...this.props} navmenu={false} container={false}>
         {
-            photoId &&
+            photoId ?
             <ImageModal
                 id={photoId}
                 slug={slug}
                 onDismiss={() => this.dismissModal(photoId)}
-            />
+            /> : ''
         }
         <div className="container-fluid service px-4 bg-gray">
             <div className="row">
@@ -140,10 +142,10 @@ export default class IdeaComponent extends React.Component{
                     <h1 className="text-dark title ml-1 pt-3">{ h1 && h1 }</h1>
                         <div className="list-tag">
                     {
-                        listBadge && 
-                        listBadge.map((value,index) => (
-                                <a href={value.uri}><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
-                        ))
+                        listBadge ?
+                        listBadge.map((value,index) => {
+                               return <a href={value.uri} key={index}><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                        }) : ''
                     }
                         </div>
                     <InfiniteScroll

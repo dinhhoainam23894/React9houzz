@@ -9,7 +9,7 @@ export default class IdeaFilter extends React.Component{
         super(props)
     }
     render(){
-        const { params  , url} = this.props        
+        const { params  , url } = this.props        
         return(
             <IdeaComponent 
                 photoId={this.props.url.query && this.props.url.query.photoId}

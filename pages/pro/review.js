@@ -6,7 +6,15 @@ import axios from 'axios'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class extends React.Component {
     static async getInitialProps({ query }) {
-        return { id: query.id}
+        const res = await fetch(APIURL+query.id+"?reviews")
+        const data = await res.json()
+        return { id: query.id 
+                , data:data 
+                , provider : data.provider 
+                , projects : data.projects 
+                , slug : query.slug 
+                , reviews : data.reviews 
+                , review_details : data.review_details}
       } 
       constructor(props){
         super(props)
@@ -18,31 +26,31 @@ export default class extends React.Component {
           review_details : []
         }
       } 
-      async getValue(){
-        let data;
-        await axios.get(APIURL+this.props.id+"?reviews")
-        .then(res => {
-             data = res.data;
-             this.setState({data: data , provider:data.provider ,reviews : data.reviews , review_details : data.review_details})
-        })
-        return data
-        }
-      componentDidMount = async () =>{
-        await this.getValue()
-      }
+    //   async getValue(){
+    //     let data;
+    //     await axios.get(APIURL+this.props.id+"?reviews")
+    //     .then(res => {
+    //          data = res.data;
+    //          this.setState({data: data , provider:data.provider ,reviews : data.reviews , review_details : data.review_details})
+    //     })
+    //     return data
+    //     }
+    //   componentDidMount = async () =>{
+    //     await this.getValue()
+    //   }
     render() {
-        const { provider } = this.state 
+        const { provider , id , slug ,reviews , review_details , data} = this.props 
         return (
             // <ProviderDetail id={this.props.id} ref={(e)=>this.ProviderDetail = e}>
-            <ProviderDetail id={this.props.id} slug={provider.slug} data={this.state.data}>
+            <ProviderDetail id={id} slug={slug} data={data}>
 
                 <div className="container comment mt-3">
                     <div className="row">
                         <div className="col-0 col-md-3 col-lg-3 provider-sidebar p-0 mt-2" id="sidebar">
-                            <ProviderSidebar provider={this.state.provider}></ProviderSidebar>
+                            <ProviderSidebar provider={provider}></ProviderSidebar>
                         </div>
                         <div className="col-12 col-md-9 col-lg-9">
-                            <RatingComponent reviews={this.state.reviews} review_details={this.state.review_details}></RatingComponent>
+                            <RatingComponent reviews={reviews} review_details={review_details}></RatingComponent>
                         </div>
                     </div>
                 </div>

@@ -2,23 +2,28 @@ import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
 import Layout from '../components/layout'
+import React from 'react'
+import 'isomorphic-fetch'
 
-export default () => (
-  <Layout {...this.props} navmenu={false} container={false}>
-    <div>
-        <div className="hero">
-          <h1 className="title">Welcome to tets!</h1>
-          <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
-
-          <div className="row">
-            <Link href="https://github.com/zeit/next.js#getting-started">
-              <a className="card">
-                <h3>Getting Started &rarr;</h3>
-                <p>Learn more about Next on Github and in their examples</p>
-              </a>
-            </Link>
-          </div>
-        </div>
+export default class test extends React.Component {
+  
+  static async getInitialProps () {
+    const apiUrl = 'https://wp.catechetics.com/wp-json/wp/v2/'
+    const params = 'posts'
+    const res = await fetch(apiUrl + params)
+    const data = await res.json()
+    return { data }
+  }
+  render(){
+    const { data } = this.props
+    return(
+      <Layout {...this.props} navmenu={false} container={false}>
+      <div>
+        <ul>
+        <Item href="/test">test</Item>
+        <Item href="/index">index</Item>
+        <Item href="/y-tuong">ý tưởng</Item>
+      </ul>
 
         <style jsx>{`
           .hero {
@@ -67,5 +72,34 @@ export default () => (
         `}</style>
     </div>
   </Layout>
+    )
+  }
   
+  
+}
+const Item = ({ href, children }) => (
+  <li>
+    <Link prefetch href={href}>
+      <a>{ children }</a>
+    </Link>
+
+    <style jsx>{`
+      li {
+        display: inline-block;
+      }
+
+      a {
+        display: inline-block;
+        padding: 10px;
+        font-size: 11px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #000;
+      }
+
+      a:hover {
+        color: #fff;
+      }
+    `}</style>
+  </li>
 )

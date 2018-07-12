@@ -1,5 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
+// import Link from 'next/link'
+import {Link} from '../routes'
 import Layout from '../components/layout'
 import axios from 'axios'
 import {rating}  from '../libraries/helpers'
@@ -12,22 +13,8 @@ export default class extends React.Component {
 	
 	constructor(props){
 		super(props);
-		// this.getValue = this.getValue.bind(this);
 	}
-    // componentWillReceiveProps = async(nextProps) => {
-	// 	if(this.props.data.provider == undefined && nextProps.data.provider){
-	// 		await this.setState({data : nextProps.data , provider: nextProps.data.provider})
-	// 	}
-	// }
-	// async getValue(){
-	// 	let data;
-	// 	await axios.get(APIURL+this.props.id)
-	// 	.then(res => {
-	// 		 data = res.data;
-	// 		 this.setState({data: data , provider:data.provider})
-	// 	})
-	// 	return data
-	// }
+   
   render() {
 	  const { id,slug } = this.props
       return(
@@ -41,7 +28,7 @@ export default class extends React.Component {
 				</div>
 				<div className="container position-relative">
 					<div className="position-absolute provider-info">
-						<Link prefetch href={ `/pro/${id}-${slug}` }>
+						<Link prefetch route='pro.detail' params={{id: id , slug : `${slug}`}}>
 							<a className="provider-name text-white font-weight-bold">
 								<h1 className="font-22 mb-1">{ this.props.data.provider && this.props.data.provider.name }</h1>	
 							</a>
@@ -59,13 +46,13 @@ export default class extends React.Component {
 						<div className="col-md-9 col-lg-9 provider-nav">
 							<ul className="nav nav-tabs border-0" id="myTab" role="tablist">
 								<li className="nav-item position-relative {{ active_if('provider-about') }}">
-									<Link prefetch href={ `/pro/${id}-${slug}` }><a className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
+									<Link prefetch route='pro.detail' params={{id: id , slug : `${slug}`}}><a className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative {{ active_if('provider-project') }} {{ Request::is('du-an/*') ? 'active' : '' }}">
-                                <Link prefetch href={ `/pro/${id}-${slug}/dự-án` }><a className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
+                                <Link prefetch route='pro.project' params={{id: id , slug : `${slug}`}}><a className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative {{ active_if('provider-comment') }}">
-                                <Link prefetch href={`/pro/${id}-${slug}/nhận-xét`}><a className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
+                                <Link prefetch  route='pro.review' params={{id: id , slug : `${slug}`}}><a className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative">
 									<a className="nav-link border-0 font-14 font-weight-bold" href="#">Sổ tay ý tưởng</a>

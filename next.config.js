@@ -1,5 +1,8 @@
-const { parsed: localEnv } = require('dotenv').config()
 const webpack = require('webpack')
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
+});
+
 module.exports = {
   webpack: (config) => {
     config.module.rules.push(
@@ -19,9 +22,12 @@ module.exports = {
         loader: 'babel-loader!raw-loader!sass-loader'
       }
     )
-    config.plugins.push(
-      new webpack.EnvironmentPlugin(localEnv)
-    )
+    const env = Object.keys(process.env).reduce((acc, curr) => {
+      acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
+      return acc;
+    }, {});
+
+    config.plugins.push(new webpack.DefinePlugin(env));
     return config
   }
 }

@@ -1,14 +1,15 @@
 import React from 'react'
-import Link from 'next/link'
+import {Link} from '../routes'
 export default class extends React.Component{
     constructor(props){
         super(props)
     }
     render(){
         const {project} = this.props
+        console.log(project.id)
         return (
             <div className="rounded-2">
-            <Link prefetch href={ `/du-an/${project.id}-${project.slug}` }>
+            <Link prefetch route='project.detail' params={{ id: project.id , slug : `${project.slug}`}}>
                 <a className="nav-link border-0 font-14 font-weight-bold">
                     <div className="rounded-2 border provider-project">
                         <div className="row project position-relative mx-auto">

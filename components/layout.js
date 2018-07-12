@@ -1,4 +1,5 @@
 import React from 'react'
+import Meta from './meta'
 import Router from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -92,6 +93,7 @@ export default class extends React.Component {
         </div> 
         <NavHeader/>
       </header>
+      <Meta />
         <MainBody navmenu={this.props.navmenu} fluid={this.props.fluid} container={this.props.container}>
           {this.props.children}
         </MainBody>
