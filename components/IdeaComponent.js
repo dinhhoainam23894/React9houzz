@@ -6,77 +6,39 @@ import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroller'
 import ImageModal from './image-modal';
 import {mapObject , ucfirst} from '../libraries/helpers'
+import {Link} from '../routes'
 import $ from 'jquery';
 const APIURL = process.env.DOMAIN + process.env.APIURI
 var currentPath = '/'
 var asPath = '/'
-import Router from 'next/router';
+// import Router from 'next/router'
+import {Router} from '../routes'
+
 
 export default class IdeaComponent extends React.Component{
+    state = {
+        images: [],
+        nextUrl : null,
+        hasMoreItems: true,
+        h1 : null,
+        filter_default : [],
+        listBadge : []
+    }
     constructor(props){
         super(props)
-        this.state = {
-            images: [],
-            nextUrl : null,
-            hasMoreItems: true,
-            h1 : null,
-            filter_default : [],
-            listBadge : []
-        }
         currentPath = this.props.path
         asPath = this.props.asPath
     }
-    
-    async getValue() {
-        var url = APIURL + 'y-tuong';
-        if(this.props.ideaParams){
-            url = APIURL + 'y-tuong/' + this.props.ideaParams
-        }
-        
-       await axios.get(url).then(resp => {
-                var data = resp.data
-                this.setState({
-                    h1 : data.h1,
-                    filter_default : data.filter_default,
-                    color : data.colors,
-                    images: data.images.data,
-                    nextUrl: data.images.next_page_url,
-                    listBadge : data.listBadge
-                })
-            })
+    componentWillMount(){
+        this.setState({
+            h1 : this.props.h1,
+            filter_default : this.props.filter_default,
+            color : this.props.colors,
+            images: this.props.images,
+            nextUrl: this.props.nextUrl,
+            listBadge : this.props.listBadge ? this.props.listBadge : []
+        })
     }
-    componentDidMount = async () => {
-        await this.getValue(this)
-        var showChar = 150;  // How many characters are shown by default
-        var ellipsestext = "";
-        var moretext = "Xem thêm >";
-        var lesstext = "Rút gọn <";
-        $('.moreDes').each(function(e) {
-            var content = $(this).html();
-            if(content.length > showChar) {
-                var c = content.substr(0, showChar);
-                var h = content.substr(showChar, content.length - showChar);
-                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-                $(this).html(html);
-            }
-
-        });
-
-        $(".morelink").click(function(e){
-            e.preventDefault()
-            if($(this).hasClass("less")) {
-                $(this).removeClass("less");
-                $(this).html(moretext);
-            } else {
-                $(this).addClass("less");
-                $(this).html(lesstext);
-            }
-            $(this).parent().prev().toggle();
-            $(this).prev().toggle();
-            // $('.grid').masonry.on('layoutComplete', this.handleLayoutComplete);
-            return false;
-        });
-      }
     loadItems(page) {
         var self = this;
         var url = '';
@@ -110,10 +72,28 @@ export default class IdeaComponent extends React.Component{
     }
     showPhoto (e, id , slug) {
         e.preventDefault()
-        Router.push(`${currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+        if(this.props.ideaParams){
+            var params = this.props.ideaParams
+            if(this.props.subParams){
+                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+            }else{
+                Router.push(`${currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
+            }
+        }else{
+            Router.push(`${currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+        }
     }
     dismissModal (id) {
-        Router.push(currentPath,asPath)
+        if(this.props.ideaParams){
+            var params = this.props.ideaParams
+            if(this.props.subParams){
+                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}`)
+            }else{
+                Router.pushRoute('idea.detail', {params: params})
+            }
+        }else{
+            Router.push(currentPath,asPath)
+        }
     }
    render(){
         const masonryOptions = {
@@ -208,16 +188,13 @@ class Sidebar extends React.PureComponent{
                             <div className="mt-2 widget p-3">
                             <h3 className="font-15 mb-3">{value.textName}<span className="fa fa-chevron-right d-block d-md-none"  data-toggle="collapse" data-target="#demoTest"></span></h3>
                             <ul className="list-unstyled mb-0 collapse d-md-block" id="demoTest">
-                             
                                 {
-                                    
                                     value.data && mapObject(value.data, function (index, value) {
                                         return <li className="py-1 radio" key={index}>
                                             <a href={value.uri} className="font-13 font-weight-light text-gray"><label className="px-3">{value.name_tag}<span>{value.total_doc}</span></label></a>
                                         </li>
                                     })
                                 }
-                                
                                 <span className="more loadmore d-none d-md-block">Xem thêm <i className="la la-arrow-circle-right"></i></span>
                             </ul>
                             </div>

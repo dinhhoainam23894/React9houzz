@@ -61,11 +61,11 @@ export default class extends React.Component {
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <title>{this.props.title || '9houz'}</title>
-          <style dangerouslySetInnerHTML={{__html: Styles}}/>
-          <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
           <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
           <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+          <style dangerouslySetInnerHTML={{__html: Styles}}/>
+          <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
         </Head>
         <header>
         <div>
