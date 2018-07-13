@@ -6420,9 +6420,9 @@ function (_React$Component) {
       }
     })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/_error")
   
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/next/node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ })
 
 })
-//# sourceMappingURL=1.2d02a4a83b73e616d228.hot-update.js.map
+//# sourceMappingURL=1.8321b11c422d6005bac6.hot-update.js.map

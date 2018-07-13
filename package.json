@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.53",
-    "@babel/preset-env": "^7.0.0-beta.53",
     "@zeit/next-css": "^0.2.0",
     "@zeit/next-sass": "^0.2.0",
     "axios": "^0.18.0",
@@ -36,15 +35,16 @@
     "react-modal": "^3.5.1",
     "reactstrap": "^6.3.0",
     "style-loader": "^0.21.0",
-    "styled-jsx": "^2.2.7",
     "tunnel-agent": "^0.6.0",
     "universal-cookie": "^2.2.0",
-    "webpack": "^4.16.0"
+    "webpack": "^2.5.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "create-next": "^0.1.4",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",
-    "styled-jsx-css-loader": "^0.3.0"
+    "styled-jsx-css-loader": "^0.3.0",
+    "webpack-dev-server": "^3.1.4"
   }
 }
