@@ -9,10 +9,12 @@ import { Container, Row, Col, Nav, NavItem, Button, Form, NavLink, Collapse,
 import Cookies from 'universal-cookie'
 import Package from '../package'
 // import Styles from 'css/index.scss'
-import Styles from 'styles/style.scss'
+// import Styles from 'styles/style.scss'
+import css from '../styles/style.scss';
+
 import NavHeader from './nav';
 import Footer from './footer';
-import FontAwesome from '../css/font-awesome.css'
+// import FontAwesome from '../css/font-awesome.css'
 import DocumentMeta from 'react-document-meta';
 
 // <style dangerouslySetInnerHTML={{__html: Styles}}/>
@@ -75,7 +77,6 @@ export default class extends React.Component {
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
           <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
           <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-          <style dangerouslySetInnerHTML={{__html: Styles}}/>
         </Head>
         <header>
         <div>
@@ -109,7 +110,6 @@ export default class extends React.Component {
           
         </MainBody>
        <Footer />
-       <style jsx global>{FontAwesome}</style>
       </React.Fragment>
 
     )

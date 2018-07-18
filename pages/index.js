@@ -2,12 +2,11 @@ import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
 import Layout from '../components/layout'
-import css from './index.scss';
 
 export default () => (
   <Layout>
     <div>
-    <h1 className={css.landing}>Landing Page</h1>
+    <h1 >Landing Page</h1>
         <div className="hero">
           <h1 className="title">Welcome to 9houzz!</h1>
           <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
