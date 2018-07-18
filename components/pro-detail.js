@@ -1,10 +1,11 @@
 import React from 'react'
 // import Link from 'next/link'
 import {Link} from '../routes'
-import Layout from '../components/layout'
+import Layout from './layout'
 import axios from 'axios'
 import {rating}  from '../libraries/helpers'
 const APIURL = 'http://9houzz.stag:89/api/provider/'
+import {Helmet} from "react-helmet";
 export default class extends React.Component {
 	state = {
 		data: {},
@@ -17,6 +18,7 @@ export default class extends React.Component {
    
   render() {
 	  const { id,slug } = this.props
+	  
       return(
 		<Layout {...this.props} navmenu={false} container={false}>
         <div className="container-fluid px-4 bg-gray provider-main">
@@ -76,7 +78,6 @@ export default class extends React.Component {
 		</div>
 
 	    </div>
-        
       </Layout>
       );
   }

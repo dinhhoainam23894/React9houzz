@@ -1,0 +1,22 @@
+@charset "UTF-8";
+$ionicons-font-path: "/fonts/ionicons" !default;
+$ionicons-font-family: "Ionicons" !default;
+$ionicons-version: "3.0.0-alpha.3" !default;
+@import "styles/variables";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "styles/login";
+@import "styles/font-size";
+@import "styles/background-color";
+@import "styles/animation";
+@import "styles/header";
+@import "styles/nav-header";
+@import "styles/footer";
+@import "styles/provider";
+@import "styles/category";
+@import "styles/image";
+@import "styles/sidebar";
+@import "styles/service";
+@import "styles/static-page";
+
+// @import "../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min";
+// @import "nojs-menus.scss";

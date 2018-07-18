@@ -1,6 +1,5 @@
 import NextHead from 'next/head'
 import { string } from 'prop-types'
-import Styles from '../css/index.scss'
 const defaultDescription = ''
 const defaultOGURL = ''
 const defaultOGImage = ''

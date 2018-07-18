@@ -1,0 +1,35 @@
+{
+    "presets": [
+      [
+        "next/babel",
+        {
+          "preset-env": {
+            "modules": "commonjs"
+          },
+          "styled-jsx": {
+            "plugins": [
+              "styled-jsx-plugin-sass"
+            ]
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": ["./"],
+          "alias": {
+            "styles": "./styles"
+          }
+        }
+      ],
+      [
+        "inline-import",
+        {
+          "extensions": [".css"]
+        }
+      ]
+    ]
+  }
+  

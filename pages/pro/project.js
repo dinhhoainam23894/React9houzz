@@ -9,7 +9,19 @@ export default class extends React.Component {
     static async getInitialProps ({ query }) {
       const res = await fetch(APIURL+query.id+"?projects")
       const data = await res.json()
-      return { id: query.id , data:data , provider : data.provider , projects : data.projects , slug : query.slug}
+      return { id: query.id 
+              , data:data 
+              , provider : data.provider 
+              , projects : data.projects 
+              , slug : query.slug
+              , h1 : data.seo.h1 
+              , title : data.seo.title
+              , des : data.seo.des
+              , canonical : data.seo.canonical
+              , robots : data.seo.robots
+              , og_url : data.seo.url
+              , url_images : data.seo.url_images
+            }
     }
     constructor(props){
       super(props)
@@ -43,7 +55,7 @@ export default class extends React.Component {
               })
           }
         return (
-            <ProviderDetail id={id} slug={slug} data={data}>
+            <ProviderDetail id={id} slug={slug} data={data} {...this.props}>
               <div className="container mt-3">
                 <h2 className="text-dark font-30 text-center">{data.project_count} dự án</h2>
                 <div className="row">

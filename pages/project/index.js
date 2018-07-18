@@ -24,7 +24,14 @@ export default class Project extends Component {
                 , provider : dataPro.provider 
                 , project : data.project 
                 , images: data.project.images 
-                , slug : query.slug}
+                , slug : query.slug
+                , title : data.seo.title
+                , des : data.seo.des
+                , canonical : data.seo.canonical
+                , robots : data.seo.robots
+                , og_url : data.seo.url
+                , url_images : data.seo.url_images
+            }
     }
     constructor(props) {
         super(props)
@@ -45,7 +52,7 @@ export default class Project extends Component {
     render() { 
         const { url , provider ,data , project, images} = this.props
         return (
-            <ProviderDetail id={provider.id} slug={provider.slug} data={data}>
+            <ProviderDetail id={provider.id} slug={provider.slug} data={data} {...this.props}>
                 {
                     url.query.photoId &&
                     <ImageModal

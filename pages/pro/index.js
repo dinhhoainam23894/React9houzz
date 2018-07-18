@@ -5,15 +5,27 @@ import ProviderSidebar from '../../components/provider-sidebar';
 import ListProject from '../../components/list-project';
 import axios from 'axios'
 import 'isomorphic-fetch'
-
 import $ from 'jquery';
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class Pro extends Component {
     
   static async getInitialProps({ query }) {
-    const res = await fetch(APIURL+query.id+"?projects")
+    const res  = await fetch(APIURL+query.id)
     const data = await res.json()
-    return { id: query.id , data:data , provider : data.provider , projects : data.projects}
+    const resProject = await fetch(APIURL+query.id+"?projects")
+    const dataProject = await resProject.json()
+    return { id: query.id 
+            , data:dataProject 
+            , provider : dataProject.provider 
+            , projects : dataProject.projects
+            , h1 : data.seo.h1 
+            , title : data.seo.title
+            , des : data.seo.des
+            , canonical : data.seo.canonical
+            , robots : data.seo.robots
+            , og_url : data.seo.url
+            , url_images : data.seo.url_images
+            }
   } 
   constructor(props){
     super(props)
@@ -24,19 +36,7 @@ export default class Pro extends Component {
     }
 
   } 
-//   async getValue(){
-//     let data;
-//     await axios.get(APIURL+this.props.id+"?projects")
-//     .then(res => {
-//          data = res.data;
-//          this.setState({data: data , provider:data.provider ,projects : data.projects})
-//     })
-//     return data
-//     }
   componentDidMount = async () =>{
-    // this.setState({data: this.props.data , provider:this.props.data.provider ,projects : this.props.data.projects})
-
-    // await this.getValue()
         var $max = 220;
         var $height = $('#readMoreText').css('height','auto').height();
         if($height < $max){
@@ -85,8 +85,9 @@ export default class Pro extends Component {
             <Link href={ `/pro/${this.props.id}-${provider.slug}/dự-án` }><button className="btn btn-outline-primary w-100 font-weight-normal bg-white">Xem thêm <span className="number-project">({data.project_count - 6})</span> dự án</button></Link>
         </div>);
     }
+    
     return (
-      <ProviderDetail id={this.props.id} slug={provider.slug} data={data}>
+      <ProviderDetail id={this.props.id} slug={provider.slug} data={data} {...this.props}>
       <div className="container">
               <div className="row">
                   <div className="col-0 col-md-3 col-lg-3 provider-sidebar p-0 mt-2" id="sidebar">

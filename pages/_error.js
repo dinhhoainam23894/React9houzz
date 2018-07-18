@@ -5,7 +5,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Container } from 'reactstrap'
-import Styles from '../css/index.scss'
+// import Styles from './css/index.scss'
 import { withRouter } from 'next/router'
 
 class ErrorPage extends React.Component {
@@ -30,7 +30,6 @@ class ErrorPage extends React.Component {
         response = (
           <div>
             <Head>
-              <style dangerouslySetInnerHTML={{ __html: Styles }} />
             </Head>
             <Container className="pt-5 text-center">
               <h1 className="display-4">Page Not Found</h1>
@@ -44,7 +43,6 @@ class ErrorPage extends React.Component {
         response = (
           <div>
             <Head>
-              <style dangerouslySetInnerHTML={{ __html: Styles }} />
             </Head>
             <Container className="pt-5 text-center">
               <h1 className="display-4">Internal Server Error</h1>
@@ -57,7 +55,6 @@ class ErrorPage extends React.Component {
         response = (
           <div>
             <Head>
-              <style dangerouslySetInnerHTML={{ __html: Styles }} />
             </Head>
             <Container className="pt-5 text-center">
               <h1 className="display-4">HTTP {this.props.errorCode} Error</h1>

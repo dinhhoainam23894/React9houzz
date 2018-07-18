@@ -11,7 +11,13 @@ export default class extends React.Component{
                     filter_default : data.filter_default,
                     colors : data.colors,
                     images: data.images.data,
-                    nextUrl: data.images.next_page_url,
+                    nextUrl: data.images.next_page_url
+                    , title : data.seo.title
+                    , des : data.seo.des
+                    , canonical : data.seo.canonical
+                    , robots : data.seo.robots
+                    , og_url : data.seo.url
+                    , url_images : data.seo.url_images
                 }
     }
     constructor(props){

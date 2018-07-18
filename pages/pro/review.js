@@ -14,7 +14,15 @@ export default class extends React.Component {
                 , projects : data.projects 
                 , slug : query.slug 
                 , reviews : data.reviews 
-                , review_details : data.review_details}
+                , review_details : data.review_details
+                , h1 : data.h1 
+                , title : data.seo.title
+                , des : data.seo.des
+                , canonical : data.seo.canonical
+                , robots : data.seo.robots
+                , og_url : data.seo.url
+                , url_images : data.seo.url_images
+            }
       } 
       constructor(props){
         super(props)
@@ -42,7 +50,7 @@ export default class extends React.Component {
         const { provider , id , slug ,reviews , review_details , data} = this.props 
         return (
             // <ProviderDetail id={this.props.id} ref={(e)=>this.ProviderDetail = e}>
-            <ProviderDetail id={id} slug={slug} data={data}>
+            <ProviderDetail id={id} slug={slug} data={data} {...this.props}>
 
                 <div className="container comment mt-3">
                     <div className="row">

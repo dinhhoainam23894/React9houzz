@@ -2,10 +2,12 @@ import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
 import Layout from '../components/layout'
+import css from './index.scss';
 
 export default () => (
-  <Layout {...this.props} navmenu={false} container={false}>
+  <Layout>
     <div>
+    <h1 className={css.landing}>Landing Page</h1>
         <div className="hero">
           <h1 className="title">Welcome to 9houzz!</h1>
           <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
@@ -70,29 +72,4 @@ export default () => (
   </Layout>
   
 )
-const Item = ({ href, children }) => (
-  <li>
-    <Link prefetch href={href}>
-      <a>{ children }</a>
-    </Link>
 
-    <style jsx>{`
-      li {
-        display: inline-block;
-      }
-
-      a {
-        display: inline-block;
-        padding: 10px;
-        font-size: 11px;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #000;
-      }
-
-      a:hover {
-        color: #fff;
-      }
-    `}</style>
-  </li>
-)

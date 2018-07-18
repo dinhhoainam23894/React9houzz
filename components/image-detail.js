@@ -5,12 +5,9 @@ import {rating}  from '../libraries/helpers'
 import $ from 'jquery';
 import Router from 'next/router';
 import Link from 'next/link'
-
+import 'isomorphic-fetch'
 
 export default class Image extends React.Component{
-    static async getInitialProps({ query }) {
-        return { id: query.id , slug : query.slug}
-    }
     constructor(props) {
         super(props)
         this.state = {
@@ -25,6 +22,7 @@ export default class Image extends React.Component{
             idActive: null,
             currentValue: null
         }
+       
         
     }
     async getValue(id) {
@@ -43,9 +41,24 @@ export default class Image extends React.Component{
                 )
             })
     }
+    componentWillMount(){
+        if(this.props.data){
+            this.setState(
+                { 
+                  image: this.props.data.image ,
+                  project: this.props.data.project,
+                  images: this.props.data.images ,
+                  provider: this.props.data.provider,
+                  tag : this.props.data.tag,
+                  currentValue: this.props.data.image
+                }
+            )
+        }
+    }
     componentDidMount = async () => {
-        await this.getValue(this.props.id)
-
+        if(!this.props.data){
+            await this.getValue(this.props.id)
+        }
         this.setState({ currentImage : $('img.currentImage') })
         var image_thumb = $('.thumb');
         this.setState({image_thumb : image_thumb});
@@ -107,7 +120,6 @@ export default class Image extends React.Component{
     }
     render(){
         const { id , slug } = this.props
-        console.log(slug)
         return(
             <div>
                 <div className="lgBg"></div>
@@ -147,6 +159,7 @@ export default class Image extends React.Component{
                     tag={this.state.tag}
                     changeValue = {(data)=>this.setState({currentValue: data})}
                     currentValue={this.state.currentValue}
+                    detail={this.props.detail}
                 ></ImageInfo>
             </div>
         )
@@ -177,6 +190,7 @@ class ImageInfo extends React.PureComponent{
                 }
             });
     }
+  
     changeImage (e , value) {
         e.preventDefault()
         var $this = $(e.target).parents('li');
@@ -186,18 +200,21 @@ class ImageInfo extends React.PureComponent{
         this.props.changeValue(value)
     }
     render(){
-        const { image ,images , provider , project ,tag ,currentValue } = this.props
+        const { image ,images , provider , project ,tag ,currentValue ,detail } = this.props
         return (
             <div className="lbInfo">
                 <div>
                     <div className="lbInfoTab position-relative d-none d-md-block">
-                        <nav>
-                            <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i className="fa fa-home"></i></a>
-                                <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i className="fa fa-tag"></i></a>
-                                <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i className="fa fa-comment"></i></a>
-                            </div>
-                        </nav>
+                       {
+                           detail ? '' : 
+                           <nav>
+                                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i className="fa fa-home"></i></a>
+                                    <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i className="fa fa-tag"></i></a>
+                                    <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i className="fa fa-comment"></i></a>
+                                </div>
+                            </nav>
+                       } 
                     </div>
                 </div>
                     <div className="content-mask">

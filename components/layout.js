@@ -6,15 +6,17 @@ import Link from 'next/link'
 import { Container, Row, Col, Nav, NavItem, Button, Form, NavLink, Collapse,
          Navbar, NavbarToggler, NavbarBrand, Modal, ModalHeader, ModalBody,
          ModalFooter, ListGroup, ListGroupItem } from 'reactstrap'
-// import Signin from './signin'
-// import { NextAuth } from 'next-auth/client'
 import Cookies from 'universal-cookie'
 import Package from '../package'
-import Styles from '../css/index.scss'
+// import Styles from 'css/index.scss'
+import Styles from 'styles/style.scss'
 import NavHeader from './nav';
 import Footer from './footer';
 import FontAwesome from '../css/font-awesome.css'
+import DocumentMeta from 'react-document-meta';
 
+// <style dangerouslySetInnerHTML={{__html: Styles}}/>
+//           <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
 export default class extends React.Component {
 
   static propTypes() {
@@ -54,18 +56,26 @@ export default class extends React.Component {
   }
   
   render() {
-    
+	  const {  title , des , canonical ,og_url , url_images , robots} = this.props
+
     return (
+
       <React.Fragment>
         <Head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <title>{this.props.title || '9houz'}</title>
+          {des && <meta name='description' itemprop='description' content={des} />}
+          {canonical && <link rel="canonical" href={canonical} />}
+          {title && <meta property="og:title" content={title} />}
+          {des && <meta property="og:description" content={des} />}
+          {og_url && <meta property="og:url" content={og_url} />}
+          {url_images && <meta property="og:image" content={url_images} />}
+          {robots && <meta name="robots" content={robots} />}
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
           <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
           <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
           <style dangerouslySetInnerHTML={{__html: Styles}}/>
-          <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
         </Head>
         <header>
         <div>
@@ -96,9 +106,12 @@ export default class extends React.Component {
       <Meta />
         <MainBody navmenu={this.props.navmenu} fluid={this.props.fluid} container={this.props.container}>
           {this.props.children}
+          
         </MainBody>
        <Footer />
+       <style jsx global>{FontAwesome}</style>
       </React.Fragment>
+
     )
   }
 }
@@ -109,6 +122,7 @@ export class MainBody extends React.Component {
       return (
         <React.Fragment>
           {this.props.children}
+          
         </React.Fragment>
       )
     } else if (this.props.navmenu === false) {

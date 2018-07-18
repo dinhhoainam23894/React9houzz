@@ -6,7 +6,6 @@ export default class extends React.Component{
     }
     render(){
         const {project} = this.props
-        console.log(project.id)
         return (
             <div className="rounded-2">
             <Link prefetch route='project.detail' params={{ id: project.id , slug : `${project.slug}`}}>
