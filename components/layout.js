@@ -10,8 +10,7 @@ import Cookies from 'universal-cookie'
 import Package from '../package'
 // import Styles from 'css/index.scss'
 // import Styles from 'styles/style.scss'
-import css from '../styles/style.scss';
-
+import css from 'styles/style.scss';
 import NavHeader from './nav';
 import Footer from './footer';
 // import FontAwesome from '../css/font-awesome.css'
@@ -58,10 +57,8 @@ export default class extends React.Component {
   }
   
   render() {
-	  const {  title , des , canonical ,og_url , url_images , robots} = this.props
-
+	  const {  title , des , canonical ,og_url , url_images , robots , css} = this.props
     return (
-
       <React.Fragment>
         <Head>
           <meta charSet="UTF-8" />
@@ -77,6 +74,8 @@ export default class extends React.Component {
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
           <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
           <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+          <style dangerouslySetInnerHTML={{__html: css}}/>
+
         </Head>
         <header>
         <div>

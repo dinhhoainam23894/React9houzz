@@ -23,13 +23,8 @@
             "styles": "./styles"
           }
         }
-      ],
-      [
-        "inline-import",
-        {
-          "extensions": [".css"]
-        }
       ]
+      
     ]
   }
   

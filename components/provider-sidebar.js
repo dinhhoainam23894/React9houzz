@@ -23,19 +23,19 @@ export default class extends React.Component{
             <div className="bg-white py-2 px-3 border border-gray">
                 <div className="provider-statistic row border-dot">
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_like}</h3>
+                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_like ? this.props.provider.total_like : 0}</h3>
                         <p className="font-12 sidebar-label">Cảm ơn</p>
                     </div>
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_rate}</h3>
+                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_rate ? this.props.provider.total_rate : 0}</h3>
                         <p className="font-12 sidebar-label">Nhận xét</p>
                     </div>
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_page_view}</h3>
+                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_page_view ? this.props.provider.total_page_view : 0}</h3>
                         <p className="font-12 sidebar-label">Lượt xem</p>
                     </div>
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_follow}</h3>
+                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_follow ? this.props.provider.total_follow : 0}</h3>
                         <p className="font-12 sidebar-label">Theo dõi</p>
                     </div>
                 </div>

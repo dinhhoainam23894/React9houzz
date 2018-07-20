@@ -119,39 +119,70 @@ function (_Document) {
   }
 
   _createClass(MyDocument, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var loadDeferredStyles = function loadDeferredStyles() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+
+      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+      if (raf) raf(function () {
+        window.setTimeout(loadDeferredStyles, 0);
+      });else window.addEventListener('load', loadDeferredStyles);
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("html", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 6
+          lineNumber: 20
         }
       }, _react.default.createElement(_document.Head, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 7
+          lineNumber: 21
+        }
+      }, _react.default.createElement("noscript", {
+        id: "deferred-styles",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
         }
       }, _react.default.createElement("link", {
         rel: "stylesheet",
+        type: "text/css",
         href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 23
+        }
+      })), _react.default.createElement("script", {
+        dangerouslySetInnerHTML: {
+          __html: "var loadDeferredStyles = function() {\n            var addStylesNode = document.getElementById(\"deferred-styles\");\n            var replacement = document.createElement(\"div\");\n            replacement.innerHTML = addStylesNode.textContent;\n            document.body.appendChild(replacement)\n            addStylesNode.parentElement.removeChild(addStylesNode);\n        };\n        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||\n            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;\n        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });\n        else window.addEventListener('load', loadDeferredStyles);"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
         }
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 37
         }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 38
         }
       }), _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 39
         }
       })));
     }

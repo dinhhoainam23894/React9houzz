@@ -11,10 +11,8 @@ import $ from 'jquery';
 const APIURL = process.env.DOMAIN + process.env.APIURI
 var currentPath = '/'
 var asPath = '/'
-// import Router from 'next/router'
 import {Router} from '../routes'
-
-
+import css from 'styles/fscreen_idea.css'
 export default class IdeaComponent extends React.Component{
     state = {
         images: [],
@@ -54,7 +52,6 @@ export default class IdeaComponent extends React.Component{
                     data.images.data.map((track) => {
                         tracks.push(track);
                     });
-                   
                     if(data.images.next_page_url && data.images.next_page_url != null) {
                         self.setState({
                             images: tracks,
@@ -103,7 +100,7 @@ export default class IdeaComponent extends React.Component{
        const { images , h1 ,filter_default , color , listBadge} = this.state
        const { photoId , slug } = this.props;
        return(
-        <Layout {...this.props} navmenu={false} container={false}>
+        <Layout {...this.props} navmenu={false} container={false} css={css}>
         {
             photoId ?
             <ImageModal
@@ -145,20 +142,17 @@ export default class IdeaComponent extends React.Component{
                             images && images.map((value,index) =>( 
                         
                                 <div className="grid__item rounded p-1" key={index}>
-                                    <div className="grid__images">
-                                        <div className="position-relative">
+                                        <div class="card">
                                             <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
                                             <a  onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
-                                                <img className="rounded" src={value.medium_path} alt="{{ $element->name }}" />
-                                            </a>
-                                            
+                                            <img className="rounded card-img-top" src={value.medium_path} alt="{{ $element->name }}" />
+                                             </a>
+                                            <div class="card-body">
+                                                <h2 className="mt-2 font-13 text-black-100" data-title="{{ $element->name }}">{value.name}</h2>
+                                                <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="position-relative idea-content">
-                                        <h2 className="mt-2 font-13 text-black-100" data-title="{{ $element->name }}">{value.name}</h2>
-                                        <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
-                                    </div>
-                
+                                        
                                 </div>
                             ))
                         }

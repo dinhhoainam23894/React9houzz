@@ -3,7 +3,7 @@ import Layout from '../../components/layout'
 import ImageDetail from '../../components/image-detail'
 import 'isomorphic-fetch'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'image/'
-
+import css from './index.css'
 export default class Image extends React.Component{
     static async getInitialProps({query}){
         const res = await fetch(APIURL+query.id)
@@ -27,7 +27,7 @@ export default class Image extends React.Component{
     }
     render(){
         return(
-            <Layout {...this.props} navmenu={false} container={false}>
+            <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div id="lightbox">
                 <ImageDetail id={this.props.id} slug={this.props.slug} data={this.props} detail={true}></ImageDetail>
                 <style jsx>{`

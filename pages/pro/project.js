@@ -4,7 +4,7 @@ import ListProject from '../../components/list-project';
 import axios from 'axios'
 import 'isomorphic-fetch'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
-
+import css from './project.css'
 export default class extends React.Component {
     static async getInitialProps ({ query }) {
       const res = await fetch(APIURL+query.id+"?projects")
@@ -14,7 +14,7 @@ export default class extends React.Component {
               , provider : data.provider 
               , projects : data.projects 
               , slug : query.slug
-              , h1 : data.seo.h1 
+              , h1 : data.h1 
               , title : data.seo.title
               , des : data.seo.des
               , canonical : data.seo.canonical
@@ -55,7 +55,7 @@ export default class extends React.Component {
               })
           }
         return (
-            <ProviderDetail id={id} slug={slug} data={data} {...this.props}>
+            <ProviderDetail provider_id={id} provider_slug={slug} data={data} {...this.props} css={css}>
               <div className="container mt-3">
                 <h2 className="text-dark font-30 text-center">{data.project_count} dự án</h2>
                 <div className="row">

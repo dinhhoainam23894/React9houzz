@@ -6,6 +6,8 @@ import ListProject from '../../components/list-project';
 import axios from 'axios'
 import 'isomorphic-fetch'
 import $ from 'jquery';
+import css from './provider.css'
+
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class Pro extends Component {
     
@@ -87,7 +89,7 @@ export default class Pro extends Component {
     }
     
     return (
-      <ProviderDetail id={this.props.id} slug={provider.slug} data={data} {...this.props}>
+      <ProviderDetail provider_id={this.props.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
       <div className="container">
               <div className="row">
                   <div className="col-0 col-md-3 col-lg-3 provider-sidebar p-0 mt-2" id="sidebar">

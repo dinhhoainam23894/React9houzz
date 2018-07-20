@@ -10,7 +10,7 @@ const APIPROJECT = APIURL + 'project/'
 const APIPRO = APIURL + 'provider/'
 // import Router from 'next/router';
 import {Router} from '../../routes'
-
+import css from './index.css'
 
 export default class Project extends Component {
     static async getInitialProps({ query }) {
@@ -52,7 +52,7 @@ export default class Project extends Component {
     render() { 
         const { url , provider ,data , project, images} = this.props
         return (
-            <ProviderDetail id={provider.id} slug={provider.slug} data={data} {...this.props}>
+            <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
                 {
                     url.query.photoId &&
                     <ImageModal

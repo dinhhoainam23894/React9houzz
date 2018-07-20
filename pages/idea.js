@@ -1,6 +1,7 @@
 import React from 'react'
 import IdeaComponent from '../components/IdeaComponent'
 import 'isomorphic-fetch'
+
 const APIURL = process.env.DOMAIN + process.env.APIURI
 
 export default class extends React.Component{

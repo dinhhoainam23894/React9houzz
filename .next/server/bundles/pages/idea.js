@@ -103,6 +103,8 @@ var _routes = __webpack_require__("./routes.js");
 
 var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
 
+var _fscreen_idea = _interopRequireDefault(__webpack_require__("./styles/fscreen_idea.css"));
+
 var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/IdeaComponent.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -123,9 +125,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var APIURL = "http://9houzz.stag:89/" + "api/";
+var APIURL = "https://9houz.com/" + "api/";
 var currentPath = '/';
-var asPath = '/'; // import Router from 'next/router'
+var asPath = '/';
 
 var IdeaComponent =
 /*#__PURE__*/
@@ -256,9 +258,10 @@ function (_React$Component) {
       return _react.default.createElement(_layout.default, _extends({}, this.props, {
         navmenu: false,
         container: false,
+        css: _fscreen_idea.default,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106
+          lineNumber: 103
         }
       }), photoId ? _react.default.createElement(_imageModal.default, {
         id: photoId,
@@ -268,58 +271,58 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109
+          lineNumber: 106
         }
       }) : '', _react.default.createElement("div", {
         className: "container-fluid service px-4 bg-gray",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 112
         }
       }, _react.default.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116
+          lineNumber: 113
         }
       }, _react.default.createElement("div", {
         className: "col-0 col-md-3 col-lg-3 px-3",
         id: "sidebar",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 114
         }
       }, _react.default.createElement(Sidebar, {
         filter: filter_default,
         color: color,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 115
         }
       })), _react.default.createElement("div", {
         className: "col-12 col-md-9 col-lg-9 px-0",
         id: "cat",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120
+          lineNumber: 117
         }
       }, _react.default.createElement("div", {
         className: "bg-white px-3 py-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 121
+          lineNumber: 118
         }
       }, _react.default.createElement("h1", {
         className: "text-dark title ml-1 pt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122
+          lineNumber: 119
         }
       }, h1 && h1), _react.default.createElement("div", {
         className: "list-tag",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 123
+          lineNumber: 120
         }
       }, listBadge ? listBadge.map(function (value, index) {
         return _react.default.createElement("a", {
@@ -327,19 +330,19 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 124
           }
         }, _react.default.createElement("span", {
           className: "badge badge-pill badge-light border border-primary mr-2 my-1 service-tag",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 124
           }
         }, value.name_tag, " ", _react.default.createElement("i", {
           className: "close",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 124
           }
         })));
       }) : ''), _react.default.createElement(_reactInfiniteScroller.default, {
@@ -351,12 +354,12 @@ function (_React$Component) {
           key: "cx",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 132
           }
         }, "Loading ..."),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 131
+          lineNumber: 128
         }
       }, _react.default.createElement(_reactMasonryComponent.default, {
         className: '.grid are-images-unloaded mt-3',
@@ -365,19 +368,19 @@ function (_React$Component) {
         updateOnEachImageLoad: false,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136
+          lineNumber: 133
         }
       }, _react.default.createElement("div", {
         className: "grid__col-sizer",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 139
         }
       }), _react.default.createElement("div", {
         className: "grid__gutter-sizer",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143
+          lineNumber: 140
         }
       }), images && images.map(function (value, index) {
         return _react.default.createElement("div", {
@@ -385,31 +388,25 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 147
+            lineNumber: 144
           }
         }, _react.default.createElement("div", {
-          className: "grid__images",
+          "class": "card",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
-          }
-        }, _react.default.createElement("div", {
-          className: "position-relative",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 149
+            lineNumber: 145
           }
         }, _react.default.createElement("span", {
           className: "position-absolute rounded d-none upload",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 146
           }
         }, " ", _react.default.createElement("i", {
           className: "fa fa-upload",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 146
           }
         }), " L\u01B0u \u1EA3nh"), _react.default.createElement("a", {
           onClick: function onClick(e) {
@@ -417,36 +414,36 @@ function (_React$Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 151
+            lineNumber: 147
           }
         }, _react.default.createElement("img", {
-          className: "rounded",
+          className: "rounded card-img-top",
           src: value.medium_path,
           alt: "{{ $element->name }}",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 152
+            lineNumber: 148
           }
-        })))), _react.default.createElement("div", {
-          className: "position-relative idea-content",
+        })), _react.default.createElement("div", {
+          "class": "card-body",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 157
+            lineNumber: 150
           }
         }, _react.default.createElement("h2", {
           className: "mt-2 font-13 text-black-100",
           "data-title": "{{ $element->name }}",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 158
+            lineNumber: 151
           }
         }, value.name), _react.default.createElement("p", {
           className: "mt-2 images-title font-12 text-black-100 moreDes",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 159
+            lineNumber: 152
           }
-        }, value.descriptions)));
+        }, value.descriptions))));
       }))))))));
     }
   }]);
@@ -477,13 +474,13 @@ function (_React$PureComponent) {
         className: "sidebar-service row bg-white",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 182
+          lineNumber: 176
         }
       }, _react.default.createElement("div", {
         className: "d-md-block px-2 w-100 sidebar-service-content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 183
+          lineNumber: 177
         }
       }, filter && filter.map(function (value, index) {
         return value.data.length != 0 && _react.default.createElement("div", {
@@ -491,19 +488,19 @@ function (_React$PureComponent) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 187
+            lineNumber: 181
           }
         }, _react.default.createElement("div", {
           className: "mt-2 widget p-3",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 188
+            lineNumber: 182
           }
         }, _react.default.createElement("h3", {
           className: "font-15 mb-3",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 189
+            lineNumber: 183
           }
         }, value.textName, _react.default.createElement("span", {
           className: "fa fa-chevron-right d-block d-md-none",
@@ -511,14 +508,14 @@ function (_React$PureComponent) {
           "data-target": "#demoTest",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 189
+            lineNumber: 183
           }
         })), _react.default.createElement("ul", {
           className: "list-unstyled mb-0 collapse d-md-block",
           id: "demoTest",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 190
+            lineNumber: 184
           }
         }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
           return _react.default.createElement("li", {
@@ -526,69 +523,69 @@ function (_React$PureComponent) {
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 193
+              lineNumber: 187
             }
           }, _react.default.createElement("a", {
             href: value.uri,
             className: "font-13 font-weight-light text-gray",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 194
+              lineNumber: 188
             }
           }, _react.default.createElement("label", {
             className: "px-3",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 194
+              lineNumber: 188
             }
           }, value.name_tag, _react.default.createElement("span", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 194
+              lineNumber: 188
             }
           }, value.total_doc))));
         }), _react.default.createElement("span", {
           className: "more loadmore d-none d-md-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 198
+            lineNumber: 192
           }
         }, "Xem th\xEAm ", _react.default.createElement("i", {
           className: "la la-arrow-circle-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 198
+            lineNumber: 192
           }
         })))));
       }), _react.default.createElement("div", {
         className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 205
+          lineNumber: 199
         }
       }, _react.default.createElement("div", {
         className: "mt-2 widget p-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 206
+          lineNumber: 200
         }
       }, _react.default.createElement("h3", {
         className: "font-15",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 207
+          lineNumber: 201
         }
       }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
         className: "expand-list",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208
+          lineNumber: 202
         }
       }), _react.default.createElement("div", {
         className: "service-color mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 209
+          lineNumber: 203
         }
       }, color && (0, _helpers.mapObject)(color, function (index, value) {
         return _react.default.createElement("a", {
@@ -597,7 +594,7 @@ function (_React$PureComponent) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 212
+            lineNumber: 206
           }
         }, _react.default.createElement("span", {
           className: "float-left {{ array_get(config('filter.idea.data_type.color.class_name'), $item->original) }}",
@@ -605,7 +602,7 @@ function (_React$PureComponent) {
           title: value.name_tag,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 212
+            lineNumber: 206
           }
         }));
       }))))));
@@ -1035,7 +1032,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var APIURL = "http://9houzz.stag:89/" + "api/" + 'image/';
+var APIURL = "https://9houz.com/" + "api/" + 'image/';
 
 var Image =
 /*#__PURE__*/
@@ -2184,34 +2181,35 @@ function (_React$Component) {
           canonical = _props.canonical,
           og_url = _props.og_url,
           url_images = _props.url_images,
-          robots = _props.robots;
+          robots = _props.robots,
+          css = _props.css;
       return _react.default.createElement(_react.default.Fragment, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 62
         }
       }, _react.default.createElement(_head.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 63
         }
       }, _react.default.createElement("meta", {
         charSet: "UTF-8",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 64
         }
       }), _react.default.createElement("meta", {
         name: "viewport",
         content: "width=device-width, initial-scale=1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 65
         }
       }), _react.default.createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
+          lineNumber: 66
         }
       }, this.props.title || '9houz'), des && _react.default.createElement("meta", {
         name: "description",
@@ -2219,83 +2217,91 @@ function (_React$Component) {
         content: des,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 67
         }
       }), canonical && _react.default.createElement("link", {
         rel: "canonical",
         href: canonical,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 68
         }
       }), title && _react.default.createElement("meta", {
         property: "og:title",
         content: title,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 69
         }
       }), des && _react.default.createElement("meta", {
         property: "og:description",
         content: des,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 70
         }
       }), og_url && _react.default.createElement("meta", {
         property: "og:url",
         content: og_url,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 71
         }
       }), url_images && _react.default.createElement("meta", {
         property: "og:image",
         content: url_images,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 72
         }
       }), robots && _react.default.createElement("meta", {
         name: "robots",
         content: robots,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 73
         }
       }), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 74
         }
       }), _react.default.createElement("script", {
         src: "https://unpkg.com/react@16/umd/react.production.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78
+          lineNumber: 75
         }
       }), _react.default.createElement("script", {
         src: "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79
+          lineNumber: 76
+        }
+      }), _react.default.createElement("style", {
+        dangerouslySetInnerHTML: {
+          __html: css
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
         }
       })), _react.default.createElement("header", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 80
         }
       }, _react.default.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 81
         }
       }, _react.default.createElement("nav", {
         className: "navbar navbar-light navbar-expand-md bg-faded container navbar-9houzz",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 82
         }
       }, _react.default.createElement("button", {
         className: "navbar-toggler px-0",
@@ -2307,26 +2313,26 @@ function (_React$Component) {
         "aria-label": "Toggle navigation",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
+          lineNumber: 83
         }
       }, _react.default.createElement("span", {
         className: "fa fa-2x fa-bars text-primary font-22",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 84
         }
       })), _react.default.createElement("div", {
         className: "header-left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 86
         }
       }, _react.default.createElement("a", {
         className: "navbar-brand",
         href: "{{ route('home') }}",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 87
         }
       }, _react.default.createElement("img", {
         src: "/static/images/logo9houz.png",
@@ -2335,7 +2341,7 @@ function (_React$Component) {
         width: "114",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 88
         }
       }))), _react.default.createElement("a", {
         href: "#",
@@ -2343,37 +2349,37 @@ function (_React$Component) {
         className: "d-md-none",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 91
         }
       }, _react.default.createElement("i", {
         className: "fa fa-user-circle-o font-22  py-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 91
         }
       })), _react.default.createElement("div", {
         className: "collapse navbar-collapse header-right my-2 nav-menu",
         id: "collapse-header-login",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 92
         }
       }, _react.default.createElement("div", {
         className: "header-search d-none d-sm-none d-md-block mr-auto",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 93
         }
       }, _react.default.createElement("div", {
         className: "input-radius py-0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 95
+          lineNumber: 94
         }
       }, _react.default.createElement("form", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96
+          lineNumber: 95
         }
       }, _react.default.createElement("input", {
         type: "",
@@ -2382,24 +2388,24 @@ function (_React$Component) {
         placeholder: "\xDD t\u01B0\u1EDFng b\u1EA1n mu\u1ED1n t\xECm ki\u1EBFm...",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 96
         }
       }), _react.default.createElement("button", {
         className: "fa fa-search icon-search bg-white border-0",
         "data-toggle": "offcanvas",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 97
         }
       }))))))), _react.default.createElement(_nav.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105
+          lineNumber: 104
         }
       })), _react.default.createElement(_meta.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 106
         }
       }), _react.default.createElement(MainBody, {
         navmenu: this.props.navmenu,
@@ -2407,12 +2413,12 @@ function (_React$Component) {
         container: this.props.container,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 107
         }
       }, this.props.children), _react.default.createElement(_footer.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 112
+          lineNumber: 111
         }
       }));
     }
@@ -2441,7 +2447,7 @@ function (_React$Component2) {
         return _react.default.createElement(_react.default.Fragment, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 123
+            lineNumber: 122
           }
         }, this.props.children);
       } else if (this.props.navmenu === false) {
@@ -2452,7 +2458,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 130
+            lineNumber: 129
           }
         }, this.props.children);
       } else {
@@ -2463,12 +2469,12 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 136
+            lineNumber: 135
           }
         }, _react.default.createElement(_reactstrap.Row, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 137
+            lineNumber: 136
           }
         }, _react.default.createElement(_reactstrap.Col, {
           xs: "12",
@@ -2476,7 +2482,7 @@ function (_React$Component2) {
           lg: "10",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 138
+            lineNumber: 137
           }
         }, this.props.children), _react.default.createElement(_reactstrap.Col, {
           xs: "12",
@@ -2487,113 +2493,113 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 141
+            lineNumber: 140
           }
         }, _react.default.createElement("h5", {
           className: "text-muted text-uppercase",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 141
           }
         }, "Examples"), _react.default.createElement(_reactstrap.ListGroup, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 143
+            lineNumber: 142
           }
         }, _react.default.createElement(_reactstrap.ListGroupItem, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 144
+            lineNumber: 143
           }
         }, _react.default.createElement(_link.default, {
           prefetch: true,
           href: "/examples/authentication",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 145
+            lineNumber: 144
           }
         }, _react.default.createElement("a", {
           href: "/examples/authentication",
           className: "d-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 145
+            lineNumber: 144
           }
         }, "Auth"))), _react.default.createElement(_reactstrap.ListGroupItem, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 147
+            lineNumber: 146
           }
         }, _react.default.createElement(_link.default, {
           prefetch: true,
           href: "/examples/async",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 147
           }
         }, _react.default.createElement("a", {
           href: "/examples/async",
           className: "d-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 147
           }
         }, "Async"))), _react.default.createElement(_reactstrap.ListGroupItem, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 149
           }
         }, _react.default.createElement(_link.default, {
           prefetch: true,
           href: "/examples/layout",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 151
+            lineNumber: 150
           }
         }, _react.default.createElement("a", {
           href: "/examples/layout",
           className: "d-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 151
+            lineNumber: 150
           }
         }, "Layout"))), _react.default.createElement(_reactstrap.ListGroupItem, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 153
+            lineNumber: 152
           }
         }, _react.default.createElement(_link.default, {
           prefetch: true,
           href: "/examples/routing",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 154
+            lineNumber: 153
           }
         }, _react.default.createElement("a", {
           href: "/examples/routing",
           className: "d-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 154
+            lineNumber: 153
           }
         }, "Routing"))), _react.default.createElement(_reactstrap.ListGroupItem, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 156
+            lineNumber: 155
           }
         }, _react.default.createElement(_link.default, {
           prefetch: true,
           href: "/examples/styling",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 157
+            lineNumber: 156
           }
         }, _react.default.createElement("a", {
           href: "/examples/styling",
           className: "d-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 157
+            lineNumber: 156
           }
         }, "Styling")))))));
       }
@@ -3381,7 +3387,7 @@ function ucfirst(str) {
 /***/ "./package.json":
 /***/ (function(module, exports) {
 
-module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server.js","build":"next build","start":"NODE_ENV=production node server.js"},"dependencies":{"@zeit/next-css":"^0.2.0","@zeit/next-sass":"^0.2.0","@zeit/next-typescript":"^1.1.0","axios":"^0.18.0","babel-plugin-inline-import":"^3.0.0","babel-plugin-module-resolver":"^3.1.1","bootstrap":"^4.1.1","css-loader":"^0.28.11","dotenv":"^6.0.0","es6-promise":"^4.2.4","express":"^4.16.3","font-awesome":"^4.7.0","ionicons":"^4.2.4","isomorphic-fetch":"^2.2.1","jquery":"^3.3.1","lru-cache":"^4.1.3","merge-files-webpack-plugin":"^1.1.2","next":"^6.1.1","next-compose":"0.0.2","next-routes":"^1.4.2","nprogress":"^0.2.0","postcss-loader":"^2.1.6","prop-types":"^15.6.2","raw-loader":"^0.5.1","react":"^16.4.1","react-document-meta":"^3.0.0-beta.2","react-dom":"^16.4.1","react-helmet":"^5.2.0","react-infinite":"^0.13.0","react-infinite-scroller":"^1.2.0","react-masonry-component":"^6.2.1","react-modal":"^3.5.1","reactstrap":"^6.3.0","style-loader":"^0.21.0","styled-jsx":"^2.2.7","styled-jsx-css-loader":"^0.3.0","styled-jsx-plugin-sass":"^0.2.4","tunnel-agent":"^0.6.0","universal-cookie":"^2.2.0","webpack":"^3.10.0"},"devDependencies":{"@babel/core":"^7.0.0-beta.53","create-next":"^0.1.4","node-sass":"^4.9.2","sass-loader":"^7.0.3"}}
+module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server.js","build":"next build","start":"NODE_ENV=production node server.js"},"dependencies":{"@zeit/next-css":"^0.2.0","@zeit/next-sass":"^0.2.0","@zeit/next-typescript":"^1.1.0","axios":"^0.18.0","babel-plugin-inline-import":"^3.0.0","babel-plugin-module-resolver":"^3.1.1","bootstrap":"^4.1.1","css-loader":"^0.28.11","dotenv":"^6.0.0","es6-promise":"^4.2.4","express":"^4.16.3","font-awesome":"^4.7.0","ionicons":"^4.2.4","isomorphic-fetch":"^2.2.1","jquery":"^3.3.1","lru-cache":"^4.1.3","merge-files-webpack-plugin":"^1.1.2","next":"^6.1.1","next-compose":"0.0.2","next-routes":"^1.4.2","nprogress":"^0.2.0","postcss-loader":"^2.1.6","prop-types":"^15.6.2","purify-css":"^1.2.5","purifycss-webpack":"^0.7.0","raw-loader":"^0.5.1","react":"^16.4.1","react-document-meta":"^3.0.0-beta.2","react-dom":"^16.4.1","react-helmet":"^5.2.0","react-infinite":"^0.13.0","react-infinite-scroller":"^1.2.0","react-masonry-component":"^6.2.1","react-modal":"^3.5.1","reactstrap":"^6.3.0","style-loader":"^0.21.0","styled-jsx":"^2.2.7","styled-jsx-css-loader":"^0.3.0","styled-jsx-plugin-sass":"^0.2.4","tunnel-agent":"^0.6.0","universal-cookie":"^2.2.0","webpack":"^3.10.0"},"devDependencies":{"@babel/core":"^7.0.0-beta.53","create-next":"^0.1.4","node-sass":"^4.9.2","sass-loader":"^7.0.3"}}
 
 /***/ }),
 
@@ -3426,7 +3432,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var APIURL = "http://9houzz.stag:89/" + "api/";
+var APIURL = "https://9houz.com/" + "api/";
 
 var _default =
 /*#__PURE__*/
@@ -3499,7 +3505,7 @@ function (_React$Component) {
         path: url.pathname,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 31
         }
       }));
     }
@@ -3526,6 +3532,16 @@ module.exports = routes() // ----   ----      -----
 .add('test', '/test') // blog   blog      /blog/:slug
 .add('news', '/news').add('image', '/anh/:id-:slug', 'image/index').add('y-tuong', '/y-tuong', 'idea') // y-tuong   idea   /y-tuong
 .add('idea.detail', '/y-tuong/:params', 'idea-filter').add('pro.detail', '/pro/:id-:slug', 'pro/index').add('pro.project', '/pro/:id-:slug/d%E1%BB%B1-%C3%A1n', 'pro/project').add('pro.review', '/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t', 'pro/review').add('project.detail', '/du-an/:id-:slug', 'project/index');
+
+/***/ }),
+
+/***/ "./styles/fscreen_idea.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";font-size:1rem;font-weight:400;line-height:1.5;color:#333333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:0.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-top:0;margin-bottom:1rem}ul ul{margin-bottom:0}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{vertical-align:middle;border-style:none}label{display:inline-block;margin-bottom:0.5rem}button{border-radius:0}input,button{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=\"button\"]{-webkit-appearance:button}button::-moz-focus-inner,[type=\"button\"]::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2,h3{margin-bottom:0.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.list-unstyled{padding-left:0;list-style:none}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-md-3,.col-md-9,.col-md-12,.col-lg-3,.col-lg-9{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:0.375rem 0.75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:0.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:0.5rem 1rem}.navbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0.5rem 1rem}.navbar-brand{display:inline-block;padding-top:0.3125rem;padding-bottom:0.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:0.25rem 0.75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:0.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:0.5rem;padding-left:0.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:rgba(17,17,17,0.9)}.navbar-light .navbar-nav .nav-link{color:rgba(17,17,17,0.5)}.navbar-light .navbar-toggler{color:rgba(17,17,17,0.5);border-color:rgba(17,17,17,0.1)}.badge-pill{padding-right:0.6em;padding-left:0.6em;border-radius:10rem}.bg-white{background-color:#fff!important}.border-0{border:0!important}.rounded{border-radius:0.25rem!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.mb-0{margin-bottom:0!important}.mt-1{margin-top:0.25rem!important}.ml-1{margin-left:0.25rem!important}.mt-2,.my-2{margin-top:0.5rem!important}.my-2{margin-bottom:0.5rem!important}.mt-3{margin-top:1rem!important}.mb-3{margin-bottom:1rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.p-1{padding:0.25rem!important}.py-1{padding-top:0.25rem!important}.px-1{padding-right:0.25rem!important}.pb-1,.py-1{padding-bottom:0.25rem!important}.px-1{padding-left:0.25rem!important}.px-2{padding-right:0.5rem!important}.px-2{padding-left:0.5rem!important}.p-3{padding:1rem!important}.pt-3,.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.py-4{padding-top:1.5rem!important}.px-4{padding-right:1.5rem!important}.py-4{padding-bottom:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.font-weight-light{font-weight:300!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}@font-face{font-family:'FontAwesome';src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:normal;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-upload:before{content:\"\\F093\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body{font-family:helvetica-ttf,sans-serif!important}h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder{color:#adadad}input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-12{font-size:12px!important}.font-13{font-size:13px!important}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.text-gray{color:#666666!important}.text-black-100{color:#333333!important}.bg-gray{background-color:#dddddd!important}.navbar-9houzz{color:#666666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em / 5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #dddddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}header{position:relative;height:105px;background:white;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:white;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:0.5rem 0.5rem!important;font-size:14px!important;color:white!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:white;list-style:none;border:1px solid #dddddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .navbar-toggler,.nav-9houzz .header-menu .nav-item .navbar-toggler{padding:0.25rem 0.25rem!important}.nav-9houzz .header-menu .navbar-toggler span,.nav-9houzz .header-menu .nav-item .navbar-toggler span{font-size:13px!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0px!important;left:0px!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0%!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25;margin-bottom:10px!important}}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-0.5rem!important;border-top:none!important}}img{vertical-align:middle}.grid__item,.grid__col-sizer{width:32.5%}.grid__gutter-sizer{width:0.6%}.grid__item{margin-bottom:20px;float:left}.grid__item .upload{padding:0.5rem 0.75rem;background:white;top:10px;left:10px;z-index:100}.grid__item img{display:block;max-width:100%;width:100%}@media (min-width:992px) and (max-width:1199.98px){.grid__item,.grid__col-sizer{width:24%}}@media (min-width:768px) and (max-width:991.98px){.grid__item,.grid__col-sizer{width:33%}}@media (max-width:767.98px){.grid__item,.grid__col-sizer{width:99%}.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}.service .idea-content h2{font-size:16px!important}.service .idea-content p{display:none!important;font-size:15px!important}}#sidebar{max-width:23%!important}.sidebar-service{width:91%;margin-left:25px}.widget h3{font-weight:600!important;font-size:14px!important}#cat .title{font-size:21px!important;font-weight:400!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.service #sidebar{max-width:100%!important;margin-top:0.5rem!important;border-top:none!important;margin-bottom:0.5rem!important}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:black!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:0.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:0.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label{font-size:16px!important}.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:0.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.service{font-size:13px}.service h3{font-weight:inherit}img{vertical-align:middle}.grid__item,.grid__col-sizer{width:32.5%}.grid__gutter-sizer{width:0.6%}.grid__item{margin-bottom:20px;float:left}.grid__item .upload{padding:0.5rem 0.75rem;background:white;top:10px;left:10px;z-index:100}.grid__item img{display:block;max-width:100%;width:100%}@media (min-width:992px) and (max-width:1199.98px){.grid__item,.grid__col-sizer{width:24%}}@media (min-width:768px) and (max-width:991.98px){.grid__item,.grid__col-sizer{width:33%}}@media (max-width:767.98px){.grid__item,.grid__col-sizer{width:99%}.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}.service .idea-content h2{font-size:16px!important}.service .idea-content p{display:none!important;font-size:15px!important}}.card {position: relative;display: flex;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(17, 17, 17, 0.125);border-radius: 0.25rem;}.card-img-top{width:100%;border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);border-bottom: 1px solid rgba(17, 17, 17, 0.125)}.card-body{flex:1 1 auto;padding:1.25rem}";
 
 /***/ }),
 
