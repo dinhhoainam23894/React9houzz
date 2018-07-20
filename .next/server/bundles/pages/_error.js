@@ -67,12 +67,41 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/_error.js":
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+module.exports = require("next/link");
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(38);
+
+
+/***/ }),
+
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,17 +112,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__("react"));
+var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _head = _interopRequireDefault(__webpack_require__("next/head"));
+var _head = _interopRequireDefault(__webpack_require__(4));
 
-var _link = _interopRequireDefault(__webpack_require__("next/link"));
+var _link = _interopRequireDefault(__webpack_require__(1));
 
-var _reactstrap = __webpack_require__("reactstrap");
+var _reactstrap = __webpack_require__(7);
 
-var _router = __webpack_require__("next/router");
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/_error.js";
+var _router = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -131,127 +158,29 @@ function (_React$Component) {
         case 200: // Also display a 404 if someone requests /_error explicitly
 
         case 404:
-          response = _react.default.createElement("div", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 31
-            }
-          }, _react.default.createElement(_head.default, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 32
-            }
-          }), _react.default.createElement(_reactstrap.Container, {
-            className: "pt-5 text-center",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 34
-            }
+          response = _react.default.createElement("div", null, _react.default.createElement(_head.default, null), _react.default.createElement(_reactstrap.Container, {
+            className: "pt-5 text-center"
           }, _react.default.createElement("h1", {
-            className: "display-4",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 35
-            }
-          }, "Page Not Found"), _react.default.createElement("p", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 36
-            }
-          }, "The page ", _react.default.createElement("strong", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 36
-            }
-          }, this.props.router.pathname), " does not exist."), _react.default.createElement("p", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 37
-            }
-          }, _react.default.createElement(_link.default, {
-            href: "/",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 37
-            }
-          }, _react.default.createElement("a", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 37
-            }
-          }, "Home")))));
+            className: "display-4"
+          }, "Page Not Found"), _react.default.createElement("p", null, "The page ", _react.default.createElement("strong", null, this.props.router.pathname), " does not exist."), _react.default.createElement("p", null, _react.default.createElement(_link.default, {
+            href: "/"
+          }, _react.default.createElement("a", null, "Home")))));
           break;
 
         case 500:
-          response = _react.default.createElement("div", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 44
-            }
-          }, _react.default.createElement(_head.default, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 45
-            }
-          }), _react.default.createElement(_reactstrap.Container, {
-            className: "pt-5 text-center",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 47
-            }
+          response = _react.default.createElement("div", null, _react.default.createElement(_head.default, null), _react.default.createElement(_reactstrap.Container, {
+            className: "pt-5 text-center"
           }, _react.default.createElement("h1", {
-            className: "display-4",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 48
-            }
-          }, "Internal Server Error"), _react.default.createElement("p", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 49
-            }
-          }, "An internal server error occurred.")));
+            className: "display-4"
+          }, "Internal Server Error"), _react.default.createElement("p", null, "An internal server error occurred.")));
           break;
 
         default:
-          response = _react.default.createElement("div", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 56
-            }
-          }, _react.default.createElement(_head.default, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 57
-            }
-          }), _react.default.createElement(_reactstrap.Container, {
-            className: "pt-5 text-center",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 59
-            }
+          response = _react.default.createElement("div", null, _react.default.createElement(_head.default, null), _react.default.createElement(_reactstrap.Container, {
+            className: "pt-5 text-center"
           }, _react.default.createElement("h1", {
-            className: "display-4",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 60
-            }
-          }, "HTTP ", this.props.errorCode, " Error"), _react.default.createElement("p", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 61
-            }
-          }, "An ", _react.default.createElement("strong", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 62
-            }
-          }, "HTTP ", this.props.errorCode), " error occurred while trying to access ", _react.default.createElement("strong", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 63
-            }
-          }, this.props.router.pathname))));
+            className: "display-4"
+          }, "HTTP ", this.props.errorCode, " Error"), _react.default.createElement("p", null, "An ", _react.default.createElement("strong", null, "HTTP ", this.props.errorCode), " error occurred while trying to access ", _react.default.createElement("strong", null, this.props.router.pathname))));
       }
 
       return response;
@@ -285,43 +214,14 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/_error.js");
-
-
-/***/ }),
-
-/***/ "next/head":
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports = require("next/head");
 
 /***/ }),
 
-/***/ "next/link":
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
-
-/***/ }),
-
-/***/ "next/router":
-/***/ (function(module, exports) {
-
-module.exports = require("next/router");
-
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ "reactstrap":
+/***/ 7:
 /***/ (function(module, exports) {
 
 module.exports = require("reactstrap");
@@ -329,4 +229,3 @@ module.exports = require("reactstrap");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_error.js.map

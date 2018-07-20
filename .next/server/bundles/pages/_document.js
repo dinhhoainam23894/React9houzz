@@ -67,12 +67,27 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/_document.js":
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 34:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(35);
+
+
+/***/ }),
+
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,11 +98,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__("react"));
+var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _document = _interopRequireWildcard(__webpack_require__("next/document"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/_document.js";
+var _document = _interopRequireWildcard(__webpack_require__(36));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -137,54 +150,17 @@ function (_Document) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("html", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 20
-        }
-      }, _react.default.createElement(_document.Head, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
-        }
-      }, _react.default.createElement("noscript", {
-        id: "deferred-styles",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22
-        }
+      return _react.default.createElement("html", null, _react.default.createElement(_document.Head, null, _react.default.createElement("noscript", {
+        id: "deferred-styles"
       }, _react.default.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
-        href: "/_next/static/style.css",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 23
-        }
+        href: "/_next/static/style.css"
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
           __html: "var loadDeferredStyles = function() {\n            var addStylesNode = document.getElementById(\"deferred-styles\");\n            var replacement = document.createElement(\"div\");\n            replacement.innerHTML = addStylesNode.textContent;\n            document.body.appendChild(replacement)\n            addStylesNode.parentElement.removeChild(addStylesNode);\n        };\n        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||\n            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;\n        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });\n        else window.addEventListener('load', loadDeferredStyles);"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 25
         }
-      })), _react.default.createElement("body", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        }
-      }, _react.default.createElement(_document.Main, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        }
-      }), _react.default.createElement(_document.NextScript, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        }
-      })));
+      })), _react.default.createElement("body", null, _react.default.createElement(_document.Main, null), _react.default.createElement(_document.NextScript, null)));
     }
   }]);
 
@@ -195,27 +171,11 @@ exports.default = MyDocument;
 
 /***/ }),
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/_document.js");
-
-
-/***/ }),
-
-/***/ "next/document":
+/***/ 36:
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
 
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map

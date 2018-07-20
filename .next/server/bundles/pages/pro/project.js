@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 53);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1156,13 +1156,9 @@ module.exports = routes() // ----   ----      -----
 module.exports = require("next-routes");
 
 /***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-module.exports = require("jquery");
-
-/***/ }),
-/* 22 */
+/* 21 */,
+/* 22 */,
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1173,27 +1169,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _regenerator = _interopRequireDefault(__webpack_require__(2));
-
 var _react = _interopRequireDefault(__webpack_require__(0));
+
+var _routes = __webpack_require__(19);
+
+var _layout = _interopRequireDefault(__webpack_require__(6));
 
 var _axios = _interopRequireDefault(__webpack_require__(10));
 
 var _helpers = __webpack_require__(18);
 
-var _jquery = _interopRequireDefault(__webpack_require__(21));
-
-var _router = _interopRequireDefault(__webpack_require__(3));
-
-var _link = _interopRequireDefault(__webpack_require__(1));
-
-__webpack_require__(9);
+var _reactHelmet = __webpack_require__(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1207,557 +1199,164 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var APIURL = "https://9houz.com/" + "api/" + 'image/';
+var APIURL = 'http://9houzz.stag:89/api/provider/';
 
-var Image =
+var _default =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Image, _React$Component);
+  _inherits(_default, _React$Component);
 
-  function Image(props) {
+  function _default(props) {
     var _this;
 
-    _classCallCheck(this, Image);
+    _classCallCheck(this, _default);
 
-    _this = _possibleConstructorReturn(this, (Image.__proto__ || Object.getPrototypeOf(Image)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "componentDidMount", {
+    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "state", {
       configurable: true,
       enumerable: true,
       writable: true,
-      value: function () {
-        var _value = _asyncToGenerator(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee() {
-          var image_thumb, image_id;
-          return _regenerator.default.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (_this.props.data) {
-                    _context.next = 3;
-                    break;
-                  }
-
-                  _context.next = 3;
-                  return _this.getValue(_this.props.id);
-
-                case 3:
-                  _this.setState({
-                    currentImage: (0, _jquery.default)('img.currentImage')
-                  });
-
-                  image_thumb = (0, _jquery.default)('.thumb');
-
-                  _this.setState({
-                    image_thumb: image_thumb
-                  });
-
-                  image_id = _this.state.image.id;
-                  image_thumb.each(function () {
-                    if ((0, _jquery.default)(this).data('id') == image_id) {
-                      (0, _jquery.default)(this).addClass('project-thumb--current');
-                    }
-                  });
-
-                case 8:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
-
-        return function value() {
-          return _value.apply(this, arguments);
-        };
-      }()
+      value: {
+        data: {},
+        provider: {}
+      }
     });
-    Object.defineProperty(_assertThisInitialized(_this), "nextImage", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function () {
-        var _value2 = _asyncToGenerator(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee2(e, id, slug) {
-          var image_size, currentIndex, lastIndex, lastImage, nextId, nextSlug;
-          return _regenerator.default.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  e.preventDefault();
-                  image_size = _this.state.image_thumb.length - 1;
-                  currentIndex = _this.state.currentImage;
-                  lastIndex = 0;
-
-                  _this.state.image_thumb.each(function () {
-                    if ((0, _jquery.default)(this).hasClass('project-thumb--current')) {
-                      currentIndex = (0, _jquery.default)(this).index();
-
-                      if (currentIndex < image_size) {
-                        lastIndex = currentIndex + 1;
-                      } else {
-                        lastIndex = 0;
-                      }
-
-                      (0, _jquery.default)(this).removeClass('project-thumb--current');
-                    }
-                  });
-
-                  _this.state.image_thumb.eq(lastIndex).addClass('project-thumb--current');
-
-                  lastImage = _this.state.image_thumb.eq(lastIndex);
-                  nextId = lastImage.data('id');
-                  nextSlug = lastImage.data('slug');
-
-                  _this.setState({
-                    currentImage: (0, _jquery.default)('img.currentImage')
-                  });
-
-                  _this.setState({
-                    currentValue: _this.state.images[lastIndex]
-                  }); // Router.push(`/project?photoId=${id}&id=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
-
-
-                case 11:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2, this);
-        }));
-
-        return function value(_x, _x2, _x3) {
-          return _value2.apply(this, arguments);
-        };
-      }()
-    });
-    Object.defineProperty(_assertThisInitialized(_this), "backImage", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function () {
-        var _value3 = _asyncToGenerator(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee3(e) {
-          var image_size, currentIndex, lastIndex, lastImage, nextId, nextSlug;
-          return _regenerator.default.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  e.preventDefault();
-                  image_size = _this.state.image_thumb.length - 1;
-                  currentIndex = _this.state.currentImage;
-                  lastIndex = 0;
-
-                  _this.state.image_thumb.each(function () {
-                    if ((0, _jquery.default)(this).hasClass('project-thumb--current')) {
-                      currentIndex = (0, _jquery.default)(this).index();
-
-                      if (currentIndex > 0) {
-                        lastIndex = currentIndex - 1;
-                      } else {
-                        lastIndex = image_size;
-                      }
-
-                      (0, _jquery.default)(this).removeClass('project-thumb--current');
-                    }
-                  });
-
-                  _this.state.image_thumb.eq(lastIndex).addClass('project-thumb--current');
-
-                  lastImage = _this.state.image_thumb.eq(lastIndex);
-                  nextId = lastImage.data('id');
-                  nextSlug = lastImage.data('slug');
-
-                  _this.setState({
-                    currentImage: (0, _jquery.default)('img.currentImage')
-                  });
-
-                  _this.setState({
-                    currentValue: _this.state.images[lastIndex]
-                  });
-
-                case 11:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3, this);
-        }));
-
-        return function value(_x4) {
-          return _value3.apply(this, arguments);
-        };
-      }()
-    });
-    _this.state = {
-      data: {},
-      provider: {},
-      project: {},
-      image: {},
-      images: [],
-      tag: [],
-      currentImage: {},
-      image_thumb: {},
-      idActive: null,
-      currentValue: null
-    };
     return _this;
   }
 
-  _createClass(Image, [{
-    key: "getValue",
-    value: function () {
-      var _getValue = _asyncToGenerator(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee4(id) {
-        var _this2 = this;
-
-        var data;
-        return _regenerator.default.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return _axios.default.get(APIURL + id).then(function (res) {
-                  data = res.data;
-
-                  _this2.setState({
-                    image: data.image,
-                    project: data.project,
-                    images: data.list_images,
-                    provider: data.provider,
-                    tag: data.tagSeo,
-                    currentValue: data.image
-                  });
-                });
-
-              case 2:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this);
-      }));
-
-      return function getValue(_x5) {
-        return _getValue.apply(this, arguments);
-      };
-    }()
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      if (this.props.data) {
-        this.setState({
-          image: this.props.data.image,
-          project: this.props.data.project,
-          images: this.props.data.images,
-          provider: this.props.data.provider,
-          tag: this.props.data.tag,
-          currentValue: this.props.data.image
-        });
-      }
-    }
-  }, {
+  _createClass(_default, [{
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       var _props = this.props,
-          id = _props.id,
-          slug = _props.slug;
-      return _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "lgBg"
+          provider_id = _props.provider_id,
+          provider_slug = _props.provider_slug;
+      return _react.default.createElement(_layout.default, _extends({}, this.props, {
+        navmenu: false,
+        container: false
       }), _react.default.createElement("div", {
-        id: "image-container"
+        className: "container-fluid px-4 bg-gray provider-main"
       }, _react.default.createElement("div", {
-        id: "lbMainControls",
-        className: "trackMe d-block d-md-none"
-      }, _react.default.createElement("div", null, _react.default.createElement("a", {
-        className: "lbCloseButton lbClose",
-        "aria-label": "Close",
-        href: "",
-        "data-dismiss": "modal",
-        compid: "lbCloseButton"
-      }))), _react.default.createElement("div", {
-        className: "image"
-      }, this.state.currentValue && _react.default.createElement("img", {
-        className: "image-detail",
-        src: this.state.currentValue.path_for_size,
-        fallback: "image.path_for_size",
-        alt: "image.name"
+        className: "bg-white"
+      }, _react.default.createElement("div", {
+        className: "border border-right-0 border-left-0 border-gray provider-details"
+      }, _react.default.createElement("div", {
+        className: "banner position-relative p-0"
+      }, _react.default.createElement("img", {
+        src: this.props.data.cover && this.props.data.cover,
+        className: "w-100"
+      }), _react.default.createElement("div", {
+        className: "position-absolute gradient-animate w-100"
       })), _react.default.createElement("div", {
-        className: "lb-navDiv"
+        className: "container position-relative"
+      }, _react.default.createElement("div", {
+        className: "position-absolute provider-info"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.detail",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        }
       }, _react.default.createElement("a", {
-        className: "link next lbNavigation nav-arrow",
-        onClick: function onClick(e) {
-          return _this3.nextImage(e, id, slug);
+        className: "provider-name text-white font-weight-bold"
+      }, _react.default.createElement("h1", {
+        className: "font-22 mb-1"
+      }, this.props.data.provider && this.props.data.provider.name))), _react.default.createElement("div", {
+        className: "star-rating"
+      }, this.props.data.provider && (0, _helpers.rating)(this.props.data.provider.avg_rate), _react.default.createElement("span", {
+        className: "text-yellow font-weight-bold"
+      }, " 0(0) \u0111\xE1nh gi\xE1) "), _react.default.createElement("a", {
+        href: "{{ route('login') }}",
+        className: "text-gray-200"
+      }, _react.default.createElement("span", null, " \u0110\xE1nh gi\xE1 chi ti\u1EBFt >")))), _react.default.createElement("div", {
+        className: "row position-relative justify-content-end"
+      }, _react.default.createElement("div", {
+        className: "position-absolute provider-avatar rounded-circle"
+      }, _react.default.createElement("img", {
+        src: this.props.data.avatar,
+        className: "img-thumbnail rounded-circle h-100",
+        alt: ""
+      })), _react.default.createElement("div", {
+        className: "col-md-9 col-lg-9 provider-nav"
+      }, _react.default.createElement("ul", {
+        className: "nav nav-tabs border-0",
+        id: "myTab",
+        role: "tablist"
+      }, _react.default.createElement("li", {
+        className: "nav-item position-relative {{ active_if('provider-about') }}"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.detail",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
         }
-      }, _react.default.createElement("div", {
-        className: ""
-      }, _react.default.createElement("span", {
-        className: "fa fa-angle-right"
-      }))), _react.default.createElement("a", {
-        className: "link back lbNavigation nav-arrow",
-        onClick: function onClick(e) {
-          return _this3.backImage(e);
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, "T\u1ED5ng quan"))), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative {{ active_if('provider-project') }} {{ Request::is('du-an/*') ? 'active' : '' }}"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.project",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
         }
-      }, _react.default.createElement("div", {
-        className: ""
-      }, _react.default.createElement("span", {
-        className: "fa fa-angle-left"
-      })))), _react.default.createElement("div", {
-        id: "lbActions"
-      }, _react.default.createElement("div", {
-        id: "lbActionCenter",
-        className: "offset-0 offset-md-3 col-12 col-md-6 text-center text-nowrap"
-      }, _react.default.createElement("button", {
-        className: "btn btn-primary med save text-white",
-        title: "Save To Ideabook",
-        compid: "addToIdeabook"
-      }, _react.default.createElement("i", {
-        className: "fa fa-plus pr-2"
-      }), "L\u01B0u \u1EA3nh"), _react.default.createElement("button", {
-        className: "btn bg-black-100 med email text-white",
-        title: "send email",
-        compid: "addToIdeabook"
-      }, _react.default.createElement("i", {
-        className: "fa fa-envelope-o pr-2"
-      }), "G\u1EEDi Email")))), _react.default.createElement(ImageInfo, {
-        provider: this.state.provider,
-        images: this.state.images,
-        image: this.state.image,
-        tag: this.state.tag,
-        changeValue: function changeValue(data) {
-          return _this3.setState({
-            currentValue: data
-          });
-        },
-        currentValue: this.state.currentValue,
-        detail: this.props.detail
-      }));
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, "D\u1EF1 \xE1n"))), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative {{ active_if('provider-comment') }}"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.review",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        }
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, "Nh\u1EADn x\xE9t"))), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative"
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#"
+      }, "S\u1ED5 tay \xFD t\u01B0\u1EDFng")), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative"
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#"
+      }, "H\u1ECFi \u0111\xE1p")), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative"
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#"
+      }, "Ho\u1EA1t \u0111\u1ED9ng"))))))), _react.default.createElement("div", {
+        className: "w-100 py-3 provider"
+      }, _react.default.createElement(_react.default.Fragment, null, this.props.children)))));
     }
   }]);
 
-  return Image;
+  return _default;
 }(_react.default.Component);
 
-exports.default = Image;
-
-var ImageInfo =
-/*#__PURE__*/
-function (_React$PureComponent) {
-  _inherits(ImageInfo, _React$PureComponent);
-
-  function ImageInfo(props) {
-    _classCallCheck(this, ImageInfo);
-
-    return _possibleConstructorReturn(this, (ImageInfo.__proto__ || Object.getPrototypeOf(ImageInfo)).call(this, props));
-  }
-
-  _createClass(ImageInfo, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var $readMore = (0, _jquery.default)("#readMoreBtnText").text();
-      var $readLess = (0, _jquery.default)("#readLessBtnText").text();
-      (0, _jquery.default)("#readMoreBtn").text($readMore);
-      (0, _jquery.default)('#readMoreBtn').click(function () {
-        var $this = (0, _jquery.default)(this);
-        (0, _jquery.default)("#readMoreBtn").text($readMore);
-
-        if ($this.data('expanded') == "yes") {
-          $this.data('expanded', "no");
-          (0, _jquery.default)("#readMoreBtn").text($readMore);
-          (0, _jquery.default)('#readMoreText').animate({
-            height: '100px'
-          });
-        } else {
-          $this.data('expanded', "yes");
-          (0, _jquery.default)('#readMoreText').css({
-            height: 'auto'
-          });
-          (0, _jquery.default)("#readMoreBtn").text($readLess);
-        }
-      });
-    }
-  }, {
-    key: "changeImage",
-    value: function changeImage(e, value) {
-      e.preventDefault();
-      var $this = (0, _jquery.default)(e.target).parents('li');
-      var thumb = (0, _jquery.default)('.thumb');
-      thumb.removeClass('project-thumb--current');
-      $this.addClass('project-thumb--current');
-      this.props.changeValue(value);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-
-      var _props2 = this.props,
-          image = _props2.image,
-          images = _props2.images,
-          provider = _props2.provider,
-          project = _props2.project,
-          tag = _props2.tag,
-          currentValue = _props2.currentValue,
-          detail = _props2.detail;
-      return _react.default.createElement("div", {
-        className: "lbInfo"
-      }, _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "lbInfoTab position-relative d-none d-md-block"
-      }, detail ? '' : _react.default.createElement("nav", null, _react.default.createElement("div", {
-        className: "nav nav-tabs",
-        id: "nav-tab",
-        role: "tablist"
-      }, _react.default.createElement("a", {
-        className: "nav-item nav-link active",
-        id: "nav-home-tab",
-        "data-toggle": "tab",
-        href: "#nav-home",
-        role: "tab",
-        "aria-controls": "nav-home",
-        "aria-selected": "true"
-      }, _react.default.createElement("i", {
-        className: "fa fa-home"
-      })), _react.default.createElement("a", {
-        className: "nav-item nav-link",
-        id: "nav-profile-tab",
-        "data-toggle": "tab",
-        href: "#nav-profile",
-        role: "tab",
-        "aria-controls": "nav-profile",
-        "aria-selected": "false"
-      }, _react.default.createElement("i", {
-        className: "fa fa-tag"
-      })), _react.default.createElement("a", {
-        className: "nav-item nav-link",
-        id: "nav-contact-tab",
-        "data-toggle": "tab",
-        href: "#nav-contact",
-        role: "tab",
-        "aria-controls": "nav-contact",
-        "aria-selected": "false"
-      }, _react.default.createElement("i", {
-        className: "fa fa-comment"
-      })))))), _react.default.createElement("div", {
-        className: "content-mask"
-      }, _react.default.createElement("div", {
-        className: "content-scroll"
-      }, _react.default.createElement("div", {
-        className: "content-detail"
-      }, _react.default.createElement("div", {
-        className: "media"
-      }, provider.auth_avatar && _react.default.createElement("img", {
-        src: provider.auth_avatar,
-        className: "align-self-start mr-2 rounded-circle detail-user mt-1"
-      }), _react.default.createElement("div", {
-        className: "media-body"
-      }, _react.default.createElement("div", {
-        className: "media-content"
-      }, _react.default.createElement(_link.default, {
-        prefetch: true,
-        href: "/pro/".concat(provider.id, "-").concat(provider.slug)
-      }, _react.default.createElement("a", {
-        className: "font-weight-bold font-14 text-black-100"
-      }, provider.name ? provider.name : 'Chưa có tên')), _react.default.createElement("div", {
-        className: "star-rating font-14"
-      }, _react.default.createElement("span", {
-        className: "text-black-100 font-14"
-      }, provider.avg_rate && (0, _helpers.rating)(provider.avg_rate), " (", provider.total_rate ? provider.total_rate : 0, " ng\u01B0\u1EDDi \u0111\xE1nh gi\xE1)")))))), _react.default.createElement("div", {
-        className: "content-detail border-0"
-      }, _react.default.createElement("h2", {
-        className: "font-15 text-black-100"
-      }, currentValue && currentValue.name), _react.default.createElement("div", {
-        className: "media-content",
-        id: "readMore"
-      }, _react.default.createElement("div", {
-        className: "readMoreWrapper"
-      }, _react.default.createElement("p", {
-        id: "readMoreText",
-        className: "font-13 normalText"
-      }, currentValue && currentValue.descriptions), _react.default.createElement("div", {
-        className: "readMoreGradient"
-      })), _react.default.createElement("button", {
-        id: "readMoreBtn"
-      }), _react.default.createElement("span", {
-        id: "readLessBtnText",
-        style: {
-          'display': 'none'
-        }
-      }, "R\xFAt g\u1ECDn "), _react.default.createElement("span", {
-        id: "readMoreBtnText",
-        style: {
-          'display': 'none'
-        }
-      }, "Xem th\xEAm >"))), _react.default.createElement("div", {
-        className: "content-detail border-0"
-      }, _react.default.createElement("h2", {
-        className: "font-14"
-      }, _react.default.createElement("a", {
-        href: "project.url_path",
-        className: "text-black-100"
-      }, "C\xE1c \u1EA3nh trong c\xF9ng d\u1EF1 \xE1n")), _react.default.createElement("ul", {
-        className: "list-unstyled clearfix thumb-grid grid-5"
-      }, images && images.map(function (value, index) {
-        return _react.default.createElement("li", {
-          className: "thumb project-thumb",
-          "data-id": value.id,
-          ref: "'image'+image.id",
-          "data-slug": value.slug,
-          key: index
-        }, _react.default.createElement("a", {
-          className: "link",
-          onClick: function onClick(e) {
-            return _this4.changeImage(e, value);
-          }
-        }, _react.default.createElement("div", {
-          className: "img-responsive-wrapper img-responsive-square progressive"
-        }, value.small_path && _react.default.createElement("img", {
-          src: value.small_path,
-          alt: "image.name",
-          className: "img-respontive",
-          id: "'image-'+image.id",
-          width: "71",
-          height: "71"
-        }))));
-      })), _react.default.createElement("div", {
-        className: "pt-0"
-      }, tag.breadcrumbs && _react.default.createElement("a", {
-        href: tag.breadcrumbs.uri,
-        className: "mr-2"
-      }, _react.default.createElement("span", {
-        className: "text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2"
-      }, tag.breadcrumbs.name_tag)), tag.other && tag.other.is_seo == 1 && _react.default.createElement("a", {
-        href: tag.other.uri,
-        className: "mr-2"
-      }, _react.default.createElement("span", {
-        className: "text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2"
-      }, tag.other.name_tag)))), _react.default.createElement("div", {
-        className: "content-detail border-0"
-      }, _react.default.createElement("div", {
-        className: "header row m-0"
-      }, _react.default.createElement("h2", {
-        className: "font-14 text-black-100"
-      }, "H\u1ECFi \u0111\xE1p v\u1EC1 h\xECnh \u1EA3nh"), _react.default.createElement("span", {
-        className: "col-xs-12 col-md-12 px-0"
-      }, _react.default.createElement("button", {
-        id: "askQuestionButton",
-        className: "btn border-primary btn-block text-primary font-13",
-        compid: "lbAsk"
-      }, "\u0110\u1EB7t c\xE2u h\u1ECFi c\u1EE7a b\u1EA1n")))))));
-    }
-  }]);
-
-  return ImageInfo;
-}(_react.default.PureComponent);
+exports.default = _default;
 
 /***/ }),
-/* 23 */,
-/* 24 */,
-/* 25 */
+/* 24 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-helmet");
+
+/***/ }),
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1768,19 +1367,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _regenerator = _interopRequireDefault(__webpack_require__(2));
-
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _imageDetail = _interopRequireDefault(__webpack_require__(22));
-
-var _layout = _interopRequireDefault(__webpack_require__(6));
+var _routes = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1799,86 +1392,66 @@ var _default =
 function (_React$Component) {
   _inherits(_default, _React$Component);
 
-  function _default() {
+  function _default(props) {
     _classCallCheck(this, _default);
 
-    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
   }
 
   _createClass(_default, [{
-    key: "dismiss",
-    value: function dismiss(e) {
-      e.preventDefault();
-
-      if (this._lbClose === e.target) {
-        e.preventDefault();
-
-        if (this.props.onDismiss) {
-          this.props.onDismiss();
-        }
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
-      var _props = this.props,
-          id = _props.id,
-          slug = _props.slug;
+      var project = this.props.project;
       return _react.default.createElement("div", {
-        id: "lightbox",
-        className: "modal Ifade show",
-        tabIndex: "-1",
-        role: "dialog",
-        "aria-labelledby": "myLargeModalLabel",
-        "aria-hidden": "true"
-      }, _react.default.createElement("div", {
-        id: "lbMainControls",
-        className: "trackMe"
-      }, _react.default.createElement("div", null, _react.default.createElement("a", {
-        ref: function ref(el) {
-          return _this._lbClose = el;
-        },
-        className: "lbCloseButton lbClose",
-        href: "",
-        onClick: function onClick(e) {
-          return _this.dismiss(e);
+        className: "rounded-2"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "project.detail",
+        params: {
+          id: project.id,
+          slug: "".concat(project.slug)
         }
-      }))), _react.default.createElement(_imageDetail.default, {
-        id: this.props.id,
-        slug: slug
-      }));
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, _react.default.createElement("div", {
+        className: "rounded-2 border provider-project"
+      }, _react.default.createElement("div", {
+        className: "row project position-relative mx-auto"
+      }, _react.default.createElement("div", {
+        className: "col-md-7 col-7 position-relative p-0"
+      }, _react.default.createElement("div", {
+        className: "position-absolute h-100 w-100 bg-secondary first-image"
+      }, _react.default.createElement("img", {
+        src: this.props.project.avatar[0],
+        alt: "",
+        className: "first-image w-100 h-100"
+      }))), _react.default.createElement("div", {
+        className: "col-md-5 col-5 position-relative p-0"
+      }, _react.default.createElement("div", {
+        className: "position-absolute h-48 ml-1 mb-1 bg-secondary second-image right-avatar"
+      }, _react.default.createElement("img", {
+        src: this.props.project.avatar[1],
+        alt: "",
+        className: "w-100 h-100"
+      })), _react.default.createElement("div", {
+        className: "position-absolute h-50 ml-1 third-image bg-secondary right-avatar"
+      }, _react.default.createElement("div", {
+        className: "h-100 project-more text-center position-absolute w-100"
+      }, _react.default.createElement("h3", {
+        className: "font-weight-light text-white font-30"
+      }, "+ ", this.props.project.count_image)), _react.default.createElement("img", {
+        src: this.props.project.avatar[2],
+        className: "w-100 h-100"
+      })))), _react.default.createElement("div", {
+        className: "mt-3 mb-2 px-2 project-des"
+      }, _react.default.createElement("h2", {
+        className: "font-weight-bold text-black font-15"
+      }, this.props.project.name, " "), _react.default.createElement("div", {
+        className: "font-13 text-secondary"
+      }, _react.default.createElement("span", {
+        className: "fa fa-map-marker mr-1 text-primary"
+      }), this.props.project.address))))));
     }
-  }], [{
-    key: "getInitialProps",
-    value: function () {
-      var _getInitialProps = _asyncToGenerator(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee(_ref) {
-        var query;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                query = _ref.query;
-                return _context.abrupt("return", {
-                  id: query.id,
-                  slug: query.slug
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      return function getInitialProps(_x) {
-        return _getInitialProps.apply(this, arguments);
-      };
-    }()
   }]);
 
   return _default;
@@ -1887,381 +1460,6 @@ function (_React$Component) {
 exports.default = _default;
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(0));
-
-var _axios = _interopRequireDefault(__webpack_require__(10));
-
-__webpack_require__(9);
-
-var _layout = _interopRequireDefault(__webpack_require__(6));
-
-var _reactMasonryComponent = _interopRequireDefault(__webpack_require__(27));
-
-var _reactInfiniteScroller = _interopRequireDefault(__webpack_require__(28));
-
-var _imageModal = _interopRequireDefault(__webpack_require__(25));
-
-var _helpers = __webpack_require__(18);
-
-var _routes = __webpack_require__(19);
-
-var _jquery = _interopRequireDefault(__webpack_require__(21));
-
-var _fscreen_idea = _interopRequireDefault(__webpack_require__(29));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var APIURL = "https://9houz.com/" + "api/";
-var currentPath = '/';
-var asPath = '/';
-
-var IdeaComponent =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(IdeaComponent, _React$Component);
-
-  function IdeaComponent(props) {
-    var _this;
-
-    _classCallCheck(this, IdeaComponent);
-
-    _this = _possibleConstructorReturn(this, (IdeaComponent.__proto__ || Object.getPrototypeOf(IdeaComponent)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        images: [],
-        nextUrl: null,
-        hasMoreItems: true,
-        h1: null,
-        filter_default: [],
-        listBadge: []
-      }
-    });
-    currentPath = _this.props.path;
-    asPath = _this.props.asPath;
-    return _this;
-  }
-
-  _createClass(IdeaComponent, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this.setState({
-        h1: this.props.h1,
-        filter_default: this.props.filter_default,
-        color: this.props.colors,
-        images: this.props.images,
-        nextUrl: this.props.nextUrl,
-        listBadge: this.props.listBadge ? this.props.listBadge : []
-      });
-    }
-  }, {
-    key: "loadItems",
-    value: function loadItems(page) {
-      var self = this;
-      var url = '';
-
-      if (this.state.nextUrl) {
-        url = this.state.nextUrl;
-      }
-
-      if (this.state.nextUrl != null) {
-        _axios.default.get(url).then(function (resp) {
-          if (resp) {
-            var tracks = self.state.images;
-            var data = resp.data;
-            data.images.data.map(function (track) {
-              tracks.push(track);
-            });
-
-            if (data.images.next_page_url && data.images.next_page_url != null) {
-              self.setState({
-                images: tracks,
-                nextUrl: data.images.next_page_url
-              });
-            } else {
-              self.setState({
-                hasMoreItems: false
-              });
-            }
-          }
-        });
-      }
-    }
-  }, {
-    key: "showPhoto",
-    value: function showPhoto(e, id, slug) {
-      e.preventDefault();
-
-      if (this.props.ideaParams) {
-        var params = this.props.ideaParams;
-
-        if (this.props.subParams) {
-          _routes.Router.pushRoute("/y-tuong/".concat(params, "?f=").concat(this.props.subParams, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
-        } else {
-          _routes.Router.push("".concat(currentPath, "?params=").concat(params, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
-        }
-      } else {
-        _routes.Router.push("".concat(currentPath, "?photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
-      }
-    }
-  }, {
-    key: "dismissModal",
-    value: function dismissModal(id) {
-      if (this.props.ideaParams) {
-        var params = this.props.ideaParams;
-
-        if (this.props.subParams) {
-          _routes.Router.pushRoute("/y-tuong/".concat(params, "?f=").concat(this.props.subParams));
-        } else {
-          _routes.Router.pushRoute('idea.detail', {
-            params: params
-          });
-        }
-      } else {
-        _routes.Router.push(currentPath, asPath);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var masonryOptions = {
-        gutter: '.grid__gutter-sizer',
-        isOriginLeft: true
-      };
-      var _state = this.state,
-          images = _state.images,
-          h1 = _state.h1,
-          filter_default = _state.filter_default,
-          color = _state.color,
-          listBadge = _state.listBadge;
-      var _props = this.props,
-          photoId = _props.photoId,
-          slug = _props.slug;
-      return _react.default.createElement(_layout.default, _extends({}, this.props, {
-        navmenu: false,
-        container: false,
-        css: _fscreen_idea.default
-      }), photoId ? _react.default.createElement(_imageModal.default, {
-        id: photoId,
-        slug: slug,
-        onDismiss: function onDismiss() {
-          return _this2.dismissModal(photoId);
-        }
-      }) : '', _react.default.createElement("div", {
-        className: "container-fluid service px-4 bg-gray"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-0 col-md-3 col-lg-3 px-3",
-        id: "sidebar"
-      }, _react.default.createElement(Sidebar, {
-        filter: filter_default,
-        color: color
-      })), _react.default.createElement("div", {
-        className: "col-12 col-md-9 col-lg-9 px-0",
-        id: "cat"
-      }, _react.default.createElement("div", {
-        className: "bg-white px-3 py-4"
-      }, _react.default.createElement("h1", {
-        className: "text-dark title ml-1 pt-3"
-      }, h1 && h1), _react.default.createElement("div", {
-        className: "list-tag"
-      }, listBadge ? listBadge.map(function (value, index) {
-        return _react.default.createElement("a", {
-          href: value.uri,
-          key: index
-        }, _react.default.createElement("span", {
-          className: "badge badge-pill badge-light border border-primary mr-2 my-1 service-tag"
-        }, value.name_tag, " ", _react.default.createElement("i", {
-          className: "close"
-        })));
-      }) : ''), _react.default.createElement(_reactInfiniteScroller.default, {
-        pageStart: 0,
-        loadMore: this.loadItems.bind(this),
-        hasMore: this.state.hasMoreItems,
-        loader: _react.default.createElement("div", {
-          className: "loader",
-          key: "cx"
-        }, "Loading ...")
-      }, _react.default.createElement(_reactMasonryComponent.default, {
-        className: '.grid are-images-unloaded mt-3',
-        disableImagesLoaded: false,
-        options: masonryOptions,
-        updateOnEachImageLoad: false
-      }, _react.default.createElement("div", {
-        className: "grid__col-sizer"
-      }), _react.default.createElement("div", {
-        className: "grid__gutter-sizer"
-      }), images && images.map(function (value, index) {
-        return _react.default.createElement("div", {
-          className: "grid__item rounded p-1",
-          key: index
-        }, _react.default.createElement("div", {
-          "class": "card"
-        }, _react.default.createElement("span", {
-          className: "position-absolute rounded d-none upload"
-        }, " ", _react.default.createElement("i", {
-          className: "fa fa-upload"
-        }), " L\u01B0u \u1EA3nh"), _react.default.createElement("a", {
-          onClick: function onClick(e) {
-            return _this2.showPhoto(e, value.id, value.slug);
-          }
-        }, _react.default.createElement("img", {
-          className: "rounded card-img-top",
-          src: value.medium_path,
-          alt: "{{ $element->name }}"
-        })), _react.default.createElement("div", {
-          "class": "card-body"
-        }, _react.default.createElement("h2", {
-          className: "mt-2 font-13 text-black-100",
-          "data-title": "{{ $element->name }}"
-        }, value.name), _react.default.createElement("p", {
-          className: "mt-2 images-title font-12 text-black-100 moreDes"
-        }, value.descriptions))));
-      }))))))));
-    }
-  }]);
-
-  return IdeaComponent;
-}(_react.default.Component);
-
-exports.default = IdeaComponent;
-
-var Sidebar =
-/*#__PURE__*/
-function (_React$PureComponent) {
-  _inherits(Sidebar, _React$PureComponent);
-
-  function Sidebar(props) {
-    _classCallCheck(this, Sidebar);
-
-    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
-  }
-
-  _createClass(Sidebar, [{
-    key: "render",
-    value: function render() {
-      var _props2 = this.props,
-          filter = _props2.filter,
-          color = _props2.color;
-      return _react.default.createElement("div", {
-        className: "sidebar-service row bg-white"
-      }, _react.default.createElement("div", {
-        className: "d-md-block px-2 w-100 sidebar-service-content"
-      }, filter && filter.map(function (value, index) {
-        return value.data.length != 0 && _react.default.createElement("div", {
-          className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
-          key: index
-        }, _react.default.createElement("div", {
-          className: "mt-2 widget p-3"
-        }, _react.default.createElement("h3", {
-          className: "font-15 mb-3"
-        }, value.textName, _react.default.createElement("span", {
-          className: "fa fa-chevron-right d-block d-md-none",
-          "data-toggle": "collapse",
-          "data-target": "#demoTest"
-        })), _react.default.createElement("ul", {
-          className: "list-unstyled mb-0 collapse d-md-block",
-          id: "demoTest"
-        }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
-          return _react.default.createElement("li", {
-            className: "py-1 radio",
-            key: index
-          }, _react.default.createElement("a", {
-            href: value.uri,
-            className: "font-13 font-weight-light text-gray"
-          }, _react.default.createElement("label", {
-            className: "px-3"
-          }, value.name_tag, _react.default.createElement("span", null, value.total_doc))));
-        }), _react.default.createElement("span", {
-          className: "more loadmore d-none d-md-block"
-        }, "Xem th\xEAm ", _react.default.createElement("i", {
-          className: "la la-arrow-circle-right"
-        })))));
-      }), _react.default.createElement("div", {
-        className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0"
-      }, _react.default.createElement("div", {
-        className: "mt-2 widget p-3"
-      }, _react.default.createElement("h3", {
-        className: "font-15"
-      }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
-        className: "expand-list"
-      }), _react.default.createElement("div", {
-        className: "service-color mt-3"
-      }, color && (0, _helpers.mapObject)(color, function (index, value) {
-        return _react.default.createElement("a", {
-          href: value.uri,
-          className: "text-dark border border-gray",
-          key: index
-        }, _react.default.createElement("span", {
-          className: "float-left {{ array_get(config('filter.idea.data_type.color.class_name'), $item->original) }}",
-          "data-toggle": "tooltip",
-          title: value.name_tag
-        }));
-      }))))));
-    }
-  }]);
-
-  return Sidebar;
-}(_react.default.PureComponent);
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-masonry-component");
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-infinite-scroller");
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";font-size:1rem;font-weight:400;line-height:1.5;color:#333333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:0.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-top:0;margin-bottom:1rem}ul ul{margin-bottom:0}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{vertical-align:middle;border-style:none}label{display:inline-block;margin-bottom:0.5rem}button{border-radius:0}input,button{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=\"button\"]{-webkit-appearance:button}button::-moz-focus-inner,[type=\"button\"]::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2,h3{margin-bottom:0.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.list-unstyled{padding-left:0;list-style:none}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-md-3,.col-md-9,.col-md-12,.col-lg-3,.col-lg-9{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:0.375rem 0.75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:0.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:0.5rem 1rem}.navbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0.5rem 1rem}.navbar-brand{display:inline-block;padding-top:0.3125rem;padding-bottom:0.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:0.25rem 0.75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:0.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:0.5rem;padding-left:0.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:rgba(17,17,17,0.9)}.navbar-light .navbar-nav .nav-link{color:rgba(17,17,17,0.5)}.navbar-light .navbar-toggler{color:rgba(17,17,17,0.5);border-color:rgba(17,17,17,0.1)}.badge-pill{padding-right:0.6em;padding-left:0.6em;border-radius:10rem}.bg-white{background-color:#fff!important}.border-0{border:0!important}.rounded{border-radius:0.25rem!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.mb-0{margin-bottom:0!important}.mt-1{margin-top:0.25rem!important}.ml-1{margin-left:0.25rem!important}.mt-2,.my-2{margin-top:0.5rem!important}.my-2{margin-bottom:0.5rem!important}.mt-3{margin-top:1rem!important}.mb-3{margin-bottom:1rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.p-1{padding:0.25rem!important}.py-1{padding-top:0.25rem!important}.px-1{padding-right:0.25rem!important}.pb-1,.py-1{padding-bottom:0.25rem!important}.px-1{padding-left:0.25rem!important}.px-2{padding-right:0.5rem!important}.px-2{padding-left:0.5rem!important}.p-3{padding:1rem!important}.pt-3,.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.py-4{padding-top:1.5rem!important}.px-4{padding-right:1.5rem!important}.py-4{padding-bottom:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.font-weight-light{font-weight:300!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}@font-face{font-family:'FontAwesome';src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:normal;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-upload:before{content:\"\\F093\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body{font-family:helvetica-ttf,sans-serif!important}h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder{color:#adadad}input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-12{font-size:12px!important}.font-13{font-size:13px!important}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.text-gray{color:#666666!important}.text-black-100{color:#333333!important}.bg-gray{background-color:#dddddd!important}.navbar-9houzz{color:#666666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em / 5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #dddddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}header{position:relative;height:105px;background:white;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:white;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:0.5rem 0.5rem!important;font-size:14px!important;color:white!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:white;list-style:none;border:1px solid #dddddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .navbar-toggler,.nav-9houzz .header-menu .nav-item .navbar-toggler{padding:0.25rem 0.25rem!important}.nav-9houzz .header-menu .navbar-toggler span,.nav-9houzz .header-menu .nav-item .navbar-toggler span{font-size:13px!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0px!important;left:0px!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0%!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25;margin-bottom:10px!important}}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-0.5rem!important;border-top:none!important}}img{vertical-align:middle}.grid__item,.grid__col-sizer{width:32.5%}.grid__gutter-sizer{width:0.6%}.grid__item{margin-bottom:20px;float:left}.grid__item .upload{padding:0.5rem 0.75rem;background:white;top:10px;left:10px;z-index:100}.grid__item img{display:block;max-width:100%;width:100%}@media (min-width:992px) and (max-width:1199.98px){.grid__item,.grid__col-sizer{width:24%}}@media (min-width:768px) and (max-width:991.98px){.grid__item,.grid__col-sizer{width:33%}}@media (max-width:767.98px){.grid__item,.grid__col-sizer{width:99%}.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}.service .idea-content h2{font-size:16px!important}.service .idea-content p{display:none!important;font-size:15px!important}}#sidebar{max-width:23%!important}.sidebar-service{width:91%;margin-left:25px}.widget h3{font-weight:600!important;font-size:14px!important}#cat .title{font-size:21px!important;font-weight:400!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.service #sidebar{max-width:100%!important;margin-top:0.5rem!important;border-top:none!important;margin-bottom:0.5rem!important}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:black!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:0.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:0.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label{font-size:16px!important}.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:0.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.service{font-size:13px}.service h3{font-weight:inherit}img{vertical-align:middle}.grid__item,.grid__col-sizer{width:32.5%}.grid__gutter-sizer{width:0.6%}.grid__item{margin-bottom:20px;float:left}.grid__item .upload{padding:0.5rem 0.75rem;background:white;top:10px;left:10px;z-index:100}.grid__item img{display:block;max-width:100%;width:100%}@media (min-width:992px) and (max-width:1199.98px){.grid__item,.grid__col-sizer{width:24%}}@media (min-width:768px) and (max-width:991.98px){.grid__item,.grid__col-sizer{width:33%}}@media (max-width:767.98px){.grid__item,.grid__col-sizer{width:99%}.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}.service .idea-content h2{font-size:16px!important}.service .idea-content p{display:none!important;font-size:15px!important}}.card {position: relative;display: flex;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(17, 17, 17, 0.125);border-radius: 0.25rem;}.card-img-top{width:100%;border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);border-bottom: 1px solid rgba(17, 17, 17, 0.125)}.card-body{flex:1 1 auto;padding:1.25rem}";
-
-/***/ }),
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
 /* 34 */,
 /* 35 */,
 /* 36 */,
@@ -2269,14 +1467,26 @@ module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sa
 /* 38 */,
 /* 39 */,
 /* 40 */,
-/* 41 */
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
-/* 42 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2291,9 +1501,15 @@ var _regenerator = _interopRequireDefault(__webpack_require__(2));
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _IdeaComponent = _interopRequireDefault(__webpack_require__(26));
+var _proDetail = _interopRequireDefault(__webpack_require__(23));
+
+var _listProject = _interopRequireDefault(__webpack_require__(33));
+
+var _axios = _interopRequireDefault(__webpack_require__(10));
 
 __webpack_require__(9);
+
+var _project = _interopRequireDefault(__webpack_require__(55));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2315,7 +1531,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var APIURL = "https://9houz.com/" + "api/";
+var APIURL = "https://9houz.com/" + "api/" + 'provider/';
 
 var _default =
 /*#__PURE__*/
@@ -2335,7 +1551,7 @@ function (_React$Component) {
               case 0:
                 query = _ref.query;
                 _context.next = 3;
-                return fetch(APIURL + "y-tuong");
+                return fetch(APIURL + query.id + "?projects");
 
               case 3:
                 res = _context.sent;
@@ -2345,11 +1561,12 @@ function (_React$Component) {
               case 6:
                 data = _context.sent;
                 return _context.abrupt("return", {
+                  id: query.id,
+                  data: data,
+                  provider: data.provider,
+                  projects: data.projects,
+                  slug: query.slug,
                   h1: data.h1,
-                  filter_default: data.filter_default,
-                  colors: data.colors,
-                  images: data.images.data,
-                  nextUrl: data.images.next_page_url,
                   title: data.seo.title,
                   des: data.seo.des,
                   canonical: data.seo.canonical,
@@ -2373,20 +1590,67 @@ function (_React$Component) {
   }]);
 
   function _default(props) {
+    var _this;
+
     _classCallCheck(this, _default);
 
-    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-  }
+    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    _this.state = {
+      data: {},
+      provider: {},
+      projects: {}
+    };
+    return _this;
+  } // async getValue(){
+  //   let data;
+  //   await axios.get(APIURL+this.props.id+"?projects")
+  //   .then(res => {
+  //        data = res.data;
+  //        this.setState({data: data , provider:data.provider ,projects : data.projects})
+  //   })
+  //   return data
+  //   }
+  // componentDidMount = async () =>{
+  //   await this.getValue()
+  // }
+
 
   _createClass(_default, [{
     key: "render",
     value: function render() {
-      var url = this.props.url;
-      return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
-        photoId: this.props.url.query && this.props.url.query.photoId,
-        asPath: url.asPath,
-        path: url.pathname
-      }));
+      var _props = this.props,
+          provider = _props.provider,
+          projects = _props.projects,
+          id = _props.id,
+          slug = _props.slug,
+          data = _props.data;
+      var list_project = [];
+      var moreProject = [];
+
+      if (projects.length > 0) {
+        projects.map(function (e) {
+          list_project.push(_react.default.createElement("div", {
+            className: "col-12 col-md-4 col-lg-4 p-3",
+            key: e.id
+          }, _react.default.createElement(_listProject.default, {
+            project: e
+          })));
+        });
+      }
+
+      return _react.default.createElement(_proDetail.default, _extends({
+        provider_id: id,
+        provider_slug: slug,
+        data: data
+      }, this.props, {
+        css: _project.default
+      }), _react.default.createElement("div", {
+        className: "container mt-3"
+      }, _react.default.createElement("h2", {
+        className: "text-dark font-30 text-center"
+      }, data.project_count, " d\u1EF1 \xE1n"), _react.default.createElement("div", {
+        className: "row"
+      }, list_project)));
     }
   }]);
 
@@ -2394,6 +1658,15 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = _default;
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";font-size:1rem;font-weight:400;line-height:1.5;color:#333333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:0.5rem}ul{margin-top:0;margin-bottom:1rem}ul ul{margin-bottom:0}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{vertical-align:middle;border-style:none}button{border-radius:0}input,button{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=\"button\"]{-webkit-appearance:button}button::-moz-focus-inner,[type=\"button\"]::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2,h3{margin-bottom:0.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.list-unstyled{padding-left:0;list-style:none}.img-thumbnail{padding:0.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:0.25rem;max-width:100%;height:auto}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-5,.col-7,.col-12,.col-md-4,.col-md-5,.col-md-7,.col-md-9,.col-md-12,.col-lg-4,.col-lg-9{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-5{flex:0 0 41.66667%;max-width:41.66667%}.col-7{flex:0 0 58.33333%;max-width:58.33333%}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-4{flex:0 0 33.33333%;max-width:33.33333%}.col-md-5{flex:0 0 41.66667%;max-width:41.66667%}.col-md-7{flex:0 0 58.33333%;max-width:58.33333%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-4{flex:0 0 33.33333%;max-width:33.33333%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:0.375rem 0.75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:0.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:0.5rem 1rem}.nav-tabs{border-bottom:1px solid #dee2e6}.nav-tabs .nav-item{margin-bottom:-1px}.nav-tabs .nav-link{border:1px solid transparent;border-top-left-radius:0.25rem;border-top-right-radius:0.25rem}.navbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0.5rem 1rem}.navbar-brand{display:inline-block;padding-top:0.3125rem;padding-bottom:0.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:0.25rem 0.75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:0.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:0.5rem;padding-left:0.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:rgba(17,17,17,0.9)}.navbar-light .navbar-nav .nav-link{color:rgba(17,17,17,0.5)}.navbar-light .navbar-toggler{color:rgba(17,17,17,0.5);border-color:rgba(17,17,17,0.1)}.badge-pill{padding-right:0.6em;padding-left:0.6em;border-radius:10rem}.bg-secondary{background-color:#6c757d!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.justify-content-end{justify-content:flex-end!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-50{height:50%!important}.h-100{height:100%!important}.mt-1{margin-top:0.25rem!important}.mr-1,.mx-1{margin-right:0.25rem!important}.mb-1{margin-bottom:0.25rem!important}.ml-1,.mx-1{margin-left:0.25rem!important}.my-2{margin-top:0.5rem!important}.mb-2,.my-2{margin-bottom:0.5rem!important}.mt-3{margin-top:1rem!important}.p-0{padding:0!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:0.25rem!important}.px-1{padding-right:0.25rem!important}.py-1{padding-bottom:0.25rem!important}.px-1{padding-left:0.25rem!important}.px-2{padding-right:0.5rem!important}.px-2{padding-left:0.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.px-4{padding-right:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto,.mx-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.mx-auto{margin-left:auto!important}.text-left{text-align:left!important}.text-center{text-align:center!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.font-weight-light{font-weight:300!important}.font-weight-bold{font-weight:700!important}.text-white{color:#fff!important}.text-primary{color:#b953a4!important}.text-secondary{color:#6c757d!important}.text-dark{color:#343a40!important}@font-face{font-family:'FontAwesome';src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:normal;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-star:before{content:\"\\F005\"}.fa-map-marker:before{content:\"\\F041\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body{font-family:helvetica-ttf,sans-serif!important}h1{font-family:helvetica-ttf,sans-serif!important}.rounded-2{border-radius:0.5rem!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder{color:#adadad}input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-13{font-size:13px!important}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.font-30{font-size:30px!important}.text-black{color:black!important}.text-gray-200{color:#999999!important}.bg-gray{background-color:#dddddd!important}.text-yellow{color:#ffcc00!important}.navbar-9houzz{color:#666666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em / 5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #dddddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}header{position:relative;height:105px;background:white;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:white;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:0.5rem 0.5rem!important;font-size:14px!important;color:white!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:white;list-style:none;border:1px solid #dddddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .navbar-toggler,.nav-9houzz .header-menu .nav-item .navbar-toggler{padding:0.25rem 0.25rem!important}.nav-9houzz .header-menu .navbar-toggler span,.nav-9houzz .header-menu .nav-item .navbar-toggler span{font-size:13px!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0px!important;left:0px!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0%!important}}.banner{height:361px}.gradient-animate{height:100px;background:-webkit-linear-gradient(rgba(0,0,0,0),black);background:-o-linear-gradient(rgba(0,0,0,0),black);background:linear-gradient(rgba(0,0,0,0),black);bottom:0;z-index:0}.disable{color:#ddd!important}.fa-star{color:#fc0}.provider-nav{height:50px;line-height:34px}.provider-details .banner{max-height:290px;height:290px;position:relative;overflow:hidden}.project{width:100%;height:300px}.project img{object-fit:cover;object-position:center center}.provider-avatar{width:165px;height:165px;top:-127px;left:20px}.provider-info{bottom:4rem;left:13rem;z-index:1}.provider-details .nav-link{color:#666!important;padding:0.5rem 1.5rem!important}span{font-size:13px!important}.provider-project{background:#ffffff!important}.provider-project .project-more{background:rgba(0,0,0,0.3);width:98%;padding-top:40%}.provider-project .first-image{border-top-left-radius:0.25rem!important;-webkit-border-top-left-radius:0.25rem!important;-moz-border-top-left-radius:0.25rem!important;-khtml-border-top-left-radius:0.25rem!important}.provider-project .second-image{border-top-right-radius:0.25rem!important;-webkit-border-top-right-radius:0.25rem!important;-moz-border-top-right-radius:0.25rem!important;-khtml-border-top-right-radius:0.25rem!important;height:48%!important}.provider-project .third-image{bottom:0!important;height:50%!important}.provider-project .right-avatar{width:98%}@media (max-width:575.98px){.provider-avatar{width:80px!important;height:80px!important;top:-105px!important}.provider-details .banner{height:185px!important}.banner img{height:100%!important}.provider-info{bottom:4rem;left:7rem;z-index:1}.provider-info h1{font-size:18px!important;font-weight:700!important}#myTab.nav{overflow-x:scroll;overflow-y:hidden;white-space:nowrap;display:block!important}#myTab.nav li{display:inline-block;color:white;text-align:center}.provider-nav{height:45px!important;line-height:34px}.provider-main{padding-left:0!important;padding-right:0!important;margin-right:0!important;margin-left:0!important}.project{height:200px!important}.provider-project .project-des{margin-top:0.25rem!important;line-height:25px!important}.provider-project .right-avatar{width:97%!important}.project-more{padding-top:30%!important}}img{vertical-align:middle}.fa-star{color:#ffcc00}.disable{color:#dddddd!important}img{vertical-align:middle}";
 
 /***/ })
 /******/ ]);

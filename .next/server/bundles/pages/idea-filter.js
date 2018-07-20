@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2267,16 +2267,14 @@ module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sa
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(40);
 
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2292,8 +2290,6 @@ var _regenerator = _interopRequireDefault(__webpack_require__(2));
 var _react = _interopRequireDefault(__webpack_require__(0));
 
 var _IdeaComponent = _interopRequireDefault(__webpack_require__(26));
-
-__webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2317,12 +2313,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var APIURL = "https://9houz.com/" + "api/";
 
-var _default =
+var IdeaFilter =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(_default, _React$Component);
+  _inherits(IdeaFilter, _React$Component);
 
-  _createClass(_default, null, [{
+  _createClass(IdeaFilter, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
@@ -2334,15 +2330,33 @@ function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
-                _context.next = 3;
-                return fetch(APIURL + "y-tuong");
+                res = null;
 
-              case 3:
+                if (!query.f) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _context.next = 5;
+                return fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params) + "?f=".concat(query.f));
+
+              case 5:
                 res = _context.sent;
-                _context.next = 6;
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.next = 10;
+                return fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params));
+
+              case 10:
+                res = _context.sent;
+
+              case 11:
+                _context.next = 13;
                 return res.json();
 
-              case 6:
+              case 13:
                 data = _context.sent;
                 return _context.abrupt("return", {
                   h1: data.h1,
@@ -2350,6 +2364,9 @@ function (_React$Component) {
                   colors: data.colors,
                   images: data.images.data,
                   nextUrl: data.images.next_page_url,
+                  params: query.params,
+                  subParams: query.f,
+                  listBadge: data.listBadge,
                   title: data.seo.title,
                   des: data.seo.des,
                   canonical: data.seo.canonical,
@@ -2358,7 +2375,7 @@ function (_React$Component) {
                   url_images: data.seo.url_images
                 });
 
-              case 8:
+              case 15:
               case "end":
                 return _context.stop();
             }
@@ -2372,28 +2389,33 @@ function (_React$Component) {
     }()
   }]);
 
-  function _default(props) {
-    _classCallCheck(this, _default);
+  function IdeaFilter(props) {
+    _classCallCheck(this, IdeaFilter);
 
-    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    return _possibleConstructorReturn(this, (IdeaFilter.__proto__ || Object.getPrototypeOf(IdeaFilter)).call(this, props));
   }
 
-  _createClass(_default, [{
+  _createClass(IdeaFilter, [{
     key: "render",
     value: function render() {
-      var url = this.props.url;
+      var _props = this.props,
+          params = _props.params,
+          url = _props.url,
+          subParams = _props.subParams;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.url.query && this.props.url.query.photoId,
+        ideaParams: params,
+        subParams: subParams,
         asPath: url.asPath,
         path: url.pathname
       }));
     }
   }]);
 
-  return _default;
+  return IdeaFilter;
 }(_react.default.Component);
 
-exports.default = _default;
+exports.default = IdeaFilter;
 
 /***/ })
 /******/ ]);
