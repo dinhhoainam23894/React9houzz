@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -156,20 +156,21 @@ function (_React$Component) {
     currentPath = _this.props.path;
     asPath = _this.props.asPath;
     return _this;
-  }
+  } // componentWillMount(){
+  //     this.setState({
+  //         h1 : this.props.h1,
+  //         filter_default : this.props.filter_default,
+  //         color : this.props.colors,
+  //         images: this.props.images,
+  //         nextUrl: this.props.nextUrl,
+  //         listBadge : this.props.listBadge ? this.props.listBadge : []
+  //     })
+  // }
+
 
   _createClass(IdeaComponent, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this.setState({
-        h1: this.props.h1,
-        filter_default: this.props.filter_default,
-        color: this.props.colors,
-        images: this.props.images,
-        nextUrl: this.props.nextUrl,
-        listBadge: this.props.listBadge ? this.props.listBadge : []
-      });
-    }
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {}
   }, {
     key: "loadItems",
     value: function loadItems(page) {
@@ -190,11 +191,10 @@ function (_React$Component) {
             });
 
             if (data.images.next_page_url && data.images.next_page_url != null) {
-              console.log(data.images);
-              self.setState({
-                images: tracks,
-                nextUrl: data.images.next_page_url
-              });
+              this.props.changeState(tracks, data.images.next_page_url); // self.setState({
+              //     images: tracks,
+              //     nextUrl: data.images.next_page_url,
+              // });
             } else {
               self.setState({
                 hasMoreItems: false
@@ -276,22 +276,22 @@ function (_React$Component) {
         gutter: '.grid__gutter-sizer',
         isOriginLeft: true
       };
-      var _state = this.state,
-          images = _state.images,
-          h1 = _state.h1,
-          filter_default = _state.filter_default,
-          color = _state.color,
-          listBadge = _state.listBadge;
       var _props = this.props,
-          photoId = _props.photoId,
-          slug = _props.slug;
+          images = _props.images,
+          h1 = _props.h1,
+          filter_default = _props.filter_default,
+          colors = _props.colors,
+          listBadge = _props.listBadge;
+      var _props2 = this.props,
+          photoId = _props2.photoId,
+          slug = _props2.slug;
       return _react.default.createElement(_layout.default, _extends({}, this.props, {
         navmenu: false,
         container: false,
         css: _fscreen_idea.default,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 131
+          lineNumber: 132
         }
       }), photoId ? _react.default.createElement(_imageModal.default, {
         id: photoId,
@@ -307,58 +307,58 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 134
+          lineNumber: 135
         }
       }) : '', _react.default.createElement("div", {
         className: "container-fluid service px-4 bg-gray",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146
+          lineNumber: 147
         }
       }, _react.default.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147
+          lineNumber: 148
         }
       }, _react.default.createElement("div", {
         className: "col-0 col-md-3 col-lg-3 px-3",
         id: "sidebar",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148
+          lineNumber: 149
         }
       }, _react.default.createElement(Sidebar, {
         filter: filter_default,
-        color: color,
+        color: colors,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 149
+          lineNumber: 150
         }
       })), _react.default.createElement("div", {
         className: "col-12 col-md-9 col-lg-9 px-0",
         id: "cat",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151
+          lineNumber: 152
         }
       }, _react.default.createElement("div", {
         className: "bg-white px-3 py-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152
+          lineNumber: 153
         }
       }, _react.default.createElement("h1", {
         className: "text-dark title ml-1 pt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 153
+          lineNumber: 154
         }
       }, h1 && h1), _react.default.createElement("div", {
         className: "list-tag",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 154
+          lineNumber: 155
         }
       }, listBadge ? listBadge.map(function (value, index) {
         return _react.default.createElement("a", {
@@ -366,19 +366,19 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 158
+            lineNumber: 159
           }
         }, _react.default.createElement("span", {
           className: "badge badge-pill badge-light border border-primary mr-2 my-1 service-tag",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 158
+            lineNumber: 159
           }
         }, value.name_tag, " ", _react.default.createElement("i", {
           className: "close",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 158
+            lineNumber: 159
           }
         })));
       }) : ''), _react.default.createElement(_reactInfiniteScroller.default, {
@@ -390,12 +390,12 @@ function (_React$Component) {
           key: "cx",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 166
+            lineNumber: 167
           }
         }, "Loading ..."),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 162
+          lineNumber: 163
         }
       }, _react.default.createElement(_reactMasonryComponent.default, {
         className: '.grid are-images-unloaded mt-3',
@@ -404,19 +404,19 @@ function (_React$Component) {
         updateOnEachImageLoad: false,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 167
+          lineNumber: 168
         }
       }, _react.default.createElement("div", {
         className: "grid__col-sizer",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 173
+          lineNumber: 174
         }
       }), _react.default.createElement("div", {
         className: "grid__gutter-sizer",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 174
+          lineNumber: 175
         }
       }), images && images.map(function (value, index) {
         return _react.default.createElement("div", {
@@ -424,25 +424,25 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 178
+            lineNumber: 179
           }
         }, _react.default.createElement("div", {
           className: "card",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 179
+            lineNumber: 180
           }
         }, _react.default.createElement("span", {
           className: "position-absolute rounded d-none upload",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 180
+            lineNumber: 181
           }
         }, " ", _react.default.createElement("i", {
           className: "fa fa-upload",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 180
+            lineNumber: 181
           }
         }), " L\u01B0u \u1EA3nh"), _react.default.createElement("a", {
           onClick: function onClick(e) {
@@ -450,7 +450,7 @@ function (_React$Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 181
+            lineNumber: 182
           }
         }, _react.default.createElement("img", {
           className: "rounded card-img-top",
@@ -458,26 +458,26 @@ function (_React$Component) {
           alt: value.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 182
+            lineNumber: 183
           }
         })), _react.default.createElement("div", {
           className: "card-body",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 184
+            lineNumber: 185
           }
         }, _react.default.createElement("h2", {
           className: "mt-2 font-13 text-black-100",
           "data-title": value.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 185
+            lineNumber: 186
           }
         }, value.name), _react.default.createElement("p", {
           className: "mt-2 images-title font-12 text-black-100 moreDes",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 186
+            lineNumber: 187
           }
         }, value.descriptions))));
       }))))))));
@@ -503,20 +503,20 @@ function (_React$PureComponent) {
   _createClass(Sidebar, [{
     key: "render",
     value: function render() {
-      var _props2 = this.props,
-          filter = _props2.filter,
-          color = _props2.color;
+      var _props3 = this.props,
+          filter = _props3.filter,
+          color = _props3.color;
       return _react.default.createElement("div", {
         className: "sidebar-service row bg-white",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 210
+          lineNumber: 211
         }
       }, _react.default.createElement("div", {
         className: "d-md-block px-2 w-100 sidebar-service-content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 211
+          lineNumber: 212
         }
       }, filter && filter.map(function (value, index) {
         return value.data.length != 0 && _react.default.createElement("div", {
@@ -524,19 +524,19 @@ function (_React$PureComponent) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 215
+            lineNumber: 216
           }
         }, _react.default.createElement("div", {
           className: "mt-2 widget p-3",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 216
+            lineNumber: 217
           }
         }, _react.default.createElement("h3", {
           className: "font-15 mb-3",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 217
+            lineNumber: 218
           }
         }, value.textName, _react.default.createElement("span", {
           className: "fa fa-chevron-right d-block d-md-none",
@@ -544,14 +544,14 @@ function (_React$PureComponent) {
           "data-target": "#demoTest",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 217
+            lineNumber: 218
           }
         })), _react.default.createElement("ul", {
           className: "list-unstyled mb-0 collapse d-md-block",
           id: "demoTest",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 218
+            lineNumber: 219
           }
         }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
           return _react.default.createElement("li", {
@@ -559,75 +559,75 @@ function (_React$PureComponent) {
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 221
+              lineNumber: 222
             }
           }, _react.default.createElement(_routes.Link, {
+            prefetch: true,
             route: value.uri,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 222
+              lineNumber: 223
             }
           }, _react.default.createElement("a", {
-            href: value.uri,
             className: "font-13 font-weight-light text-gray",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 223
+              lineNumber: 224
             }
           }, _react.default.createElement("label", {
             className: "px-3",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 223
+              lineNumber: 224
             }
           }, value.name_tag, _react.default.createElement("span", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 223
+              lineNumber: 224
             }
           }, value.total_doc)))));
         }), _react.default.createElement("span", {
           className: "more loadmore d-none d-md-block",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 228
+            lineNumber: 229
           }
         }, "Xem th\xEAm ", _react.default.createElement("i", {
           className: "la la-arrow-circle-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 228
+            lineNumber: 229
           }
         })))));
       }), _react.default.createElement("div", {
         className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 235
+          lineNumber: 236
         }
       }, _react.default.createElement("div", {
         className: "mt-2 widget p-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 236
+          lineNumber: 237
         }
       }, _react.default.createElement("h3", {
         className: "font-15",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237
+          lineNumber: 238
         }
       }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
         className: "expand-list",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 238
+          lineNumber: 239
         }
       }), _react.default.createElement("div", {
         className: "service-color mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 239
+          lineNumber: 240
         }
       }, color && (0, _helpers.mapObject)(color, function (index, value) {
         return _react.default.createElement("a", {
@@ -636,7 +636,7 @@ function (_React$PureComponent) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 242
+            lineNumber: 243
           }
         }, _react.default.createElement("span", {
           className: "float-left " + value.class,
@@ -644,7 +644,7 @@ function (_React$PureComponent) {
           title: value.name_tag,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 242
+            lineNumber: 243
           }
         }));
       }))))));
@@ -3737,11 +3737,19 @@ function (_React$Component) {
   _createClass(_default, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       var url = this.props.url;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.url.query && this.props.url.query.photoId,
         asPath: url.asPath,
         path: url.pathname,
+        changeState: function changeState(images, nextPage) {
+          _this.setState({
+            images: images,
+            nextUrl: nextPage
+          });
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 34
@@ -3791,7 +3799,7 @@ module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sa
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/idea.js");

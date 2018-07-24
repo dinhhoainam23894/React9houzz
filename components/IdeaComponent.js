@@ -27,17 +27,17 @@ export default class IdeaComponent extends React.Component{
         currentPath = this.props.path
         asPath = this.props.asPath
     }
-    componentWillMount(){
-        this.setState({
-            h1 : this.props.h1,
-            filter_default : this.props.filter_default,
-            color : this.props.colors,
-            images: this.props.images,
-            nextUrl: this.props.nextUrl,
-            listBadge : this.props.listBadge ? this.props.listBadge : []
-        })
-        
-    }
+    // componentWillMount(){
+    //     this.setState({
+    //         h1 : this.props.h1,
+    //         filter_default : this.props.filter_default,
+    //         color : this.props.colors,
+    //         images: this.props.images,
+    //         nextUrl: this.props.nextUrl,
+    //         listBadge : this.props.listBadge ? this.props.listBadge : []
+    //     })
+    // }
+    componentWillReceiveProps(nextProps){}
     loadItems(page) {
         var self = this;
         var url = '';
@@ -54,11 +54,11 @@ export default class IdeaComponent extends React.Component{
                         tracks.push(track);
                     });
                     if(data.images.next_page_url && data.images.next_page_url != null) {
-                        console.log(data.images)
-                        self.setState({
-                            images: tracks,
-                            nextUrl: data.images.next_page_url,
-                        });
+                        this.props.changeState(tracks,data.images.next_page_url)
+                        // self.setState({
+                        //     images: tracks,
+                        //     nextUrl: data.images.next_page_url,
+                        // });
                     } else {
                         self.setState({
                             hasMoreItems: false
@@ -108,6 +108,7 @@ export default class IdeaComponent extends React.Component{
 	    	$(this).parent().toggle();
 	    });
     }
+   
     dismissModal () {
         if(this.props.ideaParams){
             var params = this.props.ideaParams
@@ -125,7 +126,7 @@ export default class IdeaComponent extends React.Component{
             gutter: '.grid__gutter-sizer',
             isOriginLeft: true
         };
-       const { images , h1 ,filter_default , color , listBadge} = this.state
+       const { images , h1 ,filter_default , colors , listBadge} = this.props
        const { photoId , slug } = this.props;
        return(
         <Layout {...this.props} navmenu={false} container={false} css={css}>
@@ -146,7 +147,7 @@ export default class IdeaComponent extends React.Component{
         <div className="container-fluid service px-4 bg-gray">
             <div className="row">
                 <div className="col-0 col-md-3 col-lg-3 px-3" id="sidebar">
-                    <Sidebar filter={filter_default} color={color}></Sidebar>
+                    <Sidebar filter={filter_default} color={colors}></Sidebar>
                 </div>
                 <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
                     <div className="bg-white px-3 py-4">
@@ -219,8 +220,8 @@ class Sidebar extends React.PureComponent{
                                 {
                                     value.data && mapObject(value.data, function (index, value) {
                                         return <li className="py-1 radio" key={index}>
-                                            <Link route={value.uri}>
-                                            <a href={value.uri} className="font-13 font-weight-light text-gray"><label className="px-3">{value.name_tag}<span>{value.total_doc}</span></label></a>
+                                            <Link prefetch route={value.uri}>
+                                            <a className="font-13 font-weight-light text-gray"><label className="px-3">{value.name_tag}<span>{value.total_doc}</span></label></a>
                                             </Link>
                                         </li>
                                     })

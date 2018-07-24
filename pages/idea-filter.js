@@ -42,6 +42,7 @@ export default class IdeaFilter extends React.Component{
                 ideaParams={params}
                 subParams={subParams}
                 asPath={url.asPath}
+                changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
                 path={url.pathname}>
             </IdeaComponent>
         )
