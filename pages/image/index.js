@@ -23,13 +23,16 @@ export default class Image extends React.Component{
                     , robots : data.seo.robots
                     , og_url : data.seo.url
                     , url_images : data.seo.url_images
+                    , headerProjects : data.headerProjects
+                    , headerCategories : data.headerCategories
+                    , dataBase : data.dataBase
                 }
     }
     render(){
         return(
             <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div id="lightbox">
-                <ImageDetail id={this.props.id} slug={this.props.slug} data={this.props} detail={true}></ImageDetail>
+                <ImageDetail id={this.props.id} slug={this.props.slug} data={this.props}></ImageDetail>
                 <style jsx>{`
                     #lightbox {
                         top: 105px !important;

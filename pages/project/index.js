@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Link from 'next/link'
+import {Link} from  '../../routes'
 import ProviderDetail from '../../components/pro-detail';
 import ImageModal from '../../components/image-modal';
 import 'isomorphic-fetch'
@@ -108,7 +108,11 @@ export default class Project extends Component {
                                                             <div className="media-body pl-3 position-relative">
                                                                 <div className="media-header">
                                                                     <div className="media-title">
-                                                                        <h2 className="font-22 text-black-100"><a className="mt-0 mb-1 font-22 text-black-100" href="{{ route('image.detail',['id' => $image->id , 'name' => standardText($image->name)]) }}">{value.name}</a></h2>
+                                                                        <h2 className="font-22 text-black-100">
+                                                                        <Link prefetch route='image' params={{id: value.id , slug : `${value.slug}`}}>
+                                                                            <a className="mt-0 mb-1 font-22 text-black-100" href="{{ route('image.detail',['id' => $image->id , 'name' => standardText($image->name)]) }}">{value.name}</a>
+                                                                        </Link>
+                                                                        </h2>
                                                                     </div>
                                                                 </div>
                                                                 <div className="media-content mt-1">

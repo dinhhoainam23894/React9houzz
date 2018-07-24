@@ -2,7 +2,7 @@ const routes = require('next-routes')
 
                                                     // Name   Page      Pattern
 module.exports = routes()                           // ----   ----      -----
-.add('index')                                       // about  about     /about
+.add('index','/','index')                                       // about  about     /about
 .add('test', '/test')                               // blog   blog      /blog/:slug
 .add('news', '/news') 
 .add('image','/anh/:id-:slug','image/index')

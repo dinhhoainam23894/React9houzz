@@ -6,22 +6,9 @@ import Layout from '../components/layout'
 export default () => (
   <Layout>
     <div>
-    <h1 >Landing Page</h1>
         <div className="hero">
           <h1 className="title">Welcome to 9houzz!</h1>
-          <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
-
-          <div className="row">
-          <Link href='/pro?id=bar&slug=name' as='/pro/bar-slug' params={{ id: "test" ,slug:'test' }}><a>My first blog post with a query string of foo=bar</a></Link>
-            <Link href="https://github.com/zeit/next.js#getting-started">
-              <a className="card">
-                <h3>Getting Started &rarr;</h3>
-                <p>Learn more about Next on Github and in their examples</p>
-              </a>
-            </Link>
-          </div>
         </div>
-
         <style jsx>{`
           .hero {
             width: 100%;

@@ -6,6 +6,7 @@ export default class extends React.Component{
         return { id: query.id ,slug : query.slug}
     }
     dismiss (e) {
+
         e.preventDefault()
         if (this._lbClose === e.target) {
             e.preventDefault()
@@ -25,7 +26,7 @@ export default class extends React.Component{
                     </div>
                     
                 </div>
-                <ImageDetail id={this.props.id} slug={slug}></ImageDetail>
+                <ImageDetail {...this.props} id={this.props.id} slug={slug}></ImageDetail>
             </div>
         )
     }

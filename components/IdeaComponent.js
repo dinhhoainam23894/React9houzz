@@ -36,6 +36,7 @@ export default class IdeaComponent extends React.Component{
             nextUrl: this.props.nextUrl,
             listBadge : this.props.listBadge ? this.props.listBadge : []
         })
+        
     }
     loadItems(page) {
         var self = this;
@@ -53,6 +54,7 @@ export default class IdeaComponent extends React.Component{
                         tracks.push(track);
                     });
                     if(data.images.next_page_url && data.images.next_page_url != null) {
+                        console.log(data.images)
                         self.setState({
                             images: tracks,
                             nextUrl: data.images.next_page_url,
@@ -80,7 +82,33 @@ export default class IdeaComponent extends React.Component{
             Router.push(`${currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
         }
     }
-    dismissModal (id) {
+    componentDidMount(){
+        $('.sidebar-service ul').each(function(e){
+            if ($(this).find('li').length == $(this).find($('li:visible')).length) {
+               $(this).find('.loadmore').hide();
+            }
+		});
+        $('.sidebar-service').on('click','.loadmore',function () {
+            var list = $(this).parent().find($('li'));
+			$(this).parent().find($('li:hidden')).show();
+            if (list.length == $(this).parent().find($('li:visible')).length) {
+                $(this).removeClass('loadmore');
+                $(this).addClass('hidemore');
+                $(this).html('Thu gọn');
+            }
+        });
+        $('.sidebar-service').on('click','.hidemore',function () {
+            var list = $(this).parent().find($('li'));
+            $(this).parent().find($('li:visible')).slice(5, list.length).hide();
+            $(this).removeClass('hidemore');
+            $(this).addClass('loadmore');
+            $(this).html('Xem thêm');
+        });
+        $(".close").click(function(event) {
+	    	$(this).parent().toggle();
+	    });
+    }
+    dismissModal () {
         if(this.props.ideaParams){
             var params = this.props.ideaParams
             if(this.props.subParams){
@@ -89,7 +117,7 @@ export default class IdeaComponent extends React.Component{
                 Router.pushRoute('idea.detail', {params: params})
             }
         }else{
-            Router.push(currentPath,asPath)
+            Router.push('/idea','/y-tuong')
         }
     }
    render(){
@@ -106,7 +134,13 @@ export default class IdeaComponent extends React.Component{
             <ImageModal
                 id={photoId}
                 slug={slug}
-                onDismiss={() => this.dismissModal(photoId)}
+                detail={true}
+                images={images}
+                currentPath={currentPath}
+                ideaParams={this.props.ideaParams}
+                subParams={this.props.subParams}
+                nextPageUrl={this.state.nextUrl}
+                onDismiss={() => this.dismissModal()}
             /> : ''
         }
         <div className="container-fluid service px-4 bg-gray">
@@ -142,13 +176,13 @@ export default class IdeaComponent extends React.Component{
                             images && images.map((value,index) =>( 
                         
                                 <div className="grid__item rounded p-1" key={index}>
-                                        <div class="card">
+                                        <div className="card">
                                             <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
                                             <a  onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
-                                            <img className="rounded card-img-top" src={value.medium_path} alt="{{ $element->name }}" />
+                                            <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
                                              </a>
-                                            <div class="card-body">
-                                                <h2 className="mt-2 font-13 text-black-100" data-title="{{ $element->name }}">{value.name}</h2>
+                                            <div className="card-body">
+                                                <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
                                                 <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
                                             </div>
                                         </div>
@@ -185,7 +219,9 @@ class Sidebar extends React.PureComponent{
                                 {
                                     value.data && mapObject(value.data, function (index, value) {
                                         return <li className="py-1 radio" key={index}>
+                                            <Link route={value.uri}>
                                             <a href={value.uri} className="font-13 font-weight-light text-gray"><label className="px-3">{value.name_tag}<span>{value.total_doc}</span></label></a>
+                                            </Link>
                                         </li>
                                     })
                                 }
@@ -203,7 +239,7 @@ class Sidebar extends React.PureComponent{
                             <div className="service-color mt-3">
                             {
                                 color && mapObject(color , function(index,value) {
-                                   return  <a href={value.uri} className="text-dark border border-gray" key={index}><span className="float-left {{ array_get(config('filter.idea.data_type.color.class_name'), $item->original) }}" data-toggle="tooltip" title={value.name_tag}></span></a>
+                                   return  <a href={value.uri} className="text-dark border border-gray" key={index}><span className={"float-left " + value.class} data-toggle="tooltip" title={value.name_tag}></span></a>
                                 })
                             }  
                             </div>

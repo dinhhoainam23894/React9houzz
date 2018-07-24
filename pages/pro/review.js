@@ -23,6 +23,9 @@ export default class extends React.Component {
                 , robots : data.seo.robots
                 , og_url : data.seo.url
                 , url_images : data.seo.url_images
+                , headerProjects : data.headerProjects
+                , headerCategories : data.headerCategories
+                , dataBase : data.dataBase
             }
       } 
       constructor(props){
@@ -35,18 +38,6 @@ export default class extends React.Component {
           review_details : []
         }
       } 
-    //   async getValue(){
-    //     let data;
-    //     await axios.get(APIURL+this.props.id+"?reviews")
-    //     .then(res => {
-    //          data = res.data;
-    //          this.setState({data: data , provider:data.provider ,reviews : data.reviews , review_details : data.review_details})
-    //     })
-    //     return data
-    //     }
-    //   componentDidMount = async () =>{
-    //     await this.getValue()
-    //   }
     render() {
         const { provider , id , slug ,reviews , review_details , data} = this.props 
         return (

@@ -3,9 +3,10 @@ import axios from 'axios'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'image/'
 import {rating}  from '../libraries/helpers'
 import $ from 'jquery';
-import Router from 'next/router';
-import Link from 'next/link'
+import {Router} from '../routes'
+import {Link} from '../routes'
 import 'isomorphic-fetch'
+import { throws } from 'assert';
 
 export default class Image extends React.Component{
     constructor(props) {
@@ -20,7 +21,11 @@ export default class Image extends React.Component{
             currentImage : {},
             image_thumb: {},
             idActive: null,
-            currentValue: null
+            currentValue: null,
+            detail : false,
+            listIdea : [],
+            nextPageUrl : null,
+            backPageUrl : null,
         }
        
         
@@ -42,6 +47,7 @@ export default class Image extends React.Component{
             })
     }
     componentWillMount(){
+       
         if(this.props.data){
             this.setState(
                 { 
@@ -59,18 +65,63 @@ export default class Image extends React.Component{
         if(!this.props.data){
             await this.getValue(this.props.id)
         }
+        this.setState({
+            detail : this.props.detail,
+            listIdea : this.props.images,
+            nextPageUrl : this.props.nextPageUrl
+        })
         this.setState({ currentImage : $('img.currentImage') })
         var image_thumb = $('.thumb');
         this.setState({image_thumb : image_thumb});
         var image_id = this.state.image.id;
-        image_thumb.each(function(){
-            if($(this).data('id') == image_id){
-                $(this).addClass('project-thumb--current');
-            }
-        });
+        if(this.state.detail == false){
+            image_thumb.each(function(){
+                if($(this).data('id') == image_id){
+                    $(this).addClass('project-thumb--current');
+                }
+            });
+        }
     }
-    nextImage= async (e ,id , slug) => {
+    nextImage = async (e ,id , slug) => {
         e.preventDefault()
+        if(this.state.detail == false){
+            this.nextProject(id,slug)
+        }else{
+            this.nextIdea(this.state.currentValue.id)
+        }
+    } 
+    pushStateUrl(id , slug){
+        if(this.props.ideaParams){
+            var params = this.props.ideaParams
+            if(this.props.subParams){
+                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+            }else{
+                Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
+            }
+        }else{
+            Router.push(`${this.props.currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+        }
+    }
+    nextIdea = async (id) => {
+        var startIndex = 0 ;
+        var currentIndex = 0;
+        $.each(this.state.listIdea,($key,$value) => {
+                if($value.id  == id){
+                    startIndex = $key;
+                }
+        }); 
+        if (startIndex == this.state.listIdea.length - 1) {
+            this.getFullImage(this.state.nextPageUrl, 'next');
+        }else{
+            currentIndex = startIndex + 1;
+            var nextImage = this.state.listIdea[currentIndex];
+            await this.pushStateUrl(nextImage.id,nextImage.slug)
+            await this.getValue(nextImage.id)
+        }
+        
+    }
+    
+    nextProject = async (id,slug) => {
         var image_size = this.state.image_thumb.length - 1;
         var currentIndex = this.state.currentImage;
         var lastIndex = 0;
@@ -92,10 +143,16 @@ export default class Image extends React.Component{
         var nextSlug  = lastImage.data('slug');
         this.setState({currentImage : $('img.currentImage')});
         this.setState({currentValue : this.state.images[lastIndex]})
-        // Router.push(`/project?photoId=${id}&id=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
     }
     backImage = async (e) => {
         e.preventDefault()
+       if(this.state.detail == false){
+           this.backProject()
+       }else{
+           this.backIdea(this.state.currentValue.id)
+       }
+    }
+    backProject = async () => {
         var image_size = this.state.image_thumb.length - 1;
         var currentIndex = this.state.currentImage;
         var lastIndex = 0;
@@ -113,10 +170,58 @@ export default class Image extends React.Component{
         });
         this.state.image_thumb.eq(lastIndex).addClass('project-thumb--current');
         var lastImage = this.state.image_thumb.eq(lastIndex);
-        var nextId = lastImage.data('id');
-        var nextSlug  = lastImage.data('slug');
         this.setState({currentImage : $('img.currentImage')});
         this.setState({currentValue : this.state.images[lastIndex]})
+    }
+    backIdea = async (id) => {
+        var startIndex = 0 ;
+        var currentIndex = 0;
+        $.each(this.state.listIdea,function($key,$value){
+                if($value.id  == id){
+                    startIndex = $key;
+                }
+        }); 
+        if (startIndex == 0 && this.state.backPageUrl != null) {
+            this.getFullImage(this.state.backPageUrl, 'back');
+        }else{
+            currentIndex = startIndex - 1;
+            var backImage = this.state.listIdea[currentIndex];
+            await this.pushStateUrl(backImage.id,backImage.slug)
+            await this.getValue(backImage.id)
+        }
+        
+    }
+    getFullImage = async (url, func) => {
+        switch (func) {
+            case 'next' :
+                await axios.get(url).then(response => {
+                    var data = response.data;
+                    this.setState({
+                        listIdea : data.images.data,
+                        nextPageUrl : data.images.next_page_url,
+                        backPageUrl : data.images.prev_page_url
+                    })
+                    var currentIndex = 0;
+                    let nextImage = this.state.listIdea[currentIndex];
+                    this.pushStateUrl(nextImage.id,nextImage.slug)
+                    this.getValue(nextImage.id)
+                });
+                break;
+            case 'back' :
+                axios.get(url).then(response => {
+                    var data = response.data;
+                    this.setState({
+                        listIdea : data.images.data,
+                        nextPageUrl : data.images.next_page_url,
+                        backPageUrl : data.images.prev_page_url
+                    })
+                    var currentIndex = this.state.listIdea.length - 1
+                    let backImage = this.state.listIdea[currentIndex];
+                    this.pushStateUrl(backImage.id,backImage.slug)
+                    this.getValue(backImage.id)
+                });
+                break;
+        }
     }
     render(){
         const { id , slug } = this.props
@@ -157,7 +262,7 @@ export default class Image extends React.Component{
                     images={this.state.images} 
                     image={this.state.image} 
                     tag={this.state.tag}
-                    changeValue = {(data)=>this.setState({currentValue: data})}
+                    changeValue = {(data)=>this.setState({currentValue: data , detail : false})}
                     currentValue={this.state.currentValue}
                     detail={this.props.detail}
                 ></ImageInfo>
@@ -205,8 +310,6 @@ class ImageInfo extends React.PureComponent{
             <div className="lbInfo">
                 <div>
                     <div className="lbInfoTab position-relative d-none d-md-block">
-                       {
-                           detail ? '' : 
                            <nav>
                                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i className="fa fa-home"></i></a>
@@ -214,7 +317,6 @@ class ImageInfo extends React.PureComponent{
                                     <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i className="fa fa-comment"></i></a>
                                 </div>
                             </nav>
-                       } 
                     </div>
                 </div>
                     <div className="content-mask">
@@ -224,7 +326,7 @@ class ImageInfo extends React.PureComponent{
                                     { provider.auth_avatar && <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" /> }
                                     <div className="media-body">
                                         <div className="media-content">
-                                            <Link prefetch href={ `/pro/${provider.id}-${provider.slug}` }><a className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a></Link>
+                                            <Link prefetch route={ `/pro/${provider.id}-${provider.slug}` }><a className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a></Link>
 
                                             <div className="star-rating font-14">
                                                 <span className="text-black-100 font-14">{provider.avg_rate && rating(provider.avg_rate)} ({ provider.total_rate ? provider.total_rate : 0 } người đánh giá)</span>

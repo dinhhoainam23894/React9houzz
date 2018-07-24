@@ -27,6 +27,9 @@ export default class Pro extends Component {
             , robots : data.seo.robots
             , og_url : data.seo.url
             , url_images : data.seo.url_images
+            , headerProjects : data.headerProjects
+            , headerCategories : data.headerCategories
+            , dataBase : data.dataBase
             }
   } 
   constructor(props){

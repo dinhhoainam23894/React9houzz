@@ -24,7 +24,10 @@ export default class IdeaFilter extends React.Component{
                     , canonical : data.seo.canonical
                     , robots : data.seo.robots
                     , og_url : data.seo.url
-                    , url_images : data.seo.url_images
+                    , url_images : data.seo.url_images 
+                    , headerProjects : data.headerProjects
+                    , headerCategories : data.headerCategories
+                    , dataBase : data.dataBase
                 }
     }
     constructor(props){

@@ -2,7 +2,7 @@ import React from 'react'
 import Meta from './meta'
 import Router from 'next/router'
 import Head from 'next/head'
-import Link from 'next/link'
+import {Link} from '../routes'
 import { Container, Row, Col, Nav, NavItem, Button, Form, NavLink, Collapse,
          Navbar, NavbarToggler, NavbarBrand, Modal, ModalHeader, ModalBody,
          ModalFooter, ListGroup, ListGroupItem } from 'reactstrap'
@@ -57,7 +57,17 @@ export default class extends React.Component {
   }
   
   render() {
-	  const {  title , des , canonical ,og_url , url_images , robots , css} = this.props
+    const { title ,
+            des ,
+            canonical ,
+            og_url , 
+            url_images , 
+            robots , 
+            css , 
+            headerProjects ,
+            headerCategories , 
+            dataBase
+          } = this.props
     return (
       <React.Fragment>
         <Head>
@@ -71,9 +81,6 @@ export default class extends React.Component {
           {og_url && <meta property="og:url" content={og_url} />}
           {url_images && <meta property="og:image" content={url_images} />}
           {robots && <meta name="robots" content={robots} />}
-          <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
-          <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-          <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
           <style dangerouslySetInnerHTML={{__html: css}}/>
 
         </Head>
@@ -84,9 +91,11 @@ export default class extends React.Component {
                   <span className="fa fa-2x fa-bars text-primary font-22"></span>
               </button>
               <div className="header-left">
-                <a className="navbar-brand" href="{{ route('home') }}">
+              <Link route="index">
+                <a className="navbar-brand">
                   <img src="/static/images/logo9houz.png" alt="Logo" title="9houzz.com" width="114"/>
                 </a>
+                </Link>
               </div> 
                   <a href="#" data-toggle="offcanvas" className="d-md-none"><i className="fa fa-user-circle-o font-22  py-3"></i></a>
               <div className="collapse navbar-collapse header-right my-2 nav-menu" id="collapse-header-login">
@@ -101,7 +110,7 @@ export default class extends React.Component {
               </div>
           </nav>
         </div> 
-        <NavHeader/>
+        <NavHeader headerProjects={headerProjects} headerCategories={headerCategories} dataBase={dataBase}/>
       </header>
       <Meta />
         <MainBody navmenu={this.props.navmenu} fluid={this.props.fluid} container={this.props.container}>
@@ -133,31 +142,7 @@ export class MainBody extends React.Component {
     } else {
       return (
         <Container fluid={this.props.fluid} style={{marginTop: '1em'}}>
-          <Row>
-            <Col xs="12" md="9" lg="10">
               {this.props.children}
-            </Col>
-            <Col xs="12" md="3" lg="2" style={{paddingTop: '1em'}}>
-              <h5 className="text-muted text-uppercase">Examples</h5>
-              <ListGroup>
-                <ListGroupItem>
-                  <Link prefetch href="/examples/authentication"><a href="/examples/authentication" className="d-block">Auth</a></Link>
-                </ListGroupItem>
-                <ListGroupItem>
-                    <Link prefetch href="/examples/async"><a href="/examples/async" className="d-block">Async</a></Link>
-                </ListGroupItem>
-                <ListGroupItem>
-                  <Link prefetch href="/examples/layout"><a href="/examples/layout" className="d-block">Layout</a></Link>
-                </ListGroupItem>
-                <ListGroupItem>
-                  <Link prefetch href="/examples/routing"><a href="/examples/routing" className="d-block">Routing</a></Link>
-                </ListGroupItem>
-                <ListGroupItem>
-                    <Link prefetch href="/examples/styling"><a href="/examples/styling" className="d-block">Styling</a></Link>
-                </ListGroupItem>
-              </ListGroup>
-            </Col>
-          </Row>
         </Container>
       )
     }

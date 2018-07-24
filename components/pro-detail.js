@@ -37,7 +37,7 @@ export default class extends React.Component {
 						<div className="star-rating">
 							{this.props.data.provider && rating(this.props.data.provider.avg_rate)}
 							<span className="text-yellow font-weight-bold"> 0(0) đánh giá) </span>
-                            <a href="{{ route('login') }}" className="text-gray-200"><span> Đánh giá chi tiết ></span></a>
+                            <a className="text-gray-200"><span> Đánh giá chi tiết ></span></a>
 						</div>
 					</div>
 					<div className="row position-relative justify-content-end">

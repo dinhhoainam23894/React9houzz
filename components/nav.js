@@ -1,5 +1,6 @@
-import Link from 'next/link'
-
+import {Link} from '../routes'
+import {mapObject , ucfirst} from '../libraries/helpers'
+import $ from 'jquery'
 export default class nav extends React.Component {
   constructor(props) {
     super(props);
@@ -9,12 +10,25 @@ export default class nav extends React.Component {
       isOpen: false
     };
   }
+  componentDidMount(){
+    $(document).ready(function(){
+      $('.nav-9houzz .nav-item').hover(function(){
+          $('.StoreNavigation-overlay').addClass('is-open');
+      },function(){
+          $('.StoreNavigation-overlay').removeClass('is-open');
+      });
+      $('[data-toggle="collapse"]').on('click', function() {
+          $(this).toggleClass("rotate-chevron");
+      });
+    })
+  }
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
   render() {
+    const  {headerProjects , headerCategories , dataBase} = this.props
     return (
       <div className="nav-9houzz container-fluid">
         <nav className="navbar navbar-light navbar-expand-md bg-faded container header-menu">
@@ -23,11 +37,24 @@ export default class nav extends React.Component {
               <li className="offset-0 offset-md-1 nav-item py-1 px-1">
                 <div className="d-flex w-100">
                   <i className="fa fa-lightbulb-o my-auto" aria-hidden="true"></i>
-                  <Link prefetch  href='/y-tuong'><a className="nav-link mr-auto">Ý TƯỞNG</a></Link>
+                  <Link prefetch route='/y-tuong'><a className="nav-link mr-auto">Ý TƯỞNG</a></Link>
                   <a className="navbar-toggler menu-toggle" data-toggle="collapse" data-target="#nav-product-2" aria-controls="collapse-login" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="fa fa-chevron-right"></span></a>
                 </div>
                 <div className="collapse navbar-collapse" id="nav-product-2">
+                <ul className="nav-child container list-unstyled" role="menu">
+                  {
+                    dataBase && dataBase.header_idea.map((value,index) => {
+                      return <li key={index}>
+                        <Link prefetch route={value.uri}> 
+                        <a ids={value.original} href={value.uri} className={`font-15 font-weight-bold text-uppercase nav-idea ${value.class}`}>
+                          {value.name_tag}
+                        </a>
+                        </Link>
+                      </li>
+                    })
+                  }
+                </ul>
                 </div>
               </li>
               <li className="nav-item py-1 px-1">
@@ -42,7 +69,11 @@ export default class nav extends React.Component {
                     <div className="row py-1 px-2 nav-service d-flex">
                       <div className="col-md-12 text-left">
                         <ul className="list-unstyled">
-                          <li className="mt-1"><a href="#" className="text-dark font-14">aaaa</a></li>
+                          {
+                              headerProjects && mapObject(headerProjects,function(index,value){
+                                return <li className="mt-1" key={value.id}><a href="#" className="text-dark font-14">{value.name.vi}</a></li>
+                              })
+                          }
                         </ul>
                       </div>
                     </div>
@@ -62,7 +93,11 @@ export default class nav extends React.Component {
                     <div className="row py-1 px-2 nav-service d-flex">
                       <div className="col-md-12 text-left">
                         <ul className="list-unstyled">
-                          <li className="mt-1"><a href="#" className="text-dark font-14">Cate</a></li>
+                        {
+                          headerCategories && mapObject(headerCategories,function(index,value){
+                            return <li className="mt-1" key={value.id}><a href="#" className="text-dark font-14">{value.name}</a></li>
+                          })
+                        }
                         </ul>
                       </div>
                     </div>
