@@ -156,7 +156,9 @@ export default class IdeaComponent extends React.Component{
                     {
                         listBadge ?
                         listBadge.map((value,index) => {
-                               return <a href={value.uri} key={index}><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                               return <Link prefetch route={value.uri} key={index}>
+                                <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                               </Link>
                         }) : ''
                     }
                         </div>
