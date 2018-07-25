@@ -19,7 +19,7 @@ import DocumentMeta from 'react-document-meta';
 // <style dangerouslySetInnerHTML={{__html: Styles}}/>
 //           <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
 export default class extends React.Component {
-
+  
   static propTypes() {
     return {
       session: React.PropTypes.object.isRequired,
@@ -30,17 +30,20 @@ export default class extends React.Component {
       signinBtn: React.PropTypes.boolean
     }
   }
-  
+ 
   constructor(props) {
     super(props)
     this.state = {
       navOpen: false,
       modal: false,
-      providers: null
+      providers: null,
+      domain : null
     }
     this.toggleModal = this.toggleModal.bind(this)
   }
-  
+  componentDidMount() {
+    this.setState({domain : window.location.origin})
+  }
   async toggleModal(e) {
     if (e) e.preventDefault()
 
@@ -75,14 +78,13 @@ export default class extends React.Component {
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <title>{this.props.title || '9houz'}</title>
           {des && <meta name='description' itemprop='description' content={des} />}
-          {canonical && <link rel="canonical" href={canonical} />}
+          {canonical && <link rel="canonical" href={process.env.CURRENTDOMAIN + canonical} />}
           {title && <meta property="og:title" content={title} />}
           {des && <meta property="og:description" content={des} />}
-          {og_url && <meta property="og:url" content={og_url} />}
+          {og_url && <meta property="og:url" content={process.env.CURRENTDOMAIN + og_url} />}
           {url_images && <meta property="og:image" content={url_images} />}
           {robots && <meta name="robots" content={robots} />}
           <style dangerouslySetInnerHTML={{__html: css}}/>
-
         </Head>
         <header>
         <div>

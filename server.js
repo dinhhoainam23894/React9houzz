@@ -7,7 +7,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handle = app.getRequestHandler()
 const handler = routes.getRequestHandler(app)
-
+var favicon = require('serve-favicon')
+var path = require('path')
 let cacheTime = 1000 * 60 * 60 // 1 hour
 
 if (dev) {
@@ -19,11 +20,17 @@ const ssrCache = new LRUCache({
   max: 100,
   maxAge: cacheTime
 })
-
 app.prepare().then(() => {
   const server = express()
-  express().use(handler).listen(3000)
+  server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
 
+  express().use(handler).listen(3000)
+  const faviconOptions = {
+    root: __dirname + '/static/'
+  };
+  server.get('/fav9houz.ico', (req, res) => (
+    res.status(200).sendFile('fav9houz.ico', faviconOptions)
+  ));
   // Use the `renderAndCache` utility defined below to serve pages
   // server.get('/y-tuong', (req, res) => {
   //   renderAndCache(req, res, '/idea' , req.params)

@@ -24,7 +24,7 @@ export default class IdeaFilter extends React.Component{
                     , canonical : data.seo.canonical
                     , robots : data.seo.robots
                     , og_url : data.seo.url
-                    , url_images : data.seo.url_images 
+                    , url_images : data.seo.url_image 
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase
@@ -42,6 +42,7 @@ export default class IdeaFilter extends React.Component{
                 ideaParams={params}
                 subParams={subParams}
                 asPath={url.asPath}
+                detail={true}
                 changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
                 path={url.pathname}>
             </IdeaComponent>

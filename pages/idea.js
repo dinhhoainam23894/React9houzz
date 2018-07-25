@@ -36,6 +36,7 @@ export default class extends React.Component{
                 photoId={this.props.url.query && this.props.url.query.photoId}
                 asPath={url.asPath} 
                 path={url.pathname}
+                detail={true}
                 changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
                 ></IdeaComponent>
        )

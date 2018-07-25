@@ -40,7 +40,7 @@ export default class Image extends React.Component{
                       project: data.project,
                       images: data.list_images ,
                       provider: data.provider,
-                      tag : data.tagSeo,
+                      tag : data.listTag,
                       currentValue: data.image
                     }
                 )
@@ -369,19 +369,22 @@ class ImageInfo extends React.PureComponent{
                                 <div className="pt-0">
                                 {  
                                     tag.breadcrumbs &&
-                                    <a href={tag.breadcrumbs.uri} className="mr-2">
+                                    <Link prefetch route={tag.breadcrumbs.uri}><a href={tag.breadcrumbs.uri} className="mr-2">
                                     <span className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
                                         { tag.breadcrumbs.name_tag }
-                                    </span></a>
+                                    </span></a></Link>
                                 }
-                                {   tag.other && tag.other.is_seo == 1 && 
-                                    <a href={tag.other.uri} className="mr-2">
-                                    <span className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
-                                    { tag.other.name_tag }
-                                    </span>
-                                    </a>
+                                {   tag.other  && tag.other.map((value,index) => (
+                                        value.is_seo == 1 ?
+                                        <Link prefetch route={value.uri}><a href={value.uri} className="mr-2" key={index}>
+                                            <span className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
+                                            { value.name_tag }
+                                            </span>
+                                        </a></Link> : ''
+                                    ))
+                                    
                                 }
-                                </div>
+                                </div>  
                             </div>
                             <div className="content-detail border-0">
                                 <div className="header row m-0">

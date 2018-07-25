@@ -15,14 +15,14 @@ export default class Image extends React.Component{
                     project: data.project,
                     images: data.list_images ,
                     provider: data.provider,
-                    tag : data.tagSeo,
+                    tag : data.listTag,
                     currentValue: data.image
                     , title : data.seo.title
                     , des : data.seo.des
                     , canonical : data.seo.canonical
                     , robots : data.seo.robots
                     , og_url : data.seo.url
-                    , url_images : data.seo.url_images
+                    , url_images : data.seo.url_image
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase
@@ -32,10 +32,13 @@ export default class Image extends React.Component{
         return(
             <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div id="lightbox">
-                <ImageDetail id={this.props.id} slug={this.props.slug} data={this.props}></ImageDetail>
-                <style jsx>{`
+                <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false}></ImageDetail>
+                <style global jsx>{`
                     #lightbox {
                         top: 105px !important;
+                    }
+                    .lbInfoTab #nav-tab {
+                       display : none !important;
                     }
                 `}</style>
             </div>

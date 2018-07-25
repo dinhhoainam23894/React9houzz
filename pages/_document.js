@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
         if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
         else window.addEventListener('load', loadDeferredStyles);`}} />
+        <link rel="icon" href="/static/fav9houz.ico" type="image/x-icon" />
         </Head>
         <body>
           <Main />

@@ -9,7 +9,6 @@ export default class extends React.Component {
     static async getInitialProps ({ query }) {
       const res = await fetch(APIURL+query.id+"?projects")
       const data = await res.json()
-      console.log(data)
       return { id: query.id 
               , data:data 
               , provider : data.provider 
@@ -21,7 +20,7 @@ export default class extends React.Component {
               , canonical : data.seo.canonical
               , robots : data.seo.robots
               , og_url : data.seo.url
-              , url_images : data.seo.url_images
+              , url_images : data.seo.url_image
               , headerProjects : data.headerProjects
               , headerCategories : data.headerCategories
               , dataBase : data.dataBase

@@ -41,20 +41,20 @@ export default class IdeaComponent extends React.Component{
     loadItems(page) {
         var self = this;
         var url = '';
-        if(this.state.nextUrl) {
-            url = this.state.nextUrl;
+        if(this.props.nextUrl) {
+            url = this.props.nextUrl;
         }
-        if(this.state.nextUrl != null){
+        if(this.props.nextUrl != null){
             axios.get(url)
             .then(function(resp) {
                 if(resp) {
-                    var tracks = self.state.images;
+                    var tracks = self.props.images;
                     var data = resp.data
                     data.images.data.map((track) => {
                         tracks.push(track);
                     });
                     if(data.images.next_page_url && data.images.next_page_url != null) {
-                        this.props.changeState(tracks,data.images.next_page_url)
+                        self.props.changeState(tracks,data.images.next_page_url)
                         // self.setState({
                         //     images: tracks,
                         //     nextUrl: data.images.next_page_url,
@@ -126,7 +126,7 @@ export default class IdeaComponent extends React.Component{
             gutter: '.grid__gutter-sizer',
             isOriginLeft: true
         };
-       const { images , h1 ,filter_default , colors , listBadge} = this.props
+       const { images , h1 ,filter_default , colors , listBadge , detail} = this.props
        const { photoId , slug } = this.props;
        return(
         <Layout {...this.props} navmenu={false} container={false} css={css}>
@@ -135,7 +135,7 @@ export default class IdeaComponent extends React.Component{
             <ImageModal
                 id={photoId}
                 slug={slug}
-                detail={true}
+                detail={detail}
                 images={images}
                 currentPath={currentPath}
                 ideaParams={this.props.ideaParams}
@@ -181,9 +181,11 @@ export default class IdeaComponent extends React.Component{
                                 <div className="grid__item rounded p-1" key={index}>
                                         <div className="card">
                                             <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
-                                            <a  onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
-                                            <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
-                                             </a>
+                                            <Link route="image" params={{ id: value.id , slug : value.slug }}>
+                                                <a onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
+                                                <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
+                                                </a>
+                                             </Link>
                                             <div className="card-body">
                                                 <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
                                                 <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>

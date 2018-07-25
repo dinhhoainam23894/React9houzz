@@ -1724,20 +1724,28 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 25
         }
-      })), _react.default.createElement("body", {
+      }), _react.default.createElement("link", {
+        rel: "icon",
+        href: "/static/fav9houz.ico",
+        type: "image/x-icon",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 36
         }
-      }, _react.default.createElement(_document.Main, {
+      })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 38
         }
-      }), _react.default.createElement(_document.NextScript, {
+      }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 39
+        }
+      }), _react.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
         }
       })));
     }

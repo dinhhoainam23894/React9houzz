@@ -1,11 +1,8 @@
 import React from 'react'
-// import Link from 'next/link'
 import {Link} from '../routes'
 import Layout from './layout'
-import axios from 'axios'
-import {rating}  from '../libraries/helpers'
-const APIURL = 'http://9houzz.stag:89/api/provider/'
-import {Helmet} from "react-helmet";
+import {rating  ,activePath}  from '../libraries/helpers'
+import classnames from "classnames";
 export default class extends React.Component {
 	state = {
 		data: {},
@@ -17,7 +14,8 @@ export default class extends React.Component {
 	}
    
   render() {
-	  const { provider_id,provider_slug } = this.props
+	  const { provider_id,provider_slug ,url } = this.props
+	  const { pathname } = url;
       return(
 		<Layout {...this.props} navmenu={false} container={false}>
         <div className="container-fluid px-4 bg-gray provider-main">
@@ -46,13 +44,13 @@ export default class extends React.Component {
 						</div>
 						<div className="col-md-9 col-lg-9 provider-nav">
 							<ul className="nav nav-tabs border-0" id="myTab" role="tablist">
-								<li className="nav-item position-relative {{ active_if('provider-about') }}">
+								<li className={classnames("nav-item position-relative", { active: activePath(pathname, `/pro`, { strict: true }) })}>
 									<Link prefetch route='pro.detail' params={{id: provider_id , slug : `${provider_slug}`}}><a className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
 								</li>
-								<li className="nav-item mx-1 position-relative {{ active_if('provider-project') }} {{ Request::is('du-an/*') ? 'active' : '' }}">
+								<li className={classnames("nav-item position-relative", { active: activePath(pathname, [`/pro/project` , '/project'], { strict: true }) })}>
                                 <Link prefetch route='pro.project' params={{id: provider_id , slug : `${provider_slug}`}}><a className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
 								</li>
-								<li className="nav-item mx-1 position-relative {{ active_if('provider-comment') }}">
+								<li className={classnames("nav-item position-relative", { active: activePath(pathname, `/pro/review`, { strict: true }) })}>
                                 <Link prefetch  route='pro.review' params={{id: provider_id , slug : `${provider_slug}`}}><a className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
 								</li>
 								<li className="nav-item mx-1 position-relative">
