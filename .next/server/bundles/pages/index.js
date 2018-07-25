@@ -443,162 +443,6 @@ exports.default = footer;
 
 /***/ }),
 
-/***/ "./components/head.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__("react"));
-
-var _head = _interopRequireDefault(__webpack_require__("next/head"));
-
-var _propTypes = __webpack_require__("prop-types");
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/head.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var defaultDescription = '';
-var defaultOGURL = '';
-var defaultOGImage = '';
-
-var Head = function Head(props) {
-  return _react.default.createElement(_head.default, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    }
-  }, _react.default.createElement("meta", {
-    charset: "UTF-8",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    }
-  }), _react.default.createElement("title", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    }
-  }, props.title || ''), _react.default.createElement("meta", {
-    name: "description",
-    content: props.description || defaultDescription,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    }
-  }), _react.default.createElement("meta", {
-    name: "viewport",
-    content: "width=device-width, initial-scale=1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    }
-  }), _react.default.createElement("link", {
-    rel: "icon",
-    sizes: "192x192",
-    href: "/static/touch-icon.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    }
-  }), _react.default.createElement("link", {
-    rel: "apple-touch-icon",
-    href: "/static/touch-icon.png",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    }
-  }), _react.default.createElement("link", {
-    rel: "mask-icon",
-    href: "/static/favicon-mask.svg",
-    color: "#49B882",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    }
-  }), _react.default.createElement("meta", {
-    property: "og:url",
-    content: props.url || defaultOGURL,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    }
-  }), _react.default.createElement("meta", {
-    property: "og:title",
-    content: props.title || '',
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    }
-  }), _react.default.createElement("meta", {
-    property: "og:description",
-    content: props.description || defaultDescription,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    }
-  }), _react.default.createElement("meta", {
-    name: "twitter:site",
-    content: props.url || defaultOGURL,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    }
-  }), _react.default.createElement("meta", {
-    name: "twitter:card",
-    content: "summary_large_image",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    }
-  }), _react.default.createElement("meta", {
-    name: "twitter:image",
-    content: props.ogImage || defaultOGImage,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    }
-  }), _react.default.createElement("meta", {
-    property: "og:image",
-    content: props.ogImage || defaultOGImage,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    }
-  }), _react.default.createElement("meta", {
-    property: "og:image:width",
-    content: "1200",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    }
-  }), _react.default.createElement("meta", {
-    property: "og:image:height",
-    content: "630",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24
-    }
-  }));
-};
-
-Head.propTypes = {
-  title: _propTypes.string,
-  description: _propTypes.string,
-  url: _propTypes.string,
-  ogImage: _propTypes.string
-};
-var _default = Head;
-exports.default = _default;
-
-/***/ }),
-
 /***/ "./components/layout.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1912,51 +1756,117 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _style = _interopRequireDefault(__webpack_require__("styled-jsx/style"));
-
-var _react = _interopRequireDefault(__webpack_require__("react"));
-
-var _link = _interopRequireDefault(__webpack_require__("next/link"));
-
-var _head = _interopRequireDefault(__webpack_require__("./components/head.js"));
-
-var _nav = _interopRequireDefault(__webpack_require__("./components/nav.js"));
+var _regenerator = _interopRequireDefault(__webpack_require__("@babel/runtime/regenerator"));
 
 var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
+
+var _react = _interopRequireDefault(__webpack_require__("react"));
 
 var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/index.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default() {
-  return _react.default.createElement(_layout.default, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var APIURL = "http://9houzz.stag:89/" + "api/" + 'home/';
+
+var _default =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(_default, _React$Component);
+
+  function _default() {
+    _classCallCheck(this, _default);
+
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).apply(this, arguments));
+  }
+
+  _createClass(_default, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_layout.default, _extends({}, this.props, {
+        navmenu: false,
+        container: false,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      }), _react.default.createElement("img", {
+        src: "/static/images/banner-background.png",
+        alt: "",
+        "class": "img-fluid",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        }
+      }));
     }
-  }, _react.default.createElement("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    className: "jsx-204552899"
-  }, _react.default.createElement("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    className: "jsx-204552899" + " " + "hero"
-  }, _react.default.createElement("h1", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    className: "jsx-204552899" + " " + "title"
-  }, "Welcome to 9houzz!")), _react.default.createElement(_style.default, {
-    styleId: "204552899",
-    css: ".hero.jsx-204552899{width:100%;color:#333;}.title.jsx-204552899{margin:0;width:100%;padding-top:80px;line-height:1.15;font-size:48px;}.title.jsx-204552899,.description.jsx-204552899{text-align:center;}.row.jsx-204552899{max-width:880px;margin:80px auto 40px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:space-around;-webkit-justify-content:space-around;-ms-flex-pack:space-around;justify-content:space-around;}.card.jsx-204552899{padding:18px 18px 24px;width:220px;text-align:left;-webkit-text-decoration:none;text-decoration:none;color:#434343;border:1px solid #9B9B9B;}.card.jsx-204552899:hover{border-color:#067df7;}.card.jsx-204552899 h3.jsx-204552899{margin:0;color:#067df7;font-size:18px;}.card.jsx-204552899 p.jsx-204552899{margin:0;padding:12px 0 0;font-size:13px;color:#333;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVdvQixBQUVjLEFBSUYsQUFPUyxBQUdGLEFBT08sQUFRRixBQUdaLEFBS0EsU0FoQ0UsQUE0QkcsQUFLRyxFQXJDTixLQWNXLEVBSkgsRUFMRixDQXVCSyxDQTVCVixDQXFCQSxBQVlHLEdBS0EsU0FoQkMsRUFoQkMsQ0FTSixBQWtCRyxHQU1MLFVBaEJVLENBZ0JULEVBaENHLGVBQUMsZ0NBaUJGLFdBUkssR0FTTSx5QkFBQyx5Q0FSRywySEFBQyIsImZpbGUiOiJwYWdlcy9pbmRleC5qcyIsInNvdXJjZVJvb3QiOiIvQXBwbGljYXRpb25zL01BTVAvaHRkb2NzL215LW5leHQtYXBwIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJ1xuaW1wb3J0IEhlYWQgZnJvbSAnLi4vY29tcG9uZW50cy9oZWFkJ1xuaW1wb3J0IE5hdiBmcm9tICcuLi9jb21wb25lbnRzL25hdidcbmltcG9ydCBMYXlvdXQgZnJvbSAnLi4vY29tcG9uZW50cy9sYXlvdXQnXG5cbmV4cG9ydCBkZWZhdWx0ICgpID0+IChcbiAgPExheW91dD5cbiAgICA8ZGl2PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlcm9cIj5cbiAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwidGl0bGVcIj5XZWxjb21lIHRvIDlob3V6eiE8L2gxPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAgIC5oZXJvIHtcbiAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgY29sb3I6ICMzMzM7XG4gICAgICAgICAgfVxuICAgICAgICAgIC50aXRsZSB7XG4gICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIHBhZGRpbmctdG9wOiA4MHB4O1xuICAgICAgICAgICAgbGluZS1oZWlnaHQ6IDEuMTU7XG4gICAgICAgICAgICBmb250LXNpemU6IDQ4cHg7XG4gICAgICAgICAgfVxuICAgICAgICAgIC50aXRsZSwgLmRlc2NyaXB0aW9uIHtcbiAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICB9XG4gICAgICAgICAgLnJvdyB7XG4gICAgICAgICAgICBtYXgtd2lkdGg6IDg4MHB4O1xuICAgICAgICAgICAgbWFyZ2luOiA4MHB4IGF1dG8gNDBweDtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5jYXJkIHtcbiAgICAgICAgICAgIHBhZGRpbmc6IDE4cHggMThweCAyNHB4O1xuICAgICAgICAgICAgd2lkdGg6IDIyMHB4O1xuICAgICAgICAgICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICAgICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgICAgIGNvbG9yOiAjNDM0MzQzO1xuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzlCOUI5QjtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmNhcmQ6aG92ZXIge1xuICAgICAgICAgICAgYm9yZGVyLWNvbG9yOiAjMDY3ZGY3O1xuICAgICAgICAgIH1cbiAgICAgICAgICAuY2FyZCBoMyB7XG4gICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgICBjb2xvcjogIzA2N2RmNztcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMThweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmNhcmQgcCB7XG4gICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgICBwYWRkaW5nOiAxMnB4IDAgMDtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTNweDtcbiAgICAgICAgICAgIGNvbG9yOiAjMzMzO1xuICAgICAgICAgIH1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgIDwvZGl2PlxuICA8L0xheW91dD5cbiAgXG4pXG5cbiJdfQ== */\n/*@ sourceURL=pages/index.js */"
-  })));
-};
+  }], [{
+    key: "getInitialProps",
+    value: function () {
+      var _getInitialProps = _asyncToGenerator(
+      /*#__PURE__*/
+      _regenerator.default.mark(function _callee(_ref) {
+        var query, res, data;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                query = _ref.query;
+                _context.next = 3;
+                return fetch(APIURL);
+
+              case 3:
+                res = _context.sent;
+                _context.next = 6;
+                return res.json();
+
+              case 6:
+                data = _context.sent;
+                return _context.abrupt("return", {
+                  title: data.seo.title,
+                  des: data.seo.des,
+                  canonical: data.seo.canonical,
+                  robots: data.seo.robots,
+                  og_url: data.seo.url,
+                  url_images: data.seo.url_image,
+                  headerProjects: data.headerProjects,
+                  headerCategories: data.headerCategories,
+                  dataBase: data.dataBase
+                });
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function getInitialProps(_x) {
+        return _getInitialProps.apply(this, arguments);
+      };
+    }()
+  }]);
+
+  return _default;
+}(_react.default.Component);
 
 exports.default = _default;
 
@@ -2022,13 +1932,6 @@ module.exports = require("next/head");
 
 /***/ }),
 
-/***/ "next/link":
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
-
-/***/ }),
-
 /***/ "next/router":
 /***/ (function(module, exports) {
 
@@ -2047,13 +1950,6 @@ module.exports = require("nprogress");
 /***/ (function(module, exports) {
 
 module.exports = require("path-to-regexp");
-
-/***/ }),
-
-/***/ "prop-types":
-/***/ (function(module, exports) {
-
-module.exports = require("prop-types");
 
 /***/ }),
 

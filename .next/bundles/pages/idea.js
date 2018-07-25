@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/idea', function() {
           var comp =
-      webpackJsonp([8],{
+      webpackJsonp([9],{
 
 /***/ "./components/IdeaComponent.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -42066,7 +42066,7 @@ module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sa
 
 /***/ }),
 
-/***/ 7:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/idea.js");
@@ -42074,7 +42074,7 @@ module.exports = __webpack_require__("./pages/idea.js");
 
 /***/ })
 
-},[7])
+},[8])
           return { page: comp.default }
         })
       ;
