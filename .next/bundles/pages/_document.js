@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/_document', function() {
           var comp =
-      webpackJsonp([1],{
+      webpackJsonp([2],{
 
 /***/ "./node_modules/@babel/runtime/helpers/extends.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -1693,6 +1693,7 @@ function (_Document) {
     key: "render",
     value: function render() {
       return _react.default.createElement("html", {
+        lang: "vi",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 20

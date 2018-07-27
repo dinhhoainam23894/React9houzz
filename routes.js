@@ -12,6 +12,8 @@ module.exports = routes()                           // ----   ----      -----
 .add('pro.project','/pro/:id-:slug/d%E1%BB%B1-%C3%A1n','pro/project')
 .add('pro.review','/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t','pro/review')
 .add('project.detail','/du-an/:id-:slug','project/index')
+.add('static','/about/:slug','static-page')
+
 
                
 

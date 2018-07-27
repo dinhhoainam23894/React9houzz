@@ -24,7 +24,19 @@ export default class extends React.Component{
                     <div>
                         <a ref={el => (this._lbClose = el)} className="lbCloseButton lbClose" href=""  onClick={(e) => this.dismiss(e)}></a>
                     </div>
-                    
+                    <style global jsx>
+                        {`
+                        #lightbox
+                            {
+                            overflow-x: scroll !important;
+                            }
+
+                            html
+                            {
+                                height: 100%;
+                                overflow: hidden;
+                            }`}
+                    </style>
                 </div>
                 <ImageDetail {...this.props} id={this.props.id} slug={slug}></ImageDetail>
             </div>

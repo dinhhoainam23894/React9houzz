@@ -18,7 +18,7 @@ export default class extends React.Component{
                     , canonical : data.seo.canonical
                     , robots : data.seo.robots
                     , og_url : data.seo.url
-                    , url_images : data.seo.url_images 
+                    , url_images : data.seo.url_image
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase
@@ -26,6 +26,10 @@ export default class extends React.Component{
     }
     constructor(props){
         super(props)
+        this.state = {
+            nextUrl : this.props.nextUrl,
+            images : this.props.images
+        }
     }
     
    render(){
@@ -36,6 +40,8 @@ export default class extends React.Component{
                 photoId={this.props.url.query && this.props.url.query.photoId}
                 asPath={url.asPath} 
                 path={url.pathname}
+                nextUrl={this.state.nextUrl}
+                images={this.state.images}
                 detail={true}
                 changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
                 ></IdeaComponent>

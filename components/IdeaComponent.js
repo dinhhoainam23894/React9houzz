@@ -37,13 +37,16 @@ export default class IdeaComponent extends React.Component{
     //         listBadge : this.props.listBadge ? this.props.listBadge : []
     //     })
     // }
-    componentWillReceiveProps(nextProps){}
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
+    }
     loadItems(page) {
         var self = this;
         var url = '';
         if(this.props.nextUrl) {
             url = this.props.nextUrl;
         }
+        console.log(url)
         if(this.props.nextUrl != null){
             axios.get(url)
             .then(function(resp) {

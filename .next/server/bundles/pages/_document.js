@@ -138,6 +138,7 @@ function (_Document) {
     key: "render",
     value: function render() {
       return _react.default.createElement("html", {
+        lang: "vi",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 20

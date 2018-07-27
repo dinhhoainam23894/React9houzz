@@ -19,14 +19,14 @@ export default class Pro extends Component {
     return { id: query.id 
             , data:dataProject 
             , provider : dataProject.provider 
-            , projects : dataProject.projects
+            , projects : dataProject.projects.data
             , h1 : data.seo.h1 
             , title : data.seo.title
             , des : data.seo.des
             , canonical : data.seo.canonical
             , robots : data.seo.robots
             , og_url : data.seo.url
-            , url_images : data.seo.url_images
+            , url_images : data.seo.url_image
             , headerProjects : data.headerProjects
             , headerCategories : data.headerCategories
             , dataBase : data.dataBase
@@ -87,7 +87,7 @@ export default class Pro extends Component {
     }
     if(data.project_count > 6){
         moreProject.push(<div className="col-md-4 offset-md-4 mt-3" key="project_count">
-            <Link href={ `/pro/${this.props.id}-${provider.slug}/dự-án` }><button className="btn btn-outline-primary w-100 font-weight-normal bg-white">Xem thêm <span className="number-project">({data.project_count - 6})</span> dự án</button></Link>
+            <Link href={ `/pro/${this.props.id}-${provider.slug}/dự-án` }><a className="btn btn-outline-primary w-100 font-weight-normal bg-white">Xem thêm <span className="number-project">({data.project_count - 6})</span> dự án</a></Link>
         </div>);
     }
     

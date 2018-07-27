@@ -19,7 +19,6 @@ export default class Project extends Component {
 
         const resPro = await fetch(APIPRO+data.project.user_id)
         const dataPro = await resPro.json()
-        console.log(dataPro)
         return { id: query.id 
                 , data:dataPro 
                 , provider : dataPro.provider 
@@ -28,10 +27,10 @@ export default class Project extends Component {
                 , slug : query.slug
                 , title : data.seo.title
                 , des : data.seo.des
-                , canonical : dataPro.seo.canonical
-                , robots : dataPro.seo.robots
-                , og_url : dataPro.seo.url
-                , url_images : dataPro.seo.url_image
+                , canonical : data.seo.canonical
+                , robots : data.seo.robots
+                , og_url : data.seo.url
+                , url_images : data.seo.url_image
                 , headerProjects : dataPro.headerProjects
                 , headerCategories : dataPro.headerCategories
                 , dataBase : dataPro.dataBase
@@ -54,7 +53,6 @@ export default class Project extends Component {
         Router.pushRoute('project.detail', {id: id , slug : `${slug}`})
       }
     render() { 
-        console.log('project',this.props)
         const { url , provider ,data , project, images} = this.props
         return (
             <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
@@ -93,13 +91,9 @@ export default class Project extends Component {
                                                         <div className="row w-100 m-0">
                                                             <div className="px-0">
                                                                 <div className="project-image position-relative">
-                                                                    <Link href={`/anh/?id=${value.id}`}>
+                                                                    <Link route='image' params={{id: value.id , slug : `${value.slug}`}}>
                                                                         <a className='photoLink' onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
-                                                                            <picture>
-                                                                                <source srcSet={value.large_path} media="(max-width: 768px)" />
-                                                                                <source srcSet={value.large_path} media="(min-width: 768px)" />
-                                                                                <img srcSet={value.large_path} alt={value.name} />
-                                                                            </picture>
+                                                                            <img src={value.large_path} alt={value.name} />
                                                                         </a>
                                                                     </Link>
                                                                     <div className="project-action">

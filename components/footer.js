@@ -1,3 +1,4 @@
+import {Link} from '../routes'
 export default class footer extends React.Component{
     
     render(){
@@ -24,10 +25,10 @@ export default class footer extends React.Component{
                                 <div className="link_widgets">
                                     <div className="row">
                                         <div className="col-lg-12">
-                                            <a href="{{ route('static_page',['page' => str_slug('giới thiệu')]) }}" target="_blank" title="Giới thiệu">Giới thiệu</a>
+                                            <Link prefetch route='/about/gioi-thieu'><a href="#" target="_blank" title="Giới thiệu">Giới thiệu</a></Link>
                                             <a href="#" target="_blank" title="Liên hệ" rel="nofollow">Liên hệ</a>
-                                            <a href="{{ route('static_page',['page' => str_slug('Chính sách bảo mật')]) }}" target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a>
-                                            <a href="{{ route('static_page',['page' => str_slug('Điều khoản sử dụng')]) }}" target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a>
+                                            <Link prefetch route='/about/chinh-sach-bao-mat'><a href="#" target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a></Link>
+                                            <Link prefetch route='/about/dieu-khoan-su-dung'><a href="#" target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a></Link>
                                         </div>
                                     </div>
                                 </div>

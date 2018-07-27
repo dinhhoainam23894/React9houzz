@@ -7,12 +7,12 @@ const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 import css from './project.css'
 export default class extends React.Component {
     static async getInitialProps ({ query }) {
-      const res = await fetch(APIURL+query.id+"?projects")
+      const res = await fetch(APIURL+query.id+"?projects&limit=21")
       const data = await res.json()
       return { id: query.id 
               , data:data 
               , provider : data.provider 
-              , projects : data.projects 
+              , projects : data.projects
               , slug : query.slug
               , h1 : data.h1 
               , title : data.seo.title
@@ -31,16 +31,29 @@ export default class extends React.Component {
       this.state = {
         data : {},
         provider : {},
-        projects : {},
+        projects : this.props.projects.data,
+        page : this.props.projects.next_page_url,
       }
-    } 
+      // this.handlePageChange = this.handlePageChange.bind(this);
+    }
+    onLoadMore = async(e,page) => {
+      e.preventDefault()
+      const res = await fetch(page+`&projects&limit=21`)
+      const data = await res.json()
+      var tracks = this.state.projects
+      data.projects.data.map((track) => {
+          tracks.push(track);
+      });
+     this.setState({projects : tracks , page : data.projects.next_page_url})
+    }
+   
       render () {
         const { provider , projects , id , slug , data} = this.props
         var list_project = [];
           const moreProject = [];
-          if(projects.length > 0){
-              projects.map(function(e){
-                list_project.push(<div className="col-12 col-md-4 col-lg-4 p-3" key={e.id}>
+          if(this.state.projects.length > 0){
+              this.state.projects.map(function(e,index){
+                list_project.push(<div className="col-12 col-md-4 col-lg-4 p-3" key={index}>
                     <ListProject project={e}></ListProject>
                 </div>);
               })
@@ -52,7 +65,13 @@ export default class extends React.Component {
                 <div className="row">
                       {list_project}
                 </div>
+                { this.state.page &&
+                  <div className="loadmore justify-content-center d-flex"> 
+                  <button className="btn btn-primary" onClick={(e) => this.onLoadMore(e,this.state.page)}>Xem thêm</button>
+                  </div>
+                }
               </div>
+
             </ProviderDetail>
         );
       }

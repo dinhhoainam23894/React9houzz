@@ -36,6 +36,7 @@ export default class Image extends React.Component{
                 <style global jsx>{`
                     #lightbox {
                         top: 105px !important;
+                        z-index : 1 !important;
                     }
                     .lbInfoTab #nav-tab {
                        display : none !important;

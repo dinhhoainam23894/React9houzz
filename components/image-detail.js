@@ -47,7 +47,6 @@ export default class Image extends React.Component{
             })
     }
     componentWillMount(){
-       
         if(this.props.data){
             this.setState(
                 { 
@@ -236,7 +235,8 @@ export default class Image extends React.Component{
                     </div>
                     <div className="image">
                         {
-                           this.state.currentValue &&  <img className="image-detail" src={ this.state.currentValue.path_for_size} fallback="image.path_for_size" alt="image.name" />
+                           this.state.currentValue &&  
+                           <img className="image-detail" src={ this.state.currentValue.path_for_size} alt={this.state.currentValue.name} />
                         }
                     </div>
                     <div className="lb-navDiv">
@@ -253,7 +253,8 @@ export default class Image extends React.Component{
                     </div>
                     <div id="lbActions">
                         <div id="lbActionCenter" className="offset-0 offset-md-3 col-12 col-md-6 text-center text-nowrap">
-                            <button className="btn btn-primary med save text-white" title="Save To Ideabook" compid="addToIdeabook"><i className="fa fa-plus pr-2"></i>Lưu ảnh</button><button className="btn bg-black-100 med email text-white" title="send email" compid="addToIdeabook"><i className="fa fa-envelope-o pr-2"></i>Gửi Email</button>
+                            <button className="btn btn-primary med save text-white mr-3" title="Save To Ideabook" compid="addToIdeabook"><i className="fa fa-plus pr-2"></i>Lưu ảnh</button>
+                            <button className="btn bg-black-100 med email text-white" title="send email" compid="addToIdeabook"><i className="fa fa-envelope-o pr-2"></i>Gửi Email</button>
                         </div>
                     </div>
                 </div>
@@ -262,6 +263,7 @@ export default class Image extends React.Component{
                     images={this.state.images} 
                     image={this.state.image} 
                     tag={this.state.tag}
+                    project={this.state.project}
                     changeValue = {(data)=>this.setState({currentValue: data , detail : false})}
                     currentValue={this.state.currentValue}
                     detail={this.props.detail}
@@ -336,8 +338,17 @@ class ImageInfo extends React.PureComponent{
                                     </div>
                                 </div>
                             </div>
+                           
                             <div className="content-detail border-0">
-                                <h2 className="font-15 text-black-100">{currentValue && currentValue.name}</h2>
+                            <ol className="breadcrumb bg-white pl-0 mb-0">
+                                <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
+                                    <Link prefetch route={'y-tuong'}><a  itemProp="url"><span itemProp="title" className="font-13">Tất cả</span></a></Link>
+                                </li>
+                                {tag.breadcrumbs && <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
+                                    <Link prefetch route={tag.breadcrumbs.uri}><a  itemProp="url" href="/y-tuong/m%E1%BA%ABu-thi%E1%BA%BFt-k%E1%BA%BF-Ph%C3%B2ng-t%E1%BA%AFm"><span itemProp="title" className="font-13">{tag.breadcrumbs.name_tag}</span></a></Link>
+                                </li>}
+                            </ol>
+                                <h1 className="font-15 text-black-100">{currentValue && currentValue.name}</h1>
                                 <div className="media-content" id="readMore">
                                         <div className="readMoreWrapper">
                                             <p id="readMoreText" className="font-13 normalText">
@@ -351,14 +362,18 @@ class ImageInfo extends React.PureComponent{
                                 </div>
                             </div>
                             <div className="content-detail border-0">
-                                <h2 className="font-14"><a href="project.url_path" className="text-black-100">Các ảnh trong cùng dự án</a></h2>
+                                <h2 className="font-14">
+                                <Link prefetch route={ `/du-an/${project.id}-${project.slug}` }>
+                                 <a className="text-black-100">Ảnh trong "{project.name}"</a>
+                                </Link>
+                                </h2>
                                 <ul className="list-unstyled clearfix thumb-grid grid-5">
                                    {
                                        images && images.map((value,index) =>(
                                             <li className="thumb project-thumb" data-id={value.id} ref="'image'+image.id" data-slug={value.slug} key={index}>
                                                 <a className="link" onClick={(e) =>  this.changeImage(e,value)}>
                                                     <div className="img-responsive-wrapper img-responsive-square progressive">
-                                                        {value.small_path && <img src={value.small_path} alt="image.name" className="img-respontive" id="'image-'+image.id" width="71" height="71"></img>}
+                                                        {value.small_path && <img src={value.small_path} alt={value.name} className="img-respontive" id={"image-"+value.id} width="71" height="71"></img>}
                                                     </div>
                                                 </a>
                                             </li>

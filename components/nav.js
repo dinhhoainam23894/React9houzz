@@ -129,10 +129,10 @@ export default class nav extends React.Component {
                     <div className="row py-1 px-2 nav-service d-flex">
                       <div className="col-md-12 text-left">
                         <ul className="list-unstyled">
-                          <li><a  target="_blank" title="Giới thiệu">Giới thiệu</a></li>
-                          <li><a  target="_blank" title="Liên hệ" rel="nofollow">Liên hệ</a></li>
-                          <li><a  target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a></li>
-                          <li><a  target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a></li>
+                          <li><Link prefetch route='/about/gioi-thieu'><a target="_blank" title="Giới thiệu">Giới thiệu</a></Link></li>
+                          <li><a target="_blank" title="Liên hệ" rel="nofollow">Liên hệ</a></li>
+                          <li><Link prefetch route='/about/chinh-sach-bao-mat'><a href="#" target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a></Link></li>
+                          <li><Link prefetch route='/about/dieu-khoan-su-dung'><a href="#" target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a></Link></li>
                         </ul>
                       </div>
                     </div>

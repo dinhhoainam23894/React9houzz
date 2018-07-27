@@ -23,19 +23,19 @@ export default class extends React.Component{
             <div className="bg-white py-2 px-3 border border-gray">
                 <div className="provider-statistic row border-dot">
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_like ? this.props.provider.total_like : 0}</h3>
+                        <p className="text-primary font-weight-normal">{this.props.provider.total_like ? this.props.provider.total_like : 0}</p>
                         <p className="font-12 sidebar-label">Cảm ơn</p>
                     </div>
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_rate ? this.props.provider.total_rate : 0}</h3>
+                        <p className="text-primary font-weight-normal">{this.props.provider.total_rate ? this.props.provider.total_rate : 0}</p>
                         <p className="font-12 sidebar-label">Nhận xét</p>
                     </div>
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_page_view ? this.props.provider.total_page_view : 0}</h3>
+                        <p className="text-primary font-weight-normal">{this.props.provider.total_page_view ? this.props.provider.total_page_view : 0}</p>
                         <p className="font-12 sidebar-label">Lượt xem</p>
                     </div>
                     <div className="col-md-3 col-3 p-0 text-center">
-                        <h3 className="text-primary font-weight-normal">{this.props.provider.total_follow ? this.props.provider.total_follow : 0}</h3>
+                        <p className="text-primary font-weight-normal">{this.props.provider.total_follow ? this.props.provider.total_follow : 0}</p>
                         <p className="font-12 sidebar-label">Theo dõi</p>
                     </div>
                 </div>
@@ -45,9 +45,9 @@ export default class extends React.Component{
                                 <i className="fa fa-phone text-secondary"></i>
                                 <span>{this.props.provider.phone}</span>
                             </li>
-                            <li>
+                            <li itemScope itemType="http://schema.org/PostalAddress" itemProp="address">
                                 <i className="fa fa-map-marker text-secondary"></i>
-                                <span>{this.props.provider.address}</span>
+                                <span itemProp="streetAddress">{this.props.provider.address}</span>
                             </li>
                             <li>
                                 <i className="fa fa-envelope-o text-secondary"></i>

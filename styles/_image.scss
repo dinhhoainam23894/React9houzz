@@ -352,13 +352,16 @@
   
   #readMoreText{
     width: 100%;
-    height: 150px;
+    height: 100px;
     overflow: hidden;
     padding: 0 0 20px;
     position: relative;
     color: #333 !important;
     font-weight: normal !important;
     background-color: white;
+    p , span{
+      line-height: 23px !important;
+    }
   }
   
   .readMoreGradient {

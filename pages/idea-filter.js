@@ -32,8 +32,13 @@ export default class IdeaFilter extends React.Component{
     }
     constructor(props){
         super(props)
+        this.state = {
+            nextUrl : this.props.nextUrl,
+            images : this.props.images
+        }
     }
     render(){
+        console.log(this.props.nextUrl)
         const { params , url ,subParams} = this.props   
         return(
             <IdeaComponent 
@@ -42,6 +47,8 @@ export default class IdeaFilter extends React.Component{
                 ideaParams={params}
                 subParams={subParams}
                 asPath={url.asPath}
+                nextUrl={this.state.nextUrl}
+                images={this.state.images}
                 detail={true}
                 changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
                 path={url.pathname}>

@@ -16,10 +16,12 @@ export default class extends React.Component {
   render() {
 	  const { provider_id,provider_slug ,url } = this.props
 	  const { pathname } = url;
+	  const itemStar = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "itemScope itemType='http://schema.org/AggregateRating'" : ''
+	  const itemStarProp = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? `<meta  itemProp="ratingValue" content=${this.props.data.provider.avg_rate}>` : null
       return(
 		<Layout {...this.props} navmenu={false} container={false}>
         <div className="container-fluid px-4 bg-gray provider-main">
-		<div className="bg-white">
+		<div className="bg-white" itemScope itemType="http://schema.org/localbusiness"> 
 			<div className="border border-right-0 border-left-0 border-gray provider-details">
 				<div className="banner position-relative p-0">
 					<img src={this.props.data.cover && this.props.data.cover} className="w-100"/>
@@ -29,11 +31,16 @@ export default class extends React.Component {
 					<div className="position-absolute provider-info">
 						<Link prefetch route='pro.detail' params={{id: provider_id , slug : `${provider_slug}`}}>
 							<a className="provider-name text-white font-weight-bold">
-								<h1 className="font-22 mb-1">{ this.props.data.provider && this.props.data.provider.name }</h1>	
+							{ activePath(pathname, `/pro`, { strict: true }) ?
+								<h1 className="font-22 mb-1" itemProp="name">{ this.props.data.provider && this.props.data.provider.name }</h1>	
+								:
+								<p className="font-22 mb-1" itemProp="name">{ this.props.data.provider && this.props.data.provider.name }</p>	
+							}
 							</a>
 						</Link>
-						<div className="star-rating">
+						<div className={"star-rating " + itemStar}>
 							{this.props.data.provider && rating(this.props.data.provider.avg_rate)}
+							{itemStarProp}
 							<span className="text-yellow font-weight-bold"> 0(0) đánh giá) </span>
                             <a className="text-gray-200"><span> Đánh giá chi tiết ></span></a>
 						</div>

@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
   render() {
     
     return (
-      <html>
+      <html lang="vi">
         <Head>
         <noscript id="deferred-styles">
             <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
