@@ -198,7 +198,7 @@ export default class IdeaComponent extends React.Component{
                                             <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
                                             </a>
                                             </Link>
-                                        <div className="card-body idea-content px-0 pt-1">
+                                        <div className="card-body idea-content px-1 pt-1">
                                             <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
                                             <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
                                         </div>
