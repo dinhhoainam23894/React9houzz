@@ -1,7 +1,7 @@
 module.exports =
-__NEXT_REGISTER_PAGE('/idea', function() {
+__NEXT_REGISTER_PAGE('/idea-filter', function() {
           var comp =
-      webpackJsonp([6],{
+      webpackJsonp([7],{
 
 /***/ "./components/IdeaComponent.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -42023,7 +42023,7 @@ module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server
 
 /***/ }),
 
-/***/ "./pages/idea.js":
+/***/ "./pages/idea-filter.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42040,9 +42040,7 @@ var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/in
 
 var _IdeaComponent = _interopRequireDefault(__webpack_require__("./components/IdeaComponent.js"));
 
-__webpack_require__("./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/idea.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/idea-filter.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42066,12 +42064,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var APIURL = "http://api.9houz.com/" + "api/";
 
-var _default =
+var IdeaFilter =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(_default, _React$Component);
+  _inherits(IdeaFilter, _React$Component);
 
-  _createClass(_default, null, [{
+  _createClass(IdeaFilter, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
@@ -42083,15 +42081,33 @@ function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
-                _context.next = 3;
-                return fetch(APIURL + "y-tuong");
+                res = null;
 
-              case 3:
+                if (!query.f) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _context.next = 5;
+                return fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params) + "?f=".concat(query.f));
+
+              case 5:
                 res = _context.sent;
-                _context.next = 6;
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.next = 10;
+                return fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params));
+
+              case 10:
+                res = _context.sent;
+
+              case 11:
+                _context.next = 13;
                 return res.json();
 
-              case 6:
+              case 13:
                 data = _context.sent;
                 return _context.abrupt("return", {
                   h1: data.h1,
@@ -42099,6 +42115,9 @@ function (_React$Component) {
                   colors: data.colors,
                   images: data.images.data,
                   nextUrl: data.images.next_page_url,
+                  params: query.params,
+                  subParams: query.f,
+                  listBadge: data.listBadge,
                   title: data.seo.title,
                   des: data.seo.des,
                   canonical: data.seo.canonical,
@@ -42110,7 +42129,7 @@ function (_React$Component) {
                   dataBase: data.dataBase
                 });
 
-              case 8:
+              case 15:
               case "end":
                 return _context.stop();
             }
@@ -42124,12 +42143,12 @@ function (_React$Component) {
     }()
   }]);
 
-  function _default(props) {
+  function IdeaFilter(props) {
     var _this;
 
-    _classCallCheck(this, _default);
+    _classCallCheck(this, IdeaFilter);
 
-    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    _this = _possibleConstructorReturn(this, (IdeaFilter.__proto__ || Object.getPrototypeOf(IdeaFilter)).call(this, props));
     _this.state = {
       nextUrl: _this.props.nextUrl,
       images: _this.props.images
@@ -42137,16 +42156,21 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(_default, [{
+  _createClass(IdeaFilter, [{
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var url = this.props.url;
+      console.log(this.props.nextUrl);
+      var _props = this.props,
+          params = _props.params,
+          url = _props.url,
+          subParams = _props.subParams;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.url.query && this.props.url.query.photoId,
+        ideaParams: params,
+        subParams: subParams,
         asPath: url.asPath,
-        path: url.pathname,
         nextUrl: this.state.nextUrl,
         images: this.state.images,
         detail: true,
@@ -42156,18 +42180,19 @@ function (_React$Component) {
             nextUrl: nextPage
           });
         },
+        path: url.pathname,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 44
         }
       }));
     }
   }]);
 
-  return _default;
+  return IdeaFilter;
 }(_react.default.Component);
 
-exports.default = _default;
+exports.default = IdeaFilter;
     (function (Component, route) {
       if(!Component) return
       if (false) return
@@ -42184,7 +42209,7 @@ exports.default = _default;
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/idea")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/idea-filter")
   
 
 /***/ }),
@@ -42216,16 +42241,16 @@ module.exports = "*,*::before,*::after{box-sizing:border-box}html{font-family:sa
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/idea.js");
+module.exports = __webpack_require__("./pages/idea-filter.js");
 
 
 /***/ })
 
-},[5])
+},[6])
           return { page: comp.default }
         })
       ;
-//# sourceMappingURL=idea.js.map
+//# sourceMappingURL=idea-filter.js.map

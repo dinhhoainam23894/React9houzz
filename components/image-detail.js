@@ -328,12 +328,12 @@ class ImageInfo extends React.PureComponent{
                                     { provider.auth_avatar && <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" /> }
                                     <div className="media-body">
                                         <div className="media-content">
-                                            <Link prefetch route={ `/pro/${provider.id}-${provider.slug}` }><a className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a></Link>
-
+                                            <Link prefetch route={ `/pro/${provider.id}-${provider.slug}` }>
+                                                <a className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a>
+                                            </Link>
                                             <div className="star-rating font-14">
-                                                <span className="text-black-100 font-14">{provider.avg_rate && rating(provider.avg_rate)} ({ provider.total_rate ? provider.total_rate : 0 } người đánh giá)</span>
+                                                <span className="text-black-100 font-14">{provider.avg_rate && rating(provider.avg_rate)}{provider.total_rate ? "("+provider.total_rate+" người đánh giá"+")" : "(0 người đánh giá)"}</span>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -345,7 +345,7 @@ class ImageInfo extends React.PureComponent{
                                     <Link prefetch route={'y-tuong'}><a  itemProp="url"><span itemProp="title" className="font-13">Tất cả</span></a></Link>
                                 </li>
                                 {tag.breadcrumbs && <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                                    <Link prefetch route={tag.breadcrumbs.uri}><a  itemProp="url" href="/y-tuong/m%E1%BA%ABu-thi%E1%BA%BFt-k%E1%BA%BF-Ph%C3%B2ng-t%E1%BA%AFm"><span itemProp="title" className="font-13">{tag.breadcrumbs.name_tag}</span></a></Link>
+                                    <Link prefetch route={tag.breadcrumbs.uri}><a  itemProp="url"><span itemProp="title" className="font-13">{tag.breadcrumbs.name_tag}</span></a></Link>
                                 </li>}
                             </ol>
                                 <h1 className="font-15 text-black-100">{currentValue && currentValue.name}</h1>
@@ -363,9 +363,9 @@ class ImageInfo extends React.PureComponent{
                             </div>
                             <div className="content-detail border-0">
                                 <h2 className="font-14">
-                                <Link prefetch route={ `/du-an/${project.id}-${project.slug}` }>
-                                 <a className="text-black-100">Ảnh trong "{project.name}"</a>
-                                </Link>
+                                Ảnh trong "<Link prefetch route={ `/du-an/${project.id}-${project.slug}` }>
+                                 <a className="text-black-100">{project.name}</a>
+                                </Link>"
                                 </h2>
                                 <ul className="list-unstyled clearfix thumb-grid grid-5">
                                    {
@@ -373,7 +373,7 @@ class ImageInfo extends React.PureComponent{
                                             <li className="thumb project-thumb" data-id={value.id} ref="'image'+image.id" data-slug={value.slug} key={index}>
                                                 <a className="link" onClick={(e) =>  this.changeImage(e,value)}>
                                                     <div className="img-responsive-wrapper img-responsive-square progressive">
-                                                        {value.small_path && <img src={value.small_path} alt={value.name} className="img-respontive" id={"image-"+value.id} width="71" height="71"></img>}
+                                                        {value.small_path && <img src={value.small_path} className="img-respontive" id={"image-"+value.id} width="71" height="71"></img>}
                                                     </div>
                                                 </a>
                                             </li>
@@ -391,7 +391,7 @@ class ImageInfo extends React.PureComponent{
                                 }
                                 {   tag.other  && tag.other.map((value,index) => (
                                         value.is_seo == 1 ?
-                                        <Link prefetch route={value.uri}><a href={value.uri} className="mr-2" key={index}>
+                                        <Link prefetch route={value.uri} key={index}><a href={value.uri} className="mr-2" key={index}>
                                             <span className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
                                             { value.name_tag }
                                             </span>

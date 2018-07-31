@@ -21,7 +21,7 @@ export default class footer extends React.Component{
                     <div className="col-lg-9 row d-md-flex d-none">
                         <div className="col-lg-4 column footer-menu pr-1">
                             <div className="widget">
-                                <h3 className="footer-title"> VỀ CHÚNG TÔI </h3>
+                                <p className="footer-title"> VỀ CHÚNG TÔI </p>
                                 <div className="link_widgets">
                                     <div className="row">
                                         <div className="col-lg-12">
@@ -36,7 +36,7 @@ export default class footer extends React.Component{
                         </div>
                             <div className="col-lg-4 column footer-menu pr-1">
                                 <div className="widget">
-                                    <h3 className="footer-title">KHÁM PHÁ</h3>
+                                    <p className="footer-title">KHÁM PHÁ</p>
                                     <div className="link_widgets">
                                         <div className="row">
                                             <div className="col-lg-12">
@@ -52,7 +52,7 @@ export default class footer extends React.Component{
                             </div>
                         <div className="col-lg-4 column footer-menu">
                             <div className="widget">
-                                <h3 className="footer-title">LIÊN HỆ</h3>
+                                <p className="footer-title">LIÊN HỆ</p>
                                 <div className="d-block social-links">
                                     <div className="row">
                                         <div className="col-lg-12 d-block">

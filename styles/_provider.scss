@@ -1,6 +1,12 @@
 .banner{
   height: 361px;
 }
+.sidebar-count{
+  font-size: 30px !important;
+}
+.btn-outline-primary:hover {
+  color: $primary !important;
+}
     .gradient-animate{
       height: 100px; /* For browsers that do not support gradients */
         background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));

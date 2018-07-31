@@ -47,7 +47,7 @@ export default class extends React.Component {
 					</div>
 					<div className="row position-relative justify-content-end">
 						<div className="position-absolute provider-avatar rounded-circle">
-							<img src={this.props.data.avatar} className="img-thumbnail rounded-circle h-100" alt=""/>
+							<img itemProp="image" src={this.props.data.avatar} className="img-thumbnail rounded-circle h-100" alt="" />
 						</div>
 						<div className="col-md-9 col-lg-9 provider-nav">
 							<ul className="nav nav-tabs border-0" id="myTab" role="tablist">

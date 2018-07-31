@@ -29,19 +29,19 @@ class ErrorPage extends React.Component {
       case 404:
         response = (
           
-          <div class="container">
-          <div class="row mt-5">
-            <div class="col-12 text-center title mt-3 mb-3">
+          <div className="container">
+          <div className="row mt-5">
+            <div className="col-12 text-center title mt-3 mb-3">
               <img src="/static/images/404.png" />
             </div> 
-            <div class="col-12 text-center font-25 mt-3" style={{color: "#d5d8f3"}}>
+            <div className="col-12 text-center font-25 mt-3" style={{color: "#d5d8f3"}}>
               Chúng tôi xin lỗi. Trang bạn tìm kiếm không tồn tại
             </div>
-            <div class="col-6 offset-md-3 mt-3 text-center explain font-14">
+            <div className="col-6 offset-md-3 mt-3 text-center explain font-14">
               Thật không may là trang bạn đang tìm kiếm không thể tìm thấy. Nó có thể tạm thời không có, di chuyển hoặc không còn tồn tại. Kiểm tra Url mà bạn đã nhập cho bất kỳ lỗi nào và thử lại.
             </div>
-            <div class="col-12 text-center mt-3">
-              <a href="/" class="btn btn-primary font-weight-bold">
+            <div className="col-12 text-center mt-3">
+              <a href="/" className="btn btn-primary font-weight-bold">
                 Về trang chủ
               </a>
             </div>

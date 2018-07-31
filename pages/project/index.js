@@ -72,13 +72,12 @@ export default class Project extends Component {
                                 <div className="about">
                                     <h1 className="font-25 font-weight-normal">{project.name}</h1>
                                     <h3 className="font-14 font-weight-normal mb-3">{project.descriptions}</h3>
-                                    <h3 className="font-14 font-weight-normal"><strong>Địa chỉ</strong>: {project.address}</h3>
-                                    <h3 className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>:<a href={project.source_url} rel="nofollow" target="_blank" className="text-dark"> {project.source_url}</a></h3>
+                                    <h3 className="font-14 font-weight-normal"><strong>Địa chỉ</strong>{": "+project.address}</h3>
+                                    <h3 className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>: <a href={project.source_url} rel="nofollow" target="_blank" className="text-dark">{project.source_url}</a></h3>
                                     {
                                         project.more_infos && mapObject(project.more_infos, function (index, value) {
                                             if(value != '')
-                                            return <h3 className="font-14 font-weight-normal" key={index}><strong>{ucfirst(index)} </strong> : { value }</h3>
-
+                                            return <h3 className="font-14 font-weight-normal" key={index}><strong>{ucfirst(index)}</strong>{": " + value }</h3>
                                           })
                                     }
                                     <h3 className="font-14 font-weight-normal"></h3>
@@ -91,11 +90,19 @@ export default class Project extends Component {
                                                         <div className="row w-100 m-0">
                                                             <div className="px-0">
                                                                 <div className="project-image position-relative">
-                                                                    <Link route='image' params={{id: value.id , slug : `${value.slug}`}}>
-                                                                        <a className='photoLink' onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
+                                                                    {
+                                                                        value.status == 1 ?  
+                                                                        <Link route='image' params={{id: value.id , slug : `${value.slug}`}}>
+                                                                            <a className='photoLink' onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
+                                                                                <img src={value.large_path} alt={value.name} />
+                                                                            </a>
+                                                                        </Link>
+                                                                        :
+                                                                        <a href="javascript:void(0)" className='photoLink' rel="nofollow">
                                                                             <img src={value.large_path} alt={value.name} />
-                                                                        </a>
-                                                                    </Link>
+                                                                        </a> 
+                                                                    }
+                                                                    
                                                                     <div className="project-action">
                                                                         <button className="btn btn-primary med save text-white" title="Save To Ideabook" compid="addToIdeabook"><i className="fa fa-plus pr-2"></i>Lưu ảnh</button>
                                                                     </div>
@@ -109,9 +116,14 @@ export default class Project extends Component {
                                                                 <div className="media-header">
                                                                     <div className="media-title">
                                                                         <h2 className="font-22 text-black-100">
-                                                                        <Link prefetch route='image' params={{id: value.id , slug : `${value.slug}`}}>
-                                                                            <a className="mt-0 mb-1 font-22 text-black-100">{value.name}</a>
-                                                                        </Link>
+                                                                        {
+                                                                            value.status == 1 ?  
+                                                                            <Link prefetch route='image' params={{id: value.id , slug : `${value.slug}`}}>
+                                                                             <a className="mt-0 mb-1 font-22 text-black-100">{value.name}</a>
+                                                                            </Link>
+                                                                            :
+                                                                            <a rel="nofollow" href="javascript:void(0)" className="mt-0 mb-1 font-22 text-black-100">{value.name}</a>
+                                                                        }
                                                                         </h2>
                                                                     </div>
                                                                 </div>

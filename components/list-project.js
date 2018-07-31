@@ -23,14 +23,14 @@ export default class extends React.Component{
                             </div>
                             <div className="position-absolute h-50 ml-1 third-image bg-secondary right-avatar">
                                 <div className="h-100 project-more text-center position-absolute w-100">
-                                    <h3 className="font-weight-light text-white font-30">+ {this.props.project.count_image}</h3>
+                                    <p className="font-weight-light text-white font-30">{ project.count_image ? "+ "+project.count_image : ''}</p>
                                 </div>
                                 <img src={this.props.project.avatar[2]} className="w-100 h-100" />
                             </div>
                             </div>
                         </div>
                         <div className="mt-3 mb-2 px-2 project-des">
-                            <h2 className="font-weight-bold text-black font-15">{this.props.project.name} </h2>
+                            <h2 className="font-weight-bold text-black font-15">{project.name}</h2>
                                 <div className="font-13 text-secondary">
                                     <span className="fa fa-map-marker mr-1 text-primary"></span>
                                     {this.props.project.address}

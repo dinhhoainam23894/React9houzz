@@ -61,10 +61,8 @@ export default class extends React.Component {
         return (
             <ProviderDetail provider_id={id} provider_slug={slug} data={data} {...this.props} css={css}>
               <div className="container mt-3">
-                <h2 className="text-dark font-30 text-center">{data.project_count} dự án</h2>
-                <div className="row">
-                      {list_project}
-                </div>
+                <h1 className="text-dark font-30 text-center">{data.project_count+" dự án"}</h1>
+                <div className="row">{list_project}</div>
                 { this.state.page &&
                   <div className="loadmore justify-content-center d-flex"> 
                   <button className="btn btn-primary" onClick={(e) => this.onLoadMore(e,this.state.page)}>Xem thêm</button>

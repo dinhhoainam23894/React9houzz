@@ -5,10 +5,10 @@ const LRUCache = require('lru-cache')
 const routes = require('./routes')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({dev: process.env.NODE_ENV !== 'production'})
-const handle = app.getRequestHandler()
 const handler = routes.getRequestHandler(app)
-var favicon = require('serve-favicon')
 var path = require('path')
+var test = require('./pages/test')
+
 let cacheTime = 1000 * 60 * 60 // 1 hour
 
 if (dev) {
@@ -20,64 +20,28 @@ const ssrCache = new LRUCache({
   max: 100,
   maxAge: cacheTime
 })
+
 app.prepare().then(() => {
   const server = express()
-  server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
-
-  express().use(handler).listen(3000)
+  const Test = test()
+  // server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
   const faviconOptions = {
     root: __dirname + '/static/'
   };
   server.get('/fav9houz.ico', (req, res) => (
     res.status(200).sendFile('fav9houz.ico', faviconOptions)
   ));
-  // Use the `renderAndCache` utility defined below to serve pages
-  // server.get('/y-tuong', (req, res) => {
-  //   renderAndCache(req, res, '/idea' , req.params)
-  // })
-  // server.get('/y-tuong/:params', (req, res) => {
-  //   const queryParams = { params: req.params.params }
-  //   renderAndCache(req, res, '/idea-filter' , queryParams)
-  // })
-  // server.get('/pro/:id-:slug/d%E1%BB%B1-%C3%A1n', (req, res) => {
-  //   const queryParams = { id: req.params.id ,slug : req.params.slug }
-  //   renderAndCache(req, res, '/pro/project', queryParams)
-  // })
-
-  // server.get('/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t', (req, res) => {
-  //   const queryParams = { id: req.params.id,slug : req.params.slug }
-  //   renderAndCache(req, res, '/pro/review', queryParams)
-  // })
-
-  // server.get('/pro/:id-:slug', (req, res) => {
-  //   const queryParams = { id: req.params.id,slug : req.params.slug }
-  //   renderAndCache(req, res, '/pro', queryParams)
-  // })
-
-  // server.get('/du-an/:id-:slug', (req, res) => {
-  //   const queryParams = { id: req.params.id,slug : req.params.slug }
-  //   renderAndCache(req, res, '/project', queryParams)
-  // })
-
-  // server.get('/anh/:id-:slug', (req, res) => {
-  //   const queryParams = { id: req.params.id,slug : req.params.slug }
-  //   renderAndCache(req, res, '/image', queryParams)
-  // })
-  // server.get('*', (req, res) => {
-  //   return handle(req, res)
-  // })
-
-  // if (dev) {
-  //   server.listen(3000, err => {
-  //     if (err) throw err
-  //     console.log('> Ready on http://localhost:3000')
-  //   })
-  // } else {
-  //   server.listen(8080, err => {
-  //     if (err) throw err
-  //     console.log('> Ready on http://localhost:8080')
-  //   })
-  // }
+  const options = {
+    root: __dirname + '/static/',
+    headers: {
+      'Content-Type': 'text/plain;charset=UTF-8',
+    }
+  };
+  server.get('/robots.txt', (req, res) => (
+    res.status(200).sendFile('robots.txt', options)
+  ));
+  
+  server.use(handler).listen(3000)
 })
 
 /*

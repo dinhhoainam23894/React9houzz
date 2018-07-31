@@ -131,6 +131,7 @@ export default class IdeaComponent extends React.Component{
         };
        const { images , h1 ,filter_default , colors , listBadge , detail} = this.props
        const { photoId , slug } = this.props;
+       console.log(listBadge)
        return(
         <Layout {...this.props} navmenu={false} container={false} css={css}>
         {
@@ -147,6 +148,20 @@ export default class IdeaComponent extends React.Component{
                 onDismiss={() => this.dismissModal()}
             /> : ''
         }
+        <style jsx global>{
+            `
+            #lightbox .nav-link:first-child{
+                border-left: 1px solid #e2e2e2 !important;
+            }
+            #lightbox .nav-link {
+                display: block;
+                padding: 0.4rem 0.7rem !important;
+                border-left: none !important;
+                border-color: #e2e2e2;
+            }
+            `
+        }
+        </style>
         <div className="container-fluid service px-4 bg-gray">
             <div className="row">
                 <div className="col-0 col-md-3 col-lg-3 px-3" id="sidebar">
@@ -156,14 +171,13 @@ export default class IdeaComponent extends React.Component{
                     <div className="bg-white px-3 py-4">
                     <h1 className="text-dark title ml-1 pt-3">{ h1 && h1 }</h1>
                         <div className="list-tag">
-                    {
-                        listBadge ?
-                        listBadge.map((value,index) => {
-                               return <Link prefetch route={value.uri} key={index}>
-                                <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
-                               </Link>
-                        }) : ''
-                    }
+                            {
+                                listBadge && listBadge.map((value,index) => (
+                                    <Link prefetch route={value.uri} key={index}>
+                                        <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                                    </Link>
+                                ))
+                            }
                         </div>
                     <InfiniteScroll
                         pageStart={0}
@@ -180,20 +194,19 @@ export default class IdeaComponent extends React.Component{
                         <div className="grid__gutter-sizer"></div>
                         {
                             images && images.map((value,index) =>( 
-                        
                                 <div className="grid__item rounded p-1" key={index}>
-                                        <div className="card">
-                                            <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
-                                            <Link route="image" params={{ id: value.id , slug : value.slug }}>
-                                                <a onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
-                                                <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
-                                                </a>
-                                             </Link>
-                                            <div className="card-body">
-                                                <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
-                                                <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
-                                            </div>
+                                    <div className="card">
+                                        <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
+                                        <Link route="image" params={{ id: value.id , slug : value.slug }}>
+                                            <a onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
+                                            <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
+                                            </a>
+                                            </Link>
+                                        <div className="card-body idea-content">
+                                            <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
+                                            <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
                                         </div>
+                                    </div>
                                         
                                 </div>
                             ))

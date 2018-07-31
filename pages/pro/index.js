@@ -87,7 +87,9 @@ export default class Pro extends Component {
     }
     if(data.project_count > 6){
         moreProject.push(<div className="col-md-4 offset-md-4 mt-3" key="project_count">
-            <Link href={ `/pro/${this.props.id}-${provider.slug}/dự-án` }><a className="btn btn-outline-primary w-100 font-weight-normal bg-white">Xem thêm <span className="number-project">({data.project_count - 6})</span> dự án</a></Link>
+            <Link href={ `/pro/${this.props.id}-${provider.slug}/dự-án` }>
+                <a className="btn btn-primary w-100 font-weight-normal text-white">Xem thêm <span className="number-project">({data.project_count - 6})</span> dự án</a>
+            </Link>
         </div>);
     }
     
@@ -120,7 +122,7 @@ export default class Pro extends Component {
                   <div className="float-right left-info">
                       <div className="header-6 top mb-3">
                           <a className="text-dark font-25" href="">
-                              {data.project_count} Dự án <span className="fa fa-angle-right font-22"></span>
+                              {data.project_count+" Dự án"}<span className="fa fa-angle-right font-22"></span>
                           </a>
                       </div>
                       <div className="row m-0">

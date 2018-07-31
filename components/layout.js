@@ -115,7 +115,7 @@ export default class extends React.Component {
         <NavHeader headerProjects={headerProjects} headerCategories={headerCategories} dataBase={dataBase}/>
       </header>
       <Meta />
-      <div className="StoreNavigation-overlay" role="button" tabindex="0" aria-label="Close"></div>
+      <div className="StoreNavigation-overlay" role="button" tabIndex="0" aria-label="Close"></div>
         <MainBody navmenu={this.props.navmenu} fluid={this.props.fluid} container={this.props.container}>
           {this.props.children}
           
