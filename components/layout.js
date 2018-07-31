@@ -103,7 +103,7 @@ export default class extends React.Component {
               <div className="collapse navbar-collapse header-right my-2 nav-menu" id="collapse-header-login">
                 <div className="header-search d-none d-sm-none d-md-block mr-auto">
                     <div className="input-radius py-0">
-                        <form>
+                        <form className="mt-1">
                         <input type="" className="badge-pill form-control border-0 font-14 px-3" name="" placeholder="Ý tưởng bạn muốn tìm kiếm..."></input>
                         <button className="fa fa-search icon-search bg-white border-0" data-toggle="offcanvas"></button>
                         </form>

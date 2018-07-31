@@ -319,7 +319,13 @@
       -webkit-border-top-right-radius: 0.25rem !important;
       -moz-border-top-right-radius: 0.25rem !important;
       -khtml-border-top-right-radius: 0.25rem !important;
-      height: 48% !important;
+      height: 49% !important;
+      img{
+        border-top-right-radius: 0.25rem !important;
+        -webkit-border-top-right-radius: 0.25rem !important;
+        -moz-border-top-right-radius: 0.25rem !important;
+        -khtml-border-top-right-radius: 0.25rem !important;
+      }
     }
     .third-image{
       bottom: 0 !important;
@@ -546,7 +552,8 @@
       h1{
         font-size: 18px !important;
       }
-      h3{
+      
+      p{
         font-size: 15px !important;
       }
       .idea-content{
@@ -591,4 +598,7 @@
         padding: 0px 85px !important;
       }
     }
+  }
+  .idea-content .about{
+    line-height: 9px !important;
   }

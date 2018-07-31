@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/pro/project', function() {
           var comp =
-      webpackJsonp([5],{
+      webpackJsonp([8],{
 
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -748,6 +748,7 @@ function (_React$Component) {
           lineNumber: 105
         }
       }, _react.default.createElement("form", {
+        className: "mt-1",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 106
@@ -1120,17 +1121,17 @@ function (_React$Component) {
           fileName: _jsxFileName,
           lineNumber: 33
         }
-      }, project.name), _react.default.createElement("div", {
+      }, project.name), this.props.project.address && _react.default.createElement("div", {
         className: "font-13 text-secondary",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 35
         }
       }, _react.default.createElement("span", {
         className: "fa fa-map-marker mr-1 text-primary",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 36
         }
       }), this.props.project.address))))));
     }
@@ -1348,6 +1349,9 @@ function (_React$Component) {
       }, _react.default.createElement("i", {
         className: "fa fa-lightbulb-o my-auto",
         "aria-hidden": "true",
+        style: {
+          "padding-bottom": "1px"
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 39
@@ -28678,7 +28682,7 @@ function (_React$Component) {
       if (this.state.projects.length > 0) {
         this.state.projects.map(function (e, index) {
           list_project.push(_react.default.createElement("div", {
-            className: "col-12 col-md-4 col-lg-4 p-3",
+            className: "col-12 col-md-4 col-lg-4 py-3 px-0",
             key: index,
             __source: {
               fileName: _jsxFileName,
@@ -28783,7 +28787,7 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 9:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/pro/project.js");
@@ -28791,7 +28795,7 @@ module.exports = __webpack_require__("./pages/pro/project.js");
 
 /***/ })
 
-},[9])
+},[8])
           return { page: comp.default }
         })
       ;

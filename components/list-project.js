@@ -31,10 +31,12 @@ export default class extends React.Component{
                         </div>
                         <div className="mt-3 mb-2 px-2 project-des">
                             <h2 className="font-weight-bold text-black font-15">{project.name}</h2>
+                            {this.props.project.address &&
                                 <div className="font-13 text-secondary">
                                     <span className="fa fa-map-marker mr-1 text-primary"></span>
                                     {this.props.project.address}
                                 </div>
+                            }
                         </div>
                     </div>
                 </a>

@@ -36,7 +36,7 @@ export default class nav extends React.Component {
             <ul className="navbar-nav text-md-center d-flex w-100 position-relative list-unstyled  justify-md-content-start justify-content-start">
               <li className="offset-0 offset-md-1 nav-item py-1 px-1">
                 <div className="d-flex w-100">
-                  <i className="fa fa-lightbulb-o my-auto" aria-hidden="true"></i>
+                  <i className="fa fa-lightbulb-o my-auto" aria-hidden="true" style={{"padding-bottom": "1px"}}></i>
                   <Link prefetch route='/y-tuong'><a className="nav-link mr-auto">Ý TƯỞNG</a></Link>
                   <a className="navbar-toggler menu-toggle" data-toggle="collapse" data-target="#nav-product-2" aria-controls="collapse-login" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="fa fa-chevron-right"></span></a>

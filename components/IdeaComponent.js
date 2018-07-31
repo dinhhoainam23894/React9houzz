@@ -165,7 +165,7 @@ export default class IdeaComponent extends React.Component{
                 </div>
                 <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
                     <div className="bg-white px-3 py-4">
-                    <h1 className="text-dark title ml-1 pt-3">{ h1 && h1 }</h1>
+                    <h1 className="text-dark title ml-1">{ h1 && h1 }</h1>
                         <div className="list-tag">
                             {
                                 listBadge && listBadge.map((value,index) => (
@@ -190,7 +190,7 @@ export default class IdeaComponent extends React.Component{
                         <div className="grid__gutter-sizer"></div>
                         {
                             images && images.map((value,index) =>( 
-                                <div className="grid__item rounded p-1" key={index}>
+                                <div className="grid__item rounded p-2" key={index}>
                                     <div className="card">
                                         <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
                                         <Link route="image" params={{ id: value.id , slug : value.slug }}>
@@ -198,7 +198,7 @@ export default class IdeaComponent extends React.Component{
                                             <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
                                             </a>
                                             </Link>
-                                        <div className="card-body idea-content">
+                                        <div className="card-body idea-content px-0 pt-1">
                                             <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
                                             <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
                                         </div>
@@ -237,7 +237,7 @@ class Sidebar extends React.PureComponent{
                                     value.data && mapObject(value.data, function (index, value) {
                                         return <li className="py-1 radio" key={index}>
                                             <Link prefetch route={value.uri}>
-                                            <a className="font-13 font-weight-light text-gray"><label className="px-3">{value.name_tag}<span>{value.total_doc}</span></label></a>
+                                            <a className="font-13 font-weight-light text-gray"><label className="pr-3">{value.name_tag}<span>{value.total_doc}</span></label></a>
                                             </Link>
                                         </li>
                                     })

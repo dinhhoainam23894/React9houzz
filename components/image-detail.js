@@ -340,7 +340,7 @@ class ImageInfo extends React.PureComponent{
                             </div>
                            
                             <div className="content-detail border-0">
-                            <ol className="breadcrumb bg-white pl-0 mb-0">
+                            <ol className="breadcrumb bg-white pl-0 mb-0 pt-0 mt-0">
                                 <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
                                     <Link prefetch route={'y-tuong'}><a  itemProp="url"><span itemProp="title" className="font-13">Tất cả</span></a></Link>
                                 </li>
@@ -348,7 +348,7 @@ class ImageInfo extends React.PureComponent{
                                     <Link prefetch route={tag.breadcrumbs.uri}><a  itemProp="url"><span itemProp="title" className="font-13">{tag.breadcrumbs.name_tag}</span></a></Link>
                                 </li>}
                             </ol>
-                                <h1 className="font-15 text-black-100">{currentValue && currentValue.name}</h1>
+                                <h1 className="font-16 text-black-100">{currentValue && currentValue.name}</h1>
                                 <div className="media-content" id="readMore">
                                         <div className="readMoreWrapper">
                                             <p id="readMoreText" className="font-13 normalText">
@@ -356,7 +356,7 @@ class ImageInfo extends React.PureComponent{
                                             </p>
                                             <div className="readMoreGradient"></div>
                                         </div>
-                                        <button id="readMoreBtn"></button>
+                                        <button id="readMoreBtn" className="pl-0"></button>
                                         <span id="readLessBtnText" style={{'display': 'none'}}>Rút gọn </span>
                                         <span id="readMoreBtnText" style={{'display': 'none'}}>Xem thêm ></span>
                                 </div>

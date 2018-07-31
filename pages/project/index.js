@@ -71,9 +71,8 @@ export default class Project extends Component {
                             <div className="px-4 bg-white idea-content">
                                 <div className="about">
                                     <h1 className="font-25 font-weight-normal">{project.name}</h1>
-                                    <p className="font-14 font-weight-normal mb-3">{project.descriptions}</p>
+                                    <p className="font-14 font-weight-normal my-3">{project.descriptions}</p>
                                     <p className="font-14 font-weight-normal"><strong>Địa chỉ</strong>{": "+project.address}</p>
-                                    <p className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>: <a href={project.source_url} rel="nofollow" target="_blank" className="text-dark">{project.source_url}</a></p>
                                     {
                                         project.more_infos && mapObject(project.more_infos, function (index, value) {
                                             if(value != '')

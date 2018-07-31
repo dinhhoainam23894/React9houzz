@@ -53,7 +53,7 @@ export default class extends React.Component {
           const moreProject = [];
           if(this.state.projects.length > 0){
               this.state.projects.map(function(e,index){
-                list_project.push(<div className="col-12 col-md-4 col-lg-4 p-3" key={index}>
+                list_project.push(<div className="col-12 col-md-4 col-lg-4 py-3 px-0" key={index}>
                     <ListProject project={e}></ListProject>
                 </div>);
               })

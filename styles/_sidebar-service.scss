@@ -2,8 +2,13 @@
 	max-width: 23% !important;
 }
 .sidebar-service{
-	width: 91%;
-	margin-left: 25px;
+	width: 100%;
+	margin-left: 5px;
+	.widget{
+		ul{
+			line-height: 13px !important;
+		}
+	}
 }
 .widget{
 	h3{

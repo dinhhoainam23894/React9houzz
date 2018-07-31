@@ -35,7 +35,7 @@ import {Link} from '../routes'
                   <div class="collapse navbar-collapse header-right my-2 nav-menu" id="collapse-header-login">
                     <div class="header-search d-none d-sm-none d-md-block mr-auto">
                         <div class="input-radius py-0">
-                            <form>
+                            <form className="mt-1">
                             <input type="" class="badge-pill form-control border-0 font-14 px-3" name="" placeholder="Ý tưởng bạn muốn tìm kiếm..."></input>
                             <button class="fa fa-search icon-search bg-white border-0" data-toggle="offcanvas"></button>
                             </form>

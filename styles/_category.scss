@@ -19,7 +19,8 @@
 }
 .idea-content h2 {
   font-weight: 600!important;
-  font-size: 13px!important;
+  font-size: 15px!important;
+  line-height: 20px !important;
 }
 .content-detail h2:hover a{
   color: $primary !important;
@@ -95,6 +96,9 @@
   background-color: #fff;
   transition: right 250ms ease-out;
   z-index: 3;
+  h1{
+    font-weight: 600 !important;
+  }
   .content-mask{
     overflow: hidden;
     padding-top: 1px;
@@ -307,9 +311,13 @@ img {
   vertical-align: middle;
 }
 //-----------------------------Grid
+.card{
+  border : none !important;
+}
 .grid {
   width: 100%;
     max-width: 100%;
+   
 }
 .modal-grid {
     max-width: 1200px;
