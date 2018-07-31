@@ -43,7 +43,7 @@ export default class extends React.Component{
                         <ul className="list-unstyled pb-3 my-2">
                             <li className="info-special">
                                 <i className="fa fa-phone text-secondary"></i>
-                                <span>{this.props.provider.phone}</span>
+                                <span itemProp="telephone">{this.props.provider.phone}</span>
                             </li>
                             <li itemScope itemType="http://schema.org/PostalAddress" itemProp="address">
                                 <i className="fa fa-map-marker text-secondary"></i>

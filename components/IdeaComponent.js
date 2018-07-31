@@ -37,16 +37,13 @@ export default class IdeaComponent extends React.Component{
     //         listBadge : this.props.listBadge ? this.props.listBadge : []
     //     })
     // }
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps)
-    }
+    
     loadItems(page) {
         var self = this;
         var url = '';
         if(this.props.nextUrl) {
             url = this.props.nextUrl;
         }
-        console.log(url)
         if(this.props.nextUrl != null){
             axios.get(url)
             .then(function(resp) {
@@ -131,7 +128,6 @@ export default class IdeaComponent extends React.Component{
         };
        const { images , h1 ,filter_default , colors , listBadge , detail} = this.props
        const { photoId , slug } = this.props;
-       console.log(listBadge)
        return(
         <Layout {...this.props} navmenu={false} container={false} css={css}>
         {

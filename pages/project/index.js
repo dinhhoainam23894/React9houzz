@@ -71,16 +71,16 @@ export default class Project extends Component {
                             <div className="px-4 bg-white idea-content">
                                 <div className="about">
                                     <h1 className="font-25 font-weight-normal">{project.name}</h1>
-                                    <h3 className="font-14 font-weight-normal mb-3">{project.descriptions}</h3>
-                                    <h3 className="font-14 font-weight-normal"><strong>Địa chỉ</strong>{": "+project.address}</h3>
-                                    <h3 className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>: <a href={project.source_url} rel="nofollow" target="_blank" className="text-dark">{project.source_url}</a></h3>
+                                    <p className="font-14 font-weight-normal mb-3">{project.descriptions}</p>
+                                    <p className="font-14 font-weight-normal"><strong>Địa chỉ</strong>{": "+project.address}</p>
+                                    <p className="font-14 font-weight-normal"><strong>Nguồn dự án</strong>: <a href={project.source_url} rel="nofollow" target="_blank" className="text-dark">{project.source_url}</a></p>
                                     {
                                         project.more_infos && mapObject(project.more_infos, function (index, value) {
                                             if(value != '')
-                                            return <h3 className="font-14 font-weight-normal" key={index}><strong>{ucfirst(index)}</strong>{": " + value }</h3>
+                                            return <p className="font-14 font-weight-normal" key={index}><strong>{ucfirst(index)}</strong>{": " + value }</p>
                                           })
                                     }
-                                    <h3 className="font-14 font-weight-normal"></h3>
+                                    <p className="font-14 font-weight-normal"></p>
                                 </div>
                                 <div className="about bg-white py-3">
                                     <ul className="list-unstyled">

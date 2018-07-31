@@ -26,7 +26,7 @@ export default class footer extends React.Component{
                                     <div className="row">
                                         <div className="col-lg-12">
                                             <Link prefetch route='/about/gioi-thieu'><a href="#" target="_blank" title="Giới thiệu">Giới thiệu</a></Link>
-                                            <a href="#" target="_blank" title="Liên hệ" rel="nofollow">Liên hệ</a>
+                                            <a href="#" title="Liên hệ" rel="nofollow">Liên hệ</a>
                                             <Link prefetch route='/about/chinh-sach-bao-mat'><a href="#" target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a></Link>
                                             <Link prefetch route='/about/dieu-khoan-su-dung'><a href="#" target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a></Link>
                                         </div>

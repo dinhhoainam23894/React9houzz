@@ -27,7 +27,7 @@ export default class extends React.Component{
         const { data } = this.props
         return (
             <Layout {...this.props} navmenu={false} container={false}>  
-                <div className="row bg-gray pt-3 pb-3">
+                <div className="bg-gray pt-3 pb-3">
                     <div className="col-10 col-md-8 offset-1 offset-md-2 text-left bg-white pt-4 pb-3 static-page">
                         <h1 className="font-28">{data.name}</h1>
                         <div className="text-justify pt-3 font-14" dangerouslySetInnerHTML={{__html : data.content }} />
