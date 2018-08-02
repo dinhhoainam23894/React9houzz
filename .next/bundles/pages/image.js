@@ -1889,7 +1889,7 @@ function (_React$Component) {
         }
       }), canonical && _react.default.createElement("link", {
         rel: "canonical",
-        href: "http://react-next.9houz.com" + canonical,
+        href: "https://9houz.com" + canonical,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 82
@@ -1910,7 +1910,7 @@ function (_React$Component) {
         }
       }), og_url && _react.default.createElement("meta", {
         property: "og:url",
-        content: "http://react-next.9houz.com" + og_url,
+        content: "https://9houz.com" + og_url,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 85
