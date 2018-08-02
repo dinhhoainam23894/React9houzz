@@ -13,7 +13,6 @@ import Package from '../package'
 import css from 'styles/style.scss';
 import NavHeader from './nav';
 import Footer from './footer';
-
 // import FontAwesome from '../css/font-awesome.css'
 // <style dangerouslySetInnerHTML={{__html: Styles}}/>
 //           <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
@@ -121,6 +120,9 @@ export default class extends React.Component {
           
         </MainBody>
        <Footer />
+       <script src="/static/jquery-3.2.1.min.js"></script>
+       <script src="/static/popper.min.js"></script>
+       <script src="/static/bootstrap.min.js"></script>
       </React.Fragment>
 
     )

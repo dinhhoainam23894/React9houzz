@@ -2299,7 +2299,6 @@ module.exports = function shimAssign() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.14.3
@@ -4818,7 +4817,7 @@ Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
 Popper.placements = placements;
 Popper.Defaults = Defaults;
 
-/* harmony default export */ __webpack_exports__["default"] = (Popper);
+/* harmony default export */ __webpack_exports__["a"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/next/node_modules/webpack/buildin/global.js")))
@@ -5086,7 +5085,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var placements = __WEBPACK_IMPORTED_MODULE_2_popper_js__["default"].placements;
+var placements = __WEBPACK_IMPORTED_MODULE_2_popper_js__["a" /* default */].placements;
 
 var Popper = function (_Component) {
   _inherits(Popper, _Component);
@@ -5219,7 +5218,7 @@ var Popper = function (_Component) {
           element: this._arrowNode
         });
       }
-      this._popper = new __WEBPACK_IMPORTED_MODULE_2_popper_js__["default"](this._getTargetNode(), this._popperNode, {
+      this._popper = new __WEBPACK_IMPORTED_MODULE_2_popper_js__["a" /* default */](this._getTargetNode(), this._popperNode, {
         placement: placement,
         positionFixed: positionFixed,
         eventsEnabled: eventsEnabled,

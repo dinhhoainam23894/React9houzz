@@ -28,8 +28,8 @@ app.prepare().then(() => {
   const faviconOptions = {
     root: __dirname + '/static/'
   };
-  server.get('/fav9houz.ico', (req, res) => (
-    res.status(200).sendFile('fav9houz.ico', faviconOptions)
+  server.get('/favicon.ico', (req, res) => (
+    res.status(200).sendFile('favicon.ico', faviconOptions)
   ));
   const options = {
     root: __dirname + '/static/',
