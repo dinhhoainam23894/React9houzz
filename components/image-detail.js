@@ -84,23 +84,12 @@ export default class Image extends React.Component{
     nextImage = async (e ,id , slug) => {
         e.preventDefault()
         if(this.state.detail == false){
-            this.nextProject(id,slug)
+            this.nextProject(this.state.currentValue.id,this.state.currentValue.slug)
         }else{
             this.nextIdea(this.state.currentValue.id)
         }
     } 
-    pushStateUrl(id , slug){
-        if(this.props.ideaParams){
-            var params = this.props.ideaParams
-            if(this.props.subParams){
-                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
-            }else{
-                Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
-            }
-        }else{
-            Router.push(`${this.props.currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
-        }
-    }
+   
     nextIdea = async (id) => {
         var startIndex = 0 ;
         var currentIndex = 0;
@@ -142,16 +131,22 @@ export default class Image extends React.Component{
         var nextSlug  = lastImage.data('slug');
         this.setState({currentImage : $('img.currentImage')});
         this.setState({currentValue : this.state.images[lastIndex]})
+        if(this.props.popup == false){
+            this.pushStateProject(id,slug,nextId,nextSlug)
+            // Router.push(`/project?photoId=${id}&id=${this.state.project.id}`,`/anh/${nextId}-${nextSlug}`)
+        }else{
+            await this.pushStateUrl(nextId,nextSlug)
+        }
     }
     backImage = async (e) => {
         e.preventDefault()
        if(this.state.detail == false){
-           this.backProject()
+           this.backProject(this.state.currentValue.id,this.state.currentValue.slug)
        }else{
            this.backIdea(this.state.currentValue.id)
        }
     }
-    backProject = async () => {
+    backProject = async (id , slug) => {
         var image_size = this.state.image_thumb.length - 1;
         var currentIndex = this.state.currentImage;
         var lastIndex = 0;
@@ -169,8 +164,16 @@ export default class Image extends React.Component{
         });
         this.state.image_thumb.eq(lastIndex).addClass('project-thumb--current');
         var lastImage = this.state.image_thumb.eq(lastIndex);
+        var nextId = lastImage.data('id');
+        var nextSlug  = lastImage.data('slug');
         this.setState({currentImage : $('img.currentImage')});
         this.setState({currentValue : this.state.images[lastIndex]})
+        if(this.props.popup == false){
+            this.pushStateProject(id,slug,nextId,nextSlug)
+            // Router.pushRoute(`/anh/${id}-${slug}`,`/anh/${nextId}-${nextSlug}`)
+        }else{
+            await this.pushStateUrl(nextId,nextSlug)
+        }
     }
     backIdea = async (id) => {
         var startIndex = 0 ;
@@ -189,6 +192,25 @@ export default class Image extends React.Component{
             await this.getValue(backImage.id)
         }
         
+    }
+    pushStateUrl(id , slug){
+        if(this.props.ideaParams){
+            var params = this.props.ideaParams
+            if(this.props.subParams){
+                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+            }else{
+                Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
+            }
+        }else{
+            Router.push(`${this.props.currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+        }
+    }
+    pushStateProject(id,slug , nextId , nextSlug){
+        if(this.props.isImage==true && this.props.isImage){
+            Router.pushRoute(`/anh/${id}-${slug}`,`/anh/${nextId}-${nextSlug}`)
+        }else{
+            Router.push(`${this.props.currentPath}?photoId=${id}&id=${this.state.project.id}`,`/anh/${nextId}-${nextSlug}`)
+        }
     }
     getFullImage = async (url, func) => {
         switch (func) {
@@ -226,7 +248,6 @@ export default class Image extends React.Component{
         const { id , slug } = this.props
         return(
             <div>
-                <div className="lgBg"></div>
                 <div id="image-container">
                     <div id="lbMainControls" className="trackMe d-block d-md-none">
                         <div>
@@ -267,6 +288,7 @@ export default class Image extends React.Component{
                     changeValue = {(data)=>this.setState({currentValue: data , detail : false})}
                     currentValue={this.state.currentValue}
                     detail={this.props.detail}
+                    // pushStateProject={(id,slug,nextId,nextSlug)=>{this.pushStateProject(id,slug,nextId,nextSlug)}}
                 ></ImageInfo>
             </div>
         )
@@ -304,6 +326,7 @@ class ImageInfo extends React.PureComponent{
         var thumb = $('.thumb');
         thumb.removeClass('project-thumb--current');
         $this.addClass('project-thumb--current');
+        // this.props.pushStateProject(this.props.image.id,this.props.image.slug, value.id , value.slug)
         this.props.changeValue(value)
     }
     render(){
@@ -351,9 +374,11 @@ class ImageInfo extends React.PureComponent{
                                 <h1 className="font-16 text-black-100">{currentValue && currentValue.name}</h1>
                                 <div className="media-content" id="readMore">
                                         <div className="readMoreWrapper">
-                                            <p id="readMoreText" className="font-13 normalText">
-                                                {currentValue && currentValue.descriptions}
-                                            </p>
+                                            {currentValue &&
+                                                <p id="readMoreText" className="font-14 normalText" dangerouslySetInnerHTML={{__html: currentValue.descriptions}}> 
+                                                    
+                                                </p>
+                                            }
                                             <div className="readMoreGradient"></div>
                                         </div>
                                         <button id="readMoreBtn" className="pl-0"></button>

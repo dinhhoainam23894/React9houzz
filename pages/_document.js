@@ -19,6 +19,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="vi">
         <Head>
+        <link rel="shortcut icon" href="/static/favicon.ico" />
         <noscript id="deferred-styles">
             <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
         </noscript>
@@ -33,12 +34,20 @@ export default class MyDocument extends Document {
             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
         if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
         else window.addEventListener('load', loadDeferredStyles);`}} />
-        <link rel="icon" href="/static/fav9houz.ico" type="image/x-icon" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1"></script>
+        <script dangerouslySetInnerHTML={{__html : `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-120211455-1');
+        ` }}>
+        </script>
       </html>
     )
   }

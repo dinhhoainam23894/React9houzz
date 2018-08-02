@@ -14,10 +14,9 @@ import css from 'styles/style.scss';
 import NavHeader from './nav';
 import Footer from './footer';
 // import FontAwesome from '../css/font-awesome.css'
-import DocumentMeta from 'react-document-meta';
-
 // <style dangerouslySetInnerHTML={{__html: Styles}}/>
 //           <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
+
 export default class extends React.Component {
   
   static propTypes() {

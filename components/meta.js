@@ -7,24 +7,8 @@ Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
 export default () => (
-  <div>
-    <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta charSet="utf-8" />
-      <link rel="shortcut icon" href="/static/favicon.ico" />
-    </Head>
+  <div className="meta">
     <style jsx global>{`
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        background: #eee;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       /* loading progress bar styles */
       #nprogress {
         pointer-events: none;
@@ -37,7 +21,7 @@ export default () => (
         top: 0;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 4px;
       }
 
       #nprogress .peg {
@@ -46,7 +30,6 @@ export default () => (
         right: 0px;
         width: 500px;
         height: 100%;
-        box-shadow: 0 0 10px #b953a4, 0 0 5px #b953a4;
         opacity: 1.0;
         transform: rotate(3deg) translate(0px, -4px);
       }

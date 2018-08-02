@@ -148,11 +148,18 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 21
         }
-      }, _react.default.createElement("noscript", {
-        id: "deferred-styles",
+      }, _react.default.createElement("link", {
+        rel: "shortcut icon",
+        href: "/static/favicon.ico",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 22
+        }
+      }), _react.default.createElement("noscript", {
+        id: "deferred-styles",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
         }
       }, _react.default.createElement("link", {
         rel: "stylesheet",
@@ -160,7 +167,7 @@ function (_Document) {
         href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 24
         }
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -168,15 +175,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
-        }
-      }), _react.default.createElement("link", {
-        rel: "icon",
-        href: "/static/fav9houz.ico",
-        type: "image/x-icon",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 26
         }
       })), _react.default.createElement("body", {
         __source: {
@@ -193,7 +192,22 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 40
         }
-      })));
+      })), _react.default.createElement("script", {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        }
+      }), _react.default.createElement("script", {
+        dangerouslySetInnerHTML: {
+          __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n\n            gtag('config', 'UA-120211455-1');\n        "
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      }));
     }
   }]);
 

@@ -62,6 +62,8 @@ export default class Project extends Component {
                         id={url.query.photoId}
                         slug={url.query.slug}
                         detail={false}
+                        popup={false}
+                        currentPath={url.pathname}
                         onDismiss={() => this.dismissModal(url.query.id,url.query.slug)}
                     />
                 }
@@ -71,7 +73,7 @@ export default class Project extends Component {
                             <div className="px-4 bg-white idea-content">
                                 <div className="about">
                                     <h1 className="font-25 font-weight-normal">{project.name}</h1>
-                                    <p className="font-14 font-weight-normal my-3">{project.descriptions}</p>
+                                    <p className="font-14 font-weight-normal my-3" dangerouslySetInnerHTML={{__html: project.descriptions}} />
                                     <p className="font-14 font-weight-normal"><strong>Địa chỉ</strong>{": "+project.address}</p>
                                     {
                                         project.more_infos && mapObject(project.more_infos, function (index, value) {
@@ -127,9 +129,7 @@ export default class Project extends Component {
                                                                     </div>
                                                                 </div>
                                                                 <div className="media-content mt-1">
-                                                                    <span className="font-15 text-gray" dangerouslySetInnerHTML={{__html: value.descriptions}}>
-                                                                        
-                                                                    </span>
+                                                                    <span className="font-15 text-gray" dangerouslySetInnerHTML={{__html: value.descriptions}} />
                                                                 </div>
                                                             </div>
                                                         </div>

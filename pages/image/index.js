@@ -29,10 +29,11 @@ export default class Image extends React.Component{
                 }
     }
     render(){
+        const {url} = this.props
         return(
             <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div id="lightbox">
-                <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false}></ImageDetail>
+                <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false} popup={false} path={url.pathname} isImage={true}></ImageDetail>
                 <style global jsx>{`
                     #lightbox {
                         top: 105px !important;

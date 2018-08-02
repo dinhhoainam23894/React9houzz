@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /api/*
 Disallow: /sapi/*
 
-Sitemap: https://9houz.com/sitemaps
+Sitemap: https://9houz.com/sitemaps/sitemap.xml

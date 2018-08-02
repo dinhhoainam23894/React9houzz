@@ -83,6 +83,36 @@ export default class IdeaComponent extends React.Component{
         }
     }
     componentDidMount(){
+        var showChar = 150;  // How many characters are shown by default
+        var ellipsestext = "";
+        var moretext = "Xem thêm >";
+        var lesstext = "Rút gọn <";
+        const self = this;
+        $('.moreDes').each(function(e) {
+            var content = $(this).html();
+            if(content.length > showChar) {
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar, content.length - showChar);
+                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                $(this).html(html);
+            }
+
+        });
+
+        $(".morelink").click(function(e){
+            e.preventDefault()
+            if($(this).hasClass("less")) {
+                $(this).removeClass("less");
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            self.masonry.performLayout()    ;
+            return false;
+        });
         $('.sidebar-service ul').each(function(e){
             if ($(this).find('li').length == $(this).find($('li:visible')).length) {
                $(this).find('.loadmore').hide();
@@ -106,9 +136,14 @@ export default class IdeaComponent extends React.Component{
         });
         $(".close").click(function(event) {
 	    	$(this).parent().toggle();
-	    });
+        });        
     }
-   
+    componentDidUpdate(){
+        // var list = $('.idea-content').find('.moreDes').length;
+        $('.idea-content').find($('.moreDes:visible')).hide();
+        $('.idea-content').find($('.moreDes')).slice(0, 20).show();
+
+    }
     dismissModal () {
         if(this.props.ideaParams){
             var params = this.props.ideaParams
@@ -121,6 +156,7 @@ export default class IdeaComponent extends React.Component{
             Router.push('/idea','/y-tuong')
         }
     }
+    
    render(){
         const masonryOptions = {
             gutter: '.grid__gutter-sizer',
@@ -184,7 +220,9 @@ export default class IdeaComponent extends React.Component{
                     className={'.grid are-images-unloaded mt-3'} 
                     disableImagesLoaded={false}
                     options={masonryOptions}
+                    ref={c => this.masonry = c}
                     updateOnEachImageLoad={false}
+                   
                     >
                         <div className="grid__col-sizer"></div>
                         <div className="grid__gutter-sizer"></div>
@@ -199,8 +237,8 @@ export default class IdeaComponent extends React.Component{
                                             </a>
                                             </Link>
                                         <div className="card-body idea-content px-1 pt-1">
-                                            <h2 className="mt-2 font-13 text-black-100" data-title={value.name}>{value.name}</h2>
-                                            <p className="mt-2 images-title font-12 text-black-100 moreDes">{value.descriptions}</p>
+                                            <h2 className="mt-2 font-15 text-black-100" data-title={value.name}>{value.name}</h2>
+                                            <p className="mt-2 images-title font-14 text-black-100 moreDes" dangerouslySetInnerHTML={{__html: value.descriptions}}></p>
                                         </div>
                                     </div>
                                         
@@ -225,14 +263,16 @@ class Sidebar extends React.PureComponent{
         const { filter , color } = this.props
         return(
             <div className="sidebar-service row bg-white">
+            
                 <div className="d-md-block px-2 w-100 sidebar-service-content">
                 {
                     filter && filter.map((value,index) => (
                         value.data.length != 0 &&
                         <div className="child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0" key={index}>
                             <div className="mt-2 widget p-3">
-                            <h3 className="font-15 mb-3">{value.textName}<span className="fa fa-chevron-right d-block d-md-none"  data-toggle="collapse" data-target="#demoTest"></span></h3>
-                            <ul className="list-unstyled mb-0 collapse d-md-block" id="demoTest">
+                            <h3 className="font-15 mb-3">{value.textName}<span className="fa fa-chevron-right d-block d-md-none"  data-toggle="collapse" data-target={"#demo"+index}></span></h3>
+                            
+                            <ul className="list-unstyled mb-0 collapse d-md-block" id={"demo"+index}>
                                 {
                                     value.data && mapObject(value.data, function (index, value) {
                                         return <li className="py-1 radio" key={index}>
