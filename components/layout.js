@@ -13,6 +13,8 @@ import Package from '../package'
 import css from 'styles/style.scss';
 import NavHeader from './nav';
 import Footer from './footer';
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
 // import FontAwesome from '../css/font-awesome.css'
 // <style dangerouslySetInnerHTML={{__html: Styles}}/>
 //           <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
