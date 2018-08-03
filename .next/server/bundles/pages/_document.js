@@ -89,6 +89,8 @@ var _document = _interopRequireWildcard(__webpack_require__("next/document"));
 
 var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
 
+var _style = _interopRequireDefault(__webpack_require__("./styles/style.scss"));
+
 var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/_document.js";
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -143,25 +145,25 @@ function (_Document) {
         lang: "vi",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 23
         }
       }, _react.default.createElement(_document.Head, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 24
         }
       }, _react.default.createElement("link", {
         rel: "shortcut icon",
         href: "/favicon.ico",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 25
         }
       }), _react.default.createElement("noscript", {
         id: "deferred-styles",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 26
         }
       }, _react.default.createElement("link", {
         rel: "stylesheet",
@@ -169,7 +171,7 @@ function (_Document) {
         href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 27
         }
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -177,29 +179,29 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 29
         }
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 41
         }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 42
         }
       }), _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 43
         }
       })), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 46
         }
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -207,7 +209,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 47
         }
       }));
     }
@@ -217,6 +219,13 @@ function (_Document) {
 }(_document.default);
 
 exports.default = MyDocument;
+
+/***/ }),
+
+/***/ "./styles/style.scss":
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 

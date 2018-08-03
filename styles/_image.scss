@@ -395,6 +395,24 @@
   }
   
   @include media-breakpoint-down(sm){
+    .main-image{
+      width: 100%;
+      overflow: scroll !important;
+      display: block;
+      height: 100%;
+      position: relative;
+      min-height: 700px;
+      #lightbox {
+        z-index: 11111111111;
+        top: 0 !important;
+        left: 0;
+        width: 100%;
+        overflow: scroll !important;
+        display: block;
+        height: 100%;
+        position: absolute !important;
+      }
+    }
     .image-seo{
       padding-left: 5px !important;
       padding-right: 5px !important;
@@ -484,7 +502,7 @@
     #lbActions{
       position: fixed !important;
       bottom: 0 !important;
-      display: block !important;
+      display: block;
       border: 1px solid #d6d6d6;
       background-color: #ffffff;
       border-left: none;

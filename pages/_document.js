@@ -1,6 +1,8 @@
 // ./pages/_document.js
 import Document, { Head, Main, NextScript } from 'next/document'
 import jQuery from 'jquery'
+import css from 'styles/style.scss';
+
 export default class MyDocument extends Document {
     componentDidUpdate(){
         var loadDeferredStyles = function() {

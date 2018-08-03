@@ -10,7 +10,8 @@ import Cookies from 'universal-cookie'
 import Package from '../package'
 // import Styles from 'css/index.scss'
 // import Styles from 'styles/style.scss'
-import css from 'styles/style.scss';
+// import css from 'styles/style.scss';
+
 import NavHeader from './nav';
 import Footer from './footer';
 // import FontAwesome from '../css/font-awesome.css'

@@ -249,11 +249,6 @@ export default class Image extends React.Component{
         return(
             <div>
                 <div id="image-container">
-                    <div id="lbMainControls" className="trackMe d-block d-md-none">
-                        <div>
-                            <a className="lbCloseButton lbClose" aria-label="Close" href="" data-dismiss="modal" compid="lbCloseButton"></a>
-                        </div>
-                    </div>
                     <div className="image">
                         {
                            this.state.currentValue &&  
@@ -272,7 +267,7 @@ export default class Image extends React.Component{
                             </div>
                         </a>
                     </div>
-                    <div id="lbActions">
+                    <div id="lbActions" className="d-none d-md-block">
                         <div id="lbActionCenter" className="offset-0 offset-md-3 col-12 col-md-6 text-center text-nowrap">
                             <button className="btn btn-primary med save text-white mr-3" title="Save To Ideabook" compid="addToIdeabook"><i className="fa fa-plus pr-2"></i>Lưu ảnh</button>
                             <button className="btn bg-black-100 med email text-white" title="send email" compid="addToIdeabook"><i className="fa fa-envelope-o pr-2"></i>Gửi Email</button>

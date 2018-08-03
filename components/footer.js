@@ -5,7 +5,7 @@ export default class footer extends React.Component{
         return (
         <footer className="footer text-dark">
             <div className="container py-3">
-                <div className="row footer-content my-2 mx-0 flex-wrap-reverse">
+                <div className="row footer-content mt-2 mx-0 flex-wrap-reverse">
                         <div className="col-lg-3 column pr-1 footer-logo pl-5">
                             <div className="widget">
                                 <div className="about_widget">
