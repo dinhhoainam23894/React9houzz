@@ -342,7 +342,7 @@ img {
 }
 
 .grid__gutter-sizer {
-    width: 0.6%;
+    width: 1%;
 }
 
 
@@ -356,6 +356,7 @@ img {
 }
 
 .grid__item {
+    padding: 0.5rem !important;
     margin-bottom: 20px;
     float: left;
     .upload {

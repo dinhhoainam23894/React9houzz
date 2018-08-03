@@ -2,9 +2,10 @@ import React from 'react'
 import Layout from '../components/layout';
 import 'isomorphic-fetch'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'about/'
+import css from './static.css'
+
 export default class extends React.Component{
     static async getInitialProps({ query }) {
-        console.log(query)
         const res = await fetch(APIURL+query.slug)
         const data = await res.json();
         return { 
@@ -26,7 +27,7 @@ export default class extends React.Component{
     render(){
         const { data } = this.props
         return (
-            <Layout {...this.props} navmenu={false} container={false}>  
+            <Layout {...this.props} navmenu={false} container={false} css={css}>  
                 <div className="bg-gray pt-3 pb-3">
                     <div className="col-10 col-md-8 offset-1 offset-md-2 text-left bg-white pt-4 pb-3 static-page">
                         <h1 className="font-28">{data.name}</h1>

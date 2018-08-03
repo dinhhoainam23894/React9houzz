@@ -228,7 +228,7 @@ export default class IdeaComponent extends React.Component{
                         <div className="grid__gutter-sizer"></div>
                         {
                             images && images.map((value,index) =>( 
-                                <div className="grid__item rounded p-2" key={index}>
+                                <div className="grid__item rounded" key={index}>
                                     <div className="card">
                                         <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
                                         <Link route="image" params={{ id: value.id , slug : value.slug }}>

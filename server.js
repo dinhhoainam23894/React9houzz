@@ -40,6 +40,7 @@ app.prepare().then(() => {
   server.get('/robots.txt', (req, res) => (
     res.status(200).sendFile('robots.txt', options)
   ));
+  server.use(express.static('static'))
   
   server.use(handler).listen(3000)
 })
