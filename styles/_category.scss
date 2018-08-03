@@ -533,7 +533,8 @@ img {
   }
   #lbMainControls{
     z-index: 1111111111;
-  }
+    top : 50px !important;
+  } 
   #image-container{
     position: absolute;
     position: relative;
