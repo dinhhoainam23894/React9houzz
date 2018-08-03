@@ -531,12 +531,16 @@ img {
         }
       }
   }
+  #lbMainControls{
+    z-index: 1111111111;
+  }
   #image-container{
     position: absolute;
-    height: 50% !important;
-    min-height: 50% !important;
+    position: relative;
+    height: 400px !important;
+    /* min-height: 50% !important; */
     background-color: #f4f4f4;
-    z-index: 100;
+    z-index: 1111111;
     width: 100%;
     .progressive-image-wrapper{
       padding-bottom: 0 !important;
@@ -551,12 +555,11 @@ img {
     }
   }
   .lbInfo{
-    position: absolute !important;
+    position: relative !important;
     width: 100% !important;
-    height: 110% !important;
-    right: 0;
-    top: 50%;
+    overflow: hidden;
     .content-scroll{
+      position: relative !important;
       overflow-y: hidden !important;
     }
     h2{

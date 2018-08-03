@@ -38,16 +38,16 @@ export default class IdeaFilter extends React.Component{
         }
     }
     componentWillReceiveProps(nextProps){
-        console.log(nextProps)
         if(nextProps){
-            this.state = {
+            this.setState({
                 nextUrl : nextProps.nextUrl,
                 images : nextProps.images
-            }
+            })
         }
     }
     render(){
         const { params , url ,subParams} = this.props   
+        console.log(params,subParams)
         return(
             <IdeaComponent 
                 {...this.props}

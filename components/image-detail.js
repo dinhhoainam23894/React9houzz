@@ -197,7 +197,7 @@ export default class Image extends React.Component{
         if(this.props.ideaParams){
             var params = this.props.ideaParams
             if(this.props.subParams){
-                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+                Router.push(`${this.props.currentPath}?params=${params}&f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
             }else{
                 Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
             }

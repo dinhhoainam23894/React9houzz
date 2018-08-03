@@ -74,7 +74,7 @@ export default class IdeaComponent extends React.Component{
         if(this.props.ideaParams){
             var params = this.props.ideaParams
             if(this.props.subParams){
-                Router.pushRoute(`/y-tuong/${params}?f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+                Router.push(`${currentPath}?params=${params}&f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
             }else{
                 Router.push(`${currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
             }

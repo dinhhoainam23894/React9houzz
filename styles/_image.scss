@@ -397,20 +397,32 @@
   @include media-breakpoint-down(sm){
     .main-image{
       width: 100%;
-      overflow: scroll !important;
+      overflow: hidden !important;
       display: block;
-      height: 100%;
-      position: relative;
-      min-height: 700px;
       #lightbox {
-        z-index: 11111111111;
+        position: relative !important;
+        width: 100%;
+        overflow: hidden !important;
+        z-index: 11111111087;
         top: 0 !important;
         left: 0;
         width: 100%;
-        overflow: scroll !important;
         display: block;
-        height: 100%;
-        position: absolute !important;
+      }
+      #image-container{
+        position: relative;
+        height: 400px !important;
+        /* min-height: 50% !important; */
+        background-color: #f4f4f4;
+        z-index: 11111111;
+        width: 100%;
+      }
+      .lbInfo {
+        position: relative !important;
+        width: 100% !important;
+        .content-scroll {
+          position: relative !important;
+        }
       }
     }
     .image-seo{

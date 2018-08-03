@@ -102,11 +102,11 @@ export default class Pro extends Component {
                   </div>
                   <div className="col-12 col-md-9 col-lg-9 mt-2">
                     <div className="provider-about">
-                        <div className="about pb-3 px-4">
+                        <div className="about pb-3 px-4">   
                             <div id="readMore">
                                 <div className="readMoreWrapper">
                                     <div id="readMoreText" className="font-14">
-                                        <h3 dangerouslySetInnerHTML={{__html: provider.about_content}}></h3>
+                                        <div dangerouslySetInnerHTML={{__html: provider.about_content}}></div>
                                     </div>
                                     <div className="readMoreGradient"></div>
                                 </div>

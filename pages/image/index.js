@@ -43,6 +43,7 @@ export default class Image extends React.Component{
                         .lbInfoTab #nav-tab {
                         display : none !important;
                         }
+                      
                     `}</style>
                 </div>
             </div>
