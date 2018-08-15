@@ -15,7 +15,6 @@ export default class extends React.Component {
    
   render() {
 	  const { provider_id,provider_slug ,url } = this.props
-	  console.log(this.props)
 	  const { pathname } = url;
 	  const itemStar = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "itemScope itemType='http://schema.org/AggregateRating'" : ''
 	  const itemStarProp = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? `<meta  itemProp="ratingValue" content=${this.props.data.provider.avg_rate}>` : null

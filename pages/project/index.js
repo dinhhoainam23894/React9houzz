@@ -5,7 +5,6 @@ import ImageModal from '../../components/image-modal';
 import 'isomorphic-fetch'
 import {mapObject , ucfirst} from '../../libraries/helpers'
 const APIURL = process.env.DOMAIN + process.env.APIURI
-
 const APIPROJECT = APIURL + 'project/'
 const APIPRO = APIURL + 'provider/'
 // import Router from 'next/router';

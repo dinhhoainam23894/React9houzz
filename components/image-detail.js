@@ -27,8 +27,6 @@ export default class Image extends React.Component{
             nextPageUrl : null,
             backPageUrl : null,
         }
-       
-        
     }
     async getValue(id) {
         let data;
@@ -207,7 +205,7 @@ export default class Image extends React.Component{
     }
     pushStateProject(id,slug , nextId , nextSlug){
         if(this.props.isImage==true && this.props.isImage){
-            Router.pushRoute(`/anh/${id}-${slug}`,`/anh/${nextId}-${nextSlug}`)
+            Router.push(`/image?id=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
         }else{
             Router.push(`${this.props.currentPath}?photoId=${id}&id=${this.state.project.id}`,`/anh/${nextId}-${nextSlug}`)
         }
@@ -283,7 +281,7 @@ export default class Image extends React.Component{
                     changeValue = {(data)=>this.setState({currentValue: data , detail : false})}
                     currentValue={this.state.currentValue}
                     detail={this.props.detail}
-                    // pushStateProject={(id,slug,nextId,nextSlug)=>{this.pushStateProject(id,slug,nextId,nextSlug)}}
+                    pushStateProject={(id,slug,nextId,nextSlug)=>{this.pushStateProject(id,slug,nextId,nextSlug)}}
                 ></ImageInfo>
             </div>
         )
@@ -321,7 +319,7 @@ class ImageInfo extends React.PureComponent{
         var thumb = $('.thumb');
         thumb.removeClass('project-thumb--current');
         $this.addClass('project-thumb--current');
-        // this.props.pushStateProject(this.props.image.id,this.props.image.slug, value.id , value.slug)
+        this.props.pushStateProject(this.props.image.id,this.props.image.slug, value.id , value.slug)
         this.props.changeValue(value)
     }
     render(){
@@ -391,7 +389,7 @@ class ImageInfo extends React.PureComponent{
                                    {
                                        images && images.map((value,index) =>(
                                             <li className="thumb project-thumb" data-id={value.id} ref="'image'+image.id" data-slug={value.slug} key={index}>
-                                                <a className="link" onClick={(e) =>  this.changeImage(e,value)}>
+                                                <a className="link" href={`/anh/${value.id}-${value.slug}`} onClick={(e) =>  this.changeImage(e,value)}>
                                                     <div className="img-responsive-wrapper img-responsive-square progressive">
                                                         {value.small_path && <img src={value.small_path} className="img-respontive" id={"image-"+value.id} width="71" height="71"></img>}
                                                     </div>
@@ -399,7 +397,6 @@ class ImageInfo extends React.PureComponent{
                                             </li>
                                        ))
                                    }
-                                    
                                 </ul>
                                 <div className="pt-0">
                                 {  

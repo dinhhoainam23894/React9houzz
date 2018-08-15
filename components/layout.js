@@ -8,15 +8,9 @@ import { Container, Row, Col, Nav, NavItem, Button, Form, NavLink, Collapse,
          ModalFooter, ListGroup, ListGroupItem } from 'reactstrap'
 import Cookies from 'universal-cookie'
 import Package from '../package'
-// import Styles from 'css/index.scss'
-// import Styles from 'styles/style.scss'
-// import css from 'styles/style.scss';
-
 import NavHeader from './nav';
 import Footer from './footer';
-// import FontAwesome from '../css/font-awesome.css'
-// <style dangerouslySetInnerHTML={{__html: Styles}}/>
-//           <style dangerouslySetInnerHTML={{__html: FontAwesome}}/>
+import css from 'styles/style.scss';
 
 export default class extends React.Component {
   
@@ -77,7 +71,7 @@ export default class extends React.Component {
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <title>{this.props.title || '9houz'}</title>
-          {des && <meta name='description' itemprop='description' content={des} />}
+          {des && <meta name='description' itemProp='description' content={des} />}
           {canonical && <link rel="canonical" href={process.env.CURRENTDOMAIN + canonical} />}
           {title && <meta property="og:title" content={title} />}
           {des && <meta property="og:description" content={des} />}

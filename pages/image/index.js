@@ -30,7 +30,7 @@ export default class Image extends React.Component{
     }
     render(){
         const {url} = this.props
-        return(
+      return(
             <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div className="main-image">
                 <div id="lightbox">

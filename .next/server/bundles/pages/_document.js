@@ -181,27 +181,44 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 29
         }
-      })), _react.default.createElement("body", {
+      }), _react.default.createElement("link", {
+        rel: "stylesheet",
+        type: "text/css",
+        charSet: "UTF-8",
+        href: "/vendor/slick.min.css",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      }), _react.default.createElement("link", {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "/vendor/slick-theme.min.css",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 41
         }
+      })), _react.default.createElement("body", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 44
         }
       }), _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 45
         }
       })), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 48
         }
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -209,7 +226,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 49
         }
       }));
     }

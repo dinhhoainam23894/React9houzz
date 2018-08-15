@@ -3,7 +3,6 @@ const routes = require('next-routes')
                                                     // Name   Page      Pattern
 module.exports = routes()                           // ----   ----      -----
 .add('index','/','index')                                       // about  about     /about
-.add('test', '/test')                               // blog   blog      /blog/:slug
 .add('news', '/news') 
 .add('image','/anh/:id-:slug','image/index')
 .add('y-tuong', '/y-tuong','idea')                  // y-tuong   idea   /y-tuong
@@ -13,6 +12,9 @@ module.exports = routes()                           // ----   ----      -----
 .add('pro.review','/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t','pro/review')
 .add('project.detail','/du-an/:id-:slug','project/index')
 .add('static','/about/:slug','static-page')
+.add('list-project','/danh-sach-du-an','project/list-project')
+.add('list-provider','/danh-sach-pro','pro/provider-list')
+.add('project-detail','/chi-tiet-du-an/:id-:slug','project/detail')
 
 
 

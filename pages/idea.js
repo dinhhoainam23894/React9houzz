@@ -12,6 +12,7 @@ export default class extends React.Component{
                     filter_default : data.filter_default,
                     colors : data.colors,
                     images: data.images.data,
+                    page : data.page,
                     nextUrl: data.images.next_page_url
                     , title : data.seo.title
                     , des : data.seo.des

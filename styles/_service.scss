@@ -23,6 +23,14 @@
 			border-right: 1px solid #ffffff;
 		}
 	}
+	.images-service{
+		max-height: 250px !important;
+		img{
+			height: 100% !important;
+			object-fit: cover;
+			object-position: center center;
+		}
+	}
 	//font-family: helvetica-ttf;
 	font-size: 13px;
 	h3{
@@ -83,6 +91,20 @@
 		}
 	}
 	.media{
+		.media-body{
+			h2{
+				font-weight: normal;
+				font-size: 18px !important;
+				color: #333333 !important;
+			}
+		}
+		.media-title{
+			width: 90%;
+			a{
+				font-family: roboto-bold;
+				font-size: 15px !important;
+			}
+		}
 		img{
 			width: 100%;
   			height: auto;

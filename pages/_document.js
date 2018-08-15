@@ -37,6 +37,8 @@ export default class MyDocument extends Document {
             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
         if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
         else window.addEventListener('load', loadDeferredStyles);`}} />
+        <link rel="stylesheet" type="text/css" charSet="UTF-8" href="/vendor/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="/vendor/slick-theme.min.css" />
         </Head>
         <body>
           <Main />

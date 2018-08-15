@@ -7,7 +7,6 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app)
 var path = require('path')
-var test = require('./pages/test')
 
 let cacheTime = 1000 * 60 * 60 // 1 hour
 
@@ -23,7 +22,6 @@ const ssrCache = new LRUCache({
 
 app.prepare().then(() => {
   const server = express()
-  const Test = test()
   // server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
   const faviconOptions = {
     root: __dirname + '/static/'

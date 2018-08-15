@@ -15,6 +15,7 @@ export default class IdeaFilter extends React.Component{
                     filter_default : data.filter_default,
                     colors : data.colors,
                     images: data.images.data,
+                    page : data.page,
                     nextUrl: data.images.next_page_url,
                     params: query.params,
                     subParams : query.f,
@@ -47,7 +48,7 @@ export default class IdeaFilter extends React.Component{
     }
     render(){
         const { params , url ,subParams} = this.props   
-        console.log(params,subParams)
+        console.log(this.props)
         return(
             <IdeaComponent 
                 {...this.props}

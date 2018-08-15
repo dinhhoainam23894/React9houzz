@@ -1,0 +1,101 @@
+.project-detail-main{
+  ol.breadcrumb{
+    background : none !important;
+    li.breadcrumb-item{
+      color : #999999 !important;
+    }
+  }
+  .sub-title{
+    font-size: 25px ;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .sub-title:after{
+    position: absolute;
+    background: #b953a4;
+    bottom: -10px !important;
+    content: "";
+    left: 0 !important;
+    height: 3px !important;
+    width: 2.5rem !important;
+    margin: 3px auto !important;
+  }
+  .project-title{
+    width: 80% !important;
+    h2 span{
+      text-transform: lowercase !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      position : relative;
+    }
+    h2 span::before{
+      content: '';
+      width: 4px;
+      height: 19px;
+      background: #b953a4;
+      position: absolute;
+      left: -0.75rem;
+      margin-top: 8px;
+    }
+    h2::first-letter {
+      text-transform: uppercase !important;
+      color: $primary;
+      font-weight: bold;
+    }
+  }
+  .project-description{
+    font-size: 15px !important;
+    line-height: 1.5rem !important;
+  }
+  .project-image{
+    width : 80%;
+    margin : 0 auto;
+    img{
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  .project-sidebar{
+    .media-image{
+      width : 80px;
+      height : 80px;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit : cover ;
+        object-position: center;
+      }
+    }
+    .pro-info{
+      .info{
+        font-size : 14px !important;
+        color : #6f7293;
+        i{
+          color: $primary !important;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  .project-keyword{
+    .keyword-tags{
+      span{
+        color : $primary !important;
+        margin-right : 1rem;
+      }
+    }
+  }
+  .project-more{
+    .card{
+      .card-image{
+        min-height : 230px !important;
+        height : 230px !important;
+        img{
+          height: 100% !important;
+          object-position: center;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
