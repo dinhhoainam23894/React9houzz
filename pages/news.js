@@ -146,7 +146,7 @@ export default class  extends React.Component {
                               {/*T2*/}
                             {/*</div>*/}
                             <div className="folding-edge"></div>
-                            <Link route='project.detail' params={{id:  value.main_project.id  , slug : value.main_project.slug}}>
+                            <Link route='project.detail' params={{id:  value.main_project && value.main_project.id  , slug : value.main_project && value.main_project.slug}}>
                               <a className='photoLink'>
                             <div className="card-img-top">
                               <img className="img-fluid" src={value.main_project && value.main_project.avatar} alt="Card image cap"/>
@@ -161,7 +161,7 @@ export default class  extends React.Component {
                               <ul className="list-unstyled">
                                 {
                                   value.projects && value.projects.map((value,index) => (
-                                    <Link route='project.detail' params={{id:  value.id  , slug : value.slug}}>
+                                    <Link route='project.detail' params={{id:  value.id  , slug : value.slug}} key={index}>
                                       <a className='photoLink'>
                                         <li className="media py-3">
                                           <img className="mr-3" src={value.avatar && value.avatar} alt="Generic placeholder image"/>
@@ -189,7 +189,7 @@ export default class  extends React.Component {
                   <Slider {...settings}>
                     {
                       images && images.map((value,index) => (
-                        <div className="p-2 idea-slide-items">
+                        <div className="p-2 idea-slide-items" key={index}>
                           <Link route='image' params={{id:  value.id  , slug : value.slug}}>
                             <a className='photoLink'>
                                <img src={value.large_path} className="img-fluid"/>

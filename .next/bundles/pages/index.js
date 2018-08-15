@@ -1,7 +1,7 @@
 module.exports =
-__NEXT_REGISTER_PAGE('/news', function() {
+__NEXT_REGISTER_PAGE('/', function() {
           var comp =
-      webpackJsonp([5],{
+      webpackJsonp([6],{
 
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -30021,7 +30021,7 @@ module.exports = "@font-face{font-family:helvetica-ttf;src:url(\"/static/fonts/T
 
 /***/ }),
 
-/***/ "./pages/news.js":
+/***/ "./pages/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30048,7 +30048,7 @@ var _helpers = __webpack_require__("./libraries/helpers.js");
 
 var _routes = __webpack_require__("./routes.js");
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/news.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/index.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30627,7 +30627,7 @@ exports.default = _default;
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/news")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/")
   
 
 /***/ }),
@@ -30648,16 +30648,16 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/news.js");
+module.exports = __webpack_require__("./pages/index.js");
 
 
 /***/ })
 
-},[4])
+},[5])
           return { page: comp.default }
         })
       ;
-//# sourceMappingURL=news.js.map
+//# sourceMappingURL=index.js.map

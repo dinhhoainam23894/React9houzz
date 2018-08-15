@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1799,7 +1799,7 @@ module.exports = "@font-face{font-family:helvetica-ttf;src:url(\"/static/fonts/T
 
 /***/ }),
 
-/***/ "./pages/news.js":
+/***/ "./pages/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1826,7 +1826,7 @@ var _helpers = __webpack_require__("./libraries/helpers.js");
 
 var _routes = __webpack_require__("./routes.js");
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/news.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/index.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2415,10 +2415,10 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/news.js");
+module.exports = __webpack_require__("./pages/index.js");
 
 
 /***/ }),
@@ -2515,4 +2515,4 @@ module.exports = require("universal-cookie");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=news.js.map
+//# sourceMappingURL=index.js.map
