@@ -89,7 +89,7 @@ export default class  extends React.Component {
                   <p className="font-20">9houz cung cấp một kho ý tưởng khổng lồ với hơn 1000 bức ảnh đẹp cho ngôi nhà
                     của bạn</p>
                   <Link route='y-tuong'>
-                    <a className="btn btn-primary">Tìm ý tưởng</a>
+                    <a className="btn btn-primary mt-3 px-4">Tìm ý tưởng</a>
                   </Link>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default class  extends React.Component {
                   <p>Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành</p>
                   <p className="font-20">9Houz sẽ giúp bạn kết nối với hơn 1000 Chuyên gia trong lĩnh vực Thiết kế & thi
                     công nội thất trên 63 tỉnh thành</p>
-                  <a className="btn btn-primary">Tìm chuyên gia</a>
+                  <a className="btn btn-primary mt-3 px-4">Tìm chuyên gia</a>
                 </div>
               </div>
             </div>
@@ -114,8 +114,8 @@ export default class  extends React.Component {
                 {
                   providers && providers.map((value, index) => (
                     <div className="card-professional card p-3" key={index}>
-                      <div className="image-pro rounded rounded-circle mx-auto">
-                        <img src={value.avatar_cover} alt="" className="img-fluid rounded rounded-circle"/>
+                      <div className="embed-responsive embed-responsive-1by1 image-pro rounded-circle">
+                        <img src={value.avatar_cover} alt="" className="embed-responsive-item rounded-circle"/>
                       </div>
                       <div className="card-contend mt-3 text-center">
                         <p>{value.name}</p>
@@ -154,7 +154,11 @@ export default class  extends React.Component {
                               </a>
                             </Link>
                             <div className="card-body">
-                              <p className="card-title font-15">{value.main_project && value.main_project.name}</p>
+                              <Link route='project.detail' params={{id:  value.main_project && value.main_project.id  , slug : value.main_project && value.main_project.slug}}>
+                                <a className='photoLink'>
+                                  <p className="card-title font-15">{value.main_project && value.main_project.name}</p>
+                                </a>
+                              </Link>
                               <div className="text ellipsis position-relative">
                                 <p className="card-text font-14" dangerouslySetInnerHTML={{__html: value.main_project.descriptions && value.main_project.descriptions}}/>
                               </div>

@@ -1,5 +1,5 @@
 .overlay{
-    background: rgba(7,7,8,.75);
+    background: rgba(7,7,8,.35);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -9,7 +9,7 @@
 .homepage{
     overflow: hidden;
     .title{
-        font-size: 30px ;
+        font-size: 26px ;
         text-transform: uppercase;
         margin-bottom: 15px;
         font-weight: 500;
@@ -25,7 +25,7 @@
         margin: 3px auto !important;
     }
     .sub-title{
-        font-size: 30px ;
+        font-size: 23px ;
         margin-bottom: 20px;
         font-weight: 500;
         white-space: nowrap;
@@ -54,17 +54,13 @@
             left: 0;
             right: 0;
             margin: 0 auto;
-            top: 30% !important;
+            top: 20% !important;
             color: #fff;
             z-index: 999;
             overflow-wrap: break-word;
             text-align: center;
             .container{
                 width: 62% !important;
-                border-style: double;
-                border-left: none;
-                border-right: none;
-                border-color: rgba(255,255,255,0.4);
             }
             p{
                 font-size : 25px;
@@ -81,19 +77,19 @@
             border: 1px solid $primary;
             padding: 5px;
             img{
-                width: 100%;
+                padding: 5px;
                 object-fit: cover;
                 object-position: center center;
-                min-height: 265px !important;
             }
         }
         .card-contend{
             p{
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                text-transform: uppercase;
             }
             button{
                 padding:.2rem 1.5rem !important;
@@ -157,6 +153,10 @@
             }
         }
         .media{
+            &:hover{
+                box-shadow: 0 3px 3px 3px rgba(0,0,0,0.5);
+                transition-duration : 1s;
+            }
             border-top: 1px solid #dddddd;
             img{
                 width : 40%;
@@ -171,9 +171,12 @@
         }
     }
     .new-idea{
+        .overlay{
+            background: rgba(7,7,8,.72);
+        }
         background-image: url('/static/images/background-idea.png');
         .idea-slide-items{
-            height: 350px !important;
+            height: 310px !important;
             img{
                 width: 100% !important;
                 height: 100%;
@@ -194,5 +197,10 @@
             font-family: FontAwesome !important;
             font-size: 40px !important;
         }
+    }
+}
+@include  media-breakpoint-down(lg){
+    .homepage .new-idea .idea-slide-items {
+        height: 240px !important;
     }
 }
