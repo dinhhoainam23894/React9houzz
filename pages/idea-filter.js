@@ -48,7 +48,6 @@ export default class IdeaFilter extends React.Component{
     }
     render(){
         const { params , url ,subParams} = this.props   
-        console.log(this.props)
         return(
             <IdeaComponent 
                 {...this.props}

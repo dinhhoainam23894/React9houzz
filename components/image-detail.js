@@ -3,7 +3,7 @@ import axios from 'axios'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'image/'
 import {rating}  from '../libraries/helpers'
 import $ from 'jquery';
-import {Router} from '../routes'
+import Router from 'next/router'
 import {Link} from '../routes'
 import 'isomorphic-fetch'
 import { throws } from 'assert';
@@ -197,7 +197,7 @@ export default class Image extends React.Component{
             if(this.props.subParams){
                 Router.push(`${this.props.currentPath}?params=${params}&f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
             }else{
-                Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`) 
+                Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
             }
         }else{
             Router.push(`${this.props.currentPath}?photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
@@ -207,7 +207,17 @@ export default class Image extends React.Component{
         if(this.props.isImage==true && this.props.isImage){
             Router.push(`/image?id=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
         }else{
-            Router.push(`${this.props.currentPath}?photoId=${id}&id=${this.state.project.id}`,`/anh/${nextId}-${nextSlug}`)
+          if(this.props.ideaParams){
+            var params = this.props.ideaParams
+            if(this.props.subParams){
+                console.log(params);
+              Router.push(`${this.props.currentPath}?params=${params}&f=${this.props.subParams}&photoId=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
+            }else{
+              Router.push(`${this.props.currentPath}?params=${params}&photoId=${id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
+            }
+          }else{
+            Router.push(`${this.props.currentPath}?photoId=${id}&id=${this.state.project.id}&slug=${slug}`,`/anh/${nextId}-${nextSlug}`)
+          }
         }
     }
     getFullImage = async (url, func) => {
