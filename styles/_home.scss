@@ -271,8 +271,12 @@
         height: 240px !important;
     }
 }
-
-@include  media-breakpoint-down(md){
+@include  media-breakpoint-down(md) {
+    .homepage .title:after {
+        left: 45% !important;
+    }
+}
+@include  media-breakpoint-down(xs){
     .homepage .title:after {
         left: 39% !important;
     }
