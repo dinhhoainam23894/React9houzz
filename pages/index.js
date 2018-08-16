@@ -32,12 +32,14 @@ export default class  extends React.Component {
     var banner = {
       dots: false,
       infinite: true,
-      speed: 500,
+      speed: 700,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
+      autoplaySpeed: 6000,
       cssEase: "linear",
       swipeToSlide: true,
+      pauseOnHover: false
     }
     var settings = {
       dots: false,
@@ -45,7 +47,7 @@ export default class  extends React.Component {
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: false,
       cssEase: "linear",
       swipeToSlide: true,
       responsive: [
@@ -168,7 +170,9 @@ export default class  extends React.Component {
                                     <Link route='project.detail' params={{id:  value.id  , slug : value.slug}} key={index}>
                                       <a className='photoLink'>
                                         <li className="media py-3">
-                                          <img className="mr-3" src={value.avatar && value.avatar} alt="Generic placeholder image"/>
+                                          <div className="img-project mr-3">
+                                            <img src={value.avatar && value.avatar} alt="Generic placeholder image"/>
+                                          </div>
                                           <div className="media-body">
                                             <p className="mt-0 mb-1 text-black font-14 media-title">{value.name && value.name}</p>
                                           </div>
