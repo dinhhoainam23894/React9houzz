@@ -71,6 +71,8 @@ export default class  extends React.Component {
         {
           breakpoint: 480,
           settings: {
+            className: "center",
+            centerMode: true,
             slidesToShow: 1,
             slidesToScroll: 1
           }
@@ -88,7 +90,7 @@ export default class  extends React.Component {
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>1000+ ý tưởng đẹp cho ngôi nhà của bạn</p>
-                  <p className="font-20">9houz cung cấp một kho ý tưởng khổng lồ với hơn 1000 bức ảnh đẹp cho ngôi nhà
+                  <p className="font-20 d-none d-md-block">9houz cung cấp một kho ý tưởng khổng lồ với hơn 1000 bức ảnh đẹp cho ngôi nhà
                     của bạn</p>
                   <Link route='y-tuong'>
                     <a className="btn btn-primary mt-3 px-4">Tìm ý tưởng</a>
@@ -102,7 +104,7 @@ export default class  extends React.Component {
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành</p>
-                  <p className="font-20">9Houz sẽ giúp bạn kết nối với hơn 1000 Chuyên gia trong lĩnh vực Thiết kế & thi
+                  <p className="font-20 d-none d-md-block">9Houz sẽ giúp bạn kết nối với hơn 1000 Chuyên gia trong lĩnh vực Thiết kế & thi
                     công nội thất trên 63 tỉnh thành</p>
                   <a className="btn btn-primary mt-3 px-4">Tìm chuyên gia</a>
                 </div>
@@ -140,7 +142,7 @@ export default class  extends React.Component {
                   <div className="row">
                     {
                       listType && mapObject(listType,(index, value) => (
-                        <div className="col-4 col-md-4" key={index}>
+                        <div className="col-12 col-md-4" key={index}>
                           <h2 className="my-4 position-relative sub-title">{index}</h2>
                           <div className="card my-4">
                             {/*<div className="calendar">*/}

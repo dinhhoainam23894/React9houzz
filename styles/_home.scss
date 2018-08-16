@@ -271,3 +271,16 @@
         height: 240px !important;
     }
 }
+
+@include  media-breakpoint-down(md){
+    .homepage .title:after {
+        left: 39% !important;
+    }
+    .homepage .blog .media {
+        padding: 1rem 0 !important;
+        .media-body{
+            padding-left: 0px !important;
+            margin-top: 0px !important;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/image', function() {
           var comp =
-      webpackJsonp([7],{
+      webpackJsonp([6],{
 
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -29963,7 +29963,7 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/image/index.js");
@@ -29971,7 +29971,7 @@ module.exports = __webpack_require__("./pages/image/index.js");
 
 /***/ })
 
-},[6])
+},[5])
           return { page: comp.default }
         })
       ;
