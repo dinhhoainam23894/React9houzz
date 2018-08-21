@@ -32,11 +32,14 @@ export default class extends React.Component {
       , headerProjects: dataPro.headerProjects
       , headerCategories: dataPro.headerCategories
       , dataBase: dataPro.dataBase
+      , relateData : data.relateData
+      , listProjects : data.listProjects
     }
   }
 
   render() {
-    const { provider, data, project, images} = this.props
+    const { provider, data, project, images ,relateData , listProjects} = this.props
+    console.log(listProjects)
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props}>
         <div className="project-detail-main" id="cat">
@@ -122,134 +125,28 @@ export default class extends React.Component {
                 <div className="bg-white p-3">
                   <p className="sub-title position-relative">Dự án cùng chuyên gia</p>
                   <ul className="list-unstyled mt-3">
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea1.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
+                    {
+                      listProjects && listProjects.map((value,index) => (
+                        <li className="my-3" key={index}>
+                          <div className="media">
+                            <div className="media-image mr-3">
+                              <img src={value.avatar} alt="Generic placeholder image"/>
                             </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea2.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội hộ phức hợp đẹp mặt
-                            tại Hà Nội</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
-                            </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
+                            <div className="media-body">
+                              <p className="mt-0 mb-2 font-14">{value.name}</p>
+                              <div className="d-inline pro-info">
+                                <div className="info project-info mr-3 float-left">
+                                  <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> {value.total + ' ảnh'}
+                                </div>
+                                <div className="info location-info">
+                                  <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> {value.address}
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea3.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội Khu căn hộ phức hợp
-                            đẹp mặt tại Hà N</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
-                            </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea1.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
-                            </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea1.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
-                            </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea1.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
-                            </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-3">
-                      <div className="media">
-                        <div className="media-image mr-3">
-                          <img src="/images/home-idea1.png" alt="Generic placeholder image"/>
-                        </div>
-                        <div className="media-body">
-                          <p className="mt-0 mb-2 font-14">Khu căn hộ phức hợp đẹp mặt tại Hà Nội</p>
-                          <div className="d-inline pro-info">
-                            <div className="info project-info mr-3 float-left">
-                              <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> 20 ảnh
-                            </div>
-                            <div className="info location-info">
-                              <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> Hà nội
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                        </li>
+                      ))
+                    }
                   </ul>
                 </div>
               </div>
@@ -257,86 +154,20 @@ export default class extends React.Component {
             <div className="project-more">
                 <p className="font-25">Mọi người thường xem thêm</p>
                 <div className="row">
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro1.png" alt="Card image cap" />
-                      </div>
-                        <div className="card-body bg-gray px-0 py-2">
-                          <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
+                  {
+                    relateData && mapObject(relateData,(index,value) => (
+                      <div className="col-3 col-md-3" key={index}>
+                        <div className="card border-none">
+                          <div className="card-image">
+                            <img className="card-img-top" src={value.avatar} alt="Card image cap" />
+                          </div>
+                          <div className="card-body bg-gray px-0 py-2">
+                            <p className="card-title">{value.name}</p>
+                          </div>
                         </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro2.png" alt="Card image cap" />
                       </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro3.png" alt="Card image cap" />
-                      </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro1.png" alt="Card image cap" />
-                      </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro2.png" alt="Card image cap" />
-                      </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro3.png" alt="Card image cap" />
-                      </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro2.png" alt="Card image cap" />
-                      </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-3 col-md-3">
-                    <div className="card border-none">
-                      <div className="card-image">
-                        <img className="card-img-top" src="/images/home-pro3.png" alt="Card image cap" />
-                      </div>
-                      <div className="card-body bg-gray px-0 py-2">
-                        <p className="card-title">Thiết kế mới nhất năm 2018 cho hạng mục nội thất</p>
-                      </div>
-                    </div>
-                  </div>
+                    ))
+                  }
                 </div>
             </div>
           </div>
