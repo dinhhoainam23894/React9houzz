@@ -39,17 +39,17 @@ export default class extends React.Component {
 
   render() {
     const { provider, data, project, images ,relateData , listProjects} = this.props
-    console.log(listProjects)
+    console.log(this.props)
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props}>
         <div className="project-detail-main" id="cat">
           <div className="container">
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb p-0 pl-0">
-                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                <li className="breadcrumb-item active" aria-current="page">Library</li>
-              </ol>
-            </nav>
+            {/*<nav aria-label="breadcrumb">*/}
+              {/*<ol className="breadcrumb p-0 pl-0">*/}
+                {/*<li className="breadcrumb-item"><a href="#">Home</a></li>*/}
+                {/*<li className="breadcrumb-item active" aria-current="page">Library</li>*/}
+              {/*</ol>*/}
+            {/*</nav>*/}
             <div className="row">
               <div className="col-8 col-md-8">
                 <div className="about bg-white p-3 border border-gray">
@@ -97,29 +97,29 @@ export default class extends React.Component {
                     </ul>
                   </div>
                 </div>
-                <div className="project-keyword bg-white p-3 my-4">
-                  <p className="keyword-title font-25">Từ khóa</p>
-                  <div className="pt-0 keyword-tags">
-                        <span
-                          className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
-                          Thiết kế nội thất chung cư
-                        </span>
-                    <span
-                      className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
-                          Thiết kế nội thất chung cư
-                        </span>
-                    <span
-                      className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
-                          Thiết kế nội thất chung cư
-                        </span><span
-                    className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
-                          Thiết kế nội thất chung cư
-                        </span><span
-                    className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
-                          Thiết kế nội thất chung cư
-                        </span>
-                  </div>
-                </div>
+                {/*<div className="project-keyword bg-white p-3 my-4">*/}
+                  {/*<p className="keyword-title font-25">Từ khóa</p>*/}
+                  {/*<div className="pt-0 keyword-tags">*/}
+                        {/*<span*/}
+                          {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
+                          {/*Thiết kế nội thất chung cư*/}
+                        {/*</span>*/}
+                    {/*<span*/}
+                      {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
+                          {/*Thiết kế nội thất chung cư*/}
+                        {/*</span>*/}
+                    {/*<span*/}
+                      {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
+                          {/*Thiết kế nội thất chung cư*/}
+                        {/*</span><span*/}
+                    {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
+                          {/*Thiết kế nội thất chung cư*/}
+                        {/*</span><span*/}
+                    {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
+                          {/*Thiết kế nội thất chung cư*/}
+                        {/*</span>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
               </div>
               <div className="col-4 col-md-4 project-sidebar">
                 <div className="bg-white p-3">
@@ -138,9 +138,11 @@ export default class extends React.Component {
                                 <div className="info project-info mr-3 float-left">
                                   <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> {value.total + ' ảnh'}
                                 </div>
-                                <div className="info location-info">
-                                  <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> {value.address}
-                                </div>
+                                {value.address &&
+                                  <div className="info location-info">
+                                    <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> {value.address}
+                                  </div>
+                                }
                               </div>
                             </div>
                           </div>
@@ -157,14 +159,16 @@ export default class extends React.Component {
                   {
                     relateData && mapObject(relateData,(index,value) => (
                       <div className="col-3 col-md-3" key={index}>
-                        <div className="card border-none">
-                          <div className="card-image">
-                            <img className="card-img-top" src={value.avatar} alt="Card image cap" />
+                        <Link route='project-detail' params={{id: index , slug: `${value.slug}`}}>
+                          <div className="card border-none">
+                            <div className="card-image">
+                              <img className="card-img-top" src={value.avatar} alt="Card image cap" />
+                            </div>
+                            <div className="card-body bg-gray px-0 py-2">
+                              <p className="card-title">{value.name}</p>
+                            </div>
                           </div>
-                          <div className="card-body bg-gray px-0 py-2">
-                            <p className="card-title">{value.name}</p>
-                          </div>
-                        </div>
+                        </Link>
                       </div>
                     ))
                   }

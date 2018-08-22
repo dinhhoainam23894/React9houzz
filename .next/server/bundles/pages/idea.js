@@ -67,10 +67,485 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/IdeaComponent.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _style = _interopRequireDefault(__webpack_require__("styled-jsx/style"));
+
+var _react = _interopRequireDefault(__webpack_require__("react"));
+
+var _axios = _interopRequireDefault(__webpack_require__("axios"));
+
+__webpack_require__("isomorphic-fetch");
+
+var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
+
+var _sideBar = _interopRequireDefault(__webpack_require__("./components/sideBar.js"));
+
+var _reactMasonryComponent = _interopRequireDefault(__webpack_require__("react-masonry-component"));
+
+var _reactInfiniteScroller = _interopRequireDefault(__webpack_require__("react-infinite-scroller"));
+
+var _imageModal = _interopRequireDefault(__webpack_require__("./components/image-modal.js"));
+
+var _routes = __webpack_require__("./routes.js");
+
+var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
+
+var _fscreen_idea = _interopRequireDefault(__webpack_require__("./styles/fscreen_idea.css"));
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/IdeaComponent.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var APIURL = "https://api.9houz.com/" + "api/";
+var currentPath = '/';
+var asPath = '/';
+
+var IdeaComponent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(IdeaComponent, _React$Component);
+
+  function IdeaComponent(props) {
+    var _this;
+
+    _classCallCheck(this, IdeaComponent);
+
+    _this = _possibleConstructorReturn(this, (IdeaComponent.__proto__ || Object.getPrototypeOf(IdeaComponent)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        images: [],
+        nextUrl: null,
+        hasMoreItems: true,
+        h1: null,
+        filter_default: [],
+        listBadge: []
+      }
+    });
+    currentPath = _this.props.path;
+    asPath = _this.props.asPath;
+    return _this;
+  }
+
+  _createClass(IdeaComponent, [{
+    key: "loadItems",
+    value: function loadItems(page) {
+      var self = this;
+      var url = '';
+
+      if (this.props.nextUrl) {
+        url = this.props.nextUrl;
+      }
+
+      if (this.props.nextUrl != null) {
+        _axios.default.get(url).then(function (resp) {
+          if (resp) {
+            var tracks = self.props.images;
+            var data = resp.data;
+            data.images.data.map(function (track) {
+              tracks.push(track);
+            });
+
+            if (data.images.next_page_url && data.images.next_page_url != null) {
+              self.props.changeState(tracks, data.images.next_page_url);
+            } else {
+              self.setState({
+                hasMoreItems: false
+              });
+            }
+          }
+        });
+      }
+    }
+  }, {
+    key: "showPhoto",
+    value: function showPhoto(e, id, slug) {
+      e.preventDefault();
+
+      if (this.props.ideaParams) {
+        var params = this.props.ideaParams;
+
+        if (this.props.subParams) {
+          _routes.Router.push("".concat(currentPath, "?params=").concat(params, "&f=").concat(this.props.subParams, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+        } else {
+          _routes.Router.push("".concat(currentPath, "?params=").concat(params, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+        }
+      } else {
+        _routes.Router.push("".concat(currentPath, "?photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var showChar = 150; // How many characters are shown by default
+
+      var ellipsestext = "";
+      var moretext = "Xem thêm >";
+      var lesstext = "Rút gọn <";
+      var self = this;
+      (0, _jquery.default)('.moreDes').each(function (e) {
+        var content = (0, _jquery.default)(this).html();
+
+        if (content.length > showChar) {
+          var c = content.substr(0, showChar);
+          var h = content.substr(showChar, content.length - showChar);
+          var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+          (0, _jquery.default)(this).html(html);
+        }
+      });
+      (0, _jquery.default)(".morelink").click(function (e) {
+        e.preventDefault();
+
+        if ((0, _jquery.default)(this).hasClass("less")) {
+          (0, _jquery.default)(this).removeClass("less");
+          (0, _jquery.default)(this).html(moretext);
+        } else {
+          (0, _jquery.default)(this).addClass("less");
+          (0, _jquery.default)(this).html(lesstext);
+        }
+
+        (0, _jquery.default)(this).parent().prev().toggle();
+        (0, _jquery.default)(this).prev().toggle();
+        self.masonry.performLayout();
+        return false;
+      });
+      (0, _jquery.default)('.sidebar-service ul').each(function (e) {
+        if ((0, _jquery.default)(this).find('li').length == (0, _jquery.default)(this).find((0, _jquery.default)('li:visible')).length) {
+          (0, _jquery.default)(this).find('.loadmore').hide();
+        }
+      });
+      (0, _jquery.default)('.sidebar-service').on('click', '.loadmore', function () {
+        var list = (0, _jquery.default)(this).parent().find((0, _jquery.default)('li'));
+        (0, _jquery.default)(this).parent().find((0, _jquery.default)('li:hidden')).show();
+
+        if (list.length == (0, _jquery.default)(this).parent().find((0, _jquery.default)('li:visible')).length) {
+          (0, _jquery.default)(this).removeClass('loadmore');
+          (0, _jquery.default)(this).addClass('hidemore');
+          (0, _jquery.default)(this).html('Thu gọn');
+        }
+      });
+      (0, _jquery.default)('.sidebar-service').on('click', '.hidemore', function () {
+        var list = (0, _jquery.default)(this).parent().find((0, _jquery.default)('li'));
+        (0, _jquery.default)(this).parent().find((0, _jquery.default)('li:visible')).slice(5, list.length).hide();
+        (0, _jquery.default)(this).removeClass('hidemore');
+        (0, _jquery.default)(this).addClass('loadmore');
+        (0, _jquery.default)(this).html('Xem thêm');
+      });
+      (0, _jquery.default)(".close").click(function (event) {
+        (0, _jquery.default)(this).parent().toggle();
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      // var list = $('.idea-content').find('.moreDes').length;
+      (0, _jquery.default)('.idea-content').find((0, _jquery.default)('.moreDes:visible')).hide();
+      (0, _jquery.default)('.idea-content').find((0, _jquery.default)('.moreDes')).slice(0, 20).show();
+    }
+  }, {
+    key: "dismissModal",
+    value: function dismissModal() {
+      if (this.props.ideaParams) {
+        var params = this.props.ideaParams;
+
+        if (this.props.subParams) {
+          _routes.Router.pushRoute("/y-tuong/".concat(params, "?f=").concat(this.props.subParams));
+        } else {
+          _routes.Router.pushRoute('idea.detail', {
+            params: params
+          });
+        }
+      } else {
+        _routes.Router.push('/idea', '/y-tuong');
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var masonryOptions = {
+        gutter: '.grid__gutter-sizer',
+        isOriginLeft: true
+      };
+      var _props = this.props,
+          images = _props.images,
+          h1 = _props.h1,
+          filter_default = _props.filter_default,
+          colors = _props.colors,
+          listBadge = _props.listBadge,
+          detail = _props.detail,
+          page = _props.page;
+      var _props2 = this.props,
+          photoId = _props2.photoId,
+          slug = _props2.slug;
+      return _react.default.createElement(_layout.default, _extends({}, this.props, {
+        navmenu: false,
+        container: false,
+        css: _fscreen_idea.default,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 152
+        }
+      }), photoId ? _react.default.createElement(_imageModal.default, {
+        id: photoId,
+        slug: slug,
+        detail: detail,
+        images: images,
+        currentPath: currentPath,
+        ideaParams: this.props.ideaParams,
+        subParams: this.props.subParams,
+        nextPageUrl: this.state.nextUrl,
+        onDismiss: function onDismiss() {
+          return _this2.dismissModal();
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 155
+        }
+      }) : '', _react.default.createElement(_style.default, {
+        styleId: "352178927",
+        css: "#lightbox .nav-link:first-child{border-left:1px solid #e2e2e2 !important;}#lightbox .nav-link{display:block;padding:0.4rem 0.7rem !important;border-left:none !important;border-color:#e2e2e2;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSWRlYUNvbXBvbmVudC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUF1S1ksQUFFNEMsQUFHM0IsY0FDbUIsMkJBSlMsTUFLZCw0QkFDUCxxQkFBQyIsImZpbGUiOiJjb21wb25lbnRzL0lkZWFDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiL0FwcGxpY2F0aW9ucy9NQU1QL2h0ZG9jcy9teS1uZXh0LWFwcCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCBheGlvcyBmcm9tICdheGlvcydcbmltcG9ydCAnaXNvbW9ycGhpYy1mZXRjaCdcbmltcG9ydCBMYXlvdXQgZnJvbSAnLi9sYXlvdXQnXG5pbXBvcnQgU2lkZWJhciBmcm9tICcuL3NpZGVCYXInXG5pbXBvcnQgTWFzb25yeSBmcm9tICdyZWFjdC1tYXNvbnJ5LWNvbXBvbmVudCdcbmltcG9ydCBJbmZpbml0ZVNjcm9sbCBmcm9tICdyZWFjdC1pbmZpbml0ZS1zY3JvbGxlcidcbmltcG9ydCBJbWFnZU1vZGFsIGZyb20gJy4vaW1hZ2UtbW9kYWwnXG5pbXBvcnQge0xpbmt9IGZyb20gJy4uL3JvdXRlcydcbmltcG9ydCAkIGZyb20gJ2pxdWVyeSc7XG5jb25zdCBBUElVUkwgPSBwcm9jZXNzLmVudi5ET01BSU4gKyBwcm9jZXNzLmVudi5BUElVUklcbnZhciBjdXJyZW50UGF0aCA9ICcvJ1xudmFyIGFzUGF0aCA9ICcvJ1xuaW1wb3J0IHtSb3V0ZXJ9IGZyb20gJy4uL3JvdXRlcydcbmltcG9ydCBjc3MgZnJvbSAnc3R5bGVzL2ZzY3JlZW5faWRlYS5jc3MnXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBJZGVhQ29tcG9uZW50IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50e1xuICAgIHN0YXRlID0ge1xuICAgICAgICBpbWFnZXM6IFtdLFxuICAgICAgICBuZXh0VXJsIDogbnVsbCxcbiAgICAgICAgaGFzTW9yZUl0ZW1zOiB0cnVlLFxuICAgICAgICBoMSA6IG51bGwsXG4gICAgICAgIGZpbHRlcl9kZWZhdWx0IDogW10sXG4gICAgICAgIGxpc3RCYWRnZSA6IFtdXG4gICAgfVxuICAgIGNvbnN0cnVjdG9yKHByb3BzKXtcbiAgICAgICAgc3VwZXIocHJvcHMpXG4gICAgICAgIGN1cnJlbnRQYXRoID0gdGhpcy5wcm9wcy5wYXRoXG4gICAgICAgIGFzUGF0aCA9IHRoaXMucHJvcHMuYXNQYXRoXG4gICAgfVxuICAgIGxvYWRJdGVtcyhwYWdlKSB7XG4gICAgICAgIHZhciBzZWxmID0gdGhpcztcbiAgICAgICAgdmFyIHVybCA9ICcnO1xuICAgICAgICBpZih0aGlzLnByb3BzLm5leHRVcmwpIHtcbiAgICAgICAgICAgIHVybCA9IHRoaXMucHJvcHMubmV4dFVybDtcbiAgICAgICAgfVxuICAgICAgICBpZih0aGlzLnByb3BzLm5leHRVcmwgIT0gbnVsbCl7XG4gICAgICAgICAgICBheGlvcy5nZXQodXJsKVxuICAgICAgICAgICAgLnRoZW4oZnVuY3Rpb24ocmVzcCkge1xuICAgICAgICAgICAgICAgIGlmKHJlc3ApIHtcbiAgICAgICAgICAgICAgICAgICAgdmFyIHRyYWNrcyA9IHNlbGYucHJvcHMuaW1hZ2VzO1xuICAgICAgICAgICAgICAgICAgICB2YXIgZGF0YSA9IHJlc3AuZGF0YVxuICAgICAgICAgICAgICAgICAgICBkYXRhLmltYWdlcy5kYXRhLm1hcCgodHJhY2spID0+IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHRyYWNrcy5wdXNoKHRyYWNrKTtcbiAgICAgICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAgICAgICAgIGlmKGRhdGEuaW1hZ2VzLm5leHRfcGFnZV91cmwgJiYgZGF0YS5pbWFnZXMubmV4dF9wYWdlX3VybCAhPSBudWxsKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxmLnByb3BzLmNoYW5nZVN0YXRlKHRyYWNrcyxkYXRhLmltYWdlcy5uZXh0X3BhZ2VfdXJsKVxuICAgICAgICAgICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5zZXRTdGF0ZSh7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgaGFzTW9yZUl0ZW1zOiBmYWxzZVxuICAgICAgICAgICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9KTtcbiAgICAgICAgfVxuICAgICAgIFxuICAgIH1cbiAgICBzaG93UGhvdG8gKGUsIGlkICwgc2x1Zykge1xuICAgICAgICBlLnByZXZlbnREZWZhdWx0KClcbiAgICAgICAgaWYodGhpcy5wcm9wcy5pZGVhUGFyYW1zKXtcbiAgICAgICAgICAgIHZhciBwYXJhbXMgPSB0aGlzLnByb3BzLmlkZWFQYXJhbXNcbiAgICAgICAgICAgIGlmKHRoaXMucHJvcHMuc3ViUGFyYW1zKXtcbiAgICAgICAgICAgICAgICBSb3V0ZXIucHVzaChgJHtjdXJyZW50UGF0aH0/cGFyYW1zPSR7cGFyYW1zfSZmPSR7dGhpcy5wcm9wcy5zdWJQYXJhbXN9JnBob3RvSWQ9JHtpZH0mc2x1Zz0ke3NsdWd9YCxgL2FuaC8ke2lkfS0ke3NsdWd9YClcbiAgICAgICAgICAgIH1lbHNle1xuICAgICAgICAgICAgICAgIFJvdXRlci5wdXNoKGAke2N1cnJlbnRQYXRofT9wYXJhbXM9JHtwYXJhbXN9JnBob3RvSWQ9JHtpZH0mc2x1Zz0ke3NsdWd9YCxgL2FuaC8ke2lkfS0ke3NsdWd9YCkgXG4gICAgICAgICAgICB9XG4gICAgICAgIH1lbHNle1xuICAgICAgICAgICAgUm91dGVyLnB1c2goYCR7Y3VycmVudFBhdGh9P3Bob3RvSWQ9JHtpZH0mc2x1Zz0ke3NsdWd9YCxgL2FuaC8ke2lkfS0ke3NsdWd9YClcbiAgICAgICAgfVxuICAgIH1cbiAgICBjb21wb25lbnREaWRNb3VudCgpe1xuICAgICAgICB2YXIgc2hvd0NoYXIgPSAxNTA7ICAvLyBIb3cgbWFueSBjaGFyYWN0ZXJzIGFyZSBzaG93biBieSBkZWZhdWx0XG4gICAgICAgIHZhciBlbGxpcHNlc3RleHQgPSBcIlwiO1xuICAgICAgICB2YXIgbW9yZXRleHQgPSBcIlhlbSB0aMOqbSA+XCI7XG4gICAgICAgIHZhciBsZXNzdGV4dCA9IFwiUsO6dCBn4buNbiA8XCI7XG4gICAgICAgIGNvbnN0IHNlbGYgPSB0aGlzO1xuICAgICAgICAkKCcubW9yZURlcycpLmVhY2goZnVuY3Rpb24oZSkge1xuICAgICAgICAgICAgdmFyIGNvbnRlbnQgPSAkKHRoaXMpLmh0bWwoKTtcbiAgICAgICAgICAgIGlmKGNvbnRlbnQubGVuZ3RoID4gc2hvd0NoYXIpIHtcbiAgICAgICAgICAgICAgICB2YXIgYyA9IGNvbnRlbnQuc3Vic3RyKDAsIHNob3dDaGFyKTtcbiAgICAgICAgICAgICAgICB2YXIgaCA9IGNvbnRlbnQuc3Vic3RyKHNob3dDaGFyLCBjb250ZW50Lmxlbmd0aCAtIHNob3dDaGFyKTtcbiAgICAgICAgICAgICAgICB2YXIgaHRtbCA9IGMgKyAnPHNwYW4gY2xhc3M9XCJtb3JlZWxsaXBzZXNcIj4nICsgZWxsaXBzZXN0ZXh0KyAnJm5ic3A7PC9zcGFuPjxzcGFuIGNsYXNzPVwibW9yZWNvbnRlbnRcIj48c3Bhbj4nICsgaCArICc8L3NwYW4+Jm5ic3A7Jm5ic3A7PGEgaHJlZj1cIlwiIGNsYXNzPVwibW9yZWxpbmtcIj4nICsgbW9yZXRleHQgKyAnPC9hPjwvc3Bhbj4nO1xuICAgICAgICAgICAgICAgICQodGhpcykuaHRtbChodG1sKTtcbiAgICAgICAgICAgIH1cblxuICAgICAgICB9KTtcblxuICAgICAgICAkKFwiLm1vcmVsaW5rXCIpLmNsaWNrKGZ1bmN0aW9uKGUpe1xuICAgICAgICAgICAgZS5wcmV2ZW50RGVmYXVsdCgpXG4gICAgICAgICAgICBpZigkKHRoaXMpLmhhc0NsYXNzKFwibGVzc1wiKSkge1xuICAgICAgICAgICAgICAgICQodGhpcykucmVtb3ZlQ2xhc3MoXCJsZXNzXCIpO1xuICAgICAgICAgICAgICAgICQodGhpcykuaHRtbChtb3JldGV4dCk7XG4gICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgICQodGhpcykuYWRkQ2xhc3MoXCJsZXNzXCIpO1xuICAgICAgICAgICAgICAgICQodGhpcykuaHRtbChsZXNzdGV4dCk7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICAkKHRoaXMpLnBhcmVudCgpLnByZXYoKS50b2dnbGUoKTtcbiAgICAgICAgICAgICQodGhpcykucHJldigpLnRvZ2dsZSgpO1xuICAgICAgICAgICAgc2VsZi5tYXNvbnJ5LnBlcmZvcm1MYXlvdXQoKSAgICA7XG4gICAgICAgICAgICByZXR1cm4gZmFsc2U7XG4gICAgICAgIH0pO1xuICAgICAgICAkKCcuc2lkZWJhci1zZXJ2aWNlIHVsJykuZWFjaChmdW5jdGlvbihlKXtcbiAgICAgICAgICAgIGlmICgkKHRoaXMpLmZpbmQoJ2xpJykubGVuZ3RoID09ICQodGhpcykuZmluZCgkKCdsaTp2aXNpYmxlJykpLmxlbmd0aCkge1xuICAgICAgICAgICAgICAgJCh0aGlzKS5maW5kKCcubG9hZG1vcmUnKS5oaWRlKCk7XG4gICAgICAgICAgICB9XG5cdFx0fSk7XG4gICAgICAgICQoJy5zaWRlYmFyLXNlcnZpY2UnKS5vbignY2xpY2snLCcubG9hZG1vcmUnLGZ1bmN0aW9uICgpIHtcbiAgICAgICAgICAgIHZhciBsaXN0ID0gJCh0aGlzKS5wYXJlbnQoKS5maW5kKCQoJ2xpJykpO1xuXHRcdFx0JCh0aGlzKS5wYXJlbnQoKS5maW5kKCQoJ2xpOmhpZGRlbicpKS5zaG93KCk7XG4gICAgICAgICAgICBpZiAobGlzdC5sZW5ndGggPT0gJCh0aGlzKS5wYXJlbnQoKS5maW5kKCQoJ2xpOnZpc2libGUnKSkubGVuZ3RoKSB7XG4gICAgICAgICAgICAgICAgJCh0aGlzKS5yZW1vdmVDbGFzcygnbG9hZG1vcmUnKTtcbiAgICAgICAgICAgICAgICAkKHRoaXMpLmFkZENsYXNzKCdoaWRlbW9yZScpO1xuICAgICAgICAgICAgICAgICQodGhpcykuaHRtbCgnVGh1IGfhu41uJyk7XG4gICAgICAgICAgICB9XG4gICAgICAgIH0pO1xuICAgICAgICAkKCcuc2lkZWJhci1zZXJ2aWNlJykub24oJ2NsaWNrJywnLmhpZGVtb3JlJyxmdW5jdGlvbiAoKSB7XG4gICAgICAgICAgICB2YXIgbGlzdCA9ICQodGhpcykucGFyZW50KCkuZmluZCgkKCdsaScpKTtcbiAgICAgICAgICAgICQodGhpcykucGFyZW50KCkuZmluZCgkKCdsaTp2aXNpYmxlJykpLnNsaWNlKDUsIGxpc3QubGVuZ3RoKS5oaWRlKCk7XG4gICAgICAgICAgICAkKHRoaXMpLnJlbW92ZUNsYXNzKCdoaWRlbW9yZScpO1xuICAgICAgICAgICAgJCh0aGlzKS5hZGRDbGFzcygnbG9hZG1vcmUnKTtcbiAgICAgICAgICAgICQodGhpcykuaHRtbCgnWGVtIHRow6ptJyk7XG4gICAgICAgIH0pO1xuICAgICAgICAkKFwiLmNsb3NlXCIpLmNsaWNrKGZ1bmN0aW9uKGV2ZW50KSB7XG5cdCAgICBcdCQodGhpcykucGFyZW50KCkudG9nZ2xlKCk7XG4gICAgICAgIH0pOyAgICAgICAgXG4gICAgfVxuICAgIGNvbXBvbmVudERpZFVwZGF0ZSgpe1xuICAgICAgICAvLyB2YXIgbGlzdCA9ICQoJy5pZGVhLWNvbnRlbnQnKS5maW5kKCcubW9yZURlcycpLmxlbmd0aDtcbiAgICAgICAgJCgnLmlkZWEtY29udGVudCcpLmZpbmQoJCgnLm1vcmVEZXM6dmlzaWJsZScpKS5oaWRlKCk7XG4gICAgICAgICQoJy5pZGVhLWNvbnRlbnQnKS5maW5kKCQoJy5tb3JlRGVzJykpLnNsaWNlKDAsIDIwKS5zaG93KCk7XG5cbiAgICB9XG4gICAgZGlzbWlzc01vZGFsICgpIHtcbiAgICAgICAgaWYodGhpcy5wcm9wcy5pZGVhUGFyYW1zKXtcbiAgICAgICAgICAgIHZhciBwYXJhbXMgPSB0aGlzLnByb3BzLmlkZWFQYXJhbXNcbiAgICAgICAgICAgIGlmKHRoaXMucHJvcHMuc3ViUGFyYW1zKXtcbiAgICAgICAgICAgICAgICBSb3V0ZXIucHVzaFJvdXRlKGAveS10dW9uZy8ke3BhcmFtc30/Zj0ke3RoaXMucHJvcHMuc3ViUGFyYW1zfWApXG4gICAgICAgICAgICB9ZWxzZXtcbiAgICAgICAgICAgICAgICBSb3V0ZXIucHVzaFJvdXRlKCdpZGVhLmRldGFpbCcsIHtwYXJhbXM6IHBhcmFtc30pXG4gICAgICAgICAgICB9XG4gICAgICAgIH1lbHNle1xuICAgICAgICAgICAgUm91dGVyLnB1c2goJy9pZGVhJywnL3ktdHVvbmcnKVxuICAgICAgICB9XG4gICAgfVxuICAgcmVuZGVyKCl7XG4gICAgICAgIGNvbnN0IG1hc29ucnlPcHRpb25zID0ge1xuICAgICAgICAgICAgZ3V0dGVyOiAnLmdyaWRfX2d1dHRlci1zaXplcicsXG4gICAgICAgICAgICBpc09yaWdpbkxlZnQ6IHRydWVcbiAgICAgICAgfTtcbiAgICAgICBjb25zdCB7IGltYWdlcyAsIGgxICxmaWx0ZXJfZGVmYXVsdCAsIGNvbG9ycyAsIGxpc3RCYWRnZSAsIGRldGFpbCAsIHBhZ2V9ID0gdGhpcy5wcm9wc1xuICAgICAgIGNvbnN0IHsgcGhvdG9JZCAsIHNsdWcgfSA9IHRoaXMucHJvcHM7XG4gICAgICAgcmV0dXJuKFxuICAgICAgICA8TGF5b3V0IHsuLi50aGlzLnByb3BzfSBuYXZtZW51PXtmYWxzZX0gY29udGFpbmVyPXtmYWxzZX0gY3NzPXtjc3N9PlxuICAgICAgICB7XG4gICAgICAgICAgICBwaG90b0lkID9cbiAgICAgICAgICAgIDxJbWFnZU1vZGFsXG4gICAgICAgICAgICAgICAgaWQ9e3Bob3RvSWR9XG4gICAgICAgICAgICAgICAgc2x1Zz17c2x1Z31cbiAgICAgICAgICAgICAgICBkZXRhaWw9e2RldGFpbH1cbiAgICAgICAgICAgICAgICBpbWFnZXM9e2ltYWdlc31cbiAgICAgICAgICAgICAgICBjdXJyZW50UGF0aD17Y3VycmVudFBhdGh9XG4gICAgICAgICAgICAgICAgaWRlYVBhcmFtcz17dGhpcy5wcm9wcy5pZGVhUGFyYW1zfVxuICAgICAgICAgICAgICAgIHN1YlBhcmFtcz17dGhpcy5wcm9wcy5zdWJQYXJhbXN9XG4gICAgICAgICAgICAgICAgbmV4dFBhZ2VVcmw9e3RoaXMuc3RhdGUubmV4dFVybH1cbiAgICAgICAgICAgICAgICBvbkRpc21pc3M9eygpID0+IHRoaXMuZGlzbWlzc01vZGFsKCl9XG4gICAgICAgICAgICAvPiA6ICcnXG4gICAgICAgIH1cbiAgICAgICAgPHN0eWxlIGpzeCBnbG9iYWw+e1xuICAgICAgICAgICAgYFxuICAgICAgICAgICAgI2xpZ2h0Ym94IC5uYXYtbGluazpmaXJzdC1jaGlsZHtcbiAgICAgICAgICAgICAgICBib3JkZXItbGVmdDogMXB4IHNvbGlkICNlMmUyZTIgIWltcG9ydGFudDtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgICNsaWdodGJveCAubmF2LWxpbmsge1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgICAgICAgICAgICAgIHBhZGRpbmc6IDAuNHJlbSAwLjdyZW0gIWltcG9ydGFudDtcbiAgICAgICAgICAgICAgICBib3JkZXItbGVmdDogbm9uZSAhaW1wb3J0YW50O1xuICAgICAgICAgICAgICAgIGJvcmRlci1jb2xvcjogI2UyZTJlMjtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIGBcbiAgICAgICAgfVxuICAgICAgICA8L3N0eWxlPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRhaW5lci1mbHVpZCBzZXJ2aWNlIHB4LTQgYmctZ3JheVwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyb3dcIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC0wIGNvbC1tZC0zIGNvbC1sZy0zIHB4LTNcIiBpZD1cInNpZGViYXJcIj5cbiAgICAgICAgICAgICAgICAgICAgPFNpZGViYXIgZmlsdGVyPXtmaWx0ZXJfZGVmYXVsdH0gY29sb3I9e2NvbG9yc30gcGFnZT17cGFnZX0+PC9TaWRlYmFyPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLTEyIGNvbC1tZC05IGNvbC1sZy05IHB4LTBcIiBpZD1cImNhdFwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIHB4LTMgcHktNFwiPlxuICAgICAgICAgICAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwidGV4dC1kYXJrIHRpdGxlIG1sLTFcIj57IGgxICYmIGgxIH08L2gxPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJsaXN0LXRhZ1wiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsgIGxpc3RCYWRnZSAmJiBsaXN0QmFkZ2UubWFwKCh2YWx1ZSxpbmRleCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPExpbmsgcHJlZmV0Y2ggcm91dGU9e3ZhbHVlLnVyaX0ga2V5PXtpbmRleH0+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj17dmFsdWUudXJpfSA+PHNwYW4gY2xhc3NOYW1lPVwiYmFkZ2UgYmFkZ2UtcGlsbCBiYWRnZS1saWdodCBib3JkZXIgYm9yZGVyLXByaW1hcnkgbXItMiBteS0xIHNlcnZpY2UtdGFnXCI+e3ZhbHVlLm5hbWVfdGFnfSA8aSBjbGFzc05hbWU9XCJjbG9zZVwiPjwvaT48L3NwYW4+PC9hPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9MaW5rPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICApKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8SW5maW5pdGVTY3JvbGxcbiAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2VTdGFydD17MH1cbiAgICAgICAgICAgICAgICAgICAgICAgIGxvYWRNb3JlPXt0aGlzLmxvYWRJdGVtcy5iaW5kKHRoaXMpfVxuICAgICAgICAgICAgICAgICAgICAgICAgaGFzTW9yZT17dGhpcy5zdGF0ZS5oYXNNb3JlSXRlbXN9XG4gICAgICAgICAgICAgICAgICAgICAgICBsb2FkZXI9ezxkaXYgY2xhc3NOYW1lPVwibG9hZGVyXCIga2V5PSdjeCc+TG9hZGluZyAuLi48L2Rpdj59PiBcbiAgICAgICAgICAgICAgICAgICAgPE1hc29ucnlcbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXsnLmdyaWQgYXJlLWltYWdlcy11bmxvYWRlZCBtdC0zJ30gXG4gICAgICAgICAgICAgICAgICAgIGRpc2FibGVJbWFnZXNMb2FkZWQ9e2ZhbHNlfVxuICAgICAgICAgICAgICAgICAgICBvcHRpb25zPXttYXNvbnJ5T3B0aW9uc31cbiAgICAgICAgICAgICAgICAgICAgcmVmPXtjID0+IHRoaXMubWFzb25yeSA9IGN9XG4gICAgICAgICAgICAgICAgICAgIHVwZGF0ZU9uRWFjaEltYWdlTG9hZD17ZmFsc2V9XG4gICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZF9fY29sLXNpemVyXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWRfX2d1dHRlci1zaXplclwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGltYWdlcyAmJiBpbWFnZXMubWFwKCh2YWx1ZSxpbmRleCkgPT4oIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWRfX2l0ZW0gcm91bmRlZFwiIGtleT17aW5kZXh9PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwicG9zaXRpb24tYWJzb2x1dGUgcm91bmRlZCBkLW5vbmUgdXBsb2FkXCI+IDxpIGNsYXNzTmFtZT1cImZhIGZhLXVwbG9hZFwiPjwvaT4gTMawdSDhuqNuaDwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8TGluayByb3V0ZT1cImltYWdlXCIgcGFyYW1zPXt7IGlkOiB2YWx1ZS5pZCAsIHNsdWcgOiB2YWx1ZS5zbHVnIH19PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBvbkNsaWNrPXsoZSkgPT4gIHRoaXMuc2hvd1Bob3RvKGUsIHZhbHVlLmlkICwgdmFsdWUuc2x1Zyl9PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT1cInJvdW5kZWQgY2FyZC1pbWctdG9wXCIgc3JjPXt2YWx1ZS5tZWRpdW1fcGF0aH0gYWx0PXt2YWx1ZS5uYW1lfSAvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2E+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtYm9keSBpZGVhLWNvbnRlbnQgcHgtMSBwdC0xXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJtdC0yIGZvbnQtMTUgdGV4dC1ibGFjay0xMDBcIiBkYXRhLXRpdGxlPXt2YWx1ZS5uYW1lfT57dmFsdWUubmFtZX08L2gyPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJtdC0yIGltYWdlcy10aXRsZSBmb250LTE0IHRleHQtYmxhY2stMTAwIG1vcmVEZXNcIiBkYW5nZXJvdXNseVNldElubmVySFRNTD17e19faHRtbDogdmFsdWUuZGVzY3JpcHRpb25zfX0+PC9wPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICkpXG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgICA8L01hc29ucnk+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L0luZmluaXRlU2Nyb2xsPlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9MYXlvdXQ+XG4gICAgICAgKVxuICAgfVxufVxuIl19 */\n/*@ sourceURL=components/IdeaComponent.js */"
+      }), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 181
+        },
+        className: "jsx-352178927" + " " + "container-fluid service px-4 bg-gray"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 182
+        },
+        className: "jsx-352178927" + " " + "row"
+      }, _react.default.createElement("div", {
+        id: "sidebar",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 183
+        },
+        className: "jsx-352178927" + " " + "col-0 col-md-3 col-lg-3 px-3"
+      }, _react.default.createElement(_sideBar.default, {
+        filter: filter_default,
+        color: colors,
+        page: page,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 184
+        }
+      })), _react.default.createElement("div", {
+        id: "cat",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 186
+        },
+        className: "jsx-352178927" + " " + "col-12 col-md-9 col-lg-9 px-0"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 187
+        },
+        className: "jsx-352178927" + " " + "bg-white px-3 py-4"
+      }, _react.default.createElement("h1", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 188
+        },
+        className: "jsx-352178927" + " " + "text-dark title ml-1"
+      }, h1 && h1), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 189
+        },
+        className: "jsx-352178927" + " " + "list-tag"
+      }, listBadge && listBadge.map(function (value, index) {
+        return _react.default.createElement(_routes.Link, {
+          prefetch: true,
+          route: value.uri,
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 191
+          }
+        }, _react.default.createElement("a", {
+          href: value.uri,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 192
+          },
+          className: "jsx-352178927"
+        }, _react.default.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 192
+          },
+          className: "jsx-352178927" + " " + "badge badge-pill badge-light border border-primary mr-2 my-1 service-tag"
+        }, value.name_tag, " ", _react.default.createElement("i", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 192
+          },
+          className: "jsx-352178927" + " " + "close"
+        }))));
+      })), _react.default.createElement(_reactInfiniteScroller.default, {
+        pageStart: 0,
+        loadMore: this.loadItems.bind(this),
+        hasMore: this.state.hasMoreItems,
+        loader: _react.default.createElement("div", {
+          key: "cx",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 201
+          },
+          className: "jsx-352178927" + " " + "loader"
+        }, "Loading ..."),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 197
+        }
+      }, _react.default.createElement(_reactMasonryComponent.default, {
+        className: '.grid are-images-unloaded mt-3',
+        disableImagesLoaded: false,
+        options: masonryOptions,
+        ref: function ref(c) {
+          return _this2.masonry = c;
+        },
+        updateOnEachImageLoad: false,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 202
+        }
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 210
+        },
+        className: "jsx-352178927" + " " + "grid__col-sizer"
+      }), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 211
+        },
+        className: "jsx-352178927" + " " + "grid__gutter-sizer"
+      }), images && images.map(function (value, index) {
+        return _react.default.createElement("div", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 214
+          },
+          className: "jsx-352178927" + " " + "grid__item rounded"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 215
+          },
+          className: "jsx-352178927" + " " + "card"
+        }, _react.default.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 216
+          },
+          className: "jsx-352178927" + " " + "position-absolute rounded d-none upload"
+        }, " ", _react.default.createElement("i", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 216
+          },
+          className: "jsx-352178927" + " " + "fa fa-upload"
+        }), " L\u01B0u \u1EA3nh"), _react.default.createElement(_routes.Link, {
+          route: "image",
+          params: {
+            id: value.id,
+            slug: value.slug
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 217
+          }
+        }, _react.default.createElement("a", {
+          onClick: function onClick(e) {
+            return _this2.showPhoto(e, value.id, value.slug);
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 218
+          },
+          className: "jsx-352178927"
+        }, _react.default.createElement("img", {
+          src: value.medium_path,
+          alt: value.name,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 219
+          },
+          className: "jsx-352178927" + " " + "rounded card-img-top"
+        }))), _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 222
+          },
+          className: "jsx-352178927" + " " + "card-body idea-content px-1 pt-1"
+        }, _react.default.createElement("h2", {
+          "data-title": value.name,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 223
+          },
+          className: "jsx-352178927" + " " + "mt-2 font-15 text-black-100"
+        }, value.name), _react.default.createElement("p", {
+          dangerouslySetInnerHTML: {
+            __html: value.descriptions
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 224
+          },
+          className: "jsx-352178927" + " " + "mt-2 images-title font-14 text-black-100 moreDes"
+        }))));
+      }))))))));
+    }
+  }]);
+
+  return IdeaComponent;
+}(_react.default.Component);
+
+exports.default = IdeaComponent;
+
+/***/ }),
 
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -3124,7 +3599,7 @@ exports.default = nav;
 
 /***/ }),
 
-/***/ "./components/pro-detail.js":
+/***/ "./components/sideBar.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3137,21 +3612,19 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__("react"));
 
-var _routes = __webpack_require__("./routes.js");
-
-var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
-
 var _helpers = __webpack_require__("./libraries/helpers.js");
+
+var _routes = __webpack_require__("./routes.js");
 
 var _classnames = _interopRequireDefault(__webpack_require__("classnames"));
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/pro-detail.js";
+var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/sideBar.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3161,331 +3634,465 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var _default =
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sidebar =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(_default, _React$Component);
+  _inherits(Sidebar, _React$Component);
 
-  function _default(props) {
-    var _this;
+  function Sidebar(props) {
+    _classCallCheck(this, Sidebar);
 
-    _classCallCheck(this, _default);
-
-    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        data: {},
-        provider: {}
-      }
-    });
-    return _this;
+    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
   }
 
-  _createClass(_default, [{
+  _createClass(Sidebar, [{
     key: "render",
     value: function render() {
       var _props = this.props,
-          provider_id = _props.provider_id,
-          provider_slug = _props.provider_slug,
-          url = _props.url;
-      var pathname = url.pathname;
-      var itemStar = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "itemScope itemType='http://schema.org/AggregateRating'" : '';
-      var itemStarProp = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "<meta  itemProp=\"ratingValue\" content=".concat(this.props.data.provider.avg_rate, ">") : null;
-      return _react.default.createElement(_layout.default, _extends({}, this.props, {
-        navmenu: false,
-        container: false,
+          filter = _props.filter,
+          color = _props.color,
+          page = _props.page;
+      return _react.default.createElement("div", {
+        className: "sidebar-service row bg-white",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        }
+      }, _react.default.createElement("div", {
+        className: "d-md-block px-2 w-100 sidebar-service-content",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        }
+      }, this.props.test && _react.default.createElement("div", {
+        "class": "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        }
+      }, _react.default.createElement("div", {
+        "class": "mt-2 widget p-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }, _react.default.createElement("h3", {
+        "class": "font-15 mb-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, "Locale ", _react.default.createElement("span", {
+        "class": "fa fa-chevron-right d-block d-md-none",
+        "data-toggle": "collapse",
+        "data-target": "#demoTest",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      })), _react.default.createElement("ul", {
+        "class": "list-unstyled mb-0 collapse d-md-block",
+        id: "demoTest",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 22
         }
-      }), _react.default.createElement("div", {
-        className: "container-fluid px-4 bg-gray provider-main",
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 23
         }
-      }, _react.default.createElement("div", {
-        className: "bg-white",
-        itemScope: true,
-        itemType: "http://schema.org/localbusiness",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 23
         }
-      }, _react.default.createElement("div", {
-        className: "border border-right-0 border-left-0 border-gray provider-details",
+      }, "H\xE0 N\u1ED9i", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      }, "10")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 25
         }
-      }, _react.default.createElement("div", {
-        className: "banner position-relative p-0",
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 26
         }
-      }, _react.default.createElement("img", {
-        src: this.props.data.cover && this.props.data.cover,
-        className: "w-100",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 26
         }
-      }), _react.default.createElement("div", {
-        className: "position-absolute gradient-animate w-100",
+      }, "TPHCM", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        }
+      }, "20")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 28
         }
-      })), _react.default.createElement("div", {
-        className: "container position-relative",
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 29
         }
-      }, _react.default.createElement("div", {
-        className: "position-absolute provider-info",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, "\u0110\xE0 N\u1EAFng", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, "11")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 31
         }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.detail",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 32
         }
-      }, _react.default.createElement("a", {
-        className: "provider-name text-white font-weight-bold",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 32
         }
-      }, (0, _helpers.activePath)(pathname, "/pro", {
-        strict: true
-      }) ? _react.default.createElement("h1", {
-        className: "font-22 mb-1",
-        itemProp: "name",
+      }, "Ninh B\xECnh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }, "12")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 35
         }
-      }, this.props.data.provider && this.props.data.provider.name) : _react.default.createElement("p", {
-        className: "font-22 mb-1",
-        itemProp: "name",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }, "H\xE0 T\u0129nh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }, "21")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 37
         }
-      }, this.props.data.provider && this.props.data.provider.name))), _react.default.createElement("div", {
-        className: "star-rating " + itemStar,
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, "H\xE0 Nam", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, "21")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 41
         }
-      }, this.props.data.provider && (0, _helpers.rating)(this.props.data.provider.avg_rate), itemStarProp, _react.default.createElement("span", {
-        className: "text-yellow font-weight-bold",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      }, "B\u1EAFc Ninh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      }, "23")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 44
         }
-      }, " 0(0) \u0111\xE1nh gi\xE1) "), _react.default.createElement("a", {
-        className: "text-gray-200",
+      }, " ", _react.default.createElement("label", {
+        "class": "px-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 44
         }
-      }, _react.default.createElement("span", {
+      }, "Qu\xE3ng Ng\xE3i", _react.default.createElement("span", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 44
         }
-      }, " \u0110\xE1nh gi\xE1 chi ti\u1EBFt >")))), _react.default.createElement("div", {
-        className: "row position-relative justify-content-end",
+      }, "44")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 46
         }
-      }, _react.default.createElement("div", {
-        className: "position-absolute provider-avatar rounded-circle",
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, " ", _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, "Nam \u0110\u1ECBnh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, "12")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 49
         }
-      }, _react.default.createElement("img", {
-        itemProp: "image",
-        src: this.props.data.avatar,
-        className: "img-thumbnail rounded-circle h-100",
-        alt: "",
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 50
         }
-      })), _react.default.createElement("div", {
-        className: "col-md-9 col-lg-9 provider-nav",
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, "Th\xE1i B\xECnh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, "12")))), _react.default.createElement("span", {
+        "class": "more loadmore d-none d-md-block",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 52
         }
-      }, _react.default.createElement("ul", {
-        className: "nav nav-tabs border-0",
-        id: "myTab",
-        role: "tablist",
+      }, "Xem th\xEAm ", _react.default.createElement("i", {
+        "class": "la la-arrow-circle-right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 52
         }
-      }, _react.default.createElement("li", {
-        className: (0, _classnames.default)("nav-item position-relative", {
-          active: (0, _helpers.activePath)(pathname, "/pro", {
-            strict: true
-          })
-        }),
+      }))))), filter && filter.map(function (value, index) {
+        return value.data.length != 0 && _react.default.createElement("div", {
+          className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          }
+        }, _react.default.createElement("div", {
+          className: "mt-2 widget p-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61
+          }
+        }, _react.default.createElement("h3", {
+          className: "font-15 mb-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          }
+        }, value.textName, _react.default.createElement("span", {
+          className: "fa fa-chevron-right d-block d-md-none",
+          "data-toggle": "collapse",
+          "data-target": "#demo" + index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          }
+        })), _react.default.createElement("ul", {
+          className: "list-unstyled mb-0 collapse d-md-block",
+          id: "demo" + index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          }
+        }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
+          return _react.default.createElement("li", {
+            className: "py-1 radio",
+            key: index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 67
+            }
+          }, _react.default.createElement(_routes.Link, {
+            prefetch: true,
+            route: value.uri,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 68
+            }
+          }, _react.default.createElement("a", {
+            className: "font-13 font-weight-light text-gray",
+            rel: value.is_seo == 0 ? "nofollow" : "dofollow",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 69
+            }
+          }, _react.default.createElement("label", {
+            className: (0, _classnames.default)('pr-3', {
+              active: page.currentsId.includes(value.original)
+            }),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 70
+            }
+          }, value.name_tag, _react.default.createElement("span", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 71
+            }
+          }, value.total_doc)))));
+        }), _react.default.createElement("span", {
+          className: "more loadmore d-none d-md-block",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77
+          }
+        }, "Xem th\xEAm ", _react.default.createElement("i", {
+          className: "la la-arrow-circle-right",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77
+          }
+        })))));
+      }), _react.default.createElement("div", {
+        className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 84
         }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.detail",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
+      }, color && _react.default.createElement("div", {
+        className: "mt-2 widget p-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 87
         }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
+      }, _react.default.createElement("h3", {
+        className: "font-15",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 88
         }
-      }, "T\u1ED5ng quan"))), _react.default.createElement("li", {
-        className: (0, _classnames.default)("nav-item position-relative", {
-          active: (0, _helpers.activePath)(pathname, ["/pro/project", '/project'], {
-            strict: true
-          })
-        }),
+      }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
+        className: "expand-list",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 89
         }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.project",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
+      }), _react.default.createElement("div", {
+        className: "service-color mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 90
         }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }, "D\u1EF1 \xE1n"))), _react.default.createElement("li", {
-        className: (0, _classnames.default)("nav-item position-relative", {
-          active: (0, _helpers.activePath)(pathname, "/pro/review", {
-            strict: true
-          })
-        }),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.review",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      }, "Nh\u1EADn x\xE9t"))), _react.default.createElement("li", {
-        className: "nav-item mx-1 position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 63
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        href: "#",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 64
-        }
-      }, "S\u1ED5 tay \xFD t\u01B0\u1EDFng")), _react.default.createElement("li", {
-        className: "nav-item mx-1 position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 66
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        href: "#",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 67
-        }
-      }, "H\u1ECFi \u0111\xE1p")), _react.default.createElement("li", {
-        className: "nav-item mx-1 position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 69
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        href: "#",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        }
-      }, "Ho\u1EA1t \u0111\u1ED9ng"))))))), _react.default.createElement("div", {
-        className: "w-100 py-3 provider",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 77
-        }
-      }, _react.default.createElement(_react.default.Fragment, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 78
-        }
-      }, this.props.children)))));
+      }, (0, _helpers.mapObject)(color, function (index, value) {
+        return _react.default.createElement("a", {
+          href: value.uri,
+          className: "text-dark border border-gray",
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93
+          }
+        }, _react.default.createElement("span", {
+          className: "float-left " + value.class,
+          "data-toggle": "tooltip",
+          title: value.name_tag,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93
+          }
+        }));
+      }))))));
     }
   }]);
 
-  return _default;
+  return Sidebar;
 }(_react.default.Component);
 
-exports.default = _default;
+exports.default = Sidebar;
 
 /***/ }),
 
@@ -3591,7 +4198,7 @@ module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server
 
 /***/ }),
 
-/***/ "./pages/project/detail.js":
+/***/ "./pages/idea.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3602,438 +4209,57 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _style = _interopRequireDefault(__webpack_require__("styled-jsx/style"));
-
 var _regenerator = _interopRequireDefault(__webpack_require__("@babel/runtime/regenerator"));
 
 var _react = _interopRequireDefault(__webpack_require__("react"));
 
-var _proDetail = _interopRequireDefault(__webpack_require__("./components/pro-detail.js"));
-
-var _helpers = __webpack_require__("./libraries/helpers.js");
-
-var _routes = __webpack_require__("./routes.js");
-
-var _imageModal = _interopRequireDefault(__webpack_require__("./components/image-modal.js"));
+var _IdeaComponent = _interopRequireDefault(__webpack_require__("./components/IdeaComponent.js"));
 
 __webpack_require__("isomorphic-fetch");
 
-var _index = _interopRequireDefault(__webpack_require__("./pages/project/index.css"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/project/detail.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/idea.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var APIURL = "https://api.9houz.com/" + "api/";
-var APIPROJECT = APIURL + 'project/';
-var APIPRO = APIURL + 'provider/';
 
 var _default =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(_default, _React$Component);
 
-  function _default() {
-    _classCallCheck(this, _default);
-
-    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).apply(this, arguments));
-  }
-
-  _createClass(_default, [{
-    key: "render",
-    value: function render() {
-      var _this = this;
-
-      var _props = this.props,
-          provider = _props.provider,
-          data = _props.data,
-          project = _props.project,
-          images = _props.images,
-          relateData = _props.relateData,
-          listProjects = _props.listProjects;
-      console.log(this.props);
-      return _react.default.createElement(_proDetail.default, _extends({
-        provider_id: provider.id,
-        provider_slug: provider.slug,
-        data: data
-      }, this.props, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44
-        }
-      }), _react.default.createElement("div", {
-        id: "cat",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        },
-        className: "jsx-3233782465" + " " + "project-detail-main"
-      }, _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
-        },
-        className: "jsx-3233782465" + " " + "container"
-      }, _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 53
-        },
-        className: "jsx-3233782465" + " " + "row"
-      }, _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 54
-        },
-        className: "jsx-3233782465" + " " + "col-8 col-md-8"
-      }, _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        },
-        className: "jsx-3233782465" + " " + "about bg-white p-3 border border-gray"
-      }, _react.default.createElement("h1", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 56
-        },
-        className: "jsx-3233782465" + " " + "font-25 font-weight-normal"
-      }, project.name), _react.default.createElement("p", {
-        dangerouslySetInnerHTML: {
-          __html: project.descriptions
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 57
-        },
-        className: "jsx-3233782465" + " " + "font-weight-normal my-3 project-description"
-      }), project.address && _react.default.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        },
-        className: "jsx-3233782465" + " " + "font-14 font-weight-normal"
-      }, _react.default.createElement("strong", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        },
-        className: "jsx-3233782465"
-      }, "\u0110\u1ECBa ch\u1EC9"), ": " + project.address), project.more_infos && (0, _helpers.mapObject)(project.more_infos, function (index, value) {
-        if (value != '') return _react.default.createElement("p", {
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 64
-          },
-          className: "jsx-3233782465" + " " + "font-14 font-weight-normal"
-        }, _react.default.createElement("strong", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 65
-          },
-          className: "jsx-3233782465"
-        }, (0, _helpers.ucfirst)(index)), ": " + value);
-      }), _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 68
-        },
-        className: "jsx-3233782465" + " " + "about bg-white py-3"
-      }, _react.default.createElement("ul", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 69
-        },
-        className: "jsx-3233782465" + " " + "list-unstyled"
-      }, images && images.map(function (value, index) {
-        return _react.default.createElement("li", {
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 72
-          },
-          className: "jsx-3233782465" + " " + "my-3"
-        }, _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 73
-          },
-          className: "jsx-3233782465" + " " + "project-title text-center mx-auto"
-        }, _react.default.createElement("h2", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 74
-          },
-          className: "jsx-3233782465" + " " + "font-22 text-black-100 position-relative"
-        }, _react.default.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 75
-          },
-          className: "jsx-3233782465"
-        }, " ", value.name && value.name, " "))), _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 78
-          },
-          className: "jsx-3233782465" + " " + "project-image my-3"
-        }, value.status == 1 ? _react.default.createElement(_routes.Link, {
-          route: "image",
-          params: {
-            id: value.id,
-            slug: "".concat(value.slug)
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 81
-          }
-        }, _react.default.createElement("a", {
-          onClick: function onClick(e) {
-            return _this.showPhoto(e, value.id, value.slug);
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 82
-          },
-          className: "jsx-3233782465" + " " + 'photoLink'
-        }, _react.default.createElement("img", {
-          src: value.large_path,
-          alt: value.name,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 83
-          },
-          className: "jsx-3233782465" + " " + "img-fluid"
-        }))) : _react.default.createElement("a", {
-          href: "javascript:void(0)",
-          rel: "nofollow",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 87
-          },
-          className: "jsx-3233782465" + " " + 'photoLink'
-        }, _react.default.createElement("img", {
-          src: value.large_path,
-          alt: value.name,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 88
-          },
-          className: "jsx-3233782465" + " " + "img-fluid"
-        }))), _react.default.createElement("div", {
-          dangerouslySetInnerHTML: {
-            __html: value.descriptions
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 92
-          },
-          className: "jsx-3233782465" + " " + "project-description"
-        }));
-      }))))), _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 124
-        },
-        className: "jsx-3233782465" + " " + "col-4 col-md-4 project-sidebar"
-      }, _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 125
-        },
-        className: "jsx-3233782465" + " " + "bg-white p-3"
-      }, _react.default.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 126
-        },
-        className: "jsx-3233782465" + " " + "sub-title position-relative"
-      }, "D\u1EF1 \xE1n c\xF9ng chuy\xEAn gia"), _react.default.createElement("ul", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 127
-        },
-        className: "jsx-3233782465" + " " + "list-unstyled mt-3"
-      }, listProjects && listProjects.map(function (value, index) {
-        return _react.default.createElement("li", {
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 130
-          },
-          className: "jsx-3233782465" + " " + "my-3"
-        }, _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 131
-          },
-          className: "jsx-3233782465" + " " + "media"
-        }, _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 132
-          },
-          className: "jsx-3233782465" + " " + "media-image mr-3"
-        }, _react.default.createElement("img", {
-          src: value.avatar,
-          alt: "Generic placeholder image",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 133
-          },
-          className: "jsx-3233782465"
-        })), _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 135
-          },
-          className: "jsx-3233782465" + " " + "media-body"
-        }, _react.default.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 136
-          },
-          className: "jsx-3233782465" + " " + "mt-0 mb-2 font-14"
-        }, value.name), _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 137
-          },
-          className: "jsx-3233782465" + " " + "d-inline pro-info"
-        }, _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 138
-          },
-          className: "jsx-3233782465" + " " + "info project-info mr-3 float-left"
-        }, _react.default.createElement("i", {
-          "aria-hidden": "true",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 139
-          },
-          className: "jsx-3233782465" + " " + "fa fa-picture-o my-auto"
-        }), " ", value.total + ' ảnh'), value.address && _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 142
-          },
-          className: "jsx-3233782465" + " " + "info location-info"
-        }, _react.default.createElement("i", {
-          "aria-hidden": "true",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 143
-          },
-          className: "jsx-3233782465" + " " + "fa fa-map-marker my-auto"
-        }), " ", value.address)))));
-      }))))), _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 156
-        },
-        className: "jsx-3233782465" + " " + "project-more"
-      }, _react.default.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 157
-        },
-        className: "jsx-3233782465" + " " + "font-25"
-      }, "M\u1ECDi ng\u01B0\u1EDDi th\u01B0\u1EDDng xem th\xEAm"), _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 158
-        },
-        className: "jsx-3233782465" + " " + "row"
-      }, relateData && (0, _helpers.mapObject)(relateData, function (index, value) {
-        return _react.default.createElement("div", {
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 161
-          },
-          className: "jsx-3233782465" + " " + "col-3 col-md-3"
-        }, _react.default.createElement(_routes.Link, {
-          route: "project-detail",
-          params: {
-            id: index,
-            slug: "".concat(value.slug)
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 162
-          }
-        }, _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 163
-          },
-          className: "jsx-3233782465" + " " + "card border-none"
-        }, _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 164
-          },
-          className: "jsx-3233782465" + " " + "card-image"
-        }, _react.default.createElement("img", {
-          src: value.avatar,
-          alt: "Card image cap",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 165
-          },
-          className: "jsx-3233782465" + " " + "card-img-top"
-        })), _react.default.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 167
-          },
-          className: "jsx-3233782465" + " " + "card-body bg-gray px-0 py-2"
-        }, _react.default.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 168
-          },
-          className: "jsx-3233782465" + " " + "card-title"
-        }, value.name)))));
-      }))))), _react.default.createElement(_style.default, {
-        styleId: "3233782465",
-        css: ".provider{background-color:#ddd !important;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL3Byb2plY3QvZGV0YWlsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtMMkIsQUFFb0MsaUNBQUMiLCJmaWxlIjoicGFnZXMvcHJvamVjdC9kZXRhaWwuanMiLCJzb3VyY2VSb290IjoiL0FwcGxpY2F0aW9ucy9NQU1QL2h0ZG9jcy9teS1uZXh0LWFwcCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCBQcm92aWRlckRldGFpbCBmcm9tICcuLi8uLi9jb21wb25lbnRzL3Byby1kZXRhaWwnXG5pbXBvcnQge21hcE9iamVjdCwgdWNmaXJzdH0gZnJvbSBcIi4uLy4uL2xpYnJhcmllcy9oZWxwZXJzXCI7XG5pbXBvcnQge0xpbmssIFJvdXRlcn0gZnJvbSAnLi4vLi4vcm91dGVzJ1xuaW1wb3J0IEltYWdlTW9kYWwgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9pbWFnZS1tb2RhbCc7XG5pbXBvcnQgJ2lzb21vcnBoaWMtZmV0Y2gnXG5pbXBvcnQgY3NzIGZyb20gXCIuL2luZGV4LmNzc1wiO1xuXG5jb25zdCBBUElVUkwgPSBwcm9jZXNzLmVudi5ET01BSU4gKyBwcm9jZXNzLmVudi5BUElVUklcbmNvbnN0IEFQSVBST0pFQ1QgPSBBUElVUkwgKyAncHJvamVjdC8nXG5jb25zdCBBUElQUk8gPSBBUElVUkwgKyAncHJvdmlkZXIvJ1xuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG4gIHN0YXRpYyBhc3luYyBnZXRJbml0aWFsUHJvcHMoe3F1ZXJ5fSkge1xuICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKEFQSVBST0pFQ1QgKyBxdWVyeS5pZClcbiAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzLmpzb24oKVxuICAgIGNvbnN0IHJlc1BybyA9IGF3YWl0IGZldGNoKEFQSVBSTyArIGRhdGEucHJvamVjdC51c2VyX2lkKVxuICAgIGNvbnN0IGRhdGFQcm8gPSBhd2FpdCByZXNQcm8uanNvbigpXG4gICAgcmV0dXJuIHtcbiAgICAgIGlkOiBxdWVyeS5pZFxuICAgICAgLCBkYXRhOiBkYXRhUHJvXG4gICAgICAsIHByb3ZpZGVyOiBkYXRhUHJvLnByb3ZpZGVyXG4gICAgICAsIHByb2plY3Q6IGRhdGEucHJvamVjdFxuICAgICAgLCBpbWFnZXM6IGRhdGEucHJvamVjdC5pbWFnZXNcbiAgICAgICwgc2x1ZzogcXVlcnkuc2x1Z1xuICAgICAgLCB0aXRsZTogZGF0YS5zZW8udGl0bGVcbiAgICAgICwgZGVzOiBkYXRhLnNlby5kZXNcbiAgICAgICwgY2Fub25pY2FsOiBkYXRhLnNlby5jYW5vbmljYWxcbiAgICAgICwgcm9ib3RzOiBkYXRhLnNlby5yb2JvdHNcbiAgICAgICwgb2dfdXJsOiBkYXRhLnNlby51cmxcbiAgICAgICwgdXJsX2ltYWdlczogZGF0YS5zZW8udXJsX2ltYWdlXG4gICAgICAsIGhlYWRlclByb2plY3RzOiBkYXRhUHJvLmhlYWRlclByb2plY3RzXG4gICAgICAsIGhlYWRlckNhdGVnb3JpZXM6IGRhdGFQcm8uaGVhZGVyQ2F0ZWdvcmllc1xuICAgICAgLCBkYXRhQmFzZTogZGF0YVByby5kYXRhQmFzZVxuICAgICAgLCByZWxhdGVEYXRhIDogZGF0YS5yZWxhdGVEYXRhXG4gICAgICAsIGxpc3RQcm9qZWN0cyA6IGRhdGEubGlzdFByb2plY3RzXG4gICAgfVxuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIGNvbnN0IHsgcHJvdmlkZXIsIGRhdGEsIHByb2plY3QsIGltYWdlcyAscmVsYXRlRGF0YSAsIGxpc3RQcm9qZWN0c30gPSB0aGlzLnByb3BzXG4gICAgY29uc29sZS5sb2codGhpcy5wcm9wcylcbiAgICByZXR1cm4gKFxuICAgICAgPFByb3ZpZGVyRGV0YWlsIHByb3ZpZGVyX2lkPXtwcm92aWRlci5pZH0gcHJvdmlkZXJfc2x1Zz17cHJvdmlkZXIuc2x1Z30gZGF0YT17ZGF0YX0gey4uLnRoaXMucHJvcHN9PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInByb2plY3QtZGV0YWlsLW1haW5cIiBpZD1cImNhdFwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29udGFpbmVyXCI+XG4gICAgICAgICAgICB7Lyo8bmF2IGFyaWEtbGFiZWw9XCJicmVhZGNydW1iXCI+Ki99XG4gICAgICAgICAgICAgIHsvKjxvbCBjbGFzc05hbWU9XCJicmVhZGNydW1iIHAtMCBwbC0wXCI+Ki99XG4gICAgICAgICAgICAgICAgey8qPGxpIGNsYXNzTmFtZT1cImJyZWFkY3J1bWItaXRlbVwiPjxhIGhyZWY9XCIjXCI+SG9tZTwvYT48L2xpPiovfVxuICAgICAgICAgICAgICAgIHsvKjxsaSBjbGFzc05hbWU9XCJicmVhZGNydW1iLWl0ZW0gYWN0aXZlXCIgYXJpYS1jdXJyZW50PVwicGFnZVwiPkxpYnJhcnk8L2xpPiovfVxuICAgICAgICAgICAgICB7Lyo8L29sPiovfVxuICAgICAgICAgICAgey8qPC9uYXY+Ki99XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInJvd1wiPlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC04IGNvbC1tZC04XCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYm91dCBiZy13aGl0ZSBwLTMgYm9yZGVyIGJvcmRlci1ncmF5XCI+XG4gICAgICAgICAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwiZm9udC0yNSBmb250LXdlaWdodC1ub3JtYWxcIj57cHJvamVjdC5uYW1lfTwvaDE+XG4gICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJmb250LXdlaWdodC1ub3JtYWwgbXktMyBwcm9qZWN0LWRlc2NyaXB0aW9uXCJcbiAgICAgICAgICAgICAgICAgICAgIGRhbmdlcm91c2x5U2V0SW5uZXJIVE1MPXt7X19odG1sOiBwcm9qZWN0LmRlc2NyaXB0aW9uc319Lz5cbiAgICAgICAgICAgICAgICAgIHtwcm9qZWN0LmFkZHJlc3MgJiZcbiAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZvbnQtMTQgZm9udC13ZWlnaHQtbm9ybWFsXCI+PHN0cm9uZz7EkOG7i2EgY2jhu4k8L3N0cm9uZz57XCI6IFwiICsgcHJvamVjdC5hZGRyZXNzfTwvcD59XG4gICAgICAgICAgICAgICAgICB7XG4gICAgICAgICAgICAgICAgICAgIHByb2plY3QubW9yZV9pbmZvcyAmJiBtYXBPYmplY3QocHJvamVjdC5tb3JlX2luZm9zLCBmdW5jdGlvbiAoaW5kZXgsIHZhbHVlKSB7XG4gICAgICAgICAgICAgICAgICAgICAgaWYgKHZhbHVlICE9ICcnKVxuICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIDxwIGNsYXNzTmFtZT1cImZvbnQtMTQgZm9udC13ZWlnaHQtbm9ybWFsXCIga2V5PXtpbmRleH0+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxzdHJvbmc+e3VjZmlyc3QoaW5kZXgpfTwvc3Ryb25nPntcIjogXCIgKyB2YWx1ZX08L3A+XG4gICAgICAgICAgICAgICAgICAgIH0pXG4gICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFib3V0IGJnLXdoaXRlIHB5LTNcIj5cbiAgICAgICAgICAgICAgICAgICAgPHVsIGNsYXNzTmFtZT1cImxpc3QtdW5zdHlsZWRcIj5cbiAgICAgICAgICAgICAgICAgICAgICB7XG4gICAgICAgICAgICAgICAgICAgICAgICBpbWFnZXMgJiYgaW1hZ2VzLm1hcCgodmFsdWUsIGluZGV4KSA9PiAoXG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxsaSBrZXk9e2luZGV4fSBjbGFzc05hbWU9XCJteS0zXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwcm9qZWN0LXRpdGxlIHRleHQtY2VudGVyIG14LWF1dG9cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJmb250LTIyIHRleHQtYmxhY2stMTAwIHBvc2l0aW9uLXJlbGF0aXZlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuPiB7dmFsdWUubmFtZSAmJiB2YWx1ZS5uYW1lfSA8L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2gyPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicHJvamVjdC1pbWFnZSBteS0zXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlLnN0YXR1cyA9PSAxID9cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8TGluayByb3V0ZT0naW1hZ2UnIHBhcmFtcz17e2lkOiB2YWx1ZS5pZCwgc2x1ZzogYCR7dmFsdWUuc2x1Z31gfX0+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBjbGFzc05hbWU9J3Bob3RvTGluaycgb25DbGljaz17KGUpID0+IHRoaXMuc2hvd1Bob3RvKGUsIHZhbHVlLmlkLCB2YWx1ZS5zbHVnKX0+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxpbWcgc3JjPXt2YWx1ZS5sYXJnZV9wYXRofSBhbHQ9e3ZhbHVlLm5hbWV9IGNsYXNzTmFtZT1cImltZy1mbHVpZFwiLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvYT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L0xpbms+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9XCJqYXZhc2NyaXB0OnZvaWQoMClcIiBjbGFzc05hbWU9J3Bob3RvTGluaycgcmVsPVwibm9mb2xsb3dcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxpbWcgc3JjPXt2YWx1ZS5sYXJnZV9wYXRofSBhbHQ9e3ZhbHVlLm5hbWV9IGNsYXNzTmFtZT1cImltZy1mbHVpZFwiLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2E+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwcm9qZWN0LWRlc2NyaXB0aW9uXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRhbmdlcm91c2x5U2V0SW5uZXJIVE1MPXt7X19odG1sOiB2YWx1ZS5kZXNjcmlwdGlvbnN9fS8+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICAgICAgICAgICAgICApKVxuICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgPC91bD5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIHsvKjxkaXYgY2xhc3NOYW1lPVwicHJvamVjdC1rZXl3b3JkIGJnLXdoaXRlIHAtMyBteS00XCI+Ki99XG4gICAgICAgICAgICAgICAgICB7Lyo8cCBjbGFzc05hbWU9XCJrZXl3b3JkLXRpdGxlIGZvbnQtMjVcIj5U4burIGtow7NhPC9wPiovfVxuICAgICAgICAgICAgICAgICAgey8qPGRpdiBjbGFzc05hbWU9XCJwdC0wIGtleXdvcmQtdGFnc1wiPiovfVxuICAgICAgICAgICAgICAgICAgICAgICAgey8qPHNwYW4qL31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgey8qY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgZm9udC0xMiBmb250LXdlaWdodC1ub3JtYWwgYmFkZ2UgYmFkZ2UtcGlsbCBiYWRnZS13aGl0ZSBib3JkZXIgYm9yZGVyLXByaW1hcnkgcHktMiBweC0zIG1iLTJcIj4qL31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgey8qVGhp4bq/dCBr4bq/IG7hu5lpIHRo4bqldCBjaHVuZyBjxrAqL31cbiAgICAgICAgICAgICAgICAgICAgICAgIHsvKjwvc3Bhbj4qL31cbiAgICAgICAgICAgICAgICAgICAgey8qPHNwYW4qL31cbiAgICAgICAgICAgICAgICAgICAgICB7LypjbGFzc05hbWU9XCJ0ZXh0LWNlbnRlciBmb250LTEyIGZvbnQtd2VpZ2h0LW5vcm1hbCBiYWRnZSBiYWRnZS1waWxsIGJhZGdlLXdoaXRlIGJvcmRlciBib3JkZXItcHJpbWFyeSBweS0yIHB4LTMgbWItMlwiPiovfVxuICAgICAgICAgICAgICAgICAgICAgICAgICB7LypUaGnhur90IGvhur8gbuG7mWkgdGjhuqV0IGNodW5nIGPGsCovfVxuICAgICAgICAgICAgICAgICAgICAgICAgey8qPC9zcGFuPiovfVxuICAgICAgICAgICAgICAgICAgICB7Lyo8c3BhbiovfVxuICAgICAgICAgICAgICAgICAgICAgIHsvKmNsYXNzTmFtZT1cInRleHQtY2VudGVyIGZvbnQtMTIgZm9udC13ZWlnaHQtbm9ybWFsIGJhZGdlIGJhZGdlLXBpbGwgYmFkZ2Utd2hpdGUgYm9yZGVyIGJvcmRlci1wcmltYXJ5IHB5LTIgcHgtMyBtYi0yXCI+Ki99XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHsvKlRoaeG6v3Qga+G6vyBu4buZaSB0aOG6pXQgY2h1bmcgY8awKi99XG4gICAgICAgICAgICAgICAgICAgICAgICB7Lyo8L3NwYW4+PHNwYW4qL31cbiAgICAgICAgICAgICAgICAgICAgey8qY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgZm9udC0xMiBmb250LXdlaWdodC1ub3JtYWwgYmFkZ2UgYmFkZ2UtcGlsbCBiYWRnZS13aGl0ZSBib3JkZXIgYm9yZGVyLXByaW1hcnkgcHktMiBweC0zIG1iLTJcIj4qL31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgey8qVGhp4bq/dCBr4bq/IG7hu5lpIHRo4bqldCBjaHVuZyBjxrAqL31cbiAgICAgICAgICAgICAgICAgICAgICAgIHsvKjwvc3Bhbj48c3BhbiovfVxuICAgICAgICAgICAgICAgICAgICB7LypjbGFzc05hbWU9XCJ0ZXh0LWNlbnRlciBmb250LTEyIGZvbnQtd2VpZ2h0LW5vcm1hbCBiYWRnZSBiYWRnZS1waWxsIGJhZGdlLXdoaXRlIGJvcmRlciBib3JkZXItcHJpbWFyeSBweS0yIHB4LTMgbWItMlwiPiovfVxuICAgICAgICAgICAgICAgICAgICAgICAgICB7LypUaGnhur90IGvhur8gbuG7mWkgdGjhuqV0IGNodW5nIGPGsCovfVxuICAgICAgICAgICAgICAgICAgICAgICAgey8qPC9zcGFuPiovfVxuICAgICAgICAgICAgICAgICAgey8qPC9kaXY+Ki99XG4gICAgICAgICAgICAgICAgey8qPC9kaXY+Ki99XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC00IGNvbC1tZC00IHByb2plY3Qtc2lkZWJhclwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgcC0zXCI+XG4gICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJzdWItdGl0bGUgcG9zaXRpb24tcmVsYXRpdmVcIj5E4buxIMOhbiBjw7luZyBjaHV5w6puIGdpYTwvcD5cbiAgICAgICAgICAgICAgICAgIDx1bCBjbGFzc05hbWU9XCJsaXN0LXVuc3R5bGVkIG10LTNcIj5cbiAgICAgICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAgIGxpc3RQcm9qZWN0cyAmJiBsaXN0UHJvamVjdHMubWFwKCh2YWx1ZSxpbmRleCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cIm15LTNcIiBrZXk9e2luZGV4fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtZWRpYVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibWVkaWEtaW1hZ2UgbXItM1wiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBzcmM9e3ZhbHVlLmF2YXRhcn0gYWx0PVwiR2VuZXJpYyBwbGFjZWhvbGRlciBpbWFnZVwiLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1lZGlhLWJvZHlcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cIm10LTAgbWItMiBmb250LTE0XCI+e3ZhbHVlLm5hbWV9PC9wPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWlubGluZSBwcm8taW5mb1wiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImluZm8gcHJvamVjdC1pbmZvIG1yLTMgZmxvYXQtbGVmdFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxpIGNsYXNzTmFtZT1cImZhIGZhLXBpY3R1cmUtbyBteS1hdXRvXCIgYXJpYS1oaWRkZW49XCJ0cnVlXCI+PC9pPiB7dmFsdWUudG90YWwgKyAnIOG6o25oJ31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHt2YWx1ZS5hZGRyZXNzICYmXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJpbmZvIGxvY2F0aW9uLWluZm9cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxpIGNsYXNzTmFtZT1cImZhIGZhLW1hcC1tYXJrZXIgbXktYXV0b1wiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPjwvaT4ge3ZhbHVlLmFkZHJlc3N9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICAgICAgICAgICAgKSlcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgPC91bD5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicHJvamVjdC1tb3JlXCI+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC0yNVwiPk3hu41pIG5nxrDhu51pIHRoxrDhu51uZyB4ZW0gdGjDqm08L3A+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyb3dcIj5cbiAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgcmVsYXRlRGF0YSAmJiBtYXBPYmplY3QocmVsYXRlRGF0YSwoaW5kZXgsdmFsdWUpID0+IChcbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC0zIGNvbC1tZC0zXCIga2V5PXtpbmRleH0+XG4gICAgICAgICAgICAgICAgICAgICAgICA8TGluayByb3V0ZT0ncHJvamVjdC1kZXRhaWwnIHBhcmFtcz17e2lkOiBpbmRleCAsIHNsdWc6IGAke3ZhbHVlLnNsdWd9YH19PlxuICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQgYm9yZGVyLW5vbmVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtaW1hZ2VcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxpbWcgY2xhc3NOYW1lPVwiY2FyZC1pbWctdG9wXCIgc3JjPXt2YWx1ZS5hdmF0YXJ9IGFsdD1cIkNhcmQgaW1hZ2UgY2FwXCIgLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtYm9keSBiZy1ncmF5IHB4LTAgcHktMlwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiY2FyZC10aXRsZVwiPnt2YWx1ZS5uYW1lfTwvcD5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L0xpbms+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICkpXG4gICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxzdHlsZSBnbG9iYWwganN4PntgXG4gICAgICAgICAgICAgICAgICAgIC5wcm92aWRlciB7XG4gICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBgfTwvc3R5bGU+XG4gICAgICA8L1Byb3ZpZGVyRGV0YWlsPlxuICAgIClcbiAgfVxufSJdfQ== */\n/*@ sourceURL=pages/project/detail.js */"
-      }));
-    }
-  }], [{
+  _createClass(_default, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _regenerator.default.mark(function _callee(_ref) {
-        var query, res, data, resPro, dataPro;
+        var query, res, data;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
                 _context.next = 3;
-                return fetch(APIPROJECT + query.id);
+                return fetch(APIURL + "y-tuong");
 
               case 3:
                 res = _context.sent;
@@ -4042,37 +4268,25 @@ function (_React$Component) {
 
               case 6:
                 data = _context.sent;
-                _context.next = 9;
-                return fetch(APIPRO + data.project.user_id);
-
-              case 9:
-                resPro = _context.sent;
-                _context.next = 12;
-                return resPro.json();
-
-              case 12:
-                dataPro = _context.sent;
                 return _context.abrupt("return", {
-                  id: query.id,
-                  data: dataPro,
-                  provider: dataPro.provider,
-                  project: data.project,
-                  images: data.project.images,
-                  slug: query.slug,
+                  h1: data.h1,
+                  filter_default: data.filter_default,
+                  colors: data.colors,
+                  images: data.images.data,
+                  page: data.page,
+                  nextUrl: data.images.next_page_url,
                   title: data.seo.title,
                   des: data.seo.des,
                   canonical: data.seo.canonical,
                   robots: data.seo.robots,
                   og_url: data.seo.url,
                   url_images: data.seo.url_image,
-                  headerProjects: dataPro.headerProjects,
-                  headerCategories: dataPro.headerCategories,
-                  dataBase: dataPro.dataBase,
-                  relateData: data.relateData,
-                  listProjects: data.listProjects
+                  headerProjects: data.headerProjects,
+                  headerCategories: data.headerCategories,
+                  dataBase: data.dataBase
                 });
 
-              case 14:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -4086,20 +4300,50 @@ function (_React$Component) {
     }()
   }]);
 
+  function _default(props) {
+    var _this;
+
+    _classCallCheck(this, _default);
+
+    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    _this.state = {
+      nextUrl: _this.props.nextUrl,
+      images: _this.props.images
+    };
+    return _this;
+  }
+
+  _createClass(_default, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var url = this.props.url;
+      return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
+        photoId: this.props.url.query && this.props.url.query.photoId,
+        asPath: url.asPath,
+        path: url.pathname,
+        nextUrl: this.state.nextUrl,
+        images: this.state.images,
+        detail: true,
+        changeState: function changeState(images, nextPage) {
+          _this2.setState({
+            images: images,
+            nextUrl: nextPage
+          });
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        }
+      }));
+    }
+  }]);
+
   return _default;
 }(_react.default.Component);
 
 exports.default = _default;
-
-/***/ }),
-
-/***/ "./pages/project/index.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}strong{font-weight:bolder}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}.list-unstyled{padding-left:0;list-style:none}.img-thumbnail{max-width:100%;height:auto}.img-thumbnail{padding:.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:.25rem}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-lg-9,.col-lg-10,.col-md-9,.col-md-10,.col-md-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-9{flex:0 0 75%;max-width:75%}.col-md-10{flex:0 0 83.33333%;max-width:83.33333%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-9{flex:0 0 75%;max-width:75%}.col-lg-10{flex:0 0 83.33333%;max-width:83.33333%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.btn{display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}.btn-primary{color:#fff;background-color:#b953a4;border-color:#b953a4}.collapse:not(.show){display:none}.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:.5rem 1rem}.nav-tabs{border-bottom:1px solid #dee2e6}.nav-tabs .nav-item{margin-bottom:-1px}.nav-tabs .nav-link{border:1px solid transparent;border-top-left-radius:.25rem;border-top-right-radius:.25rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.media{display:flex;align-items:flex-start}.media-body{flex:1}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-bottom-0{border-bottom:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.justify-content-end{justify-content:flex-end!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-100{height:100%!important}.m-0{margin:0!important}.mt-0{margin-top:0!important}.mt-1{margin-top:.25rem!important}.mx-1{margin-right:.25rem!important}.mb-1{margin-bottom:.25rem!important}.mx-1{margin-left:.25rem!important}.my-2{margin-top:.5rem!important}.mb-2,.my-2{margin-bottom:.5rem!important}.mt-3,.my-3{margin-top:1rem!important}.my-3{margin-bottom:1rem!important}.p-0{padding:0!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.pr-2,.px-2{padding-right:.5rem!important}.px-2{padding-left:.5rem!important}.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.pl-3,.px-3{padding-left:1rem!important}.px-4{padding-right:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}.text-center{text-align:center!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-normal{font-weight:400!important}.font-weight-bold{font-weight:700!important}.text-white{color:#fff!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}@font-face{font-family:FontAwesome;src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:400;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-star:before{content:\"\\F005\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-plus:before{content:\"\\F067\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body,h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder,input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.font-25{font-size:25px!important}.text-gray{color:#666!important}.text-black-100{color:#333!important}.text-gray-200{color:#999!important}.bg-indigo{background-color:#664cc7!important}.bg-yellow-green{background-color:#bdc74c!important}.bg-red-100{background-color:#c74c4c!important}.bg-teal{background-color:#47be84!important}.bg-cyan{background-color:#4cb1c7!important}.bg-gray{background-color:#ddd!important}.text-yellow{color:#fc0!important}.bg-blue-200{background-color:#4c91c7!important}.navbar-9houzz{color:#666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}.banner{height:361px}.gradient-animate{height:100px;background:-webkit-linear-gradient(transparent,#000);background:-o-linear-gradient(transparent,#000);background:linear-gradient(transparent,#000);bottom:0;z-index:0}.provider-nav{height:50px;line-height:34px}.provider-details .banner{max-height:290px;height:290px;position:relative;overflow:hidden}.provider-avatar{width:165px;height:165px;top:-127px;border:1px solid #d3d3d3;left:20px;background:#fff}.provider-info{bottom:4rem;left:13rem;z-index:1}.provider-details .nav-link{color:#666!important;padding:.5rem 1.5rem!important}.provider-details .nav-tabs .active{color:#b953a4!important}.provider-details .nav-tabs .active:after{content:\"\";position:absolute;bottom:-1px;left:12%;background:#b953a5;height:3px;width:75%}.provider-details .nav-tabs .active a{font-weight:700!important;color:#b953a4!important}span{font-size:13px!important}.about .media-content span{font-size:14px!important;line-height:1.3!important}.project-image .project-action button{display:none}@media (max-width:575.98px){.provider-avatar{width:80px!important;height:80px!important;top:-105px!important}.provider-details .banner{height:185px!important}.banner img{height:100%!important}.provider-info{bottom:4rem;left:7rem;z-index:1}.provider-info p{font-size:18px!important;font-weight:700!important}#myTab.nav{overflow-x:scroll;overflow-y:hidden;white-space:nowrap;display:block!important}#myTab.nav li{display:inline-block;color:#fff;text-align:center}.provider-details .nav-tabs .active:after{content:\"\";position:absolute;bottom:-1px;left:12%;background:#fff;height:3px;width:75%}.provider-nav{height:45px!important;line-height:34px}.provider-main{padding-left:0!important;padding-right:0!important;margin-right:0!important;margin-left:0!important}.project-detail{margin-top:0!important}.project-detail h1{font-size:18px!important}.project-detail p{font-size:15px!important}.project-detail .idea-content{padding-left:0!important;padding-right:0!important}.project-detail .project-image{margin-top:1rem!important;max-width:100%!important}.project-detail .project-image img{width:100%!important}.project-detail li{margin-bottom:1rem!important}.project-detail .media-body{padding-left:0!important;margin-top:.5rem!important}.project-detail .media-body h2{font-size:18px!important;margin-bottom:0!important}.project-detail .media-body h2 a{font-size:18px!important}.project-detail .about .media-content span{font-size:15px!important}.project-mobile-action .btn.med{margin:0 auto;height:35px!important;width:100%;font-size:15px!important;line-height:26px!important;padding:0 85px!important}}.idea-content .about{line-height:9px!important}.btn.med{height:40px;font-size:16px;line-height:26px;padding:6px 16px 8px}@media (max-width:767.98px){.media{padding:0!important}.media .media-body{padding-left:2rem}}.fa-star{color:#fc0}.disable{color:#ddd!important}@media (max-width:767.98px){.media-body{margin-top:1rem}}.idea-content h2{font-weight:600!important;font-size:15px!important;line-height:20px!important}img{vertical-align:middle}@media (max-width:767.98px){.btn.med{height:30px!important;font-size:13px!important;line-height:26px!important;padding:0 9px!important}}.idea-content .about{line-height: 9px !important;}.idea-content .about p{line-height: 1.1rem !important;}";
 
 /***/ }),
 
@@ -4119,6 +4363,16 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
+/***/ "./styles/fscreen_idea.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}label{display:inline-block;margin-bottom:.5rem}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2,h3{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.list-unstyled{padding-left:0;list-style:none}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-lg-3,.col-lg-9,.col-md-3,.col-md-9,.col-md-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:.5rem 1rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge{display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.badge-light{color:#212529;background-color:#f3f3f3}.close{float:right;font-size:1.5rem;font-weight:700;line-height:1;color:#111;text-shadow:0 1px 0 #fff;opacity:.5}.card{position:relative;display:flex;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid hsla(0,0%,7%,.125);border-radius:.25rem}.card-body{flex:1 1 auto;padding:1.25rem}.card-img-top{width:100%;border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px)}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-primary{border-color:#b953a4!important}.rounded{border-radius:.25rem!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.mb-0{margin-bottom:0!important}.mt-1,.my-1{margin-top:.25rem!important}.my-1{margin-bottom:.25rem!important}.ml-1{margin-left:.25rem!important}.mt-2,.my-2{margin-top:.5rem!important}.mr-2{margin-right:.5rem!important}.my-2{margin-bottom:.5rem!important}.mt-3{margin-top:1rem!important}.mb-3{margin-bottom:1rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.pt-1,.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.pb-1,.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.p-2{padding:.5rem!important}.px-2{padding-right:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.pr-3,.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.py-4{padding-top:1.5rem!important}.px-4{padding-right:1.5rem!important}.py-4{padding-bottom:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-light{font-weight:300!important}.font-weight-bold{font-weight:700!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}@font-face{font-family:FontAwesome;src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:400;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-upload:before{content:\"\\F093\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body,h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder,input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-12{font-size:12px!important}.font-13{font-size:13px!important}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.text-gray{color:#666!important}.text-black-100{color:#333!important}.bg-indigo{background-color:#664cc7!important}.bg-yellow-green{background-color:#bdc74c!important}.bg-red-100{background-color:#c74c4c!important}.bg-teal{background-color:#47be84!important}.bg-cyan{background-color:#4cb1c7!important}.bg-gray{background-color:#ddd!important}.bg-blue-200{background-color:#4c91c7!important}.navbar-9houzz{color:#666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25}.widget h3{margin-bottom:10px!important}}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-.5rem!important;border-top:none!important}}#sidebar{max-width:23%!important}.sidebar-service{width:100%;margin-left:5px}.sidebar-service .widget ul{line-height:13px!important}.widget h3{font-weight:600!important;font-size:14px!important}#cat .title{font-size:21px!important;font-weight:400!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.service #sidebar{max-width:100%!important;margin-top:.5rem!important;border-top:none!important;margin-bottom:.5rem!important}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:#000!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label,.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.service{font-size:13px}.service h3{font-weight:inherit}.service .service-tag{background:#fff;font-size:13px!important;font-weight:lighter;color:#b953a4;padding:8px;padding-right:35px;padding-left:17px;position:relative}.service .service-tag i{position:absolute;right:15px;font-size:13px;top:6px;font-style:normal!important;font-weight:300;color:#b953a4!important;opacity:1!important}.service .service-tag i:before{transform:rotate(45deg)}.service .service-tag i:after{transform:rotate(-45deg)}.service .service-tag i:after,.service .service-tag i:before{position:absolute;left:0;content:\" \";top:0;height:16px;width:2px;background-color:#b953a4}.idea-content h2{font-weight:600!important;font-size:15px!important;line-height:20px!important}img{vertical-align:middle}.card{border:none!important}.grid__col-sizer,.grid__item{width:32.5%}.grid__gutter-sizer{width:1%}.grid__item{margin-bottom:20px;float:left ;padding:8px !important; }.grid__item .upload{padding:.5rem .75rem;background:#fff;top:10px;left:10px;z-index:100}.grid__item img{display:block;max-width:100%;width:100%}@media (min-width:992px) and (max-width:1199.98px){.grid__col-sizer,.grid__item{width:24%}}@media (min-width:768px) and (max-width:991.98px){.grid__col-sizer,.grid__item{width:33%}}@media (max-width:767.98px){.grid__col-sizer,.grid__item{width:99%}.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}.service .idea-content h2{font-size:16px!important}.service .idea-content p{display:none!important;font-size:15px!important}}";
+
+/***/ }),
+
 /***/ "./styles/style.scss":
 /***/ (function(module, exports) {
 
@@ -4126,10 +4380,10 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/project/detail.js");
+module.exports = __webpack_require__("./pages/idea.js");
 
 
 /***/ }),
@@ -4218,6 +4472,20 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-infinite-scroller":
+/***/ (function(module, exports) {
+
+module.exports = require("react-infinite-scroller");
+
+/***/ }),
+
+/***/ "react-masonry-component":
+/***/ (function(module, exports) {
+
+module.exports = require("react-masonry-component");
+
+/***/ }),
+
 /***/ "reactstrap":
 /***/ (function(module, exports) {
 
@@ -4240,4 +4508,4 @@ module.exports = require("universal-cookie");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=detail.js.map
+//# sourceMappingURL=idea.js.map

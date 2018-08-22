@@ -164,7 +164,7 @@ export default class  extends React.Component {
                                 </a>
                               </Link>
                               <div className="text ellipsis position-relative">
-                                <p className="card-text font-14" dangerouslySetInnerHTML={{__html: value.main_project.descriptions && value.main_project.descriptions}}/>
+                                <p className="card-text font-14" dangerouslySetInnerHTML={{__html: value.main_project && value.main_project.descriptions}}/>
                               </div>
                               <ul className="list-unstyled">
                                 {
