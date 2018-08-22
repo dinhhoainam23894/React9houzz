@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/project/detail', function() {
           var comp =
-      webpackJsonp([6],{
+      webpackJsonp([5],{
 
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -30859,7 +30859,7 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/project/detail.js");
@@ -30867,7 +30867,7 @@ module.exports = __webpack_require__("./pages/project/detail.js");
 
 /***/ })
 
-},[5])
+},[4])
           return { page: comp.default }
         })
       ;

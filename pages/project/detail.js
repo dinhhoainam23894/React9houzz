@@ -39,6 +39,7 @@ export default class extends React.Component {
 
   render() {
     const { provider, data, project, images ,relateData , listProjects} = this.props
+    console.log(this.props)
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props}>
         <div className="project-detail-main" id="cat">
