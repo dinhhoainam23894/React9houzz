@@ -22,7 +22,7 @@ export default class Project extends Component {
                 , data:dataPro 
                 , provider : dataPro.provider 
                 , project : data.project 
-                , images: data.project.images 
+                , images: data.images.data
                 , slug : query.slug
                 , title : data.seo.title
                 , des : data.seo.des

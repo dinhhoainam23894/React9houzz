@@ -21,7 +21,7 @@ export default class extends React.Component {
       , data: dataPro
       , provider: dataPro.provider
       , project: data.project
-      , images: data.project.images
+      , images: data.images.data
       , slug: query.slug
       , title: data.seo.title
       , des: data.seo.des
@@ -39,7 +39,6 @@ export default class extends React.Component {
 
   render() {
     const { provider, data, project, images ,relateData , listProjects} = this.props
-    console.log(this.props)
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props}>
         <div className="project-detail-main" id="cat">
@@ -128,24 +127,28 @@ export default class extends React.Component {
                     {
                       listProjects && listProjects.map((value,index) => (
                         <li className="my-3" key={index}>
-                          <div className="media">
-                            <div className="media-image mr-3">
-                              <img src={value.avatar} alt="Generic placeholder image"/>
-                            </div>
-                            <div className="media-body">
-                              <p className="mt-0 mb-2 font-14">{value.name}</p>
-                              <div className="d-inline pro-info">
-                                <div className="info project-info mr-3 float-left">
-                                  <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> {value.total + ' ảnh'}
+                          <Link route='project-detail' params={{id: value.id , slug: value.slug }}>
+                            <a className="nav-link border-0 font-14 font-weight-bold">
+                                 <div className="media">
+                                <div className="media-image mr-3">
+                                  <img src={value.avatar} alt="Generic placeholder image"/>
                                 </div>
-                                {value.address &&
-                                  <div className="info location-info">
-                                    <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> {value.address}
+                                <div className="media-body">
+                                  <p className="mt-0 mb-2 font-14 text-black">{value.name}</p>
+                                  <div className="d-inline pro-info">
+                                    <div className="info project-info mr-3 float-left">
+                                      <i className="fa fa-picture-o my-auto" aria-hidden="true"></i> {value.total + ' ảnh'}
+                                    </div>
+                                    {value.address &&
+                                      <div className="info location-info">
+                                        <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> {value.address}
+                                      </div>
+                                    }
                                   </div>
-                                }
+                                </div>
                               </div>
-                            </div>
-                          </div>
+                            </a>
+                          </Link>
                         </li>
                       ))
                     }
@@ -160,14 +163,16 @@ export default class extends React.Component {
                     relateData && mapObject(relateData,(index,value) => (
                       <div className="col-3 col-md-3" key={index}>
                         <Link route='project-detail' params={{id: index , slug: `${value.slug}`}}>
+                          <a className="nav-link border-0 font-14 font-weight-bold">
                           <div className="card border-none">
                             <div className="card-image">
                               <img className="card-img-top" src={value.avatar} alt="Card image cap" />
                             </div>
                             <div className="card-body bg-gray px-0 py-2">
-                              <p className="card-title">{value.name}</p>
+                              <p className="card-title text-black">{value.name}</p>
                             </div>
                           </div>
+                          </a>
                         </Link>
                       </div>
                     ))
