@@ -102,10 +102,10 @@ export default class IdeaComponent extends React.Component{
             if ($(this).find('li').length == $(this).find($('li:visible')).length) {
                $(this).find('.loadmore').hide();
             }
-		});
+		    });
         $('.sidebar-service').on('click','.loadmore',function () {
             var list = $(this).parent().find($('li'));
-			$(this).parent().find($('li:hidden')).show();
+			      $(this).parent().find($('li:hidden')).show();
             if (list.length == $(this).parent().find($('li:visible')).length) {
                 $(this).removeClass('loadmore');
                 $(this).addClass('hidemore');

@@ -10,11 +10,11 @@ module.exports = routes()                           // ----   ----      -----
 .add('pro.detail','/pro/:id-:slug','pro/index')
 .add('pro.project','/pro/:id-:slug/d%E1%BB%B1-%C3%A1n','pro/project')
 .add('pro.review','/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t','pro/review')
-.add('project.detail','/du-an/:id-:slug','project/index')
+.add('project.detail','/du-an/:id-:slug','project/detail')
 .add('static','/about/:slug','static-page')
 .add('list-project','/danh-sach-du-an','project/list-project')
+.add('list-project.detail','/danh-sach-du-an/:slug','project/list-project-filter')
 .add('list-provider','/danh-sach-pro','pro/provider-list')
-.add('project-detail','/chi-tiet-du-an/:id-:slug','project/detail')
 
 
 

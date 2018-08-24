@@ -4,7 +4,7 @@ import {mapObject, ucfirst} from "../../libraries/helpers";
 import {Link, Router} from '../../routes'
 import ImageModal from '../../components/image-modal';
 import 'isomorphic-fetch'
-import css from "./index.css";
+import css from "./detail.css";
 
 const APIURL = process.env.DOMAIN + process.env.APIURI
 const APIPROJECT = APIURL + 'project/'
@@ -36,12 +36,28 @@ export default class extends React.Component {
       , listProjects : data.listProjects
     }
   }
-
+  showPhoto (e, id , slug) {
+    e.preventDefault()
+    Router.push(`/project?id=${this.props.id}&photoId=${id}&slug=${slug}`,`/anh/${id}-${slug}`)
+  }
+  dismissModal (id , slug) {
+    Router.pushRoute('project.detail', {id: id , slug : `${slug}`})
+  }
   render() {
-    const { provider, data, project, images ,relateData , listProjects} = this.props
-    console.log(this.props)
+    const {url , provider, data, project, images ,relateData , listProjects} = this.props
     return (
-      <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props}>
+      <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
+        {
+          url.query.photoId &&
+          <ImageModal
+            id={url.query.photoId}
+            slug={url.query.slug}
+            detail={false}
+            popup={false}
+            currentPath={url.pathname}
+            onDismiss={() => this.dismissModal(url.query.id,url.query.slug)}
+          />
+        }
         <div className="project-detail-main" id="cat">
           <div className="container">
             {/*<nav aria-label="breadcrumb">*/}
@@ -127,8 +143,8 @@ export default class extends React.Component {
                   <ul className="list-unstyled mt-3">
                     {
                       listProjects && listProjects.map((value,index) => (
-                        <li className="my-3" key={index}>
-                          <Link route='project-detail' params={{id: value.id , slug: value.slug }}>
+                        <li className="my-3 listProject" key={index}>
+                          <Link route='project.detail' params={{id: value.id , slug: value.slug }}>
                             <a className="nav-link border-0 font-14 font-weight-bold">
                                  <div className="media">
                                 <div className="media-image mr-3">
@@ -153,6 +169,11 @@ export default class extends React.Component {
                         </li>
                       ))
                     }
+                    <li className="text-right border border-bottom-0 border-left-0 border-right-0 pt-3">
+                      <Link route="pro.project" params={{ id: provider.id , slug : provider.slug }} >
+                        <a href="" className="text-primary"> Xem thêm </a>
+                     </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -163,7 +184,7 @@ export default class extends React.Component {
                   {
                     relateData && mapObject(relateData,(index,value) => (
                       <div className="col-3 col-md-3" key={index}>
-                        <Link route='project-detail' params={{id: index , slug: `${value.slug}`}}>
+                        <Link route='project.detail' params={{id: index , slug: `${value.slug}`}}>
                           <a className="nav-link border-0 font-14 font-weight-bold">
                           <div className="card border-none">
                             <div className="card-image">
