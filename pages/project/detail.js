@@ -178,7 +178,7 @@ export default class extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="project-more">
+            <div className="project-more mt-3">
                 <p className="font-25">Mọi người thường xem thêm</p>
                 <div className="row">
                   {
