@@ -185,7 +185,7 @@ export default class extends React.Component {
                     relateData && mapObject(relateData,(index,value) => (
                       <div className="col-3 col-md-3" key={index}>
                         <Link route='project.detail' params={{id: index , slug: `${value.slug}`}}>
-                          <a className="nav-link border-0 font-14 font-weight-bold">
+                          <a className="nav-link border-0 font-14 font-weight-bold px-0">
                           <div className="card border-none">
                             <div className="card-image">
                               <img className="card-img-top" src={value.avatar} alt="Card image cap" />

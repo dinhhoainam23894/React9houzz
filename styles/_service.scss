@@ -25,6 +25,9 @@
 	}
 	.images-service{
 		max-height: 250px !important;
+		overflow: hidden;
+		position: relative;
+		@include shine();
 		img{
 			height: 100% !important;
 			object-fit: cover;

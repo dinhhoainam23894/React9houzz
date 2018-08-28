@@ -1,104 +1,206 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import paginator from "paginator";
+import Page from "./page";
+import cx from "classnames";
 
-export default class Pagination extends Component {
+export default class Pagination extends React.Component {
+  static propTypes = {
+    totalItemsCount: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
+    activePage: PropTypes.number,
+    itemsCountPerPage: PropTypes.number,
+    pageRangeDisplayed: PropTypes.number,
+    prevPageText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    nextPageText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    lastPageText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    firstPageText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    disabledClass: PropTypes.string,
+    hideDisabled: PropTypes.bool,
+    hideNavigation: PropTypes.bool,
+    innerClass: PropTypes.string,
+    itemClass: PropTypes.string,
+    itemClassFirst: PropTypes.string,
+    itemClassPrev: PropTypes.string,
+    itemClassNext: PropTypes.string,
+    itemClassLast: PropTypes.string,
+    linkClass: PropTypes.string,
+    activeClass: PropTypes.string,
+    activeLinkClass: PropTypes.string,
+    linkClassFirst: PropTypes.string,
+    linkClassPrev: PropTypes.string,
+    linkClassNext: PropTypes.string,
+    linkClassLast: PropTypes.string,
+    hideFirstLastPages: PropTypes.bool,
+    getPageUrl: PropTypes.func
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-        startPage : this.props.page ,
-        endPage : this.props.lastPage
-    };
-    this.onPageChange = this.onPageChange.bind(this);
-    this.goFirstPage = this.goFirstPage.bind(this);
-    this.goLastPage = this.goLastPage.bind(this);
-    this.goPrevPage = this.goPrevPage.bind(this);
-    this.goNextPage = this.goNextPage.bind(this);
+  static defaultProps = {
+    itemsCountPerPage: 10,
+    pageRangeDisplayed: 5,
+    activePage: 1,
+    prevPageText: "Trang trước",
+    firstPageText: "Trang đầu",
+    nextPageText: "Trang sau",
+    lastPageText: "Trang cuối",
+    innerClass: "pagination",
+    itemClass: undefined,
+    linkClass: undefined,
+    activeLinkClass: undefined,
+    hideFirstLastPages: false,
+    nextPageLink : "#",
+    backPageLink : "#",
+    getPageUrl: (i) => "#"
+  };
+
+  isFirstPageVisible(has_previous_page) {
+    const { hideDisabled, hideNavigation, hideFirstLastPages } = this.props;
+    if (hideFirstLastPages || (hideDisabled && !has_previous_page)) return false;
+    return true;
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps === this.props) return;
-   const { margin, page, count } = newProps;
-    const startPage = page > margin ? page - margin : 1;
-    const endPage = newProps.lastPage;
-    this.setState({ startPage, endPage, count });
+  isPrevPageVisible(has_previous_page) {
+    const { hideDisabled, hideNavigation } = this.props;
+    if (hideNavigation || (hideDisabled && !has_previous_page)) return false;
+    return true;
   }
 
-  onPageChange(event) {
-    const index =
-      Array.prototype.indexOf.call(event.target.parentNode.children, event.target);
-      console.log(index)
-    this.props.onPageChange(index + this.state.startPage);
+  isNextPageVisible(has_next_page) {
+    const { hideDisabled, hideNavigation } = this.props;
+    if(hideNavigation || (hideDisabled && !has_next_page)) return false;
+    return true;
   }
 
-  goFirstPage() {
-    this.props.onPageChange(1);
+  isLastPageVisible(has_next_page) {
+    const { hideDisabled, hideNavigation, hideFirstLastPages } = this.props;
+    if (hideFirstLastPages || (hideDisabled && !has_next_page)) return false;
+    return true;
   }
 
-  goLastPage() {
-    this.props.onPageChange(this.state.count);
-  }
-
-  goPrevPage() {
-    this.props.onPageChange(this.props.page - 1);
-  }
-
-  goNextPage() {
-    this.props.onPageChange(this.props.page + 1);
-  }
-
-  render() {
-    const { startPage, endPage, count } = this.state;
-    const { page, margin } = this.props;
+  buildPages() {
     const pages = [];
-    const firstPage = page - margin > 1 ?
-          <div
-            className="pagination-button pagination-go-first"
-            onClick={this.goFirstPage}
-          >First page</div> :
-          null;
-    const lastPage = page + margin < count ?
-          <div
-            className="pagination-button pagination-go-last"
-            onClick={this.goLastPage}
-          >Last page</div> :
-          null;
-    const prevPage = page === 1 ? null :
-          <div
-            className="pagination-button"
-            onClick={this.goPrevPage}
-          >prev</div>;
-    const nextPage = page === count ? null :
-          <div
-            className="pagination-button"
-            onClick={this.goNextPage}
-          >next</div>;
-    for (let i = startPage; i <= endPage; i++) {
+    const {
+      itemsCountPerPage,
+      pageRangeDisplayed,
+      activePage,
+      prevPageText,
+      nextPageText,
+      firstPageText,
+      lastPageText,
+      totalItemsCount,
+      onChange,
+      activeClass,
+      itemClass,
+      itemClassFirst,
+      itemClassPrev,
+      itemClassNext,
+      itemClassLast,
+      activeLinkClass,
+      disabledClass,
+      hideDisabled,
+      hideNavigation,
+      linkClass,
+      linkClassFirst,
+      linkClassPrev,
+      linkClassNext,
+      linkClassLast,
+      hideFirstLastPages,
+      getPageUrl,
+      nextPageLink,
+      backPageLink
+    } = this.props;
+
+    const paginationInfo = new paginator(
+      itemsCountPerPage,
+      pageRangeDisplayed
+    ).build(totalItemsCount, activePage);
+
+    for (
+      let i = paginationInfo.first_page;
+      i <= paginationInfo.last_page;
+      i++
+    ) {
       pages.push(
-        <li
+        <Page
+          isActive={i === activePage}
           key={i}
-          onClick={this.onPageChange}
-          className={classnames('pagination-list-item', 'pagination-button', {
-            active: i === this.props.page
-          })}
-        >
-          {i}
-        </li>
+          href={getPageUrl(i)}
+          pageNumber={i}
+          pageText={i + ""}
+          onClick={onChange}
+          itemClass={itemClass}
+          linkClass={linkClass}
+          activeClass={activeClass}
+          activeLinkClass={activeLinkClass}
+        />
       );
     }
 
-    return (
-      <div id="pagination-container">
-        <div id="pagination">
-          {prevPage}
-          {firstPage}
-          <ul id="pagination-list">
-            {pages}
-          </ul>
-          {lastPage}
-          {nextPage}
-        </div>
-      </div>
+    this.isPrevPageVisible(paginationInfo.has_previous_page) &&
+    pages.unshift(
+      <Page
+        key={"prev" + paginationInfo.previous_page}
+        pageNumber={paginationInfo.previous_page}
+        onClick={onChange}
+        pageText={prevPageText}
+        isDisabled={!paginationInfo.has_previous_page}
+        itemClass={cx(itemClass, itemClassPrev)}
+        linkClass={cx(linkClass, linkClassPrev)}
+        disabledClass={disabledClass}
+        href={backPageLink}
+      />
     );
+
+    // this.isFirstPageVisible(paginationInfo.has_previous_page) &&
+    // pages.unshift(
+    //   <Page
+    //     key={"first"}
+    //     pageNumber={1}
+    //     onClick={onChange}
+    //     pageText={firstPageText}
+    //     isDisabled={!paginationInfo.has_previous_page}
+    //     itemClass={cx(itemClass, itemClassFirst)}
+    //     linkClass={cx(linkClass, linkClassFirst)}
+    //     disabledClass={disabledClass}
+    //   />
+    // );
+
+    this.isNextPageVisible(paginationInfo.has_next_page) &&
+    pages.push(
+      <Page
+        key={"next" + paginationInfo.next_page}
+        pageNumber={paginationInfo.next_page}
+        onClick={onChange}
+        pageText={nextPageText}
+        isDisabled={!paginationInfo.has_next_page}
+        itemClass={cx(itemClass, itemClassNext)}
+        linkClass={cx(linkClass, linkClassNext)}
+        disabledClass={disabledClass}
+        href={nextPageLink}
+      />
+    );
+
+    // this.isLastPageVisible(paginationInfo.has_next_page) &&
+    // pages.push(
+    //   <Page
+    //     key={"last"}
+    //     pageNumber={paginationInfo.total_pages}
+    //     onClick={onChange}
+    //     pageText={lastPageText}
+    //     isDisabled={
+    //       paginationInfo.current_page === paginationInfo.total_pages
+    //     }
+    //     itemClass={cx(itemClass, itemClassLast)}
+    //     linkClass={cx(linkClass, linkClassLast)}
+    //     disabledClass={disabledClass}
+    //   />
+    // );
+
+    return pages;
+  }
+
+  render() {
+    const pages = this.buildPages();
+    return <ul className={this.props.innerClass}>{pages}</ul>;
   }
 }

@@ -5,9 +5,15 @@ import 'isomorphic-fetch'
 import ListProjectComponent from "../../components/ListProjectComponent";
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'danh-sach-du-an/'
 export default class extends React.Component{
-    static async getInitialProps(){
-        const res = await fetch(APIURL)
+    static async getInitialProps({query}){
+        let res = null;
+      if(query.page){
+        res = await fetch(APIURL + `?page=${query.page}`)
+      }else{
+        res = await fetch(APIURL)
+      }
         const data = await res.json()
+        let url_path= '/danh-sach-du-an/';
         return {
             data : data,
             projects : data.datas ? data.datas.data : null,
@@ -22,7 +28,8 @@ export default class extends React.Component{
             dataBase : data.dataBase,
             h1 : data.h1,
             filterDefault : data.filter_default,
-            page : data.page
+            page : data.page,
+            url_path : url_path
         }
     }
     constructor(props){

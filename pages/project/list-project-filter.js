@@ -7,12 +7,14 @@ const APIURL = process.env.DOMAIN + process.env.APIURI
 export default class extends React.Component{
   static async getInitialProps({query}){
     let res = null;
-    if(query.f){
-      res = await fetch(APIURL + 'danh-sach-du-an/' + encodeURIComponent(query.slug) + `?f=${query.f}`)
+    let url_path= '/danh-sach-du-an/'+query.slug;
+    if(query.page){
+      res = await fetch(APIURL + 'danh-sach-du-an/' + encodeURIComponent(query.slug) + `?page=${query.page}`)
     }else{
       res = await fetch(APIURL + 'danh-sach-du-an/' + encodeURIComponent(query.slug))
     }
     const data = await res.json()
+
     return {
       data : data,
       projects : data.datas ? data.datas.data : null,
@@ -27,7 +29,8 @@ export default class extends React.Component{
       dataBase : data.dataBase,
       h1 : data.h1,
       filterDefault : data.filter_default,
-      page : data.page
+      page : data.page,
+      url_path : url_path
     }
   }
   constructor(props){

@@ -63,7 +63,9 @@ export default class extends React.Component {
             css , 
             headerProjects ,
             headerCategories , 
-            dataBase
+            dataBase,
+          backPageLink,
+      nextPageLink
           } = this.props
     return (
       <React.Fragment>
@@ -78,6 +80,8 @@ export default class extends React.Component {
           {og_url && <meta property="og:url" content={process.env.CURRENTDOMAIN + og_url} />}
           {url_images && <meta property="og:image" content={url_images} />}
           {robots && <meta name="robots" content={robots} />}
+          {nextPageLink && <link rel="next" href={process.env.CURRENTDOMAIN + nextPageLink} />}
+          {backPageLink && <link rel="prev" href={process.env.CURRENTDOMAIN + backPageLink} />}
           <style dangerouslySetInnerHTML={{__html: css}}/>
         </Head>
         <header>
