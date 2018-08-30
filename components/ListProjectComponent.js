@@ -129,14 +129,14 @@ export default class extends React.Component{
                                 <Link route="pro.detail" params={{ id : value.providers.id , slug : value.providers.slug }}>
                                   <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">{value.providers && value.providers.name}</a>
                                 </Link>
-                                <div className="star-rating">
-                                  <span className="fa fa-star" data-rating="1"></span>
-                                  <span className="fa fa-star" data-rating="2"></span>
-                                  <span className="fa fa-star" data-rating="3"></span>
-                                  <span className="fa fa-star" data-rating="4"></span>
-                                  <span className="fa fa-star disable" data-rating="5"></span>
-                                  <span className="font-italic">(14 đánh giá)</span>
-                                </div>
+                                {/*<div className="star-rating">*/}
+                                  {/*<span className="fa fa-star" data-rating="1"></span>*/}
+                                  {/*<span className="fa fa-star" data-rating="2"></span>*/}
+                                  {/*<span className="fa fa-star" data-rating="3"></span>*/}
+                                  {/*<span className="fa fa-star" data-rating="4"></span>*/}
+                                  {/*<span className="fa fa-star disable" data-rating="5"></span>*/}
+                                  {/*<span className="font-italic">(14 đánh giá)</span>*/}
+                                {/*</div>*/}
                               </div>
                             </div>
                             <div className="media-content mt-3">

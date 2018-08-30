@@ -23,7 +23,7 @@ export default class extends React.Component{
       canonical : data.seo ? data.seo.canonical : null,
       robots : data.seo ? data.seo.robots : null,
       og_url : data.seo ? data.seo.url : null,
-      url_images : data.seo ? data.seo.url_images : null,
+      url_images : data.seo ? data.seo.url_image : null,
       headerProjects : data.headerProjects,
       headerCategories : data.headerCategories,
       dataBase : data.dataBase,

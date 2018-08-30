@@ -67,7 +67,7 @@ export default class extends React.Component {
               {/*</ol>*/}
             {/*</nav>*/}
             <div className="row">
-              <div className="col-8 col-md-8">
+              <div className="col-12 col-md-8">
                 <div className="about bg-white p-3 border border-gray">
                   <h1 className="font-25 font-weight-normal">{project.name}</h1>
                   <p className="font-weight-normal my-3 project-description"
@@ -137,7 +137,7 @@ export default class extends React.Component {
                   {/*</div>*/}
                 {/*</div>*/}
               </div>
-              <div className="col-4 col-md-4 project-sidebar">
+              <div className="col-12 col-md-4 project-sidebar">
                 <div className="bg-white p-3">
                   <p className="sub-title position-relative">Dự án cùng chuyên gia</p>
                   <ul className="list-unstyled mt-3">
@@ -183,7 +183,7 @@ export default class extends React.Component {
                 <div className="row">
                   {
                     relateData && mapObject(relateData,(index,value) => (
-                      <div className="col-3 col-md-3" key={index}>
+                      <div className="col-12 col-md-3" key={index}>
                         <Link route='project.detail' params={{id: index , slug: `${value.slug}`}}>
                           <a className="nav-link border-0 font-14 font-weight-bold px-0">
                           <div className="card border-none">
