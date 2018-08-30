@@ -1,4 +1,4 @@
-webpackHotUpdate(5,{
+webpackHotUpdate(2,{
 
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /***/ (function(module, exports) {
@@ -84,4 +84,4 @@ function toComment(sourceMap) {
 /***/ })
 
 })
-//# sourceMappingURL=5.06080f81918dbc861b23.hot-update.js.map
+//# sourceMappingURL=2.4584e34bfc175adaee3a.hot-update.js.map
