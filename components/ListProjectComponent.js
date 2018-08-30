@@ -30,34 +30,32 @@ export default class extends React.Component{
       });
     }
   }
-  componentDidMount(){
-    $('.sidebar-service ul').each(function(e){
-      if ($(this).find('li').length == $(this).find($('li:visible')).length) {
-        $(this).find('.loadmore').hide();
-      }
-    });
-    $('.sidebar-service').on('click','.loadmore',function () {
-      var list = $(this).parent().find($('li'));
-      $(this).parent().find($('li:hidden')).show();
-      if (list.length == $(this).parent().find($('li:visible')).length) {
-        $(this).removeClass('loadmore');
-        $(this).addClass('hidemore');
-        $(this).html('Thu gọn');
-      }
-    });
-    $('.sidebar-service').on('click','.hidemore',function () {
-      var list = $(this).parent().find($('li'));
-      $(this).parent().find($('li:visible')).slice(5, list.length).hide();
-      $(this).removeClass('hidemore');
-      $(this).addClass('loadmore');
-      $(this).html('Xem thêm');
-    });
-    $(".close").click(function(event) {
-      $(this).parent().toggle();
-    });
-
-
-  }
+  // componentDidMount(){
+  //   $('.sidebar-service ul').each(function(e){
+  //     if ($(this).find('li').length == $(this).find($('li:visible')).length) {
+  //       $(this).find('.loadmore').hide();
+  //     }
+  //   });
+  //   $('.sidebar-service').on('click','.loadmore',function () {
+  //     var list = $(this).parent().find($('li'));
+  //     $(this).parent().find($('li:hidden')).show();
+  //     if (list.length == $(this).parent().find($('li:visible')).length) {
+  //       $(this).removeClass('loadmore');
+  //       $(this).addClass('hidemore');
+  //       $(this).html('Thu gọn');
+  //     }
+  //   });
+  //   $('.sidebar-service').on('click','.hidemore',function () {
+  //     var list = $(this).parent().find($('li'));
+  //     $(this).parent().find($('li:visible')).slice(5, list.length).hide();
+  //     $(this).removeClass('hidemore');
+  //     $(this).addClass('loadmore');
+  //     $(this).html('Xem thêm');
+  //   });
+  //   $(".close").click(function(event) {
+  //     $(this).parent().toggle();
+  //   });
+  // }
   handlePageChange(pageNumber) {
     console.log(`active page is ${pageNumber}`);
     this.setState({activePage: pageNumber});
@@ -83,7 +81,7 @@ export default class extends React.Component{
     const { projects , nextPage , nextPageLink , backPageLink} = this.state;
     return(
       <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink}>
-        <div className="container-fluid service px-4 bg-gray">
+        <div className="container-fluid service project-list px-4 bg-gray">
           <div className="row">
             <div className="col-0 col-md-3 col-lg-3 px-3" id="sidebar">
               <Sidebar filter={filterDefault} page={page}></Sidebar>

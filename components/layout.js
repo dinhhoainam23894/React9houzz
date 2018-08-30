@@ -93,7 +93,7 @@ export default class extends React.Component {
               <div className="header-left">
               <Link route="index">
                 <a className="navbar-brand">
-                  <img src="/static/images/logo9houz.png" alt="Logo" title="9houzz.com" width="114"/>
+                  <img src="/images/logo9houz.png" alt="Logo" title="9houzz.com" width="114"/>
                 </a>
                 </Link>
               </div> 
@@ -116,12 +116,11 @@ export default class extends React.Component {
       <div className="StoreNavigation-overlay" role="button" tabIndex="0" aria-label="Close"></div>
         <MainBody navmenu={this.props.navmenu} fluid={this.props.fluid} container={this.props.container}>
           {this.props.children}
-          
         </MainBody>
        <Footer />
-       <script src="/static/jquery-3.2.1.min.js"></script>
-       <script src="/static/popper.min.js"></script>
-       <script src="/static/bootstrap.min.js"></script>
+       <script src="/mystatic/jquery-3.2.1.min.js"></script>
+       <script src="/mystatic/popper.min.js"></script>
+       <script src="/mystatic/bootstrap.min.js"></script>
       </React.Fragment>
 
     )

@@ -72,6 +72,443 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/ListProjectComponent.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _regenerator = _interopRequireDefault(__webpack_require__("@babel/runtime/regenerator"));
+
+var _react = _interopRequireDefault(__webpack_require__("react"));
+
+var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
+
+var _sideBar = _interopRequireDefault(__webpack_require__("./components/sideBar.js"));
+
+var _pagination = _interopRequireDefault(__webpack_require__("./components/pagination.js"));
+
+var _routes = __webpack_require__("./routes.js");
+
+var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var _default =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(_default, _React$Component);
+
+  function _default(props) {
+    var _this;
+
+    _classCallCheck(this, _default);
+
+    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "getData", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee(pageNumber) {
+          var APIURL, res, data;
+          return _regenerator.default.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-du-an/?page=';
+                  _context.next = 3;
+                  return fetch(APIURL + pageNumber);
+
+                case 3:
+                  res = _context.sent;
+                  _context.next = 6;
+                  return res.json();
+
+                case 6:
+                  data = _context.sent;
+
+                  _this.setState({
+                    'projects': data.datas.data
+                  });
+
+                case 8:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, this);
+        }));
+
+        return function value(_x) {
+          return _value.apply(this, arguments);
+        };
+      }()
+    });
+    var datas = _this.props.data.datas;
+    _this.state = {
+      nextPage: datas.next_page_url,
+      nextPageLink: datas.next_page_url ? _this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
+      backPageLink: datas.prev_page_url ? _this.props.url_path + "?page=" + (datas.current_page - 1) : undefined,
+      activePage: datas.current_page,
+      projects: _this.props.projects
+    };
+    return _this;
+  }
+
+  _createClass(_default, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps) {
+        var datas = nextProps.data.datas;
+        this.setState({
+          nextPage: datas.next_page_url,
+          nextPageLink: datas.next_page_url ? this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
+          backPageLink: datas.prev_page_url ? this.props.url_path + "?page=" + (datas.current_page - 1) : undefined,
+          activePage: datas.current_page,
+          projects: nextProps.projects
+        });
+      }
+    } // componentDidMount(){
+    //   $('.sidebar-service ul').each(function(e){
+    //     if ($(this).find('li').length == $(this).find($('li:visible')).length) {
+    //       $(this).find('.loadmore').hide();
+    //     }
+    //   });
+    //   $('.sidebar-service').on('click','.loadmore',function () {
+    //     var list = $(this).parent().find($('li'));
+    //     $(this).parent().find($('li:hidden')).show();
+    //     if (list.length == $(this).parent().find($('li:visible')).length) {
+    //       $(this).removeClass('loadmore');
+    //       $(this).addClass('hidemore');
+    //       $(this).html('Thu gọn');
+    //     }
+    //   });
+    //   $('.sidebar-service').on('click','.hidemore',function () {
+    //     var list = $(this).parent().find($('li'));
+    //     $(this).parent().find($('li:visible')).slice(5, list.length).hide();
+    //     $(this).removeClass('hidemore');
+    //     $(this).addClass('loadmore');
+    //     $(this).html('Xem thêm');
+    //   });
+    //   $(".close").click(function(event) {
+    //     $(this).parent().toggle();
+    //   });
+    // }
+
+  }, {
+    key: "handlePageChange",
+    value: function handlePageChange(pageNumber) {
+      console.log("active page is ".concat(pageNumber));
+      this.setState({
+        activePage: pageNumber
+      }); // this.getData(pageNumber)
+    }
+  }, {
+    key: "getPageUrl",
+    value: function getPageUrl(i) {
+      var url = "";
+
+      if (this.props.url_path) {
+        url = this.props.url_path;
+      }
+
+      return url + "?page=" + i;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          h1 = _props.h1,
+          filterDefault = _props.filterDefault,
+          page = _props.page;
+      var _state = this.state,
+          projects = _state.projects,
+          nextPage = _state.nextPage,
+          nextPageLink = _state.nextPageLink,
+          backPageLink = _state.backPageLink;
+      return _react.default.createElement(_layout.default, _extends({}, this.props, {
+        navmenu: false,
+        container: false,
+        nextPageLink: nextPageLink,
+        backPageLink: backPageLink,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 83
+        }
+      }), _react.default.createElement("div", {
+        className: "container-fluid service project-list px-4 bg-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
+        }
+      }, _react.default.createElement("div", {
+        className: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 85
+        }
+      }, _react.default.createElement("div", {
+        className: "col-0 col-md-3 col-lg-3 px-3",
+        id: "sidebar",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 86
+        }
+      }, _react.default.createElement(_sideBar.default, {
+        filter: filterDefault,
+        page: page,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87
+        }
+      })), _react.default.createElement("div", {
+        className: "col-12 col-md-9 col-lg-9 px-0",
+        id: "cat",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 89
+        }
+      }, _react.default.createElement("div", {
+        className: "bg-white px-3 py-4",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 90
+        }
+      }, _react.default.createElement("h1", {
+        className: "font-25 font-weight-normal text-black-100",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91
+        }
+      }, h1), _react.default.createElement("ul", {
+        className: "list-unstyled my-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 97
+        }
+      }, projects && projects.map(function (value, index) {
+        return _react.default.createElement("li", {
+          className: "media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container",
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 100
+          }
+        }, _react.default.createElement("div", {
+          className: "row",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 101
+          }
+        }, _react.default.createElement("div", {
+          className: "col-md-6 col-lg-6 col-12 col-sm-12 images-service position-relative px-0",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102
+          }
+        }, _react.default.createElement(_routes.Link, {
+          route: "project.detail",
+          params: {
+            id: value.id,
+            slug: value.slug
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 103
+          }
+        }, _react.default.createElement("a", {
+          className: "link",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 104
+          }
+        }, _react.default.createElement("img", {
+          src: value.public_avatar,
+          alt: "",
+          className: "mr-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 104
+          }
+        }))), _react.default.createElement("div", {
+          className: "position-absolute image-actions py-2",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 106
+          }
+        }, _react.default.createElement("span", {
+          className: "actions-detail font-16",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 107
+          }
+        }, _react.default.createElement("i", {
+          className: "fa fa-picture-o mr-1",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 108
+          }
+        }), " ", value.total_images + " ảnh"), _react.default.createElement("span", {
+          className: "actions-detail font-16",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 110
+          }
+        }, _react.default.createElement("i", {
+          className: "fa fa-cog mr-1",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 111
+          }
+        }), " ", value.name_tag_style))), _react.default.createElement("div", {
+          className: "media-body col-md-6 col-lg-6 col-12 col-sm-12 position-relative",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 115
+          }
+        }, _react.default.createElement(_routes.Link, {
+          route: "project.detail",
+          params: {
+            id: value.id,
+            slug: value.slug
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 116
+          }
+        }, _react.default.createElement("a", {
+          className: "link",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 117
+          }
+        }, _react.default.createElement("h2", {
+          className: "font-18",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 118
+          }
+        }, value && value.name))), _react.default.createElement("div", {
+          className: "media-header my-3 p-2",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 121
+          }
+        }, _react.default.createElement("div", {
+          className: "rounded-circle logo",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 122
+          }
+        }, _react.default.createElement("img", {
+          src: value.providers && value.providers.path_avatar,
+          className: "img-fluid h-100 rounded-circle",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 123
+          }
+        })), _react.default.createElement("div", {
+          className: "media-title ml-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 126
+          }
+        }, _react.default.createElement(_routes.Link, {
+          route: "pro.detail",
+          params: {
+            id: value.providers.id,
+            slug: value.providers.slug
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 127
+          }
+        }, _react.default.createElement("a", {
+          className: "mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 128
+          }
+        }, value.providers && value.providers.name)))), _react.default.createElement("div", {
+          className: "media-content mt-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 140
+          }
+        }, _react.default.createElement("span", {
+          className: "more font-14 font-weight-light",
+          dangerouslySetInnerHTML: {
+            __html: value.descriptions && value.descriptions
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 141
+          }
+        })))));
+      }))), _react.default.createElement("div", {
+        className: "pagi_desktop my-4",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 150
+        }
+      }, _react.default.createElement(_pagination.default, {
+        activePage: this.state.activePage,
+        itemsCountPerPage: this.props.data.datas.per_page,
+        totalItemsCount: this.props.data.datas.total,
+        pageRangeDisplayed: 8,
+        onChange: function onChange(e) {
+          return _this2.handlePageChange(e);
+        },
+        getPageUrl: function getPageUrl(i) {
+          return _this2.getPageUrl(i);
+        },
+        nextPageLink: nextPageLink,
+        backPageLink: backPageLink,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 151
+        }
+      }))))));
+    }
+  }]);
+
+  return _default;
+}(_react.default.Component);
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -787,7 +1224,7 @@ function (_React$Component) {
           lineNumber: 95
         }
       }, _react.default.createElement("img", {
-        src: "/static/images/logo9houz.png",
+        src: "/images/logo9houz.png",
         alt: "Logo",
         title: "9houzz.com",
         width: "114",
@@ -883,25 +1320,25 @@ function (_React$Component) {
       }, this.props.children), _react.default.createElement(_footer.default, {
         __source: {
           fileName: _jsxFileName,
+          lineNumber: 120
+        }
+      }), _react.default.createElement("script", {
+        src: "/mystatic/jquery-3.2.1.min.js",
+        __source: {
+          fileName: _jsxFileName,
           lineNumber: 121
         }
       }), _react.default.createElement("script", {
-        src: "/static/jquery-3.2.1.min.js",
+        src: "/mystatic/popper.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 122
         }
       }), _react.default.createElement("script", {
-        src: "/static/popper.min.js",
+        src: "/mystatic/bootstrap.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 123
-        }
-      }), _react.default.createElement("script", {
-        src: "/static/bootstrap.min.js",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 124
         }
       }));
     }
@@ -930,7 +1367,7 @@ function (_React$Component2) {
         return _react.default.createElement(_react.default.Fragment, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 134
           }
         }, this.props.children);
       } else if (this.props.navmenu === false) {
@@ -941,7 +1378,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 141
           }
         }, this.props.children);
       } else {
@@ -952,7 +1389,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 147
           }
         }, this.props.children);
       }
@@ -1057,189 +1494,6 @@ function (_React$Component2) {
 
 
 exports.MainBody = MainBody;
-
-/***/ }),
-
-/***/ "./components/list-project.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__("react"));
-
-var _routes = __webpack_require__("./routes.js");
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/list-project.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _default =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(_default, _React$Component);
-
-  function _default(props) {
-    _classCallCheck(this, _default);
-
-    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-  }
-
-  _createClass(_default, [{
-    key: "render",
-    value: function render() {
-      var project = this.props.project;
-      return _react.default.createElement("div", {
-        className: "rounded-2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "project.detail",
-        params: {
-          id: project.id,
-          slug: "".concat(project.slug)
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 12
-        }
-      }, _react.default.createElement("div", {
-        className: "rounded-2 border provider-project",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        }
-      }, _react.default.createElement("div", {
-        className: "row project position-relative mx-auto",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 14
-        }
-      }, _react.default.createElement("div", {
-        className: "col-md-7 col-7 position-relative p-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15
-        }
-      }, _react.default.createElement("div", {
-        className: "position-absolute h-100 w-100 bg-secondary first-image",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16
-        }
-      }, _react.default.createElement("img", {
-        src: this.props.project.avatar[0],
-        alt: "",
-        className: "first-image w-100 h-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 17
-        }
-      }))), _react.default.createElement("div", {
-        className: "col-md-5 col-5 position-relative p-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 20
-        }
-      }, _react.default.createElement("div", {
-        className: "position-absolute h-48 ml-1 mb-1 bg-secondary second-image right-avatar",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
-        }
-      }, _react.default.createElement("img", {
-        src: this.props.project.avatar[1],
-        alt: "",
-        className: "w-100 h-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22
-        }
-      })), _react.default.createElement("div", {
-        className: "position-absolute h-50 ml-1 third-image bg-secondary right-avatar",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        }
-      }, _react.default.createElement("div", {
-        className: "h-100 project-more text-center position-absolute w-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 25
-        }
-      }, _react.default.createElement("p", {
-        className: "font-weight-light text-white font-30",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 26
-        }
-      }, project.count_image ? "+ " + project.count_image : '')), _react.default.createElement("img", {
-        src: this.props.project.avatar[2],
-        className: "w-100 h-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28
-        }
-      })))), _react.default.createElement("div", {
-        className: "mt-3 mb-2 px-2 project-des",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        }
-      }, _react.default.createElement("h2", {
-        className: "font-weight-bold text-black font-15",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        }
-      }, project.name), this.props.project.address && _react.default.createElement("div", {
-        className: "font-13 text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }, _react.default.createElement("span", {
-        className: "fa fa-map-marker mr-1 text-primary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36
-        }
-      }), this.props.project.address))))));
-    }
-  }]);
-
-  return _default;
-}(_react.default.Component);
-
-exports.default = _default;
 
 /***/ }),
 
@@ -1886,7 +2140,7 @@ exports.default = nav;
 
 /***/ }),
 
-/***/ "./components/pro-detail.js":
+/***/ "./components/page.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1897,23 +2151,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__("react"));
+var _react = _interopRequireWildcard(__webpack_require__("react"));
 
-var _routes = __webpack_require__("./routes.js");
-
-var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
-
-var _helpers = __webpack_require__("./libraries/helpers.js");
+var _propTypes = _interopRequireDefault(__webpack_require__("prop-types"));
 
 var _classnames = _interopRequireDefault(__webpack_require__("classnames"));
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/pro-detail.js";
+var _routes = __webpack_require__("./routes.js");
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/page.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1923,706 +2177,898 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var _default =
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Page =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(_default, _React$Component);
+function (_Component) {
+  _inherits(Page, _Component);
 
-  function _default(props) {
-    var _this;
+  function Page() {
+    _classCallCheck(this, Page);
 
-    _classCallCheck(this, _default);
-
-    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        data: {},
-        provider: {}
-      }
-    });
-    return _this;
+    return _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).apply(this, arguments));
   }
 
-  _createClass(_default, [{
+  _createClass(Page, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      var _props = this.props,
+          isDisabled = _props.isDisabled,
+          pageNumber = _props.pageNumber; // e.preventDefault();
+
+      if (isDisabled) {
+        return;
+      }
+
+      this.props.onClick(pageNumber);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _props = this.props,
-          provider_id = _props.provider_id,
-          provider_slug = _props.provider_slug,
-          url = _props.url;
-      var pathname = url.pathname;
-      var itemStar = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "itemScope itemType='http://schema.org/AggregateRating'" : '';
-      var itemStarProp = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "<meta  itemProp=\"ratingValue\" content=".concat(this.props.data.provider.avg_rate, ">") : null;
-      return _react.default.createElement(_layout.default, _extends({}, this.props, {
-        navmenu: false,
-        container: false,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22
-        }
-      }), _react.default.createElement("div", {
-        className: "container-fluid px-4 bg-gray provider-main",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 23
-        }
-      }, _react.default.createElement("div", {
-        className: "bg-white",
-        itemScope: true,
-        itemType: "http://schema.org/localbusiness",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        }
-      }, _react.default.createElement("div", {
-        className: "border border-right-0 border-left-0 border-gray provider-details",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 25
-        }
-      }, _react.default.createElement("div", {
-        className: "banner position-relative p-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 26
-        }
-      }, _react.default.createElement("img", {
-        src: this.props.data.cover && this.props.data.cover,
-        className: "w-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27
-        }
-      }), _react.default.createElement("div", {
-        className: "position-absolute gradient-animate w-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28
-        }
-      })), _react.default.createElement("div", {
-        className: "container position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 30
-        }
-      }, _react.default.createElement("div", {
-        className: "position-absolute provider-info",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 31
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.detail",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
+      var _cx,
+          _cx2,
+          _this = this;
+
+      var _props2 = this.props,
+          pageText = _props2.pageText,
+          pageNumber = _props2.pageNumber,
+          activeClass = _props2.activeClass,
+          itemClass = _props2.itemClass,
+          linkClass = _props2.linkClass,
+          activeLinkClass = _props2.activeLinkClass,
+          disabledClass = _props2.disabledClass,
+          isActive = _props2.isActive,
+          isDisabled = _props2.isDisabled,
+          href = _props2.href;
+      var css = (0, _classnames.default)(itemClass, (_cx = {}, _defineProperty(_cx, activeClass, isActive), _defineProperty(_cx, disabledClass, isDisabled), _defineProperty(_cx, 'page-item', 'page-item'), _cx));
+      var linkCss = (0, _classnames.default)(linkClass, (_cx2 = {}, _defineProperty(_cx2, activeLinkClass, isActive), _defineProperty(_cx2, 'page-link', 'page-link'), _cx2));
+      return _react.default.createElement("li", {
+        className: css,
+        onClick: function onClick(e) {
+          return _this.handleClick(e);
         },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        }
-      }, _react.default.createElement("a", {
-        className: "provider-name text-white font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        }
-      }, (0, _helpers.activePath)(pathname, "/pro", {
-        strict: true
-      }) ? _react.default.createElement("h1", {
-        className: "font-22 mb-1",
-        itemProp: "name",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }, this.props.data.provider && this.props.data.provider.name) : _react.default.createElement("p", {
-        className: "font-22 mb-1",
-        itemProp: "name",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        }
-      }, this.props.data.provider && this.props.data.provider.name))), _react.default.createElement("div", {
-        className: "star-rating " + itemStar,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 41
-        }
-      }, this.props.data.provider && (0, _helpers.rating)(this.props.data.provider.avg_rate), itemStarProp, _react.default.createElement("span", {
-        className: "text-yellow font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44
-        }
-      }, " 0(0) \u0111\xE1nh gi\xE1) "), _react.default.createElement("a", {
-        className: "text-gray-200",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        }
-      }, _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        }
-      }, " \u0110\xE1nh gi\xE1 chi ti\u1EBFt >")))), _react.default.createElement("div", {
-        className: "row position-relative justify-content-end",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 48
-        }
-      }, _react.default.createElement("div", {
-        className: "position-absolute provider-avatar rounded-circle",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 49
-        }
-      }, _react.default.createElement("img", {
-        itemProp: "image",
-        src: this.props.data.avatar,
-        className: "img-thumbnail rounded-circle h-100",
-        alt: "",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 50
-        }
-      })), _react.default.createElement("div", {
-        className: "col-md-9 col-lg-9 provider-nav",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52
-        }
-      }, _react.default.createElement("ul", {
-        className: "nav nav-tabs border-0",
-        id: "myTab",
-        role: "tablist",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 53
-        }
-      }, _react.default.createElement("li", {
-        className: (0, _classnames.default)("nav-item position-relative", {
-          active: (0, _helpers.activePath)(pathname, "/pro", {
-            strict: true
-          })
-        }),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 54
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.detail",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        }
-      }, "T\u1ED5ng quan"))), _react.default.createElement("li", {
-        className: (0, _classnames.default)("nav-item position-relative", {
-          active: (0, _helpers.activePath)(pathname, ["/pro/project", '/project'], {
-            strict: true
-          })
-        }),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 57
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.project",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }, "D\u1EF1 \xE1n"))), _react.default.createElement("li", {
-        className: (0, _classnames.default)("nav-item position-relative", {
-          active: (0, _helpers.activePath)(pathname, "/pro/review", {
-            strict: true
-          })
-        }),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: "pro.review",
-        params: {
-          id: provider_id,
-          slug: "".concat(provider_slug)
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      }, "Nh\u1EADn x\xE9t"))), _react.default.createElement("li", {
-        className: "nav-item mx-1 position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 63
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        href: "#",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 64
-        }
-      }, "S\u1ED5 tay \xFD t\u01B0\u1EDFng")), _react.default.createElement("li", {
-        className: "nav-item mx-1 position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 66
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        href: "#",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 67
         }
-      }, "H\u1ECFi \u0111\xE1p")), _react.default.createElement("li", {
-        className: "nav-item mx-1 position-relative",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 69
-        }
-      }, _react.default.createElement("a", {
-        className: "nav-link border-0 font-14 font-weight-bold",
-        href: "#",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        }
-      }, "Ho\u1EA1t \u0111\u1ED9ng"))))))), _react.default.createElement("div", {
-        className: "w-100 py-3 provider",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 77
-        }
-      }, _react.default.createElement(_react.default.Fragment, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 78
-        }
-      }, this.props.children)))));
-    }
-  }]);
-
-  return _default;
-}(_react.default.Component);
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./components/provider-sidebar.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _regenerator = _interopRequireDefault(__webpack_require__("@babel/runtime/regenerator"));
-
-var _react = _interopRequireDefault(__webpack_require__("react"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/provider-sidebar.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var _default =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(_default, _React$Component);
-
-  function _default(props) {
-    var _this;
-
-    _classCallCheck(this, _default);
-
-    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "componentWillReceiveProps", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function () {
-        var _value = _asyncToGenerator(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee(nextProps) {
-          return _regenerator.default.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (!(_this.props.provider.id == undefined && nextProps.provider.id)) {
-                    _context.next = 14;
-                    break;
-                  }
-
-                  if (!nextProps.provider.social.facebook) {
-                    _context.next = 6;
-                    break;
-                  }
-
-                  _context.next = 4;
-                  return _this.state.social_links.push({
-                    url: nextProps.provider.social.facebook,
-                    icon: 'fa fa-facebook'
-                  });
-
-                case 4:
-                  _context.next = 14;
-                  break;
-
-                case 6:
-                  if (!nextProps.provider.social.youtube) {
-                    _context.next = 11;
-                    break;
-                  }
-
-                  _context.next = 9;
-                  return _this.state.social_links.push({
-                    url: nextProps.provider.social.youtube,
-                    icon: 'fa fa-youtube'
-                  });
-
-                case 9:
-                  _context.next = 14;
-                  break;
-
-                case 11:
-                  if (!nextProps.provider.social.google_plus) {
-                    _context.next = 14;
-                    break;
-                  }
-
-                  _context.next = 14;
-                  return _this.state.social_links.push({
-                    url: nextProps.provider.social.google_plus,
-                    icon: 'fa fa-google-plus'
-                  });
-
-                case 14:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
-
-        return function value(_x) {
-          return _value.apply(this, arguments);
-        };
-      }()
-    });
-    _this.state = {
-      social_links: []
-    };
-    return _this;
-  }
-
-  _createClass(_default, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", {
-        className: "bg-white py-2 px-3 border border-gray",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 23
-        }
-      }, _react.default.createElement("div", {
-        className: "provider-statistic row border-dot",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        }
-      }, _react.default.createElement("div", {
-        className: "col-md-3 col-3 p-0 text-center",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 25
-        }
-      }, _react.default.createElement("p", {
-        className: "text-primary font-weight-normal sidebar-count mb-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 26
-        }
-      }, this.props.provider.total_like ? this.props.provider.total_like : 0), _react.default.createElement("p", {
-        className: "font-12 sidebar-label",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27
-        }
-      }, "C\u1EA3m \u01A1n")), _react.default.createElement("div", {
-        className: "col-md-3 col-3 p-0 text-center",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        }
-      }, _react.default.createElement("p", {
-        className: "text-primary font-weight-normal sidebar-count mb-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 30
-        }
-      }, this.props.provider.total_rate ? this.props.provider.total_rate : 0), _react.default.createElement("p", {
-        className: "font-12 sidebar-label",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 31
-        }
-      }, "Nh\u1EADn x\xE9t")), _react.default.createElement("div", {
-        className: "col-md-3 col-3 p-0 text-center",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        }
-      }, _react.default.createElement("p", {
-        className: "text-primary font-weight-normal sidebar-count mb-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 34
-        }
-      }, this.props.provider.total_page_view ? this.props.provider.total_page_view : 0), _react.default.createElement("p", {
-        className: "font-12 sidebar-label",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }, "L\u01B0\u1EE3t xem")), _react.default.createElement("div", {
-        className: "col-md-3 col-3 p-0 text-center",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        }
-      }, _react.default.createElement("p", {
-        className: "text-primary font-weight-normal sidebar-count mb-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        }
-      }, this.props.provider.total_follow ? this.props.provider.total_follow : 0), _react.default.createElement("p", {
-        className: "font-12 sidebar-label",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        }
-      }, "Theo d\xF5i"))), _react.default.createElement("div", {
-        className: "provider-contact",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 42
-        }
-      }, _react.default.createElement("ul", {
-        className: "list-unstyled pb-3 my-2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 43
-        }
-      }, _react.default.createElement("li", {
-        className: "info-special",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44
-        }
-      }, _react.default.createElement("i", {
-        className: "fa fa-phone text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        }
-      }), _react.default.createElement("span", {
-        itemProp: "telephone",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
-        }
-      }, this.props.provider.phone)), _react.default.createElement("li", {
-        itemScope: true,
-        itemType: "http://schema.org/PostalAddress",
-        itemProp: "address",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 48
-        }
-      }, _react.default.createElement("i", {
-        className: "fa fa-map-marker text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 49
-        }
-      }), _react.default.createElement("span", {
-        itemProp: "streetAddress",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 50
-        }
-      }, this.props.provider.address)), _react.default.createElement("li", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52
-        }
-      }, _react.default.createElement("i", {
-        className: "fa fa-envelope-o text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 53
-        }
-      }), _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 54
-        }
-      }, this.props.provider.email)), _react.default.createElement("li", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 56
-        }
-      }, _react.default.createElement("i", {
-        className: "fa fa-clock-o text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 57
-        }
-      }), _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }, this.props.provider.work_time)), _react.default.createElement("li", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        }
-      }, _react.default.createElement("i", {
-        className: " fa fa-globe text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      }), _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 62
-        }
-      }, _react.default.createElement("a", {
-        target: "_blank",
-        rel: "nofollow",
-        href: this.props.provider.website,
-        className: "text-white",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 62
-        }
-      }, this.props.provider.website))), _react.default.createElement("li", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 64
-        }
-      }, _react.default.createElement("i", {
-        className: "fa fa-pencil text-secondary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 65
-        }
-      }), _react.default.createElement("a", {
-        href: "javascript:void(0)",
-        className: "text-primary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 66
-        }
-      }, "Qu\u1EA3n l\xFD trang n\xE0y")), _react.default.createElement("li", {
-        className: "text-center social",
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: href,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 68
         }
       }, _react.default.createElement("a", {
-        target: "_blank",
-        rel: "nofollow",
-        href: this.props.provider.website,
-        className: "text-white fa fa-globe website",
+        className: linkCss,
+        href: href,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 69
         }
-      }), this.state.social_links.map(function (value, index) {
-        return _react.default.createElement("a", {
-          target: "_blank",
-          rel: "nofollow",
-          href: value.url,
-          className: "text-white " + value.icon + " website",
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 72
-          }
-        });
-      })))));
+      }, pageText)));
     }
   }]);
 
-  return _default;
+  return Page;
+}(_react.Component);
+
+exports.default = Page;
+Object.defineProperty(Page, "propTypes", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    pageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
+    pageNumber: _propTypes.default.number.isRequired,
+    onClick: _propTypes.default.func.isRequired,
+    isActive: _propTypes.default.bool.isRequired,
+    isDisabled: _propTypes.default.bool,
+    activeClass: _propTypes.default.string,
+    activeLinkClass: _propTypes.default.string,
+    itemClass: _propTypes.default.string,
+    linkClass: _propTypes.default.string,
+    disabledClass: _propTypes.default.string,
+    href: _propTypes.default.string
+  }
+});
+Object.defineProperty(Page, "defaultProps", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    activeClass: "active",
+    disabledClass: "disabled",
+    itemClass: 'page-item',
+    linkClass: 'page-link',
+    activeLinkCLass: 'active',
+    isActive: false,
+    isDisabled: false,
+    href: "#"
+  }
+});
+
+/***/ }),
+
+/***/ "./components/pagination.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__("react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__("prop-types"));
+
+var _paginator = _interopRequireDefault(__webpack_require__("paginator"));
+
+var _page = _interopRequireDefault(__webpack_require__("./components/page.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__("classnames"));
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/pagination.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Pagination =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Pagination, _React$Component);
+
+  function Pagination() {
+    _classCallCheck(this, Pagination);
+
+    return _possibleConstructorReturn(this, (Pagination.__proto__ || Object.getPrototypeOf(Pagination)).apply(this, arguments));
+  }
+
+  _createClass(Pagination, [{
+    key: "isFirstPageVisible",
+    value: function isFirstPageVisible(has_previous_page) {
+      var _props = this.props,
+          hideDisabled = _props.hideDisabled,
+          hideNavigation = _props.hideNavigation,
+          hideFirstLastPages = _props.hideFirstLastPages;
+      if (hideFirstLastPages || hideDisabled && !has_previous_page) return false;
+      return true;
+    }
+  }, {
+    key: "isPrevPageVisible",
+    value: function isPrevPageVisible(has_previous_page) {
+      var _props2 = this.props,
+          hideDisabled = _props2.hideDisabled,
+          hideNavigation = _props2.hideNavigation;
+      if (hideNavigation || hideDisabled && !has_previous_page) return false;
+      return true;
+    }
+  }, {
+    key: "isNextPageVisible",
+    value: function isNextPageVisible(has_next_page) {
+      var _props3 = this.props,
+          hideDisabled = _props3.hideDisabled,
+          hideNavigation = _props3.hideNavigation;
+      if (hideNavigation || hideDisabled && !has_next_page) return false;
+      return true;
+    }
+  }, {
+    key: "isLastPageVisible",
+    value: function isLastPageVisible(has_next_page) {
+      var _props4 = this.props,
+          hideDisabled = _props4.hideDisabled,
+          hideNavigation = _props4.hideNavigation,
+          hideFirstLastPages = _props4.hideFirstLastPages;
+      if (hideFirstLastPages || hideDisabled && !has_next_page) return false;
+      return true;
+    }
+  }, {
+    key: "buildPages",
+    value: function buildPages() {
+      var pages = [];
+      var _props5 = this.props,
+          itemsCountPerPage = _props5.itemsCountPerPage,
+          pageRangeDisplayed = _props5.pageRangeDisplayed,
+          activePage = _props5.activePage,
+          prevPageText = _props5.prevPageText,
+          nextPageText = _props5.nextPageText,
+          firstPageText = _props5.firstPageText,
+          lastPageText = _props5.lastPageText,
+          totalItemsCount = _props5.totalItemsCount,
+          onChange = _props5.onChange,
+          activeClass = _props5.activeClass,
+          itemClass = _props5.itemClass,
+          itemClassFirst = _props5.itemClassFirst,
+          itemClassPrev = _props5.itemClassPrev,
+          itemClassNext = _props5.itemClassNext,
+          itemClassLast = _props5.itemClassLast,
+          activeLinkClass = _props5.activeLinkClass,
+          disabledClass = _props5.disabledClass,
+          hideDisabled = _props5.hideDisabled,
+          hideNavigation = _props5.hideNavigation,
+          linkClass = _props5.linkClass,
+          linkClassFirst = _props5.linkClassFirst,
+          linkClassPrev = _props5.linkClassPrev,
+          linkClassNext = _props5.linkClassNext,
+          linkClassLast = _props5.linkClassLast,
+          hideFirstLastPages = _props5.hideFirstLastPages,
+          getPageUrl = _props5.getPageUrl,
+          nextPageLink = _props5.nextPageLink,
+          backPageLink = _props5.backPageLink;
+      var paginationInfo = new _paginator.default(itemsCountPerPage, pageRangeDisplayed).build(totalItemsCount, activePage);
+
+      for (var i = paginationInfo.first_page; i <= paginationInfo.last_page; i++) {
+        pages.push(_react.default.createElement(_page.default, {
+          isActive: i === activePage,
+          key: i,
+          href: getPageUrl(i),
+          pageNumber: i,
+          pageText: i + "",
+          onClick: onChange,
+          itemClass: itemClass,
+          linkClass: linkClass,
+          activeClass: activeClass,
+          activeLinkClass: activeLinkClass,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 124
+          }
+        }));
+      }
+
+      this.isPrevPageVisible(paginationInfo.has_previous_page) && pages.unshift(_react.default.createElement(_page.default, {
+        key: "prev" + paginationInfo.previous_page,
+        pageNumber: paginationInfo.previous_page,
+        onClick: onChange,
+        pageText: prevPageText,
+        isDisabled: !paginationInfo.has_previous_page,
+        itemClass: (0, _classnames.default)(itemClass, itemClassPrev),
+        linkClass: (0, _classnames.default)(linkClass, linkClassPrev),
+        disabledClass: disabledClass,
+        href: backPageLink,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 141
+        }
+      })); // this.isFirstPageVisible(paginationInfo.has_previous_page) &&
+      // pages.unshift(
+      //   <Page
+      //     key={"first"}
+      //     pageNumber={1}
+      //     onClick={onChange}
+      //     pageText={firstPageText}
+      //     isDisabled={!paginationInfo.has_previous_page}
+      //     itemClass={cx(itemClass, itemClassFirst)}
+      //     linkClass={cx(linkClass, linkClassFirst)}
+      //     disabledClass={disabledClass}
+      //   />
+      // );
+
+      this.isNextPageVisible(paginationInfo.has_next_page) && pages.push(_react.default.createElement(_page.default, {
+        key: "next" + paginationInfo.next_page,
+        pageNumber: paginationInfo.next_page,
+        onClick: onChange,
+        pageText: nextPageText,
+        isDisabled: !paginationInfo.has_next_page,
+        itemClass: (0, _classnames.default)(itemClass, itemClassNext),
+        linkClass: (0, _classnames.default)(linkClass, linkClassNext),
+        disabledClass: disabledClass,
+        href: nextPageLink,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 170
+        }
+      })); // this.isLastPageVisible(paginationInfo.has_next_page) &&
+      // pages.push(
+      //   <Page
+      //     key={"last"}
+      //     pageNumber={paginationInfo.total_pages}
+      //     onClick={onChange}
+      //     pageText={lastPageText}
+      //     isDisabled={
+      //       paginationInfo.current_page === paginationInfo.total_pages
+      //     }
+      //     itemClass={cx(itemClass, itemClassLast)}
+      //     linkClass={cx(linkClass, linkClassLast)}
+      //     disabledClass={disabledClass}
+      //   />
+      // );
+
+      return pages;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var pages = this.buildPages();
+      return _react.default.createElement("ul", {
+        className: this.props.innerClass,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 204
+        }
+      }, pages);
+    }
+  }]);
+
+  return Pagination;
 }(_react.default.Component);
 
-exports.default = _default;
+exports.default = Pagination;
+Object.defineProperty(Pagination, "propTypes", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    totalItemsCount: _propTypes.default.number.isRequired,
+    onChange: _propTypes.default.func.isRequired,
+    activePage: _propTypes.default.number,
+    itemsCountPerPage: _propTypes.default.number,
+    pageRangeDisplayed: _propTypes.default.number,
+    prevPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
+    nextPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
+    lastPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
+    firstPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
+    disabledClass: _propTypes.default.string,
+    hideDisabled: _propTypes.default.bool,
+    hideNavigation: _propTypes.default.bool,
+    innerClass: _propTypes.default.string,
+    itemClass: _propTypes.default.string,
+    itemClassFirst: _propTypes.default.string,
+    itemClassPrev: _propTypes.default.string,
+    itemClassNext: _propTypes.default.string,
+    itemClassLast: _propTypes.default.string,
+    linkClass: _propTypes.default.string,
+    activeClass: _propTypes.default.string,
+    activeLinkClass: _propTypes.default.string,
+    linkClassFirst: _propTypes.default.string,
+    linkClassPrev: _propTypes.default.string,
+    linkClassNext: _propTypes.default.string,
+    linkClassLast: _propTypes.default.string,
+    hideFirstLastPages: _propTypes.default.bool,
+    getPageUrl: _propTypes.default.func
+  }
+});
+Object.defineProperty(Pagination, "defaultProps", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    itemsCountPerPage: 10,
+    pageRangeDisplayed: 5,
+    activePage: 1,
+    prevPageText: "Trang trước",
+    firstPageText: "Trang đầu",
+    nextPageText: "Trang sau",
+    lastPageText: "Trang cuối",
+    innerClass: "pagination",
+    itemClass: undefined,
+    linkClass: undefined,
+    activeLinkClass: undefined,
+    hideFirstLastPages: false,
+    nextPageLink: "#",
+    backPageLink: "#",
+    getPageUrl: function getPageUrl(i) {
+      return "#";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./components/sideBar.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__("react"));
+
+var _helpers = __webpack_require__("./libraries/helpers.js");
+
+var _routes = __webpack_require__("./routes.js");
+
+var _classnames = _interopRequireDefault(__webpack_require__("classnames"));
+
+var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/sideBar.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sidebar =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Sidebar, _React$Component);
+
+  function Sidebar(props) {
+    _classCallCheck(this, Sidebar);
+
+    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
+  }
+
+  _createClass(Sidebar, [{
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          filter = _props.filter,
+          color = _props.color,
+          page = _props.page;
+      return _react.default.createElement("div", {
+        className: "sidebar-service row bg-white",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        }
+      }, _react.default.createElement("div", {
+        className: "d-md-block px-2 w-100 sidebar-service-content",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        }
+      }, this.props.test && _react.default.createElement("div", {
+        "class": "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        }
+      }, _react.default.createElement("div", {
+        "class": "mt-2 widget p-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }, _react.default.createElement("h3", {
+        "class": "font-15 mb-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, "Locale ", _react.default.createElement("span", {
+        "class": "fa fa-chevron-right d-block d-md-none",
+        "data-toggle": "collapse",
+        "data-target": "#demoTest",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      })), _react.default.createElement("ul", {
+        "class": "list-unstyled mb-0 collapse d-md-block",
+        id: "demoTest",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      }, "H\xE0 N\u1ED9i", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      }, "10")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        }
+      }, "TPHCM", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        }
+      }, "20")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, "\u0110\xE0 N\u1EAFng", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, "11")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }, "Ninh B\xECnh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }, "12")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }, "H\xE0 T\u0129nh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }, "21")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, "H\xE0 Nam", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, "21")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      }, "B\u1EAFc Ninh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      }, "23")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      }, " ", _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      }, "Qu\xE3ng Ng\xE3i", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      }, "44")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, " ", _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, "Nam \u0110\u1ECBnh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, "12")))), _react.default.createElement("li", {
+        "class": "py-1 radio",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        "class": "font-13 font-weight-light text-gray",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, _react.default.createElement("label", {
+        "class": "px-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, "Th\xE1i B\xECnh", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, "12")))), _react.default.createElement("span", {
+        "class": "more loadmore d-none d-md-block",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        }
+      }, "Xem th\xEAm ", _react.default.createElement("i", {
+        "class": "la la-arrow-circle-right",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        }
+      }))))), filter && filter.map(function (value, index) {
+        return value.data.length != 0 && _react.default.createElement("div", {
+          className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          }
+        }, _react.default.createElement("div", {
+          className: "mt-2 widget p-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61
+          }
+        }, _react.default.createElement("h3", {
+          className: "font-15 mb-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          }
+        }, value.textName, _react.default.createElement("span", {
+          className: "fa fa-chevron-right d-block d-md-none",
+          "data-toggle": "collapse",
+          "data-target": "#demo" + index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          }
+        })), _react.default.createElement("ul", {
+          className: "list-unstyled mb-0 collapse d-md-block",
+          id: "demo" + index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          }
+        }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
+          return _react.default.createElement("li", {
+            className: "py-1 radio",
+            key: index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 67
+            }
+          }, _react.default.createElement(_routes.Link, {
+            prefetch: true,
+            route: value.uri,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 68
+            }
+          }, _react.default.createElement("a", {
+            className: "font-13 font-weight-light text-gray",
+            rel: value.is_seo == 0 ? "nofollow" : "dofollow",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 69
+            }
+          }, _react.default.createElement("label", {
+            className: (0, _classnames.default)('pr-3', {
+              active: page.currentsId.includes(value.original)
+            }),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 70
+            }
+          }, value.name_tag, _react.default.createElement("span", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 71
+            }
+          }, value.total_doc)))));
+        }), _react.default.createElement("span", {
+          className: "more loadmore d-none d-md-block",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77
+          }
+        }, "Xem th\xEAm ", _react.default.createElement("i", {
+          className: "la la-arrow-circle-right",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77
+          }
+        })))));
+      }), _react.default.createElement("div", {
+        className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
+        }
+      }, color && _react.default.createElement("div", {
+        className: "mt-2 widget p-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87
+        }
+      }, _react.default.createElement("h3", {
+        className: "font-15",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 88
+        }
+      }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
+        className: "expand-list",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 89
+        }
+      }), _react.default.createElement("div", {
+        className: "service-color mt-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 90
+        }
+      }, (0, _helpers.mapObject)(color, function (index, value) {
+        return _react.default.createElement("a", {
+          href: value.uri,
+          className: "text-dark border border-gray",
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93
+          }
+        }, _react.default.createElement("span", {
+          className: "float-left " + value.class,
+          "data-toggle": "tooltip",
+          title: value.name_tag,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93
+          }
+        }));
+      }))))));
+    }
+  }]);
+
+  return Sidebar;
+}(_react.default.Component);
+
+exports.default = Sidebar;
 
 /***/ }),
 
@@ -2728,7 +3174,17 @@ module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server
 
 /***/ }),
 
-/***/ "./pages/pro/index.js":
+/***/ "./pages/project/list-project.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "@font-face{font-family:helvetica-ttf;src:url(\"/static/fonts/TTF/helveticaneue.ttf\");font-style:normal;font-weight:300}:root{--blue:#3baac6;--indigo:#664cc7;--purple:#b953a4;--pink:#e83e8c;--red:#f33b3b;--orange:#f90;--yellow:#fc0;--green:#00a888;--teal:#47be84;--cyan:#4cb1c7;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#b953a4;--secondary:#6c757d;--success:#00a888;--info:#4cb1c7;--warning:#fc0;--danger:#f33b3b;--light:#f3f3f3;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace}*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:.5rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}b{font-weight:bolder}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}label{display:inline-block;margin-bottom:.5rem}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}.h6,h1,h2,h3{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.h6{font-size:1rem}.list-unstyled{padding-left:0;list-style:none}.img-fluid{max-width:100%;height:auto}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-lg-3,.col-lg-6,.col-lg-9,.col-md-3,.col-md-6,.col-md-9,.col-md-12,.col-sm-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:576px){.col-sm-12{flex:0 0 100%;max-width:100%}}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-6{flex:0 0 50%;max-width:50%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-6{flex:0 0 50%;max-width:50%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:.5rem 1rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.media{display:flex;align-items:flex-start}.media-body{flex:1}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-bottom-0{border-bottom:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-100{height:100%!important}.mt-0{margin-top:0!important}.mb-0{margin-bottom:0!important}.mt-1{margin-top:.25rem!important}.mr-1{margin-right:.25rem!important}.mb-1{margin-bottom:.25rem!important}.mt-2,.my-2{margin-top:.5rem!important}.my-2{margin-bottom:.5rem!important}.mt-3,.my-3{margin-top:1rem!important}.mr-3{margin-right:1rem!important}.mb-3,.my-3{margin-bottom:1rem!important}.ml-3{margin-left:1rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.pb-1,.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.p-2{padding:.5rem!important}.py-2{padding-top:.5rem!important}.px-2{padding-right:.5rem!important}.py-2{padding-bottom:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.pr-3,.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.py-4{padding-top:1.5rem!important}.px-4{padding-right:1.5rem!important}.py-4{padding-bottom:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-light{font-weight:300!important}.font-weight-normal{font-weight:400!important}.font-weight-bold{font-weight:700!important}.font-italic{font-style:italic!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}@font-face{font-family:FontAwesome;src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:400;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-star:before{content:\"\\F005\"}.fa-cog:before{content:\"\\F013\"}.fa-picture-o:before{content:\"\\F03E\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body,h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder,input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-13{font-size:13px!important}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-16{font-size:16px!important}.font-18{font-size:18px!important}.font-22{font-size:22px!important}.font-25{font-size:25px!important}.text-gray{color:#666!important}.text-black-100{color:#333!important}.bg-indigo{background-color:#664cc7!important}.bg-yellow-green{background-color:#bdc74c!important}.bg-red-100{background-color:#c74c4c!important}.bg-teal{background-color:#47be84!important}.bg-cyan{background-color:#4cb1c7!important}.bg-gray{background-color:#ddd!important}.bg-blue-200{background-color:#4c91c7!important}.navbar-9houzz{color:#666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25}.widget h3{margin-bottom:10px!important}}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-.5rem!important;border-top:none!important}}#sidebar{max-width:23%}.sidebar-service{width:100%;margin-left:5px}.sidebar-service .widget ul{line-height:13px!important}.widget h3{font-weight:600!important;font-size:14px!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.service #sidebar{max-width:100%!important;margin-top:.5rem!important;border-top:none!important;margin-bottom:.5rem!important}.media{padding:0!important}.media .images-service{margin:0!important}.media .media-body{padding-left:2rem}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:#000!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label,.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.fa-star{color:#fc0}.disable{color:#ddd!important}.service{font-size:13px}.service .image-actions{bottom:0;width:100%;color:#fff!important;background:rgba(0,0,0,.5)}.service .image-actions .actions-detail{width:50%!important;padding-left:15%;float:left;display:inline-block}.service .image-actions .actions-detail:first-child{border-right:1px solid #fff}.service .images-service{max-height:250px!important;overflow:hidden;position:relative;overlow:hidden}.service .images-service:before{position:absolute;top:0;left:-100%;z-index:2;display:block;content:\"\";width:50%;height:100%;background:-webkit-linear-gradient(left,hsla(0,0%,100%,0),hsla(0,0%,100%,.6));background:linear-gradient(90deg,hsla(0,0%,100%,0) 0,hsla(0,0%,100%,.6));-webkit-transform:skewX(-25deg);transform:skewX(-25deg)}.service .images-service img{height:100%!important;object-fit:cover;object-position:center center}.service h3{font-weight:inherit}.service .media .media-body h2{font-weight:400;font-size:18px!important;color:#333!important}.service .media .media-title{width:90%}.service .media .media-title a{font-family:roboto-bold;font-size:15px!important}.service .media img{width:100%;height:auto;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}.service .media .media-header{display:flex}.service .media .media-header .logo{width:50px;height:50px}@media (max-width:767.98px){.media-body{margin-top:1rem}}img{vertical-align:middle}@media (max-width:767.98px){.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}}";
+
+/***/ }),
+
+/***/ "./pages/project/list-project.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2739,31 +3195,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(__webpack_require__("react"));
-
 var _regenerator = _interopRequireDefault(__webpack_require__("@babel/runtime/regenerator"));
 
-var _link = _interopRequireDefault(__webpack_require__("next/link"));
+var _react = _interopRequireDefault(__webpack_require__("react"));
 
-var _proDetail = _interopRequireDefault(__webpack_require__("./components/pro-detail.js"));
+var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
 
-var _providerSidebar = _interopRequireDefault(__webpack_require__("./components/provider-sidebar.js"));
-
-var _listProject = _interopRequireDefault(__webpack_require__("./components/list-project.js"));
-
-var _axios = _interopRequireDefault(__webpack_require__("axios"));
+var _sideBar = _interopRequireDefault(__webpack_require__("./components/sideBar.js"));
 
 __webpack_require__("isomorphic-fetch");
 
-var _jquery = _interopRequireDefault(__webpack_require__("jquery"));
+var _ListProjectComponent = _interopRequireDefault(__webpack_require__("./components/ListProjectComponent.js"));
 
-var _provider = _interopRequireDefault(__webpack_require__("./pages/pro/provider.css"));
+var _listProject = _interopRequireDefault(__webpack_require__("./pages/project/list-project.css"));
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/pro/index.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/project/list-project.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2775,71 +3223,81 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+var APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-du-an/';
 
-var APIURL = "https://api.9houz.com/" + "api/" + 'provider/';
-
-var Pro =
+var _default =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(Pro, _Component);
+function (_React$Component) {
+  _inherits(_default, _React$Component);
 
-  _createClass(Pro, null, [{
+  _createClass(_default, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _regenerator.default.mark(function _callee(_ref) {
-        var query, res, data, resProject, dataProject;
+        var query, res, data, url_path;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
-                _context.next = 3;
-                return fetch(APIURL + query.id);
+                res = null;
 
-              case 3:
+                if (!query.page) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _context.next = 5;
+                return fetch(APIURL + "?page=".concat(query.page));
+
+              case 5:
                 res = _context.sent;
-                _context.next = 6;
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.next = 10;
+                return fetch(APIURL);
+
+              case 10:
+                res = _context.sent;
+
+              case 11:
+                _context.next = 13;
                 return res.json();
 
-              case 6:
+              case 13:
                 data = _context.sent;
-                _context.next = 9;
-                return fetch(APIURL + query.id + "?projects");
-
-              case 9:
-                resProject = _context.sent;
-                _context.next = 12;
-                return resProject.json();
-
-              case 12:
-                dataProject = _context.sent;
+                url_path = '/danh-sach-du-an/';
                 return _context.abrupt("return", {
-                  id: query.id,
-                  data: dataProject,
-                  provider: dataProject.provider,
-                  projects: dataProject.projects.data,
-                  h1: data.seo.h1,
-                  title: data.seo.title,
-                  des: data.seo.des,
-                  canonical: data.seo.canonical,
-                  robots: data.seo.robots,
-                  og_url: data.seo.url,
-                  url_images: data.seo.url_image,
+                  data: data,
+                  projects: data.datas ? data.datas.data : null,
+                  title: data.seo ? data.seo.title : null,
+                  des: data.seo ? data.seo.des : null,
+                  canonical: data.seo ? data.seo.canonical : null,
+                  robots: data.seo ? data.seo.robots : null,
+                  og_url: data.seo ? data.seo.url : null,
+                  url_images: data.seo ? data.seo.url_image : null,
                   headerProjects: data.headerProjects,
                   headerCategories: data.headerCategories,
-                  dataBase: data.dataBase
+                  dataBase: data.dataBase,
+                  h1: data.h1,
+                  filterDefault: data.filter_default,
+                  page: data.page,
+                  url_path: url_path
                 });
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
@@ -2853,326 +3311,62 @@ function (_Component) {
     }()
   }]);
 
-  function Pro(props) {
-    var _this;
+  function _default(props) {
+    _classCallCheck(this, _default);
 
-    _classCallCheck(this, Pro);
-
-    _this = _possibleConstructorReturn(this, (Pro.__proto__ || Object.getPrototypeOf(Pro)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "componentDidMount", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function () {
-        var _value = _asyncToGenerator(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee2() {
-          var $max, $height, $readMore, $readLess;
-          return _regenerator.default.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  $max = 220;
-                  $height = (0, _jquery.default)('#readMoreText').css('height', 'auto').height();
-
-                  if ($height < $max) {
-                    (0, _jquery.default)("#readMoreBtn").hide();
-                  } else {
-                    $height = (0, _jquery.default)('#readMoreText').css('height', '220px');
-                    $readMore = (0, _jquery.default)("#readMoreBtnText").text();
-                    $readLess = (0, _jquery.default)("#readLessBtnText").text();
-                    (0, _jquery.default)("#readMoreBtn").text($readMore);
-                    (0, _jquery.default)("#readMoreBtn").append("<span class=\"fa fa-angle-down font-15\"></span>");
-                    (0, _jquery.default)('#readMoreBtn').click(function () {
-                      var $this = (0, _jquery.default)(this);
-                      (0, _jquery.default)("#readMoreBtn").text($readMore);
-
-                      if ($this.data('expanded') == "yes") {
-                        $this.data('expanded', "no");
-                        (0, _jquery.default)("#readMoreBtn").text($readMore);
-                        (0, _jquery.default)("#readMoreBtn").append("<span class=\"fa fa-angle-down font-15\" ></span>");
-                        (0, _jquery.default)('#readMoreText').animate({
-                          height: '220px'
-                        });
-                      } else {
-                        $this.data('expanded', "yes");
-                        (0, _jquery.default)('#readMoreText').css({
-                          height: 'auto'
-                        });
-                        (0, _jquery.default)("#readMoreBtn").text($readLess);
-                        (0, _jquery.default)("#readMoreBtn").append("<span class=\"fa fa-angle-up font-15\"></span>");
-                      }
-                    });
-                  }
-
-                case 3:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2, this);
-        }));
-
-        return function value() {
-          return _value.apply(this, arguments);
-        };
-      }()
-    });
-    _this.state = {
-      data: {},
-      provider: {},
-      projects: {}
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
   }
 
-  _createClass(Pro, [{
+  _createClass(_default, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var showChar = 200; // How many characters are shown by default
+
+      var ellipsestext = "";
+      var moretext = "Xem thêm >";
+      var lesstext = "Rút gọn <";
+      $('.more').each(function () {
+        var content = $(this).html();
+
+        if (content.length > showChar) {
+          var c = content.substr(0, showChar);
+          var h = content.substr(showChar, content.length - showChar);
+          var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+          $(this).html(html);
+        }
+      });
+      $(".morelink").click(function () {
+        if ($(this).hasClass("less")) {
+          $(this).removeClass("less");
+          $(this).html(moretext);
+        } else {
+          $(this).addClass("less");
+          $(this).html(lesstext);
+        }
+
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _props = this.props,
-          data = _props.data,
-          provider = _props.provider,
-          projects = _props.projects;
-      var movieItems = [];
-      var moreProject = [];
-
-      if (projects.length > 0) {
-        var i = 0;
-        projects.map(function (e) {
-          if (i < 6) {
-            movieItems.push(_react.default.createElement("div", {
-              className: "col-md-6 col-lg-6 col-12 pl-0 pr-4 pb-3 project-image rounded-2",
-              key: e.id,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 81
-              }
-            }, _react.default.createElement(_listProject.default, {
-              project: e,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 82
-              }
-            })));
-          }
-
-          i++;
-        });
-      }
-
-      if (data.project_count > 6) {
-        moreProject.push(_react.default.createElement("div", {
-          className: "col-md-4 offset-md-4 mt-3",
-          key: "project_count",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 89
-          }
-        }, _react.default.createElement(_link.default, {
-          href: "/pro/".concat(this.props.id, "-").concat(provider.slug, "/d\u1EF1-\xE1n"),
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 90
-          }
-        }, _react.default.createElement("a", {
-          className: "btn btn-primary w-100 font-weight-normal text-white",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 91
-          }
-        }, "Xem th\xEAm ", _react.default.createElement("span", {
-          className: "number-project",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 91
-          }
-        }, "(", data.project_count - 6, ")"), " d\u1EF1 \xE1n"))));
-      }
-
-      return _react.default.createElement(_proDetail.default, _extends({
-        provider_id: this.props.id,
-        provider_slug: provider.slug,
-        data: data
-      }, this.props, {
-        css: _provider.default,
+      return _react.default.createElement(_ListProjectComponent.default, _extends({}, this.props, {
+        detail: true,
+        css: _listProject.default,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 75
         }
-      }), _react.default.createElement("div", {
-        className: "container",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 98
-        }
-      }, _react.default.createElement("div", {
-        className: "row",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 99
-        }
-      }, _react.default.createElement("div", {
-        className: "col-0 col-md-3 col-lg-3 provider-sidebar p-0 mt-2",
-        id: "sidebar",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 100
-        }
-      }, _react.default.createElement(_providerSidebar.default, {
-        provider: provider,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 101
-        }
-      })), _react.default.createElement("div", {
-        className: "col-12 col-md-9 col-lg-9 mt-2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 103
-        }
-      }, _react.default.createElement("div", {
-        className: "provider-about",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 104
-        }
-      }, _react.default.createElement("div", {
-        className: "about pb-3 px-4",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 105
-        }
-      }, _react.default.createElement("div", {
-        id: "readMore",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 106
-        }
-      }, _react.default.createElement("div", {
-        className: "readMoreWrapper",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 107
-        }
-      }, _react.default.createElement("div", {
-        id: "readMoreText",
-        className: "font-14",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 108
-        }
-      }, _react.default.createElement("div", {
-        dangerouslySetInnerHTML: {
-          __html: provider.about_content
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 109
-        }
-      })), _react.default.createElement("div", {
-        className: "readMoreGradient",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 111
-        }
-      })), _react.default.createElement("button", {
-        id: "readMoreBtn",
-        className: "float-left mt-4",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 113
-        }
-      }), _react.default.createElement("span", {
-        id: "readLessBtnText",
-        style: {
-          display: "none"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 114
-        }
-      }, "R\xFAt g\u1ECDn ", _react.default.createElement("span", {
-        className: "fa fa-angle-up",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 114
-        }
-      })), _react.default.createElement("span", {
-        id: "readMoreBtnText",
-        style: {
-          display: "none"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 115
-        }
-      }, "Xem th\xEAm ", _react.default.createElement("span", {
-        className: "fa fa-angle-down",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 115
-        }
-      }))))))), _react.default.createElement("div", {
-        className: "provider-moreinfo mt-4 w-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 121
-        }
-      }, _react.default.createElement("div", {
-        className: "float-right left-info",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 122
-        }
-      }, _react.default.createElement("div", {
-        className: "header-6 top mb-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 123
-        }
-      }, _react.default.createElement("a", {
-        className: "text-dark font-25",
-        href: "",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 124
-        }
-      }, data.project_count + " Dự án", _react.default.createElement("span", {
-        className: "fa fa-angle-right font-22",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 125
-        }
-      }))), _react.default.createElement("div", {
-        className: "row m-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 128
-        }
-      }, movieItems, moreProject))), _react.default.createElement("div", {
-        className: "row mt-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 139
-        }
-      })));
+      }));
     }
   }]);
 
-  return Pro;
-}(_react.Component);
+  return _default;
+}(_react.default.Component);
 
-exports.default = Pro;
-
-/***/ }),
-
-/***/ "./pages/pro/provider.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h3{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}strong{font-weight:bolder}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h3{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h3{font-size:1.75rem}.list-unstyled{padding-left:0;list-style:none}.img-thumbnail{max-width:100%;height:auto}.img-thumbnail{padding:.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:.25rem}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-3,.col-5,.col-7,.col-12,.col-lg-3,.col-lg-6,.col-lg-9,.col-md-3,.col-md-5,.col-md-6,.col-md-7,.col-md-9,.col-md-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-3{flex:0 0 25%;max-width:25%}.col-5{flex:0 0 41.66667%;max-width:41.66667%}.col-7{flex:0 0 58.33333%;max-width:58.33333%}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-5{flex:0 0 41.66667%;max-width:41.66667%}.col-md-6{flex:0 0 50%;max-width:50%}.col-md-7{flex:0 0 58.33333%;max-width:58.33333%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-6{flex:0 0 50%;max-width:50%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:.5rem 1rem}.nav-tabs{border-bottom:1px solid #dee2e6}.nav-tabs .nav-item{margin-bottom:-1px}.nav-tabs .nav-link{border:1px solid transparent;border-top-left-radius:.25rem;border-top-right-radius:.25rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.bg-primary{background-color:#b953a4!important}.bg-secondary{background-color:#6c757d!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.justify-content-end{justify-content:flex-end!important}.float-left{float:left!important}.float-right{float:right!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-100{height:100%!important}.m-0{margin:0!important}.mb-0{margin-bottom:0!important}.mt-1{margin-top:.25rem!important}.mx-1{margin-right:.25rem!important}.mb-1{margin-bottom:.25rem!important}.ml-1,.mx-1{margin-left:.25rem!important}.mt-2,.my-2{margin-top:.5rem!important}.my-2{margin-bottom:.5rem!important}.mb-3{margin-bottom:1rem!important}.mt-4{margin-top:1.5rem!important}.p-0{padding:0!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.pl-0,.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.py-2{padding-top:.5rem!important}.px-2{padding-right:.5rem!important}.py-2{padding-bottom:.5rem!important}.px-2{padding-left:.5rem!important}.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.pb-3,.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.pr-4,.px-4{padding-right:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto,.mx-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.mx-auto{margin-left:auto!important}.text-left{text-align:left!important}.text-center{text-align:center!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-normal{font-weight:400!important}.font-weight-bold{font-weight:700!important}.text-white{color:#fff!important}.text-primary{color:#b953a4!important}.text-secondary{color:#6c757d!important}.text-dark{color:#343a40!important}body,h1{font-family:helvetica-ttf,sans-serif!important}.rounded-2{border-radius:.5rem!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder,input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-12{font-size:12px!important}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.font-25{font-size:25px!important}.text-gray-200{color:#999!important}.bg-indigo{background-color:#664cc7!important}.bg-yellow-green{background-color:#bdc74c!important}.bg-red-100{background-color:#c74c4c!important}.bg-teal{background-color:#47be84!important}.bg-cyan{background-color:#4cb1c7!important}.bg-gray{background-color:#ddd!important}.text-yellow{color:#fc0!important}.bg-blue-200{background-color:#4c91c7!important}.navbar-9houzz{color:#666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}.banner{height:361px}.sidebar-count{font-size:30px!important}.gradient-animate{height:100px;background:-webkit-linear-gradient(transparent,#000);background:-o-linear-gradient(transparent,#000);background:linear-gradient(transparent,#000);bottom:0;z-index:0}.provider-contact{overflow:hidden!important}.provider-contact li{margin-bottom:8px;padding:0 22px;position:relative}.provider-contact li i{left:0;position:absolute;top:3px}.provider-nav{height:50px;line-height:34px}.provider-details .banner{max-height:290px;height:290px;position:relative;overflow:hidden}.project{width:100%;height:300px}.project img{object-fit:cover;object-position:center center}.provider-avatar{width:165px;height:165px;top:-127px;border:1px solid #d3d3d3;left:20px;background:#fff}.provider-info{bottom:4rem;left:13rem;z-index:1}.provider-details .nav-link{color:#666!important;padding:.5rem 1.5rem!important}.provider-details .nav-tabs .active{color:#b953a4!important}.provider-details .nav-tabs .active:after{content:\"\";position:absolute;bottom:-1px;left:12%;background:#b953a5;height:3px;width:75%}.provider-details .nav-tabs .active a{font-weight:700!important;color:#b953a4!important}.provider-contact a,.provider-contact span{color:#333!important;font-weight:400}.provider-about .about p,span{font-size:13px!important}.provider-project{background:#fff!important}.provider-project .first-image{border-top-left-radius:.25rem!important;-webkit-border-top-left-radius:.25rem!important;-moz-border-top-left-radius:.25rem!important;-khtml-border-top-left-radius:.25rem!important}.provider-project .second-image{height:49%!important}.provider-project .second-image,.provider-project .second-image img{border-top-right-radius:.25rem!important;-webkit-border-top-right-radius:.25rem!important;-moz-border-top-right-radius:.25rem!important;-khtml-border-top-right-radius:.25rem!important}.provider-project .right-avatar{width:98%}.provider-moreinfo{display:inline-block;clear:both;overflow:hidden}.provider-moreinfo .left-info{width:75%;display:block;border-top:1px solid #e2e2e2;padding-top:10px}.info-special{border-bottom:1px dotted #ddd;padding-bottom:5px!important}.info-special i{font-size:20px;top:6px!important}.info-special span{font-size:20px!important}.provider-sidebar .sidebar-label{color:#888!important;margin-bottom:5px!important}.provider-contact .social{float:left;width:100%}.provider-contact .social a{float:left;margin-right:8px;padding:5px;background:#d2d6dc;border-radius:50%;font-size:14px;color:#fff!important;width:25px;height:25px}@media (max-width:575.98px){.provider-avatar{width:80px!important;height:80px!important;top:-105px!important}.provider-details .banner{height:185px!important}.banner img{height:100%!important}.provider-info{bottom:4rem;left:7rem;z-index:1}.provider-info h1{font-size:18px!important;font-weight:700!important}.provider-about .about{padding-left:0!important;padding-right:0!important}.provider-about .about #readMoreText p,.provider-about .about #readMoreText span{text-align:left!important;font-size:15px!important}.provider-contact a,.provider-contact span{font-size:15px!important}#myTab.nav{overflow-x:scroll;overflow-y:hidden;white-space:nowrap;display:block!important}#myTab.nav li{display:inline-block;color:#fff;text-align:center}.provider-details .nav-tabs .active:after{content:\"\";position:absolute;bottom:-1px;left:12%;background:#fff;height:3px;width:75%}.provider-nav{height:45px!important;line-height:34px}.provider-main{padding-left:0!important;padding-right:0!important;margin-right:0!important;margin-left:0!important}#sidebar{max-width:100%!important;margin-top:-.5rem!important;border-top:none!important}.left-info{float:left!important;width:100%!important}.left-info .project-image{padding-right:10px!important}.project{height:200px!important}.provider-project .right-avatar{width:97%!important}}#readMore{text-align:center}#readMore,.readMoreWrapper{width:100%;height:auto;position:relative}.readMoreWrapper{text-align:left}#readMoreText{width:100%;height:100px;overflow:hidden;padding:0 0 20px;position:relative;color:#333!important;font-weight:400!important;background-color:#fff}#readMoreText p,#readMoreText span{line-height:23px!important}.readMoreGradient{width:100%;height:50px;background:-webkit-linear-gradient(hsla(0,0%,100%,0),#fff);background:linear-gradient(hsla(0,0%,100%,0),#fff);position:absolute;bottom:0}#readMoreBtn{background-color:#fff;color:#b953a4;padding:0 8px;text-decoration:none;display:inline-block;position:relative;bottom:10px;left:0;float:left;font-size:13px}#sidebar{max-width:23%!important}.fa-star{color:#fc0}.disable{color:#ddd!important}img{vertical-align:middle}";
+exports.default = _default;
 
 /***/ }),
 
@@ -3202,7 +3396,7 @@ module.exports = routes() // ----   ----      -----
 /***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/pro/index.js");
+module.exports = __webpack_require__("./pages/project/list-project.js");
 
 
 /***/ }),
@@ -3211,13 +3405,6 @@ module.exports = __webpack_require__("./pages/pro/index.js");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/regenerator");
-
-/***/ }),
-
-/***/ "axios":
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
 
 /***/ }),
 
@@ -3256,13 +3443,6 @@ module.exports = require("next/head");
 
 /***/ }),
 
-/***/ "next/link":
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
-
-/***/ }),
-
 /***/ "next/router":
 /***/ (function(module, exports) {
 
@@ -3277,10 +3457,24 @@ module.exports = require("nprogress");
 
 /***/ }),
 
+/***/ "paginator":
+/***/ (function(module, exports) {
+
+module.exports = require("paginator");
+
+/***/ }),
+
 /***/ "path-to-regexp":
 /***/ (function(module, exports) {
 
 module.exports = require("path-to-regexp");
+
+/***/ }),
+
+/***/ "prop-types":
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
 
 /***/ }),
 
@@ -3313,4 +3507,4 @@ module.exports = require("universal-cookie");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=pro.js.map
+//# sourceMappingURL=list-project.js.map

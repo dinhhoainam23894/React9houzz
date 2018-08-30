@@ -7,6 +7,16 @@
 .disable{
 	color: $gray !important;
 }
+.service.project-list {
+	.child-sidebar-service{
+		border-bottom: none;
+		.widget{
+			h3 {
+				font-size: 16px !important;
+			}
+		}
+	}
+}
 .service{
 	.image-actions{
 		bottom: 0;

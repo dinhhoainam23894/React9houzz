@@ -1,11 +1,8 @@
 @charset "UTF-8";
-$ionicons-font-path: "/fonts/ionicons" !default;
-$ionicons-font-family: "Ionicons" !default;
-$ionicons-version: "3.0.0-alpha.3" !default;
 @import "styles/variables";
 @import "styles/boostrap";
-$fa-font-path: "/static/fonts" !default;
-//@import "node_modules/font-awesome/scss/font-awesome.scss";
+$fa-font-path: "/fonts" !default;
+@import "node_modules/font-awesome/scss/font-awesome.scss";
 @import "styles/login";
 @import "styles/font-size";
 @import "styles/background-color";
