@@ -9,6 +9,12 @@
 }
 .service.project-list {
 	.child-sidebar-service{
+		ul li:nth-child(n+5){
+			display: block !important;
+		}
+		.loadmore{
+			display: none !important;
+		}
 		border-bottom: none;
 		.widget{
 			h3 {
