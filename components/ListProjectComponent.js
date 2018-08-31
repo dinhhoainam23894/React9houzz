@@ -99,20 +99,20 @@ export default class extends React.Component{
                     projects && projects.map((value , index) => (
                       <li className="media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container" key={index}>
                         <div className="row">
-                          <div className="col-md-6 col-lg-6 col-12 col-sm-12 images-service position-relative px-0">
+                          <div className="col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0">
                             <Link route="project.detail" params={{ id : value.id , slug : value.slug }}>
                               <a className="link"><img src={value.public_avatar} alt="" className="mr-3" /></a>
                             </Link>
-                            <div className="position-absolute image-actions py-2">
-                              <span className="actions-detail font-16">
-                                  <i className="fa fa-picture-o mr-1"></i> {value.total_images + " ảnh"}
+                            <div className="position-absolute image-actions py-4">
+                              <span className="actions-detail font-16 d-flex justify-content-center">
+                                  <i className="fa fa-picture-o mr-2"></i> {value.total_images + " ảnh"}
                               </span>
-                              <span className="actions-detail font-16">
-                                  <i className="fa fa-cog mr-1"></i> {value.name_tag_style}
-                              </span>
+                              {/*<span className="actions-detail font-16">*/}
+                                  {/*<i className="fa fa-cog mr-1"></i> {value.name_tag_style}*/}
+                              {/*</span>*/}
                             </div>
                           </div>
-                          <div className="media-body col-md-6 col-lg-6 col-12 col-sm-12 position-relative">
+                          <div className="media-body col-md-7 col-lg-7 col-12 col-sm-12 position-relative">
                             <Link route="project.detail" params={{ id : value.id , slug : value.slug }}>
                               <a className="link">
                                 <h2 className="font-18">{value && value.name}</h2>
@@ -123,7 +123,7 @@ export default class extends React.Component{
                                 <img src={value.providers && value.providers.path_avatar} className="img-fluid h-100 rounded-circle" />
                               </div>
 
-                              <div className="media-title ml-3">
+                              <div className="media-title pl-3 d-flex align-items-center">
                                 <Link route="pro.detail" params={{ id : value.providers.id , slug : value.providers.slug }}>
                                   <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">{value.providers && value.providers.name}</a>
                                 </Link>

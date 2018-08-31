@@ -63,6 +63,7 @@
     "@babel/core": "^7.0.0-beta.53",
     "create-next": "^0.1.4",
     "node-sass": "^4.9.2",
-    "sass-loader": "^7.0.3"
+    "sass-loader": "^7.0.3",
+    "targets-webpack-plugin": "^1.0.3"
   }
 }

@@ -59,7 +59,7 @@ export default class extends React.Component {
           />
         }
         <div className="project-detail-main" id="cat">
-          <div className="container">
+          <div className="project-detail-container">
             {/*<nav aria-label="breadcrumb">*/}
               {/*<ol className="breadcrumb p-0 pl-0">*/}
                 {/*<li className="breadcrumb-item"><a href="#">Home</a></li>*/}
