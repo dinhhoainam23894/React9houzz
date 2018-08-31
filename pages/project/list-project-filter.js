@@ -14,7 +14,7 @@ export default class extends React.Component{
       res = await fetch(APIURL + 'danh-sach-du-an/' + encodeURIComponent(query.slug))
     }
     const data = await res.json()
-    console.log(data);
+    console.log(data)
     return {
       data : data,
       projects : data.datas ? data.datas.data : null,
@@ -31,7 +31,7 @@ export default class extends React.Component{
       filterDefault : data.filter_default,
       page : data.page,
       url_path : url_path,
-      breadcrumbs : data.breadcrumb
+      breadcrumb : data.breadcumb
     }
   }
   constructor(props){
