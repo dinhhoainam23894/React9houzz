@@ -78,7 +78,6 @@ export default class extends React.Component{
   }
   render(){
     const {  h1 , filterDefault , page } = this.props;
-    console.log(this.props)
     const { projects , nextPage , nextPageLink , backPageLink} = this.state;
     return(
       <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink}>
