@@ -31,7 +31,8 @@ export default class extends React.Component{
             h1 : data.h1,
             filterDefault : data.filter_default,
             page : data.page,
-            url_path : url_path
+            url_path : url_path,
+            breadcrumbs : data.breadcrumb
         }
     }
     constructor(props){

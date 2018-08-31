@@ -78,6 +78,7 @@ export default class extends React.Component{
   }
   render(){
     const {  h1 , filterDefault , page } = this.props;
+    console.log(this.props)
     const { projects , nextPage , nextPageLink , backPageLink} = this.state;
     return(
       <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink}>
@@ -87,6 +88,7 @@ export default class extends React.Component{
               <Sidebar filter={filterDefault} page={page}></Sidebar>
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
+
               <div className="bg-white px-3 py-4">
                 <h1 className="font-25 font-weight-normal text-black-100">{h1}</h1>
                 {/*<div className="service-tag pt-0">*/}
