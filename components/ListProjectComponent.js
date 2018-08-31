@@ -83,7 +83,6 @@ export default class extends React.Component {
 
   render() {
     const {h1, filterDefault, page, breadcrumb} = this.props;
-    console.log(this.props)
     const {projects, nextPage, nextPageLink, backPageLink} = this.state;
     return (
       <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink}>
@@ -95,7 +94,7 @@ export default class extends React.Component {
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
               {
                 breadcrumb &&
-                <ol className="breadcrumb bg-white pl-0 mb-0 pt-0 mt-0">
+                <ol className="breadcrumb bg-white mb-0">
                   <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
                     <Link prefetch route={breadcrumb.home.uri}><a itemProp="url">
                       <span itemProp="title" className="font-13">{breadcrumb.home.name}</span></a>

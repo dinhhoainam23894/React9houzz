@@ -10,11 +10,11 @@ module.exports = withSass({
     outputStyle: 'compressed'
   },
   webpack: (config, { dev }) => {
-    if (!dev) {
-      config.plugins.push(new TargetsPlugin({
-        browsers: ["last 2 versions", "chrome >= 38"]
-      }))
-    }
+    // if (!dev) {
+    //   config.plugins.push(new TargetsPlugin({
+    //     browsers: ["last 2 versions", "chrome >= 38"]
+    //   }))
+    // }
     config.module.rules.push(
       {
         test: /\.css$/,
