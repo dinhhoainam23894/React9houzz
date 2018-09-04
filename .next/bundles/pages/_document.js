@@ -12140,7 +12140,22 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 45
         }
-      })));
+      })), _react.default.createElement("script", {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 48
+        }
+      }), _react.default.createElement("script", {
+        dangerouslySetInnerHTML: {
+          __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n\n            gtag('config', 'UA-120211455-1');\n        "
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49
+        }
+      }));
     }
   }]);
 

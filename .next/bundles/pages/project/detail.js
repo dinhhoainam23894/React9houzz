@@ -1,495 +1,7 @@
 module.exports =
-__NEXT_REGISTER_PAGE('/project/list-project-filter', function() {
+__NEXT_REGISTER_PAGE('/project/detail', function() {
           var comp =
       webpackJsonp([5],{
-
-/***/ "./components/ListProjectComponent.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _regenerator = _interopRequireDefault(__webpack_require__("./node_modules/@babel/runtime/regenerator/index.js"));
-
-var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/index.js"));
-
-var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
-
-var _sideBar = _interopRequireDefault(__webpack_require__("./components/sideBar.js"));
-
-var _pagination = _interopRequireDefault(__webpack_require__("./components/pagination.js"));
-
-var _routes = __webpack_require__("./routes.js");
-
-var _jquery = _interopRequireDefault(__webpack_require__("./node_modules/jquery/dist/jquery.js"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var _default =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(_default, _React$Component);
-
-  function _default(props) {
-    var _this;
-
-    _classCallCheck(this, _default);
-
-    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "getData", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function () {
-        var _value = _asyncToGenerator(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee(pageNumber) {
-          var APIURL, res, data;
-          return _regenerator.default.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-du-an/?page=';
-                  _context.next = 3;
-                  return fetch(APIURL + pageNumber);
-
-                case 3:
-                  res = _context.sent;
-                  _context.next = 6;
-                  return res.json();
-
-                case 6:
-                  data = _context.sent;
-
-                  _this.setState({
-                    'projects': data.datas.data
-                  });
-
-                case 8:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
-
-        return function value(_x) {
-          return _value.apply(this, arguments);
-        };
-      }()
-    });
-    var datas = _this.props.data.datas;
-    _this.state = {
-      nextPage: datas.next_page_url,
-      nextPageLink: datas.next_page_url ? _this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
-      backPageLink: datas.prev_page_url ? _this.props.url_path + "?page=" + (datas.current_page - 1) : undefined,
-      activePage: datas.current_page,
-      projects: _this.props.projects
-    };
-    return _this;
-  }
-
-  _createClass(_default, [{
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(nextProps) {
-      if (nextProps) {
-        var datas = nextProps.data.datas;
-        this.setState({
-          nextPage: datas.next_page_url,
-          nextPageLink: datas.next_page_url ? this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
-          backPageLink: datas.prev_page_url ? this.props.url_path + "?page=" + (datas.current_page - 1) : undefined,
-          activePage: datas.current_page,
-          projects: nextProps.projects
-        });
-      }
-    } // componentDidMount(){
-    //   $('.sidebar-service ul').each(function(e){
-    //     if ($(this).find('li').length == $(this).find($('li:visible')).length) {
-    //       $(this).find('.loadmore').hide();
-    //     }
-    //   });
-    //   $('.sidebar-service').on('click','.loadmore',function () {
-    //     var list = $(this).parent().find($('li'));
-    //     $(this).parent().find($('li:hidden')).show();
-    //     if (list.length == $(this).parent().find($('li:visible')).length) {
-    //       $(this).removeClass('loadmore');
-    //       $(this).addClass('hidemore');
-    //       $(this).html('Thu gọn');
-    //     }
-    //   });
-    //   $('.sidebar-service').on('click','.hidemore',function () {
-    //     var list = $(this).parent().find($('li'));
-    //     $(this).parent().find($('li:visible')).slice(5, list.length).hide();
-    //     $(this).removeClass('hidemore');
-    //     $(this).addClass('loadmore');
-    //     $(this).html('Xem thêm');
-    //   });
-    //   $(".close").click(function(event) {
-    //     $(this).parent().toggle();
-    //   });
-    // }
-
-  }, {
-    key: "handlePageChange",
-    value: function handlePageChange(pageNumber) {
-      console.log("active page is ".concat(pageNumber));
-      this.setState({
-        activePage: pageNumber
-      }); // this.getData(pageNumber)
-    }
-  }, {
-    key: "getPageUrl",
-    value: function getPageUrl(i) {
-      var url = "";
-
-      if (this.props.url_path) {
-        url = this.props.url_path;
-      }
-
-      return url + "?page=" + i;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _props = this.props,
-          h1 = _props.h1,
-          filterDefault = _props.filterDefault,
-          page = _props.page,
-          breadcrumb = _props.breadcrumb;
-      var _state = this.state,
-          projects = _state.projects,
-          nextPage = _state.nextPage,
-          nextPageLink = _state.nextPageLink,
-          backPageLink = _state.backPageLink;
-      return _react.default.createElement(_layout.default, _extends({}, this.props, {
-        navmenu: false,
-        container: false,
-        nextPageLink: nextPageLink,
-        backPageLink: backPageLink,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 88
-        }
-      }), _react.default.createElement("div", {
-        className: "container-fluid service project-list px-4 bg-gray",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 89
-        }
-      }, _react.default.createElement("div", {
-        className: "row",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 90
-        }
-      }, _react.default.createElement("div", {
-        className: "col-0 col-md-3 col-lg-3 px-3",
-        id: "sidebar",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 91
-        }
-      }, _react.default.createElement(_sideBar.default, {
-        filter: filterDefault,
-        page: page,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 92
-        }
-      })), _react.default.createElement("div", {
-        className: "col-12 col-md-9 col-lg-9 px-0",
-        id: "cat",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 94
-        }
-      }, breadcrumb && _react.default.createElement("ol", {
-        className: "breadcrumb bg-white mb-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 97
-        }
-      }, _react.default.createElement("li", {
-        className: "breadcrumb-item",
-        itemScope: true,
-        itemType: "http://data-vocabulary.org/Breadcrumb",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 98
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: breadcrumb.home.uri,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 99
-        }
-      }, _react.default.createElement("a", {
-        itemProp: "url",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 99
-        }
-      }, _react.default.createElement("span", {
-        itemProp: "title",
-        className: "font-13",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 100
-        }
-      }, breadcrumb.home.name)))), _react.default.createElement("li", {
-        className: "breadcrumb-item",
-        itemScope: true,
-        itemType: "http://data-vocabulary.org/Breadcrumb",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 103
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: breadcrumb.sub_items.uri,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 104
-        }
-      }, _react.default.createElement("a", {
-        itemProp: "url",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 105
-        }
-      }, _react.default.createElement("span", {
-        itemProp: "title",
-        className: "font-13",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 106
-        }
-      }, breadcrumb.sub_items.name))))), _react.default.createElement("div", {
-        className: "bg-white px-3 py-4",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 112
-        }
-      }, _react.default.createElement("h1", {
-        className: "font-25 font-weight-normal text-black-100",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 113
-        }
-      }, h1), _react.default.createElement("ul", {
-        className: "list-unstyled my-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 119
-        }
-      }, projects && projects.map(function (value, index) {
-        return _react.default.createElement("li", {
-          className: "media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container",
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 122
-          }
-        }, _react.default.createElement("div", {
-          className: "row",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 125
-          }
-        }, _react.default.createElement("div", {
-          className: "col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 126
-          }
-        }, _react.default.createElement(_routes.Link, {
-          route: "project.detail",
-          params: {
-            id: value.id,
-            slug: value.slug
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 127
-          }
-        }, _react.default.createElement("a", {
-          className: "link",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 128
-          }
-        }, _react.default.createElement("img", {
-          src: value.public_avatar,
-          alt: "",
-          className: "mr-3",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 128
-          }
-        }))), _react.default.createElement("div", {
-          className: "position-absolute image-actions py-4",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 130
-          }
-        }, _react.default.createElement("span", {
-          className: "actions-detail font-16 d-flex justify-content-center",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 131
-          }
-        }, _react.default.createElement("i", {
-          className: "fa fa-picture-o mr-2",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 132
-          }
-        }), " ", value.total_images + " ảnh"))), _react.default.createElement("div", {
-          className: "media-body col-md-7 col-lg-7 col-12 col-sm-12 position-relative",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 139
-          }
-        }, _react.default.createElement(_routes.Link, {
-          route: "project.detail",
-          params: {
-            id: value.id,
-            slug: value.slug
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 140
-          }
-        }, _react.default.createElement("a", {
-          className: "link",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 141
-          }
-        }, _react.default.createElement("h2", {
-          className: "font-18",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 142
-          }
-        }, value && value.name))), _react.default.createElement("div", {
-          className: "media-header my-3 p-2",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 145
-          }
-        }, _react.default.createElement("div", {
-          className: "rounded-circle logo",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 146
-          }
-        }, _react.default.createElement("img", {
-          src: value.providers && value.providers.path_avatar,
-          className: "img-fluid h-100 rounded-circle",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 147
-          }
-        })), _react.default.createElement("div", {
-          className: "media-title pl-3 d-flex align-items-center",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 151
-          }
-        }, _react.default.createElement(_routes.Link, {
-          route: "pro.detail",
-          params: {
-            id: value.providers.id,
-            slug: value.providers.slug
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 152
-          }
-        }, _react.default.createElement("a", {
-          className: "mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 153
-          }
-        }, value.providers && value.providers.name)))), _react.default.createElement("div", {
-          className: "media-content mt-3",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 166
-          }
-        }, _react.default.createElement("span", {
-          className: "more font-14 font-weight-light",
-          dangerouslySetInnerHTML: {
-            __html: value.descriptions && value.descriptions
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 167
-          }
-        })))));
-      }))), _react.default.createElement("div", {
-        className: "pagi_desktop my-4",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 177
-        }
-      }, _react.default.createElement(_pagination.default, {
-        activePage: this.state.activePage,
-        itemsCountPerPage: this.props.data.datas.per_page,
-        totalItemsCount: this.props.data.datas.total,
-        pageRangeDisplayed: 8,
-        onChange: function onChange(e) {
-          return _this2.handlePageChange(e);
-        },
-        getPageUrl: function getPageUrl(i) {
-          return _this2.getPageUrl(i);
-        },
-        nextPageLink: nextPageLink,
-        backPageLink: backPageLink,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 178
-        }
-      }))))));
-    }
-  }]);
-
-  return _default;
-}(_react.default.Component);
-
-exports.default = _default;
-
-/***/ }),
 
 /***/ "./components/footer.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -881,6 +393,1443 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = footer;
+
+/***/ }),
+
+/***/ "./components/image-detail.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _regenerator = _interopRequireDefault(__webpack_require__("./node_modules/@babel/runtime/regenerator/index.js"));
+
+var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/index.js"));
+
+var _axios = _interopRequireDefault(__webpack_require__("./node_modules/axios/index.js"));
+
+var _helpers = __webpack_require__("./libraries/helpers.js");
+
+var _jquery = _interopRequireDefault(__webpack_require__("./node_modules/jquery/dist/jquery.js"));
+
+var _router = _interopRequireDefault(__webpack_require__("./node_modules/next/router.js"));
+
+var _routes = __webpack_require__("./routes.js");
+
+__webpack_require__("./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
+
+var _assert = __webpack_require__("./node_modules/assert/assert.js");
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/image-detail.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var APIURL = "https://api.9houz.com/" + "api/" + 'image/';
+
+var Image =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Image, _React$Component);
+
+  function Image(props) {
+    var _this;
+
+    _classCallCheck(this, Image);
+
+    _this = _possibleConstructorReturn(this, (Image.__proto__ || Object.getPrototypeOf(Image)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "componentDidMount", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee() {
+          var image_thumb, image_id;
+          return _regenerator.default.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  if (_this.props.data) {
+                    _context.next = 3;
+                    break;
+                  }
+
+                  _context.next = 3;
+                  return _this.getValue(_this.props.id);
+
+                case 3:
+                  _this.setState({
+                    detail: _this.props.detail,
+                    listIdea: _this.props.images,
+                    nextPageUrl: _this.props.nextPageUrl
+                  });
+
+                  _this.setState({
+                    currentImage: (0, _jquery.default)('img.currentImage')
+                  });
+
+                  image_thumb = (0, _jquery.default)('.thumb');
+
+                  _this.setState({
+                    image_thumb: image_thumb
+                  });
+
+                  image_id = _this.state.image.id;
+
+                  if (_this.state.detail == false) {
+                    image_thumb.each(function () {
+                      if ((0, _jquery.default)(this).data('id') == image_id) {
+                        (0, _jquery.default)(this).addClass('project-thumb--current');
+                      }
+                    });
+                  }
+
+                case 9:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, this);
+        }));
+
+        return function value() {
+          return _value.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "nextImage", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value2 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee2(e, id, slug) {
+          return _regenerator.default.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  e.preventDefault();
+
+                  if (_this.state.detail == false) {
+                    _this.nextProject(_this.state.currentValue.id, _this.state.currentValue.slug);
+                  } else {
+                    _this.nextIdea(_this.state.currentValue.id);
+                  }
+
+                case 2:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
+
+        return function value(_x, _x2, _x3) {
+          return _value2.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "nextIdea", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value3 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee3(id) {
+          var startIndex, currentIndex, nextImage;
+          return _regenerator.default.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  startIndex = 0;
+                  currentIndex = 0;
+
+                  _jquery.default.each(_this.state.listIdea, function ($key, $value) {
+                    if ($value.id == id) {
+                      startIndex = $key;
+                    }
+                  });
+
+                  if (!(startIndex == _this.state.listIdea.length - 1)) {
+                    _context3.next = 7;
+                    break;
+                  }
+
+                  _this.getFullImage(_this.state.nextPageUrl, 'next');
+
+                  _context3.next = 13;
+                  break;
+
+                case 7:
+                  currentIndex = startIndex + 1;
+                  nextImage = _this.state.listIdea[currentIndex];
+                  _context3.next = 11;
+                  return _this.pushStateUrl(nextImage.id, nextImage.slug);
+
+                case 11:
+                  _context3.next = 13;
+                  return _this.getValue(nextImage.id);
+
+                case 13:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, this);
+        }));
+
+        return function value(_x4) {
+          return _value3.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "nextProject", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value4 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee4(id, slug) {
+          var image_size, currentIndex, lastIndex, lastImage, nextId, nextSlug;
+          return _regenerator.default.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  image_size = _this.state.image_thumb.length - 1;
+                  currentIndex = _this.state.currentImage;
+                  lastIndex = 0;
+
+                  _this.state.image_thumb.each(function () {
+                    if ((0, _jquery.default)(this).hasClass('project-thumb--current')) {
+                      currentIndex = (0, _jquery.default)(this).index();
+
+                      if (currentIndex < image_size) {
+                        lastIndex = currentIndex + 1;
+                      } else {
+                        lastIndex = 0;
+                      }
+
+                      (0, _jquery.default)(this).removeClass('project-thumb--current');
+                    }
+                  });
+
+                  _this.state.image_thumb.eq(lastIndex).addClass('project-thumb--current');
+
+                  lastImage = _this.state.image_thumb.eq(lastIndex);
+                  nextId = lastImage.data('id');
+                  nextSlug = lastImage.data('slug');
+
+                  _this.setState({
+                    currentImage: (0, _jquery.default)('img.currentImage')
+                  });
+
+                  _this.setState({
+                    currentValue: _this.state.images[lastIndex]
+                  });
+
+                  if (!(_this.props.popup == false)) {
+                    _context4.next = 14;
+                    break;
+                  }
+
+                  _this.pushStateProject(id, slug, nextId, nextSlug); // Router.push(`/project?photoId=${id}&id=${this.state.project.id}`,`/anh/${nextId}-${nextSlug}`)
+
+
+                  _context4.next = 16;
+                  break;
+
+                case 14:
+                  _context4.next = 16;
+                  return _this.pushStateUrl(nextId, nextSlug);
+
+                case 16:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, this);
+        }));
+
+        return function value(_x5, _x6) {
+          return _value4.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "backImage", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value5 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee5(e) {
+          return _regenerator.default.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  e.preventDefault();
+
+                  if (_this.state.detail == false) {
+                    _this.backProject(_this.state.currentValue.id, _this.state.currentValue.slug);
+                  } else {
+                    _this.backIdea(_this.state.currentValue.id);
+                  }
+
+                case 2:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5, this);
+        }));
+
+        return function value(_x7) {
+          return _value5.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "backProject", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value6 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee6(id, slug) {
+          var image_size, currentIndex, lastIndex, lastImage, nextId, nextSlug;
+          return _regenerator.default.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  image_size = _this.state.image_thumb.length - 1;
+                  currentIndex = _this.state.currentImage;
+                  lastIndex = 0;
+
+                  _this.state.image_thumb.each(function () {
+                    if ((0, _jquery.default)(this).hasClass('project-thumb--current')) {
+                      currentIndex = (0, _jquery.default)(this).index();
+
+                      if (currentIndex > 0) {
+                        lastIndex = currentIndex - 1;
+                      } else {
+                        lastIndex = image_size;
+                      }
+
+                      (0, _jquery.default)(this).removeClass('project-thumb--current');
+                    }
+                  });
+
+                  _this.state.image_thumb.eq(lastIndex).addClass('project-thumb--current');
+
+                  lastImage = _this.state.image_thumb.eq(lastIndex);
+                  nextId = lastImage.data('id');
+                  nextSlug = lastImage.data('slug');
+
+                  _this.setState({
+                    currentImage: (0, _jquery.default)('img.currentImage')
+                  });
+
+                  _this.setState({
+                    currentValue: _this.state.images[lastIndex]
+                  });
+
+                  if (!(_this.props.popup == false)) {
+                    _context6.next = 14;
+                    break;
+                  }
+
+                  _this.pushStateProject(id, slug, nextId, nextSlug); // Router.pushRoute(`/anh/${id}-${slug}`,`/anh/${nextId}-${nextSlug}`)
+
+
+                  _context6.next = 16;
+                  break;
+
+                case 14:
+                  _context6.next = 16;
+                  return _this.pushStateUrl(nextId, nextSlug);
+
+                case 16:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6, this);
+        }));
+
+        return function value(_x8, _x9) {
+          return _value6.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "backIdea", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value7 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee7(id) {
+          var startIndex, currentIndex, backImage;
+          return _regenerator.default.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  startIndex = 0;
+                  currentIndex = 0;
+
+                  _jquery.default.each(_this.state.listIdea, function ($key, $value) {
+                    if ($value.id == id) {
+                      startIndex = $key;
+                    }
+                  });
+
+                  if (!(startIndex == 0 && _this.state.backPageUrl != null)) {
+                    _context7.next = 7;
+                    break;
+                  }
+
+                  _this.getFullImage(_this.state.backPageUrl, 'back');
+
+                  _context7.next = 13;
+                  break;
+
+                case 7:
+                  currentIndex = startIndex - 1;
+                  backImage = _this.state.listIdea[currentIndex];
+                  _context7.next = 11;
+                  return _this.pushStateUrl(backImage.id, backImage.slug);
+
+                case 11:
+                  _context7.next = 13;
+                  return _this.getValue(backImage.id);
+
+                case 13:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        return function value(_x10) {
+          return _value7.apply(this, arguments);
+        };
+      }()
+    });
+    Object.defineProperty(_assertThisInitialized(_this), "getFullImage", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _value8 = _asyncToGenerator(
+        /*#__PURE__*/
+        _regenerator.default.mark(function _callee8(url, func) {
+          return _regenerator.default.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.t0 = func;
+                  _context8.next = _context8.t0 === 'next' ? 3 : _context8.t0 === 'back' ? 6 : 8;
+                  break;
+
+                case 3:
+                  _context8.next = 5;
+                  return _axios.default.get(url).then(function (response) {
+                    var data = response.data;
+
+                    _this.setState({
+                      listIdea: data.images.data,
+                      nextPageUrl: data.images.next_page_url,
+                      backPageUrl: data.images.prev_page_url
+                    });
+
+                    var currentIndex = 0;
+                    var nextImage = _this.state.listIdea[currentIndex];
+
+                    _this.pushStateUrl(nextImage.id, nextImage.slug);
+
+                    _this.getValue(nextImage.id);
+                  });
+
+                case 5:
+                  return _context8.abrupt("break", 8);
+
+                case 6:
+                  _axios.default.get(url).then(function (response) {
+                    var data = response.data;
+
+                    _this.setState({
+                      listIdea: data.images.data,
+                      nextPageUrl: data.images.next_page_url,
+                      backPageUrl: data.images.prev_page_url
+                    });
+
+                    var currentIndex = _this.state.listIdea.length - 1;
+                    var backImage = _this.state.listIdea[currentIndex];
+
+                    _this.pushStateUrl(backImage.id, backImage.slug);
+
+                    _this.getValue(backImage.id);
+                  });
+
+                  return _context8.abrupt("break", 8);
+
+                case 8:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8, this);
+        }));
+
+        return function value(_x11, _x12) {
+          return _value8.apply(this, arguments);
+        };
+      }()
+    });
+    _this.state = {
+      data: {},
+      provider: {},
+      project: {},
+      image: {},
+      images: [],
+      tag: [],
+      currentImage: {},
+      image_thumb: {},
+      idActive: null,
+      currentValue: null,
+      detail: false,
+      listIdea: [],
+      nextPageUrl: null,
+      backPageUrl: null
+    };
+    return _this;
+  }
+
+  _createClass(Image, [{
+    key: "getValue",
+    value: function () {
+      var _getValue = _asyncToGenerator(
+      /*#__PURE__*/
+      _regenerator.default.mark(function _callee9(id) {
+        var _this2 = this;
+
+        var data;
+        return _regenerator.default.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.next = 2;
+                return _axios.default.get(APIURL + id).then(function (res) {
+                  data = res.data;
+
+                  _this2.setState({
+                    image: data.image,
+                    project: data.project,
+                    images: data.list_images,
+                    provider: data.provider,
+                    tag: data.listTag,
+                    currentValue: data.image
+                  });
+                });
+
+              case 2:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
+      return function getValue(_x13) {
+        return _getValue.apply(this, arguments);
+      };
+    }()
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      if (this.props.data) {
+        this.setState({
+          image: this.props.data.image,
+          project: this.props.data.project,
+          images: this.props.data.images,
+          provider: this.props.data.provider,
+          tag: this.props.data.tag,
+          currentValue: this.props.data.image
+        });
+      }
+    }
+  }, {
+    key: "pushStateUrl",
+    value: function pushStateUrl(id, slug) {
+      if (this.props.ideaParams) {
+        var params = this.props.ideaParams;
+
+        if (this.props.subParams) {
+          _router.default.push("".concat(this.props.currentPath, "?params=").concat(params, "&f=").concat(this.props.subParams, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+        } else {
+          _router.default.push("".concat(this.props.currentPath, "?params=").concat(params, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+        }
+      } else {
+        _router.default.push("".concat(this.props.currentPath, "?photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+      }
+    }
+  }, {
+    key: "pushStateProject",
+    value: function pushStateProject(id, slug, nextId, nextSlug) {
+      if (this.props.isImage == true && this.props.isImage) {
+        _router.default.push("/image?id=".concat(id, "&slug=").concat(slug), "/anh/".concat(nextId, "-").concat(nextSlug));
+      } else {
+        if (this.props.ideaParams) {
+          var params = this.props.ideaParams;
+
+          if (this.props.subParams) {
+            _router.default.push("".concat(this.props.currentPath, "?params=").concat(params, "&f=").concat(this.props.subParams, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(nextId, "-").concat(nextSlug));
+          } else {
+            _router.default.push("".concat(this.props.currentPath, "?params=").concat(params, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(nextId, "-").concat(nextSlug));
+          }
+        } else {
+          _router.default.push("".concat(this.props.currentPath, "?photoId=").concat(id, "&id=").concat(this.state.project.id, "&slug=").concat(slug), "/anh/".concat(nextId, "-").concat(nextSlug));
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var _props = this.props,
+          id = _props.id,
+          slug = _props.slug;
+      return _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 257
+        }
+      }, _react.default.createElement("div", {
+        id: "image-container",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 258
+        }
+      }, _react.default.createElement("div", {
+        className: "image",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 259
+        }
+      }, this.state.currentValue && _react.default.createElement("img", {
+        className: "image-detail",
+        src: this.state.currentValue.path_for_size,
+        alt: this.state.currentValue.name,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 262
+        }
+      })), _react.default.createElement("div", {
+        className: "lb-navDiv",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 265
+        }
+      }, _react.default.createElement("a", {
+        className: "link next lbNavigation nav-arrow",
+        onClick: function onClick(e) {
+          return _this3.nextImage(e, id, slug);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 266
+        }
+      }, _react.default.createElement("div", {
+        className: "",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 267
+        }
+      }, _react.default.createElement("span", {
+        className: "fa fa-angle-right",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 268
+        }
+      }))), _react.default.createElement("a", {
+        className: "link back lbNavigation nav-arrow",
+        onClick: function onClick(e) {
+          return _this3.backImage(e);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 271
+        }
+      }, _react.default.createElement("div", {
+        className: "",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 272
+        }
+      }, _react.default.createElement("span", {
+        className: "fa fa-angle-left",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 273
+        }
+      })))), _react.default.createElement("div", {
+        id: "lbActions",
+        className: "d-none d-md-block",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 277
+        }
+      }, _react.default.createElement("div", {
+        id: "lbActionCenter",
+        className: "offset-0 offset-md-3 col-12 col-md-6 text-center text-nowrap",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 278
+        }
+      }, _react.default.createElement("button", {
+        className: "btn btn-primary med save text-white mr-3",
+        title: "Save To Ideabook",
+        compid: "addToIdeabook",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 279
+        }
+      }, _react.default.createElement("i", {
+        className: "fa fa-plus pr-2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 279
+        }
+      }), "L\u01B0u \u1EA3nh"), _react.default.createElement("button", {
+        className: "btn bg-black-100 med email text-white",
+        title: "send email",
+        compid: "addToIdeabook",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 280
+        }
+      }, _react.default.createElement("i", {
+        className: "fa fa-envelope-o pr-2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 280
+        }
+      }), "G\u1EEDi Email")))), _react.default.createElement(ImageInfo, {
+        provider: this.state.provider,
+        images: this.state.images,
+        image: this.state.image,
+        tag: this.state.tag,
+        project: this.state.project,
+        changeValue: function changeValue(data) {
+          return _this3.setState({
+            currentValue: data,
+            detail: false
+          });
+        },
+        currentValue: this.state.currentValue,
+        detail: this.props.detail,
+        pushStateProject: function pushStateProject(id, slug, nextId, nextSlug) {
+          _this3.pushStateProject(id, slug, nextId, nextSlug);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 284
+        }
+      }));
+    }
+  }]);
+
+  return Image;
+}(_react.default.Component);
+
+exports.default = Image;
+
+var ImageInfo =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(ImageInfo, _React$PureComponent);
+
+  function ImageInfo(props) {
+    _classCallCheck(this, ImageInfo);
+
+    return _possibleConstructorReturn(this, (ImageInfo.__proto__ || Object.getPrototypeOf(ImageInfo)).call(this, props));
+  }
+
+  _createClass(ImageInfo, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var $readMore = (0, _jquery.default)("#readMoreBtnText").text();
+      var $readLess = (0, _jquery.default)("#readLessBtnText").text();
+      (0, _jquery.default)("#readMoreBtn").text($readMore);
+      (0, _jquery.default)('#readMoreBtn').click(function () {
+        var $this = (0, _jquery.default)(this);
+        (0, _jquery.default)("#readMoreBtn").text($readMore);
+
+        if ($this.data('expanded') == "yes") {
+          $this.data('expanded', "no");
+          (0, _jquery.default)("#readMoreBtn").text($readMore);
+          (0, _jquery.default)('#readMoreText').animate({
+            height: '100px'
+          });
+        } else {
+          $this.data('expanded', "yes");
+          (0, _jquery.default)('#readMoreText').css({
+            height: 'auto'
+          });
+          (0, _jquery.default)("#readMoreBtn").text($readLess);
+        }
+      });
+    }
+  }, {
+    key: "changeImage",
+    value: function changeImage(e, value) {
+      e.preventDefault();
+      var $this = (0, _jquery.default)(e.target).parents('li');
+      var thumb = (0, _jquery.default)('.thumb');
+      thumb.removeClass('project-thumb--current');
+      $this.addClass('project-thumb--current');
+      this.props.pushStateProject(this.props.image.id, this.props.image.slug, value.id, value.slug);
+      this.props.changeValue(value);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var _props2 = this.props,
+          image = _props2.image,
+          images = _props2.images,
+          provider = _props2.provider,
+          project = _props2.project,
+          tag = _props2.tag,
+          currentValue = _props2.currentValue,
+          detail = _props2.detail;
+      return _react.default.createElement("div", {
+        className: "lbInfo",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 337
+        }
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 338
+        }
+      }, _react.default.createElement("div", {
+        className: "lbInfoTab position-relative d-none d-md-block",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 339
+        }
+      }, _react.default.createElement("nav", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 340
+        }
+      }, _react.default.createElement("div", {
+        className: "nav nav-tabs",
+        id: "nav-tab",
+        role: "tablist",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 341
+        }
+      }, _react.default.createElement("a", {
+        className: "nav-item nav-link active",
+        id: "nav-home-tab",
+        "data-toggle": "tab",
+        href: "#nav-home",
+        role: "tab",
+        "aria-controls": "nav-home",
+        "aria-selected": "true",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 342
+        }
+      }, _react.default.createElement("i", {
+        className: "fa fa-home",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 342
+        }
+      })), _react.default.createElement("a", {
+        className: "nav-item nav-link",
+        id: "nav-profile-tab",
+        "data-toggle": "tab",
+        href: "#nav-profile",
+        role: "tab",
+        "aria-controls": "nav-profile",
+        "aria-selected": "false",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 343
+        }
+      }, _react.default.createElement("i", {
+        className: "fa fa-tag",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 343
+        }
+      })), _react.default.createElement("a", {
+        className: "nav-item nav-link",
+        id: "nav-contact-tab",
+        "data-toggle": "tab",
+        href: "#nav-contact",
+        role: "tab",
+        "aria-controls": "nav-contact",
+        "aria-selected": "false",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 344
+        }
+      }, _react.default.createElement("i", {
+        className: "fa fa-comment",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 344
+        }
+      })))))), _react.default.createElement("div", {
+        className: "content-mask",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 349
+        }
+      }, _react.default.createElement("div", {
+        className: "content-scroll",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 350
+        }
+      }, _react.default.createElement("div", {
+        className: "content-detail",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 351
+        }
+      }, _react.default.createElement("div", {
+        className: "media",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 352
+        }
+      }, provider.auth_avatar && _react.default.createElement("img", {
+        src: provider.auth_avatar,
+        className: "align-self-start mr-2 rounded-circle detail-user mt-1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 353
+        }
+      }), _react.default.createElement("div", {
+        className: "media-body",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 354
+        }
+      }, _react.default.createElement("div", {
+        className: "media-content",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 355
+        }
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "/pro/".concat(provider.id, "-").concat(provider.slug),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 356
+        }
+      }, _react.default.createElement("a", {
+        className: "font-weight-bold font-14 text-black-100",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 357
+        }
+      }, provider.name ? provider.name : 'Chưa có tên')), _react.default.createElement("div", {
+        className: "star-rating font-14",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 359
+        }
+      }, _react.default.createElement("span", {
+        className: "text-black-100 font-14",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 360
+        }
+      }, provider.avg_rate && (0, _helpers.rating)(provider.avg_rate), provider.total_rate ? "(" + provider.total_rate + " người đánh giá" + ")" : "(0 người đánh giá)")))))), _react.default.createElement("div", {
+        className: "content-detail border-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 367
+        }
+      }, _react.default.createElement("ol", {
+        className: "breadcrumb bg-white pl-0 mb-0 pt-0 mt-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 368
+        }
+      }, _react.default.createElement("li", {
+        className: "breadcrumb-item",
+        itemScope: true,
+        itemType: "http://data-vocabulary.org/Breadcrumb",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 369
+        }
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: 'y-tuong',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 370
+        }
+      }, _react.default.createElement("a", {
+        itemProp: "url",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 370
+        }
+      }, _react.default.createElement("span", {
+        itemProp: "title",
+        className: "font-13",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 370
+        }
+      }, "T\u1EA5t c\u1EA3")))), tag.breadcrumbs && _react.default.createElement("li", {
+        className: "breadcrumb-item",
+        itemScope: true,
+        itemType: "http://data-vocabulary.org/Breadcrumb",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 372
+        }
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: tag.breadcrumbs.uri,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 373
+        }
+      }, _react.default.createElement("a", {
+        itemProp: "url",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 373
+        }
+      }, _react.default.createElement("span", {
+        itemProp: "title",
+        className: "font-13",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 373
+        }
+      }, tag.breadcrumbs.name_tag))))), _react.default.createElement("h1", {
+        className: "font-16 text-black-100",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 376
+        }
+      }, currentValue && currentValue.name), _react.default.createElement("div", {
+        className: "media-content",
+        id: "readMore",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 377
+        }
+      }, _react.default.createElement("div", {
+        className: "readMoreWrapper",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 378
+        }
+      }, currentValue && _react.default.createElement("p", {
+        id: "readMoreText",
+        className: "font-14 normalText",
+        dangerouslySetInnerHTML: {
+          __html: currentValue.descriptions
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 380
+        }
+      }), _react.default.createElement("div", {
+        className: "readMoreGradient",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 384
+        }
+      })), _react.default.createElement("button", {
+        id: "readMoreBtn",
+        className: "pl-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 386
+        }
+      }), _react.default.createElement("span", {
+        id: "readLessBtnText",
+        style: {
+          'display': 'none'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 387
+        }
+      }, "R\xFAt g\u1ECDn "), _react.default.createElement("span", {
+        id: "readMoreBtnText",
+        style: {
+          'display': 'none'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 388
+        }
+      }, "Xem th\xEAm >"))), _react.default.createElement("div", {
+        className: "content-detail border-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 391
+        }
+      }, _react.default.createElement("h2", {
+        className: "font-14",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 392
+        }
+      }, "\u1EA2nh trong \"", _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "/du-an/".concat(project.id, "-").concat(project.slug),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 393
+        }
+      }, _react.default.createElement("a", {
+        className: "text-black-100",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 394
+        }
+      }, project.name)), "\""), _react.default.createElement("ul", {
+        className: "list-unstyled clearfix thumb-grid grid-5",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 397
+        }
+      }, images && images.map(function (value, index) {
+        return _react.default.createElement("li", {
+          className: "thumb project-thumb",
+          "data-id": value.id,
+          ref: "'image'+image.id",
+          "data-slug": value.slug,
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 400
+          }
+        }, _react.default.createElement("a", {
+          className: "link",
+          href: "/anh/".concat(value.id, "-").concat(value.slug),
+          onClick: function onClick(e) {
+            return _this4.changeImage(e, value);
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 401
+          }
+        }, _react.default.createElement("div", {
+          className: "img-responsive-wrapper img-responsive-square progressive",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 402
+          }
+        }, value.small_path && _react.default.createElement("img", {
+          src: value.small_path,
+          className: "img-respontive",
+          id: "image-" + value.id,
+          width: "71",
+          height: "71",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 403
+          }
+        }))));
+      })), _react.default.createElement("div", {
+        className: "pt-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 410
+        }
+      }, tag.breadcrumbs && _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: tag.breadcrumbs.uri,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 413
+        }
+      }, _react.default.createElement("a", {
+        href: tag.breadcrumbs.uri,
+        className: "mr-2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 413
+        }
+      }, _react.default.createElement("span", {
+        className: "text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 414
+        }
+      }, tag.breadcrumbs.name_tag))), tag.other && tag.other.map(function (value, index) {
+        return value.is_seo == 1 ? _react.default.createElement(_routes.Link, {
+          prefetch: true,
+          route: value.uri,
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 420
+          }
+        }, _react.default.createElement("a", {
+          href: value.uri,
+          className: "mr-2",
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 420
+          }
+        }, _react.default.createElement("span", {
+          className: "text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 421
+          }
+        }, value.name_tag))) : '';
+      }))), _react.default.createElement("div", {
+        className: "content-detail border-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 430
+        }
+      }, _react.default.createElement("div", {
+        className: "header row m-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 431
+        }
+      }, _react.default.createElement("h2", {
+        className: "font-14 text-black-100",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 432
+        }
+      }, "H\u1ECFi \u0111\xE1p v\u1EC1 h\xECnh \u1EA3nh"), _react.default.createElement("span", {
+        className: "col-xs-12 col-md-12 px-0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 433
+        }
+      }, _react.default.createElement("button", {
+        id: "askQuestionButton",
+        className: "btn border-primary btn-block text-primary font-13",
+        compid: "lbAsk",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 433
+        }
+      }, "\u0110\u1EB7t c\xE2u h\u1ECFi c\u1EE7a b\u1EA1n")))))));
+    }
+  }]);
+
+  return ImageInfo;
+}(_react.default.PureComponent);
+
+/***/ }),
+
+/***/ "./components/image-modal.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _style = _interopRequireDefault(__webpack_require__("./node_modules/next/node_modules/styled-jsx/style.js"));
+
+var _regenerator = _interopRequireDefault(__webpack_require__("./node_modules/@babel/runtime/regenerator/index.js"));
+
+var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/index.js"));
+
+var _imageDetail = _interopRequireDefault(__webpack_require__("./components/image-detail.js"));
+
+var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
+
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/image-modal.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _default =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(_default, _React$Component);
+
+  function _default() {
+    _classCallCheck(this, _default);
+
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).apply(this, arguments));
+  }
+
+  _createClass(_default, [{
+    key: "dismiss",
+    value: function dismiss(e) {
+      e.preventDefault();
+
+      if (this._lbClose === e.target) {
+        e.preventDefault();
+
+        if (this.props.onDismiss) {
+          this.props.onDismiss();
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var _props = this.props,
+          id = _props.id,
+          slug = _props.slug;
+      return _react.default.createElement("div", {
+        id: "lightbox",
+        className: "modal Ifade show",
+        tabIndex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myLargeModalLabel",
+        "aria-hidden": "true",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        }
+      }, _react.default.createElement("div", {
+        id: "lbMainControls",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        },
+        className: "jsx-3842739500" + " " + "trackMe"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        },
+        className: "jsx-3842739500"
+      }, _react.default.createElement("a", {
+        ref: function ref(el) {
+          return _this._lbClose = el;
+        },
+        href: "",
+        onClick: function onClick(e) {
+          return _this.dismiss(e);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        },
+        className: "jsx-3842739500" + " " + "lbCloseButton lbClose"
+      })), _react.default.createElement(_style.default, {
+        styleId: "3842739500",
+        css: "#lightbox{overflow-x:scroll !important;}html{height:100%;overflow:hidden;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaW1hZ2UtbW9kYWwuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBMkJ5QixBQUVnQyxBQUdqQixZQUNJLGdCQUFDLENBSmEiLCJmaWxlIjoiY29tcG9uZW50cy9pbWFnZS1tb2RhbC5qcyIsInNvdXJjZVJvb3QiOiIvQXBwbGljYXRpb25zL01BTVAvaHRkb2NzL215LW5leHQtYXBwIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IEltYWdlRGV0YWlsIGZyb20gJy4vaW1hZ2UtZGV0YWlsJ1xuaW1wb3J0IExheW91dCBmcm9tICcuL2xheW91dCdcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50e1xuICAgIHN0YXRpYyBhc3luYyBnZXRJbml0aWFsUHJvcHMoeyBxdWVyeSB9KSB7XG4gICAgICAgIHJldHVybiB7IGlkOiBxdWVyeS5pZCAsc2x1ZyA6IHF1ZXJ5LnNsdWd9XG4gICAgfVxuICAgIGRpc21pc3MgKGUpIHtcblxuICAgICAgICBlLnByZXZlbnREZWZhdWx0KClcbiAgICAgICAgaWYgKHRoaXMuX2xiQ2xvc2UgPT09IGUudGFyZ2V0KSB7XG4gICAgICAgICAgICBlLnByZXZlbnREZWZhdWx0KClcblxuICAgICAgICAgIGlmICh0aGlzLnByb3BzLm9uRGlzbWlzcykge1xuICAgICAgICAgICAgdGhpcy5wcm9wcy5vbkRpc21pc3MoKVxuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIHJlbmRlcigpe1xuICAgICAgICBjb25zdCB7IGlkICwgc2x1ZyB9ID0gdGhpcy5wcm9wc1xuICAgICAgICByZXR1cm4oXG4gICAgICAgICAgICA8ZGl2IGlkPVwibGlnaHRib3hcIiBjbGFzc05hbWU9XCJtb2RhbCBJZmFkZSBzaG93XCIgdGFiSW5kZXg9XCItMVwiIHJvbGU9XCJkaWFsb2dcIiBhcmlhLWxhYmVsbGVkYnk9XCJteUxhcmdlTW9kYWxMYWJlbFwiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPlxuICAgICAgICAgICAgICAgIDxkaXYgaWQ9XCJsYk1haW5Db250cm9sc1wiIGNsYXNzTmFtZT1cInRyYWNrTWVcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxhIHJlZj17ZWwgPT4gKHRoaXMuX2xiQ2xvc2UgPSBlbCl9IGNsYXNzTmFtZT1cImxiQ2xvc2VCdXR0b24gbGJDbG9zZVwiIGhyZWY9XCJcIiAgb25DbGljaz17KGUpID0+IHRoaXMuZGlzbWlzcyhlKX0+PC9hPlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPHN0eWxlIGdsb2JhbCBqc3g+XG4gICAgICAgICAgICAgICAgICAgICAgICB7YFxuICAgICAgICAgICAgICAgICAgICAgICAgI2xpZ2h0Ym94XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG92ZXJmbG93LXg6IHNjcm9sbCAhaW1wb3J0YW50O1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGh0bWxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9YH1cbiAgICAgICAgICAgICAgICAgICAgPC9zdHlsZT5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8SW1hZ2VEZXRhaWwgey4uLnRoaXMucHJvcHN9IGlkPXt0aGlzLnByb3BzLmlkfSBzbHVnPXtzbHVnfT48L0ltYWdlRGV0YWlsPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgIClcbiAgICB9XG5cbn0iXX0= */\n/*@ sourceURL=components/image-modal.js */"
+      })), _react.default.createElement(_imageDetail.default, _extends({}, this.props, {
+        id: this.props.id,
+        slug: slug,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      })));
+    }
+  }], [{
+    key: "getInitialProps",
+    value: function () {
+      var _getInitialProps = _asyncToGenerator(
+      /*#__PURE__*/
+      _regenerator.default.mark(function _callee(_ref) {
+        var query;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                query = _ref.query;
+                return _context.abrupt("return", {
+                  id: query.id,
+                  slug: query.slug
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function getInitialProps(_x) {
+        return _getInitialProps.apply(this, arguments);
+      };
+    }()
+  }]);
+
+  return _default;
+}(_react.default.Component);
+
+exports.default = _default;
 
 /***/ }),
 
@@ -2028,442 +2977,7 @@ exports.default = nav;
 
 /***/ }),
 
-/***/ "./components/page.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__("./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__("./node_modules/next/node_modules/prop-types/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__("./node_modules/classnames/index.js"));
-
-var _routes = __webpack_require__("./routes.js");
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/page.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Page =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Page, _Component);
-
-  function Page() {
-    _classCallCheck(this, Page);
-
-    return _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).apply(this, arguments));
-  }
-
-  _createClass(Page, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      var _props = this.props,
-          isDisabled = _props.isDisabled,
-          pageNumber = _props.pageNumber; // e.preventDefault();
-
-      if (isDisabled) {
-        return;
-      }
-
-      this.props.onClick(pageNumber);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _cx,
-          _cx2,
-          _this = this;
-
-      var _props2 = this.props,
-          pageText = _props2.pageText,
-          pageNumber = _props2.pageNumber,
-          activeClass = _props2.activeClass,
-          itemClass = _props2.itemClass,
-          linkClass = _props2.linkClass,
-          activeLinkClass = _props2.activeLinkClass,
-          disabledClass = _props2.disabledClass,
-          isActive = _props2.isActive,
-          isDisabled = _props2.isDisabled,
-          href = _props2.href;
-      var css = (0, _classnames.default)(itemClass, (_cx = {}, _defineProperty(_cx, activeClass, isActive), _defineProperty(_cx, disabledClass, isDisabled), _defineProperty(_cx, 'page-item', 'page-item'), _cx));
-      var linkCss = (0, _classnames.default)(linkClass, (_cx2 = {}, _defineProperty(_cx2, activeLinkClass, isActive), _defineProperty(_cx2, 'page-link', 'page-link'), _cx2));
-      return _react.default.createElement("li", {
-        className: css,
-        onClick: function onClick(e) {
-          return _this.handleClick(e);
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 67
-        }
-      }, _react.default.createElement(_routes.Link, {
-        prefetch: true,
-        route: href,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 68
-        }
-      }, _react.default.createElement("a", {
-        className: linkCss,
-        href: href,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 69
-        }
-      }, pageText)));
-    }
-  }]);
-
-  return Page;
-}(_react.Component);
-
-exports.default = Page;
-Object.defineProperty(Page, "propTypes", {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  value: {
-    pageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
-    pageNumber: _propTypes.default.number.isRequired,
-    onClick: _propTypes.default.func.isRequired,
-    isActive: _propTypes.default.bool.isRequired,
-    isDisabled: _propTypes.default.bool,
-    activeClass: _propTypes.default.string,
-    activeLinkClass: _propTypes.default.string,
-    itemClass: _propTypes.default.string,
-    linkClass: _propTypes.default.string,
-    disabledClass: _propTypes.default.string,
-    href: _propTypes.default.string
-  }
-});
-Object.defineProperty(Page, "defaultProps", {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  value: {
-    activeClass: "active",
-    disabledClass: "disabled",
-    itemClass: 'page-item',
-    linkClass: 'page-link',
-    activeLinkCLass: 'active',
-    isActive: false,
-    isDisabled: false,
-    href: "#"
-  }
-});
-
-/***/ }),
-
-/***/ "./components/pagination.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__("./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__("./node_modules/next/node_modules/prop-types/index.js"));
-
-var _paginator = _interopRequireDefault(__webpack_require__("./node_modules/paginator/index.js"));
-
-var _page = _interopRequireDefault(__webpack_require__("./components/page.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__("./node_modules/classnames/index.js"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/pagination.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Pagination =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Pagination, _React$Component);
-
-  function Pagination() {
-    _classCallCheck(this, Pagination);
-
-    return _possibleConstructorReturn(this, (Pagination.__proto__ || Object.getPrototypeOf(Pagination)).apply(this, arguments));
-  }
-
-  _createClass(Pagination, [{
-    key: "isFirstPageVisible",
-    value: function isFirstPageVisible(has_previous_page) {
-      var _props = this.props,
-          hideDisabled = _props.hideDisabled,
-          hideNavigation = _props.hideNavigation,
-          hideFirstLastPages = _props.hideFirstLastPages;
-      if (hideFirstLastPages || hideDisabled && !has_previous_page) return false;
-      return true;
-    }
-  }, {
-    key: "isPrevPageVisible",
-    value: function isPrevPageVisible(has_previous_page) {
-      var _props2 = this.props,
-          hideDisabled = _props2.hideDisabled,
-          hideNavigation = _props2.hideNavigation;
-      if (hideNavigation || hideDisabled && !has_previous_page) return false;
-      return true;
-    }
-  }, {
-    key: "isNextPageVisible",
-    value: function isNextPageVisible(has_next_page) {
-      var _props3 = this.props,
-          hideDisabled = _props3.hideDisabled,
-          hideNavigation = _props3.hideNavigation;
-      if (hideNavigation || hideDisabled && !has_next_page) return false;
-      return true;
-    }
-  }, {
-    key: "isLastPageVisible",
-    value: function isLastPageVisible(has_next_page) {
-      var _props4 = this.props,
-          hideDisabled = _props4.hideDisabled,
-          hideNavigation = _props4.hideNavigation,
-          hideFirstLastPages = _props4.hideFirstLastPages;
-      if (hideFirstLastPages || hideDisabled && !has_next_page) return false;
-      return true;
-    }
-  }, {
-    key: "buildPages",
-    value: function buildPages() {
-      var pages = [];
-      var _props5 = this.props,
-          itemsCountPerPage = _props5.itemsCountPerPage,
-          pageRangeDisplayed = _props5.pageRangeDisplayed,
-          activePage = _props5.activePage,
-          prevPageText = _props5.prevPageText,
-          nextPageText = _props5.nextPageText,
-          firstPageText = _props5.firstPageText,
-          lastPageText = _props5.lastPageText,
-          totalItemsCount = _props5.totalItemsCount,
-          onChange = _props5.onChange,
-          activeClass = _props5.activeClass,
-          itemClass = _props5.itemClass,
-          itemClassFirst = _props5.itemClassFirst,
-          itemClassPrev = _props5.itemClassPrev,
-          itemClassNext = _props5.itemClassNext,
-          itemClassLast = _props5.itemClassLast,
-          activeLinkClass = _props5.activeLinkClass,
-          disabledClass = _props5.disabledClass,
-          hideDisabled = _props5.hideDisabled,
-          hideNavigation = _props5.hideNavigation,
-          linkClass = _props5.linkClass,
-          linkClassFirst = _props5.linkClassFirst,
-          linkClassPrev = _props5.linkClassPrev,
-          linkClassNext = _props5.linkClassNext,
-          linkClassLast = _props5.linkClassLast,
-          hideFirstLastPages = _props5.hideFirstLastPages,
-          getPageUrl = _props5.getPageUrl,
-          nextPageLink = _props5.nextPageLink,
-          backPageLink = _props5.backPageLink;
-      var paginationInfo = new _paginator.default(itemsCountPerPage, pageRangeDisplayed).build(totalItemsCount, activePage);
-
-      for (var i = paginationInfo.first_page; i <= paginationInfo.last_page; i++) {
-        pages.push(_react.default.createElement(_page.default, {
-          isActive: i === activePage,
-          key: i,
-          href: getPageUrl(i),
-          pageNumber: i,
-          pageText: i + "",
-          onClick: onChange,
-          itemClass: itemClass,
-          linkClass: linkClass,
-          activeClass: activeClass,
-          activeLinkClass: activeLinkClass,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 124
-          }
-        }));
-      }
-
-      this.isPrevPageVisible(paginationInfo.has_previous_page) && pages.unshift(_react.default.createElement(_page.default, {
-        key: "prev" + paginationInfo.previous_page,
-        pageNumber: paginationInfo.previous_page,
-        onClick: onChange,
-        pageText: prevPageText,
-        isDisabled: !paginationInfo.has_previous_page,
-        itemClass: (0, _classnames.default)(itemClass, itemClassPrev),
-        linkClass: (0, _classnames.default)(linkClass, linkClassPrev),
-        disabledClass: disabledClass,
-        href: backPageLink,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 141
-        }
-      })); // this.isFirstPageVisible(paginationInfo.has_previous_page) &&
-      // pages.unshift(
-      //   <Page
-      //     key={"first"}
-      //     pageNumber={1}
-      //     onClick={onChange}
-      //     pageText={firstPageText}
-      //     isDisabled={!paginationInfo.has_previous_page}
-      //     itemClass={cx(itemClass, itemClassFirst)}
-      //     linkClass={cx(linkClass, linkClassFirst)}
-      //     disabledClass={disabledClass}
-      //   />
-      // );
-
-      this.isNextPageVisible(paginationInfo.has_next_page) && pages.push(_react.default.createElement(_page.default, {
-        key: "next" + paginationInfo.next_page,
-        pageNumber: paginationInfo.next_page,
-        onClick: onChange,
-        pageText: nextPageText,
-        isDisabled: !paginationInfo.has_next_page,
-        itemClass: (0, _classnames.default)(itemClass, itemClassNext),
-        linkClass: (0, _classnames.default)(linkClass, linkClassNext),
-        disabledClass: disabledClass,
-        href: nextPageLink,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 170
-        }
-      })); // this.isLastPageVisible(paginationInfo.has_next_page) &&
-      // pages.push(
-      //   <Page
-      //     key={"last"}
-      //     pageNumber={paginationInfo.total_pages}
-      //     onClick={onChange}
-      //     pageText={lastPageText}
-      //     isDisabled={
-      //       paginationInfo.current_page === paginationInfo.total_pages
-      //     }
-      //     itemClass={cx(itemClass, itemClassLast)}
-      //     linkClass={cx(linkClass, linkClassLast)}
-      //     disabledClass={disabledClass}
-      //   />
-      // );
-
-      return pages;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var pages = this.buildPages();
-      return _react.default.createElement("ul", {
-        className: this.props.innerClass,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 204
-        }
-      }, pages);
-    }
-  }]);
-
-  return Pagination;
-}(_react.default.Component);
-
-exports.default = Pagination;
-Object.defineProperty(Pagination, "propTypes", {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  value: {
-    totalItemsCount: _propTypes.default.number.isRequired,
-    onChange: _propTypes.default.func.isRequired,
-    activePage: _propTypes.default.number,
-    itemsCountPerPage: _propTypes.default.number,
-    pageRangeDisplayed: _propTypes.default.number,
-    prevPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
-    nextPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
-    lastPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
-    firstPageText: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
-    disabledClass: _propTypes.default.string,
-    hideDisabled: _propTypes.default.bool,
-    hideNavigation: _propTypes.default.bool,
-    innerClass: _propTypes.default.string,
-    itemClass: _propTypes.default.string,
-    itemClassFirst: _propTypes.default.string,
-    itemClassPrev: _propTypes.default.string,
-    itemClassNext: _propTypes.default.string,
-    itemClassLast: _propTypes.default.string,
-    linkClass: _propTypes.default.string,
-    activeClass: _propTypes.default.string,
-    activeLinkClass: _propTypes.default.string,
-    linkClassFirst: _propTypes.default.string,
-    linkClassPrev: _propTypes.default.string,
-    linkClassNext: _propTypes.default.string,
-    linkClassLast: _propTypes.default.string,
-    hideFirstLastPages: _propTypes.default.bool,
-    getPageUrl: _propTypes.default.func
-  }
-});
-Object.defineProperty(Pagination, "defaultProps", {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  value: {
-    itemsCountPerPage: 10,
-    pageRangeDisplayed: 5,
-    activePage: 1,
-    prevPageText: "Trang trước",
-    firstPageText: "Trang đầu",
-    nextPageText: "Trang sau",
-    lastPageText: "Trang cuối",
-    innerClass: "pagination",
-    itemClass: undefined,
-    linkClass: undefined,
-    activeLinkClass: undefined,
-    hideFirstLastPages: false,
-    nextPageLink: "#",
-    backPageLink: "#",
-    getPageUrl: function getPageUrl(i) {
-      return "#";
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./components/sideBar.js":
+/***/ "./components/pro-detail.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2476,19 +2990,21 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/index.js"));
 
-var _helpers = __webpack_require__("./libraries/helpers.js");
-
 var _routes = __webpack_require__("./routes.js");
+
+var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
+
+var _helpers = __webpack_require__("./libraries/helpers.js");
 
 var _classnames = _interopRequireDefault(__webpack_require__("./node_modules/classnames/index.js"));
 
-var _jquery = _interopRequireDefault(__webpack_require__("./node_modules/jquery/dist/jquery.js"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/sideBar.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/pro-detail.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2498,465 +3014,331 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Sidebar =
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var _default =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Sidebar, _React$Component);
+  _inherits(_default, _React$Component);
 
-  function Sidebar(props) {
-    _classCallCheck(this, Sidebar);
+  function _default(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
+    _classCallCheck(this, _default);
+
+    _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        data: {},
+        provider: {}
+      }
+    });
+    return _this;
   }
 
-  _createClass(Sidebar, [{
+  _createClass(_default, [{
     key: "render",
     value: function render() {
       var _props = this.props,
-          filter = _props.filter,
-          color = _props.color,
-          page = _props.page;
-      return _react.default.createElement("div", {
-        className: "sidebar-service row bg-white",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        }
-      }, _react.default.createElement("div", {
-        className: "d-md-block px-2 w-100 sidebar-service-content",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15
-        }
-      }, this.props.test && _react.default.createElement("div", {
-        "class": "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 18
-        }
-      }, _react.default.createElement("div", {
-        "class": "mt-2 widget p-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19
-        }
-      }, _react.default.createElement("h3", {
-        "class": "font-15 mb-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 20
-        }
-      }, "Locale ", _react.default.createElement("span", {
-        "class": "fa fa-chevron-right d-block d-md-none",
-        "data-toggle": "collapse",
-        "data-target": "#demoTest",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 20
-        }
-      })), _react.default.createElement("ul", {
-        "class": "list-unstyled mb-0 collapse d-md-block",
-        id: "demoTest",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
-        }
-      }, _react.default.createElement("li", {
-        "class": "py-1 radio",
+          provider_id = _props.provider_id,
+          provider_slug = _props.provider_slug,
+          url = _props.url;
+      var pathname = url.pathname;
+      var itemStar = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "itemScope itemType='http://schema.org/AggregateRating'" : '';
+      var itemStarProp = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "<meta  itemProp=\"ratingValue\" content=".concat(this.props.data.provider.avg_rate, ">") : null;
+      return _react.default.createElement(_layout.default, _extends({}, this.props, {
+        navmenu: false,
+        container: false,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 22
         }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+      }), _react.default.createElement("div", {
+        className: "container-fluid px-4 bg-gray provider-main",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 23
         }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
+      }, _react.default.createElement("div", {
+        className: "bg-white",
+        itemScope: true,
+        itemType: "http://schema.org/localbusiness",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 24
         }
-      }, "H\xE0 N\u1ED9i", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 23
-        }
-      }, "10")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
+      }, _react.default.createElement("div", {
+        className: "border border-right-0 border-left-0 border-gray provider-details",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 25
         }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+      }, _react.default.createElement("div", {
+        className: "banner position-relative p-0",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 26
         }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
+      }, _react.default.createElement("img", {
+        src: this.props.data.cover && this.props.data.cover,
+        className: "w-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 27
         }
-      }, "TPHCM", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 26
-        }
-      }, "20")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
+      }), _react.default.createElement("div", {
+        className: "position-absolute gradient-animate w-100",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 28
         }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+      })), _react.default.createElement("div", {
+        className: "container position-relative",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 30
         }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        }
-      }, "\u0110\xE0 N\u1EAFng", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        }
-      }, "11")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
+      }, _react.default.createElement("div", {
+        className: "position-absolute provider-info",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 31
         }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.detail",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 32
-        }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        }
-      }, "Ninh B\xECnh", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        }
-      }, "12")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 34
         }
       }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+        className: "provider-name text-white font-weight-bold",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      }, (0, _helpers.activePath)(pathname, "/pro", {
+        strict: true
+      }) ? _react.default.createElement("h1", {
+        className: "font-22 mb-1",
+        itemProp: "name",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 35
         }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }, "H\xE0 T\u0129nh", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }, "21")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
+      }, this.props.data.provider && this.props.data.provider.name) : _react.default.createElement("p", {
+        className: "font-22 mb-1",
+        itemProp: "name",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 37
         }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        }
-      }, "H\xE0 Nam", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        }
-      }, "21")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 40
-        }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+      }, this.props.data.provider && this.props.data.provider.name))), _react.default.createElement("div", {
+        className: "star-rating " + itemStar,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 41
         }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 41
-        }
-      }, "B\u1EAFc Ninh", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 41
-        }
-      }, "23")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 43
-        }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+      }, this.props.data.provider && (0, _helpers.rating)(this.props.data.provider.avg_rate), itemStarProp, _react.default.createElement("span", {
+        className: "text-yellow font-weight-bold",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 44
         }
-      }, " ", _react.default.createElement("label", {
-        "class": "px-3",
+      }, " 0(0) \u0111\xE1nh gi\xE1) "), _react.default.createElement("a", {
+        className: "text-gray-200",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 45
         }
-      }, "Qu\xE3ng Ng\xE3i", _react.default.createElement("span", {
+      }, _react.default.createElement("span", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 45
         }
-      }, "44")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
+      }, " \u0110\xE1nh gi\xE1 chi ti\u1EBFt >")))), _react.default.createElement("div", {
+        className: "row position-relative justify-content-end",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 48
         }
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 47
-        }
-      }, " ", _react.default.createElement("label", {
-        "class": "px-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 47
-        }
-      }, "Nam \u0110\u1ECBnh", _react.default.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 47
-        }
-      }, "12")))), _react.default.createElement("li", {
-        "class": "py-1 radio",
+      }, _react.default.createElement("div", {
+        className: "position-absolute provider-avatar rounded-circle",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 49
         }
+      }, _react.default.createElement("img", {
+        itemProp: "image",
+        src: this.props.data.avatar,
+        className: "img-thumbnail rounded-circle h-100",
+        alt: "",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      })), _react.default.createElement("div", {
+        className: "col-md-9 col-lg-9 provider-nav",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        }
+      }, _react.default.createElement("ul", {
+        className: "nav nav-tabs border-0",
+        id: "myTab",
+        role: "tablist",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        }
+      }, _react.default.createElement("li", {
+        className: (0, _classnames.default)("nav-item position-relative", {
+          active: (0, _helpers.activePath)(pathname, "/pro", {
+            strict: true
+          })
+        }),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54
+        }
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.detail",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55
+        }
       }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray",
+        className: "nav-link border-0 font-14 font-weight-bold",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 55
         }
-      }, _react.default.createElement("label", {
-        "class": "px-3",
+      }, "T\u1ED5ng quan"))), _react.default.createElement("li", {
+        className: (0, _classnames.default)("nav-item position-relative", {
+          active: (0, _helpers.activePath)(pathname, ["/pro/project", '/project'], {
+            strict: true
+          })
+        }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 57
         }
-      }, "Th\xE1i B\xECnh", _react.default.createElement("span", {
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.project",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 58
         }
-      }, "12")))), _react.default.createElement("span", {
-        "class": "more loadmore d-none d-md-block",
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 58
         }
-      }, "Xem th\xEAm ", _react.default.createElement("i", {
-        "class": "la la-arrow-circle-right",
+      }, "D\u1EF1 \xE1n"))), _react.default.createElement("li", {
+        className: (0, _classnames.default)("nav-item position-relative", {
+          active: (0, _helpers.activePath)(pathname, "/pro/review", {
+            strict: true
+          })
+        }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 60
         }
-      }))))), filter && filter.map(function (value, index) {
-        return value.data.length != 0 && _react.default.createElement("div", {
-          className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 60
-          }
-        }, _react.default.createElement("div", {
-          className: "mt-2 widget p-3",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 61
-          }
-        }, _react.default.createElement("h3", {
-          className: "font-15 mb-3",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 62
-          }
-        }, value.textName, _react.default.createElement("span", {
-          className: "fa fa-chevron-right d-block d-md-none",
-          "data-toggle": "collapse",
-          "data-target": "#demo" + index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 62
-          }
-        })), _react.default.createElement("ul", {
-          className: "list-unstyled mb-0 collapse d-md-block",
-          id: "demo" + index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 64
-          }
-        }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
-          return _react.default.createElement("li", {
-            className: "py-1 radio",
-            key: index,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 67
-            }
-          }, _react.default.createElement(_routes.Link, {
-            prefetch: true,
-            route: value.uri,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          }, _react.default.createElement("a", {
-            className: "font-13 font-weight-light text-gray",
-            rel: value.is_seo == 0 ? "nofollow" : "dofollow",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 69
-            }
-          }, _react.default.createElement("label", {
-            className: (0, _classnames.default)('pr-3', {
-              active: page.currentsId.includes(value.original)
-            }),
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 70
-            }
-          }, value.name_tag, _react.default.createElement("span", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 71
-            }
-          }, value.total_doc)))));
-        }), _react.default.createElement("span", {
-          className: "more loadmore d-none d-md-block",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 77
-          }
-        }, "Xem th\xEAm ", _react.default.createElement("i", {
-          className: "la la-arrow-circle-right",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 77
-          }
-        })))));
-      }), _react.default.createElement("div", {
-        className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: "pro.review",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
+          lineNumber: 61
         }
-      }, color && _react.default.createElement("div", {
-        className: "mt-2 widget p-3",
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 61
         }
-      }, _react.default.createElement("h3", {
-        className: "font-15",
+      }, "Nh\u1EADn x\xE9t"))), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 63
         }
-      }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
-        className: "expand-list",
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 64
         }
-      }), _react.default.createElement("div", {
-        className: "service-color mt-3",
+      }, "S\u1ED5 tay \xFD t\u01B0\u1EDFng")), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90
+          lineNumber: 66
         }
-      }, (0, _helpers.mapObject)(color, function (index, value) {
-        return _react.default.createElement("a", {
-          href: value.uri,
-          className: "text-dark border border-gray",
-          key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 93
-          }
-        }, _react.default.createElement("span", {
-          className: "float-left " + value.class,
-          "data-toggle": "tooltip",
-          title: value.name_tag,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 93
-          }
-        }));
-      }))))));
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67
+        }
+      }, "H\u1ECFi \u0111\xE1p")), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69
+        }
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 70
+        }
+      }, "Ho\u1EA1t \u0111\u1ED9ng"))))))), _react.default.createElement("div", {
+        className: "w-100 py-3 provider",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        }
+      }, _react.default.createElement(_react.default.Fragment, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        }
+      }, this.props.children)))));
     }
   }]);
 
-  return Sidebar;
+  return _default;
 }(_react.default.Component);
 
-exports.default = Sidebar;
+exports.default = _default;
 
 /***/ }),
 
@@ -3059,6 +3441,2073 @@ function ucfirst(str) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./node_modules/core-js/library/fn/json/stringify.js");
+
+/***/ }),
+
+/***/ "./node_modules/assert/assert.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
+// original notice:
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+function compare(a, b) {
+  if (a === b) {
+    return 0;
+  }
+
+  var x = a.length;
+  var y = b.length;
+
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i];
+      y = b[i];
+      break;
+    }
+  }
+
+  if (x < y) {
+    return -1;
+  }
+  if (y < x) {
+    return 1;
+  }
+  return 0;
+}
+function isBuffer(b) {
+  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
+    return global.Buffer.isBuffer(b);
+  }
+  return !!(b != null && b._isBuffer);
+}
+
+// based on node assert, original notice:
+
+// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
+//
+// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
+//
+// Originally from narwhal.js (http://narwhaljs.org)
+// Copyright (c) 2009 Thomas Robinson <280north.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the 'Software'), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = __webpack_require__("./node_modules/util/util.js");
+var hasOwn = Object.prototype.hasOwnProperty;
+var pSlice = Array.prototype.slice;
+var functionsHaveNames = (function () {
+  return function foo() {}.name === 'foo';
+}());
+function pToString (obj) {
+  return Object.prototype.toString.call(obj);
+}
+function isView(arrbuf) {
+  if (isBuffer(arrbuf)) {
+    return false;
+  }
+  if (typeof global.ArrayBuffer !== 'function') {
+    return false;
+  }
+  if (typeof ArrayBuffer.isView === 'function') {
+    return ArrayBuffer.isView(arrbuf);
+  }
+  if (!arrbuf) {
+    return false;
+  }
+  if (arrbuf instanceof DataView) {
+    return true;
+  }
+  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
+    return true;
+  }
+  return false;
+}
+// 1. The assert module provides functions that throw
+// AssertionError's when particular conditions are not met. The
+// assert module must conform to the following interface.
+
+var assert = module.exports = ok;
+
+// 2. The AssertionError is defined in assert.
+// new assert.AssertionError({ message: message,
+//                             actual: actual,
+//                             expected: expected })
+
+var regex = /\s*function\s+([^\(\s]*)\s*/;
+// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
+function getName(func) {
+  if (!util.isFunction(func)) {
+    return;
+  }
+  if (functionsHaveNames) {
+    return func.name;
+  }
+  var str = func.toString();
+  var match = str.match(regex);
+  return match && match[1];
+}
+assert.AssertionError = function AssertionError(options) {
+  this.name = 'AssertionError';
+  this.actual = options.actual;
+  this.expected = options.expected;
+  this.operator = options.operator;
+  if (options.message) {
+    this.message = options.message;
+    this.generatedMessage = false;
+  } else {
+    this.message = getMessage(this);
+    this.generatedMessage = true;
+  }
+  var stackStartFunction = options.stackStartFunction || fail;
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, stackStartFunction);
+  } else {
+    // non v8 browsers so we can have a stacktrace
+    var err = new Error();
+    if (err.stack) {
+      var out = err.stack;
+
+      // try to strip useless frames
+      var fn_name = getName(stackStartFunction);
+      var idx = out.indexOf('\n' + fn_name);
+      if (idx >= 0) {
+        // once we have located the function frame
+        // we need to strip out everything before it (and its line)
+        var next_line = out.indexOf('\n', idx + 1);
+        out = out.substring(next_line + 1);
+      }
+
+      this.stack = out;
+    }
+  }
+};
+
+// assert.AssertionError instanceof Error
+util.inherits(assert.AssertionError, Error);
+
+function truncate(s, n) {
+  if (typeof s === 'string') {
+    return s.length < n ? s : s.slice(0, n);
+  } else {
+    return s;
+  }
+}
+function inspect(something) {
+  if (functionsHaveNames || !util.isFunction(something)) {
+    return util.inspect(something);
+  }
+  var rawname = getName(something);
+  var name = rawname ? ': ' + rawname : '';
+  return '[Function' +  name + ']';
+}
+function getMessage(self) {
+  return truncate(inspect(self.actual), 128) + ' ' +
+         self.operator + ' ' +
+         truncate(inspect(self.expected), 128);
+}
+
+// At present only the three keys mentioned above are used and
+// understood by the spec. Implementations or sub modules can pass
+// other keys to the AssertionError's constructor - they will be
+// ignored.
+
+// 3. All of the following functions must throw an AssertionError
+// when a corresponding condition is not met, with a message that
+// may be undefined if not provided.  All assertion methods provide
+// both the actual and expected values to the assertion error for
+// display purposes.
+
+function fail(actual, expected, message, operator, stackStartFunction) {
+  throw new assert.AssertionError({
+    message: message,
+    actual: actual,
+    expected: expected,
+    operator: operator,
+    stackStartFunction: stackStartFunction
+  });
+}
+
+// EXTENSION! allows for well behaved errors defined elsewhere.
+assert.fail = fail;
+
+// 4. Pure assertion tests whether a value is truthy, as determined
+// by !!guard.
+// assert.ok(guard, message_opt);
+// This statement is equivalent to assert.equal(true, !!guard,
+// message_opt);. To test strictly for the value true, use
+// assert.strictEqual(true, guard, message_opt);.
+
+function ok(value, message) {
+  if (!value) fail(value, true, message, '==', assert.ok);
+}
+assert.ok = ok;
+
+// 5. The equality assertion tests shallow, coercive equality with
+// ==.
+// assert.equal(actual, expected, message_opt);
+
+assert.equal = function equal(actual, expected, message) {
+  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
+};
+
+// 6. The non-equality assertion tests for whether two objects are not equal
+// with != assert.notEqual(actual, expected, message_opt);
+
+assert.notEqual = function notEqual(actual, expected, message) {
+  if (actual == expected) {
+    fail(actual, expected, message, '!=', assert.notEqual);
+  }
+};
+
+// 7. The equivalence assertion tests a deep equality relation.
+// assert.deepEqual(actual, expected, message_opt);
+
+assert.deepEqual = function deepEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
+  }
+};
+
+assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
+  }
+};
+
+function _deepEqual(actual, expected, strict, memos) {
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+  } else if (isBuffer(actual) && isBuffer(expected)) {
+    return compare(actual, expected) === 0;
+
+  // 7.2. If the expected value is a Date object, the actual value is
+  // equivalent if it is also a Date object that refers to the same time.
+  } else if (util.isDate(actual) && util.isDate(expected)) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3 If the expected value is a RegExp object, the actual value is
+  // equivalent if it is also a RegExp object with the same source and
+  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
+  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
+    return actual.source === expected.source &&
+           actual.global === expected.global &&
+           actual.multiline === expected.multiline &&
+           actual.lastIndex === expected.lastIndex &&
+           actual.ignoreCase === expected.ignoreCase;
+
+  // 7.4. Other pairs that do not both pass typeof value == 'object',
+  // equivalence is determined by ==.
+  } else if ((actual === null || typeof actual !== 'object') &&
+             (expected === null || typeof expected !== 'object')) {
+    return strict ? actual === expected : actual == expected;
+
+  // If both values are instances of typed arrays, wrap their underlying
+  // ArrayBuffers in a Buffer each to increase performance
+  // This optimization requires the arrays to have the same type as checked by
+  // Object.prototype.toString (aka pToString). Never perform binary
+  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
+  // bit patterns are not identical.
+  } else if (isView(actual) && isView(expected) &&
+             pToString(actual) === pToString(expected) &&
+             !(actual instanceof Float32Array ||
+               actual instanceof Float64Array)) {
+    return compare(new Uint8Array(actual.buffer),
+                   new Uint8Array(expected.buffer)) === 0;
+
+  // 7.5 For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical 'prototype' property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else if (isBuffer(actual) !== isBuffer(expected)) {
+    return false;
+  } else {
+    memos = memos || {actual: [], expected: []};
+
+    var actualIndex = memos.actual.indexOf(actual);
+    if (actualIndex !== -1) {
+      if (actualIndex === memos.expected.indexOf(expected)) {
+        return true;
+      }
+    }
+
+    memos.actual.push(actual);
+    memos.expected.push(expected);
+
+    return objEquiv(actual, expected, strict, memos);
+  }
+}
+
+function isArguments(object) {
+  return Object.prototype.toString.call(object) == '[object Arguments]';
+}
+
+function objEquiv(a, b, strict, actualVisitedObjects) {
+  if (a === null || a === undefined || b === null || b === undefined)
+    return false;
+  // if one is a primitive, the other must be same
+  if (util.isPrimitive(a) || util.isPrimitive(b))
+    return a === b;
+  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
+    return false;
+  var aIsArgs = isArguments(a);
+  var bIsArgs = isArguments(b);
+  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
+    return false;
+  if (aIsArgs) {
+    a = pSlice.call(a);
+    b = pSlice.call(b);
+    return _deepEqual(a, b, strict);
+  }
+  var ka = objectKeys(a);
+  var kb = objectKeys(b);
+  var key, i;
+  // having the same number of owned properties (keys incorporates
+  // hasOwnProperty)
+  if (ka.length !== kb.length)
+    return false;
+  //the same set of keys (although not necessarily the same order),
+  ka.sort();
+  kb.sort();
+  //~~~cheap key test
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] !== kb[i])
+      return false;
+  }
+  //equivalent values for every corresponding key, and
+  //~~~possibly expensive deep test
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
+      return false;
+  }
+  return true;
+}
+
+// 8. The non-equivalence assertion tests for any deep inequality.
+// assert.notDeepEqual(actual, expected, message_opt);
+
+assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
+  }
+};
+
+assert.notDeepStrictEqual = notDeepStrictEqual;
+function notDeepStrictEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
+  }
+}
+
+
+// 9. The strict equality assertion tests strict equality, as determined by ===.
+// assert.strictEqual(actual, expected, message_opt);
+
+assert.strictEqual = function strictEqual(actual, expected, message) {
+  if (actual !== expected) {
+    fail(actual, expected, message, '===', assert.strictEqual);
+  }
+};
+
+// 10. The strict non-equality assertion tests for strict inequality, as
+// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
+
+assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
+  if (actual === expected) {
+    fail(actual, expected, message, '!==', assert.notStrictEqual);
+  }
+};
+
+function expectedException(actual, expected) {
+  if (!actual || !expected) {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
+    return expected.test(actual);
+  }
+
+  try {
+    if (actual instanceof expected) {
+      return true;
+    }
+  } catch (e) {
+    // Ignore.  The instanceof check doesn't work for arrow functions.
+  }
+
+  if (Error.isPrototypeOf(expected)) {
+    return false;
+  }
+
+  return expected.call({}, actual) === true;
+}
+
+function _tryBlock(block) {
+  var error;
+  try {
+    block();
+  } catch (e) {
+    error = e;
+  }
+  return error;
+}
+
+function _throws(shouldThrow, block, expected, message) {
+  var actual;
+
+  if (typeof block !== 'function') {
+    throw new TypeError('"block" argument must be a function');
+  }
+
+  if (typeof expected === 'string') {
+    message = expected;
+    expected = null;
+  }
+
+  actual = _tryBlock(block);
+
+  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
+            (message ? ' ' + message : '.');
+
+  if (shouldThrow && !actual) {
+    fail(actual, expected, 'Missing expected exception' + message);
+  }
+
+  var userProvidedMessage = typeof message === 'string';
+  var isUnwantedException = !shouldThrow && util.isError(actual);
+  var isUnexpectedException = !shouldThrow && actual && !expected;
+
+  if ((isUnwantedException &&
+      userProvidedMessage &&
+      expectedException(actual, expected)) ||
+      isUnexpectedException) {
+    fail(actual, expected, 'Got unwanted exception' + message);
+  }
+
+  if ((shouldThrow && actual && expected &&
+      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
+    throw actual;
+  }
+}
+
+// 11. Expected to throw an error:
+// assert.throws(block, Error_opt, message_opt);
+
+assert.throws = function(block, /*optional*/error, /*optional*/message) {
+  _throws(true, block, error, message);
+};
+
+// EXTENSION! This is annoying to write outside this module.
+assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
+  _throws(false, block, error, message);
+};
+
+assert.ifError = function(err) { if (err) throw err; };
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    if (hasOwn.call(obj, key)) keys.push(key);
+  }
+  return keys;
+};
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/next/node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/axios/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./node_modules/axios/lib/axios.js");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/adapters/xhr.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+var settle = __webpack_require__("./node_modules/axios/lib/core/settle.js");
+var buildURL = __webpack_require__("./node_modules/axios/lib/helpers/buildURL.js");
+var parseHeaders = __webpack_require__("./node_modules/axios/lib/helpers/parseHeaders.js");
+var isURLSameOrigin = __webpack_require__("./node_modules/axios/lib/helpers/isURLSameOrigin.js");
+var createError = __webpack_require__("./node_modules/axios/lib/core/createError.js");
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__("./node_modules/axios/lib/helpers/btoa.js");
+
+module.exports = function xhrAdapter(config) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    var requestData = config.data;
+    var requestHeaders = config.headers;
+
+    if (utils.isFormData(requestData)) {
+      delete requestHeaders['Content-Type']; // Let the browser set it
+    }
+
+    var request = new XMLHttpRequest();
+    var loadEvent = 'onreadystatechange';
+    var xDomain = false;
+
+    // For IE 8/9 CORS support
+    // Only supports POST and GET calls and doesn't returns the response headers.
+    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
+    if ("development" !== 'test' &&
+        typeof window !== 'undefined' &&
+        window.XDomainRequest && !('withCredentials' in request) &&
+        !isURLSameOrigin(config.url)) {
+      request = new window.XDomainRequest();
+      loadEvent = 'onload';
+      xDomain = true;
+      request.onprogress = function handleProgress() {};
+      request.ontimeout = function handleTimeout() {};
+    }
+
+    // HTTP basic authentication
+    if (config.auth) {
+      var username = config.auth.username || '';
+      var password = config.auth.password || '';
+      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+    }
+
+    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+
+    // Set the request timeout in MS
+    request.timeout = config.timeout;
+
+    // Listen for ready state
+    request[loadEvent] = function handleLoad() {
+      if (!request || (request.readyState !== 4 && !xDomain)) {
+        return;
+      }
+
+      // The request errored out and we didn't get a response, this will be
+      // handled by onerror instead
+      // With one exception: request that using file: protocol, most browsers
+      // will return status as 0 even though it's a successful request
+      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+        return;
+      }
+
+      // Prepare the response
+      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+      var response = {
+        data: responseData,
+        // IE sends 1223 instead of 204 (https://github.com/axios/axios/issues/201)
+        status: request.status === 1223 ? 204 : request.status,
+        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+        headers: responseHeaders,
+        config: config,
+        request: request
+      };
+
+      settle(resolve, reject, response);
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle low level network errors
+    request.onerror = function handleError() {
+      // Real errors are hidden from us by the browser
+      // onerror should only fire if it's a network error
+      reject(createError('Network Error', config, null, request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle timeout
+    request.ontimeout = function handleTimeout() {
+      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED',
+        request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Add xsrf header
+    // This is only done if running in a standard browser environment.
+    // Specifically not if we're in a web worker, or react-native.
+    if (utils.isStandardBrowserEnv()) {
+      var cookies = __webpack_require__("./node_modules/axios/lib/helpers/cookies.js");
+
+      // Add xsrf header
+      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+          cookies.read(config.xsrfCookieName) :
+          undefined;
+
+      if (xsrfValue) {
+        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+      }
+    }
+
+    // Add headers to the request
+    if ('setRequestHeader' in request) {
+      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+          // Remove Content-Type if data is undefined
+          delete requestHeaders[key];
+        } else {
+          // Otherwise add header to the request
+          request.setRequestHeader(key, val);
+        }
+      });
+    }
+
+    // Add withCredentials to request if needed
+    if (config.withCredentials) {
+      request.withCredentials = true;
+    }
+
+    // Add responseType to request if needed
+    if (config.responseType) {
+      try {
+        request.responseType = config.responseType;
+      } catch (e) {
+        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
+        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
+        if (config.responseType !== 'json') {
+          throw e;
+        }
+      }
+    }
+
+    // Handle progress if needed
+    if (typeof config.onDownloadProgress === 'function') {
+      request.addEventListener('progress', config.onDownloadProgress);
+    }
+
+    // Not all browsers support upload events
+    if (typeof config.onUploadProgress === 'function' && request.upload) {
+      request.upload.addEventListener('progress', config.onUploadProgress);
+    }
+
+    if (config.cancelToken) {
+      // Handle cancellation
+      config.cancelToken.promise.then(function onCanceled(cancel) {
+        if (!request) {
+          return;
+        }
+
+        request.abort();
+        reject(cancel);
+        // Clean up request
+        request = null;
+      });
+    }
+
+    if (requestData === undefined) {
+      requestData = null;
+    }
+
+    // Send the request
+    request.send(requestData);
+  });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/axios.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+var bind = __webpack_require__("./node_modules/axios/lib/helpers/bind.js");
+var Axios = __webpack_require__("./node_modules/axios/lib/core/Axios.js");
+var defaults = __webpack_require__("./node_modules/axios/lib/defaults.js");
+
+/**
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ * @return {Axios} A new instance of Axios
+ */
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  // Copy axios.prototype to instance
+  utils.extend(instance, Axios.prototype, context);
+
+  // Copy context to instance
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(utils.merge(defaults, instanceConfig));
+};
+
+// Expose Cancel & CancelToken
+axios.Cancel = __webpack_require__("./node_modules/axios/lib/cancel/Cancel.js");
+axios.CancelToken = __webpack_require__("./node_modules/axios/lib/cancel/CancelToken.js");
+axios.isCancel = __webpack_require__("./node_modules/axios/lib/cancel/isCancel.js");
+
+// Expose all/spread
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = __webpack_require__("./node_modules/axios/lib/helpers/spread.js");
+
+module.exports = axios;
+
+// Allow use of default import syntax in TypeScript
+module.exports.default = axios;
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/cancel/Cancel.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A `Cancel` is an object that is thrown when an operation is canceled.
+ *
+ * @class
+ * @param {string=} message The message.
+ */
+function Cancel(message) {
+  this.message = message;
+}
+
+Cancel.prototype.toString = function toString() {
+  return 'Cancel' + (this.message ? ': ' + this.message : '');
+};
+
+Cancel.prototype.__CANCEL__ = true;
+
+module.exports = Cancel;
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/cancel/CancelToken.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Cancel = __webpack_require__("./node_modules/axios/lib/cancel/Cancel.js");
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/cancel/isCancel.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function isCancel(value) {
+  return !!(value && value.__CANCEL__);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/Axios.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var defaults = __webpack_require__("./node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+var InterceptorManager = __webpack_require__("./node_modules/axios/lib/core/InterceptorManager.js");
+var dispatchRequest = __webpack_require__("./node_modules/axios/lib/core/dispatchRequest.js");
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, {method: 'get'}, this.defaults, config);
+  config.method = config.method.toLowerCase();
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/InterceptorManager.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+/**
+ * Add a new interceptor to the stack
+ *
+ * @param {Function} fulfilled The function to handle `then` for a `Promise`
+ * @param {Function} rejected The function to handle `reject` for a `Promise`
+ *
+ * @return {Number} An ID used to remove interceptor later
+ */
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+/**
+ * Remove an interceptor from the stack
+ *
+ * @param {Number} id The ID that was returned by `use`
+ */
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+/**
+ * Iterate over all the registered interceptors
+ *
+ * This method is particularly useful for skipping over any
+ * interceptors that may have become `null` calling `eject`.
+ *
+ * @param {Function} fn The function to call for each interceptor
+ */
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/createError.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var enhanceError = __webpack_require__("./node_modules/axios/lib/core/enhanceError.js");
+
+/**
+ * Create an Error with the specified message, config, error code, request and response.
+ *
+ * @param {string} message The error message.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The created error.
+ */
+module.exports = function createError(message, config, code, request, response) {
+  var error = new Error(message);
+  return enhanceError(error, config, code, request, response);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/dispatchRequest.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+var transformData = __webpack_require__("./node_modules/axios/lib/core/transformData.js");
+var isCancel = __webpack_require__("./node_modules/axios/lib/cancel/isCancel.js");
+var defaults = __webpack_require__("./node_modules/axios/lib/defaults.js");
+var isAbsoluteURL = __webpack_require__("./node_modules/axios/lib/helpers/isAbsoluteURL.js");
+var combineURLs = __webpack_require__("./node_modules/axios/lib/helpers/combineURLs.js");
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Support baseURL config
+  if (config.baseURL && !isAbsoluteURL(config.url)) {
+    config.url = combineURLs(config.baseURL, config.url);
+  }
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData(
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers || {}
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData(
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData(
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/enhanceError.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+  error.request = request;
+  error.response = response;
+  return error;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/settle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var createError = __webpack_require__("./node_modules/axios/lib/core/createError.js");
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/transformData.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+/**
+ * Transform the data for a request or a response
+ *
+ * @param {Object|String} data The data to be transformed
+ * @param {Array} headers The headers for the request or response
+ * @param {Array|Function} fns A single function or Array of functions
+ * @returns {*} The resulting transformed data
+ */
+module.exports = function transformData(data, headers, fns) {
+  /*eslint no-param-reassign:0*/
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/defaults.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+var normalizeHeaderName = __webpack_require__("./node_modules/axios/lib/helpers/normalizeHeaderName.js");
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__("./node_modules/axios/lib/adapters/xhr.js");
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__("./node_modules/axios/lib/adapters/xhr.js");
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/bind.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function bind(fn, thisArg) {
+  return function wrap() {
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+    return fn.apply(thisArg, args);
+  };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/btoa.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+function E() {
+  this.message = 'String contains an invalid character';
+}
+E.prototype = new Error;
+E.prototype.code = 5;
+E.prototype.name = 'InvalidCharacterError';
+
+function btoa(input) {
+  var str = String(input);
+  var output = '';
+  for (
+    // initialize result and counter
+    var block, charCode, idx = 0, map = chars;
+    // if the next str index does not exist:
+    //   change the mapping table to "="
+    //   check if d has no fractional digits
+    str.charAt(idx | 0) || (map = '=', idx % 1);
+    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+  ) {
+    charCode = str.charCodeAt(idx += 3 / 4);
+    if (charCode > 0xFF) {
+      throw new E();
+    }
+    block = block << 8 | charCode;
+  }
+  return output;
+}
+
+module.exports = btoa;
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/buildURL.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      } else {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/combineURLs.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/cookies.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs support document.cookie
+  (function standardBrowserEnv() {
+    return {
+      write: function write(name, value, expires, path, domain, secure) {
+        var cookie = [];
+        cookie.push(name + '=' + encodeURIComponent(value));
+
+        if (utils.isNumber(expires)) {
+          cookie.push('expires=' + new Date(expires).toGMTString());
+        }
+
+        if (utils.isString(path)) {
+          cookie.push('path=' + path);
+        }
+
+        if (utils.isString(domain)) {
+          cookie.push('domain=' + domain);
+        }
+
+        if (secure === true) {
+          cookie.push('secure');
+        }
+
+        document.cookie = cookie.join('; ');
+      },
+
+      read: function read(name) {
+        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+        return (match ? decodeURIComponent(match[3]) : null);
+      },
+
+      remove: function remove(name) {
+        this.write(name, '', Date.now() - 86400000);
+      }
+    };
+  })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return {
+      write: function write() {},
+      read: function read() { return null; },
+      remove: function remove() {}
+    };
+  })()
+);
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the specified URL is absolute
+ *
+ * @param {string} url The URL to test
+ * @returns {boolean} True if the specified URL is absolute, otherwise false
+ */
+module.exports = function isAbsoluteURL(url) {
+  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+  // by any combination of letters, digits, plus, period, or hyphen.
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs have full support of the APIs needed to test
+  // whether the request URL is of the same origin as current location.
+  (function standardBrowserEnv() {
+    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var urlParsingNode = document.createElement('a');
+    var originURL;
+
+    /**
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
+    function resolveURL(url) {
+      var href = url;
+
+      if (msie) {
+        // IE needs attribute set twice to normalize properties
+        urlParsingNode.setAttribute('href', href);
+        href = urlParsingNode.href;
+      }
+
+      urlParsingNode.setAttribute('href', href);
+
+      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+      return {
+        href: urlParsingNode.href,
+        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+        host: urlParsingNode.host,
+        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+        hostname: urlParsingNode.hostname,
+        port: urlParsingNode.port,
+        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+                  urlParsingNode.pathname :
+                  '/' + urlParsingNode.pathname
+      };
+    }
+
+    originURL = resolveURL(window.location.href);
+
+    /**
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
+    return function isURLSameOrigin(requestURL) {
+      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+      return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+    };
+  })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return function isURLSameOrigin() {
+      return true;
+    };
+  })()
+);
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/parseHeaders.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
+
+// Headers whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+var ignoreDuplicateOf = [
+  'age', 'authorization', 'content-length', 'content-type', 'etag',
+  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+  'referer', 'retry-after', 'user-agent'
+];
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
+        return;
+      }
+      if (key === 'set-cookie') {
+        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
+      } else {
+        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+      }
+    }
+  });
+
+  return parsed;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/spread.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/utils.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bind = __webpack_require__("./node_modules/axios/lib/helpers/bind.js");
+var isBuffer = __webpack_require__("./node_modules/is-buffer/index.js");
+
+/*global toString:true*/
+
+// utils is a library of generic helper functions non-specific to axios
+
+var toString = Object.prototype.toString;
+
+/**
+ * Determine if a value is an Array
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Array, otherwise false
+ */
+function isArray(val) {
+  return toString.call(val) === '[object Array]';
+}
+
+/**
+ * Determine if a value is an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+ */
+function isArrayBuffer(val) {
+  return toString.call(val) === '[object ArrayBuffer]';
+}
+
+/**
+ * Determine if a value is a FormData
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an FormData, otherwise false
+ */
+function isFormData(val) {
+  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+}
+
+/**
+ * Determine if a value is a view on an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+ */
+function isArrayBufferView(val) {
+  var result;
+  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+    result = ArrayBuffer.isView(val);
+  } else {
+    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+  }
+  return result;
+}
+
+/**
+ * Determine if a value is a String
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a String, otherwise false
+ */
+function isString(val) {
+  return typeof val === 'string';
+}
+
+/**
+ * Determine if a value is a Number
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Number, otherwise false
+ */
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+/**
+ * Determine if a value is undefined
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if the value is undefined, otherwise false
+ */
+function isUndefined(val) {
+  return typeof val === 'undefined';
+}
+
+/**
+ * Determine if a value is an Object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Object, otherwise false
+ */
+function isObject(val) {
+  return val !== null && typeof val === 'object';
+}
+
+/**
+ * Determine if a value is a Date
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Date, otherwise false
+ */
+function isDate(val) {
+  return toString.call(val) === '[object Date]';
+}
+
+/**
+ * Determine if a value is a File
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a File, otherwise false
+ */
+function isFile(val) {
+  return toString.call(val) === '[object File]';
+}
+
+/**
+ * Determine if a value is a Blob
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Blob, otherwise false
+ */
+function isBlob(val) {
+  return toString.call(val) === '[object Blob]';
+}
+
+/**
+ * Determine if a value is a Function
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Function, otherwise false
+ */
+function isFunction(val) {
+  return toString.call(val) === '[object Function]';
+}
+
+/**
+ * Determine if a value is a Stream
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Stream, otherwise false
+ */
+function isStream(val) {
+  return isObject(val) && isFunction(val.pipe);
+}
+
+/**
+ * Determine if a value is a URLSearchParams object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+ */
+function isURLSearchParams(val) {
+  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+}
+
+/**
+ * Trim excess whitespace off the beginning and end of a string
+ *
+ * @param {String} str The String to trim
+ * @returns {String} The String freed of excess whitespace
+ */
+function trim(str) {
+  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+}
+
+/**
+ * Determine if we're running in a standard browser environment
+ *
+ * This allows axios to run in a web worker, and react-native.
+ * Both environments support XMLHttpRequest, but not fully standard globals.
+ *
+ * web workers:
+ *  typeof window -> undefined
+ *  typeof document -> undefined
+ *
+ * react-native:
+ *  navigator.product -> 'ReactNative'
+ */
+function isStandardBrowserEnv() {
+  if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+    return false;
+  }
+  return (
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined'
+  );
+}
+
+/**
+ * Iterate over an Array or an Object invoking a function for each item.
+ *
+ * If `obj` is an Array callback will be called passing
+ * the value, index, and complete array for each item.
+ *
+ * If 'obj' is an Object callback will be called passing
+ * the value, key, and complete object for each property.
+ *
+ * @param {Object|Array} obj The object to iterate
+ * @param {Function} fn The callback to invoke for each item
+ */
+function forEach(obj, fn) {
+  // Don't bother if no value provided
+  if (obj === null || typeof obj === 'undefined') {
+    return;
+  }
+
+  // Force an array if not already something iterable
+  if (typeof obj !== 'object') {
+    /*eslint no-param-reassign:0*/
+    obj = [obj];
+  }
+
+  if (isArray(obj)) {
+    // Iterate over array values
+    for (var i = 0, l = obj.length; i < l; i++) {
+      fn.call(null, obj[i], i, obj);
+    }
+  } else {
+    // Iterate over object keys
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        fn.call(null, obj[key], key, obj);
+      }
+    }
+  }
+}
+
+/**
+ * Accepts varargs expecting each argument to be an object, then
+ * immutably merges the properties of each object and returns result.
+ *
+ * When multiple objects contain the same key the later object in
+ * the arguments list will take precedence.
+ *
+ * Example:
+ *
+ * ```js
+ * var result = merge({foo: 123}, {foo: 456});
+ * console.log(result.foo); // outputs 456
+ * ```
+ *
+ * @param {Object} obj1 Object to merge
+ * @returns {Object} Result of all merge properties
+ */
+function merge(/* obj1, obj2, obj3, ... */) {
+  var result = {};
+  function assignValue(val, key) {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
+      result[key] = merge(result[key], val);
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+/**
+ * Extends object a by mutably adding to it the properties of object b.
+ *
+ * @param {Object} a The object to be extended
+ * @param {Object} b The object to copy properties from
+ * @param {Object} thisArg The object to bind function to
+ * @return {Object} The resulting value of object a
+ */
+function extend(a, b, thisArg) {
+  forEach(b, function assignValue(val, key) {
+    if (thisArg && typeof val === 'function') {
+      a[key] = bind(val, thisArg);
+    } else {
+      a[key] = val;
+    }
+  });
+  return a;
+}
+
+module.exports = {
+  isArray: isArray,
+  isArrayBuffer: isArrayBuffer,
+  isBuffer: isBuffer,
+  isFormData: isFormData,
+  isArrayBufferView: isArrayBufferView,
+  isString: isString,
+  isNumber: isNumber,
+  isObject: isObject,
+  isUndefined: isUndefined,
+  isDate: isDate,
+  isFile: isFile,
+  isBlob: isBlob,
+  isFunction: isFunction,
+  isStream: isStream,
+  isURLSearchParams: isURLSearchParams,
+  isStandardBrowserEnv: isStandardBrowserEnv,
+  forEach: forEach,
+  merge: merge,
+  extend: extend,
+  trim: trim
+};
+
 
 /***/ }),
 
@@ -3903,6 +6352,64 @@ module.exports = function hasSymbols() {
 var bind = __webpack_require__("./node_modules/function-bind/index.js");
 
 module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
+
+
+/***/ }),
+
+/***/ "./node_modules/inherits/inherits_browser.js":
+/***/ (function(module, exports) {
+
+if (typeof Object.create === 'function') {
+  // implementation from standard node.js 'util' module
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+  };
+} else {
+  // old school shim for old browsers
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/is-buffer/index.js":
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
 
 
 /***/ }),
@@ -14709,7 +17216,7 @@ var Routes =
 /*#__PURE__*/
 function () {
   function Routes() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    var _ref = arguments.length > 0 && undefined !== arguments[0] ? arguments[0] : {},
         _ref$Link = _ref.Link,
         Link = _ref$Link === void 0 ? _link.default : _ref$Link,
         _ref$Router = _ref.Router,
@@ -14924,14 +17431,14 @@ function () {
       var _this4 = this;
 
       return values.reduce(function (params, val, i) {
-        if (val === undefined) return params;
+        if (undefined === val) return params;
         return Object.assign(params, _defineProperty({}, _this4.keys[i].name, decodeURIComponent(val)));
       }, {});
     }
   }, {
     key: "getHref",
     value: function getHref() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var params = arguments.length > 0 && undefined !== arguments[0] ? arguments[0] : {};
       return "".concat(this.page, "?").concat(toQuerystring(params));
     }
   }, {
@@ -14939,7 +17446,7 @@ function () {
     value: function getAs() {
       var _this5 = this;
 
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var params = arguments.length > 0 && undefined !== arguments[0] ? arguments[0] : {};
       var as = this.toPath(params) || '/';
       var keys = Object.keys(params);
       var qsKeys = keys.filter(function (key) {
@@ -14968,7 +17475,7 @@ function () {
 
 var toQuerystring = function toQuerystring(obj) {
   return Object.keys(obj).filter(function (key) {
-    return obj[key] !== null && obj[key] !== undefined;
+    return obj[key] !== null && undefined !== obj[key];
   }).map(function (key) {
     var value = obj[key];
 
@@ -16728,101 +19235,6 @@ module.exports = function shimAssign() {
 		{ assign: function () { return Object.assign !== polyfill; } }
 	);
 	return polyfill;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/paginator/index.js":
-/***/ (function(module, exports) {
-
-module.exports = Paginator;
-
-// Paginator constructor
-//
-// `per_page` is the number of results per page, `length` is the number of
-// pages to display. They default to `25` and `10` respectively.
-function Paginator(per_page, length) {
-  // You really should be calling this with `new Paginator`, but WHATEVER.
-  if (!(this instanceof Paginator)) {
-    return new Paginator(per_page, length);
-  }
-
-  // Woo, defaults!
-  this.per_page = per_page || 25;
-  this.length = length || 10;
-}
-
-// Build an object with all the necessary information for outputting pagination
-// controls.
-//
-// (new Paginator(paginator.build(100, 2)
-Paginator.prototype.build = function(total_results, current_page) {
-  // We want the number of pages, rounded up to the nearest page.
-  var total_pages = Math.ceil(total_results / this.per_page);
-
-  // Ensure both total_results and current_page are treated as Numbers
-  total_results = parseInt(total_results, 10);
-  current_page  = parseInt(current_page, 10) || 1;
-
-  // Obviously we can't be on a negative or 0 page.
-  if (current_page < 1) { current_page = 1; }
-  // If the user has done something like /page/99999 we want to clamp that back
-  // down.
-  if (current_page > total_pages) { current_page = total_pages; }
-
-  // This is the first page to be displayed as a numbered link.
-  var first_page = Math.max(1, current_page - Math.floor(this.length / 2));
-
-  // And here's the last page to be displayed specifically.
-  var last_page = Math.min(total_pages, current_page + Math.floor(this.length / 2));
-
-  // This is triggered if we're at or near one of the extremes; we won't have
-  // enough page links. We need to adjust our bounds accordingly.
-  if (last_page - first_page + 1 < this.length) {
-    if (current_page < (total_pages / 2)) {
-      last_page = Math.min(total_pages, last_page + (this.length - (last_page - first_page)));
-    } else {
-      first_page = Math.max(1, first_page - (this.length - (last_page - first_page)));
-    }
-  }
-
-  // This can be triggered if the user wants an odd number of pages.
-  if (last_page - first_page + 1 > this.length) {
-    // We want to move towards whatever extreme we're closest to at the time.
-    if (current_page > (total_pages / 2)) {
-      first_page++;
-    } else {
-      last_page--;
-    }
-  }
-
-  // First result on the page. This, along with the field below, can be used to
-  // do "showing x to y of z results" style things.
-  var first_result = this.per_page * (current_page - 1);
-  if (first_result < 0) { first_result = 0; }
-
-  // Last result on the page.
-  var last_result = (this.per_page * current_page) - 1;
-  if (last_result < 0) { last_result = 0; }
-  if (last_result > Math.max(total_results - 1, 0)) { last_result = Math.max(total_results - 1, 0); }
-
-  // GIMME THAT OBJECT
-  return {
-    total_pages: total_pages,
-    pages: Math.min(last_page - first_page + 1, total_pages),
-    current_page: current_page,
-    first_page: first_page,
-    last_page: last_page,
-    previous_page: current_page - 1,
-    next_page: current_page + 1,
-    has_previous_page: current_page > 1,
-    has_next_page: current_page < total_pages,
-    total_results: total_results,
-    results: Math.min(last_result - first_result + 1, total_results),
-    first_result: first_result,
-    last_result: last_result,
-  };
 };
 
 
@@ -26716,6 +29128,612 @@ function cleanCookies() {
 
 /***/ }),
 
+/***/ "./node_modules/util/support/isBufferBrowser.js":
+/***/ (function(module, exports) {
+
+module.exports = function isBuffer(arg) {
+  return arg && typeof arg === 'object'
+    && typeof arg.copy === 'function'
+    && typeof arg.fill === 'function'
+    && typeof arg.readUInt8 === 'function';
+}
+
+/***/ }),
+
+/***/ "./node_modules/util/util.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var formatRegExp = /%[sdj%]/g;
+exports.format = function(f) {
+  if (!isString(f)) {
+    var objects = [];
+    for (var i = 0; i < arguments.length; i++) {
+      objects.push(inspect(arguments[i]));
+    }
+    return objects.join(' ');
+  }
+
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  var str = String(f).replace(formatRegExp, function(x) {
+    if (x === '%%') return '%';
+    if (i >= len) return x;
+    switch (x) {
+      case '%s': return String(args[i++]);
+      case '%d': return Number(args[i++]);
+      case '%j':
+        try {
+          return JSON.stringify(args[i++]);
+        } catch (_) {
+          return '[Circular]';
+        }
+      default:
+        return x;
+    }
+  });
+  for (var x = args[i]; i < len; x = args[++i]) {
+    if (isNull(x) || !isObject(x)) {
+      str += ' ' + x;
+    } else {
+      str += ' ' + inspect(x);
+    }
+  }
+  return str;
+};
+
+
+// Mark that a method should not be used.
+// Returns a modified function which warns once by default.
+// If --no-deprecation is set, then it is a no-op.
+exports.deprecate = function(fn, msg) {
+  // Allow for deprecating things in the process of starting up.
+  if (isUndefined(global.process)) {
+    return function() {
+      return exports.deprecate(fn, msg).apply(this, arguments);
+    };
+  }
+
+  if (process.noDeprecation === true) {
+    return fn;
+  }
+
+  var warned = false;
+  function deprecated() {
+    if (!warned) {
+      if (process.throwDeprecation) {
+        throw new Error(msg);
+      } else if (process.traceDeprecation) {
+        console.trace(msg);
+      } else {
+        console.error(msg);
+      }
+      warned = true;
+    }
+    return fn.apply(this, arguments);
+  }
+
+  return deprecated;
+};
+
+
+var debugs = {};
+var debugEnviron;
+exports.debuglog = function(set) {
+  if (isUndefined(debugEnviron))
+    debugEnviron = process.env.NODE_DEBUG || '';
+  set = set.toUpperCase();
+  if (!debugs[set]) {
+    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
+      var pid = process.pid;
+      debugs[set] = function() {
+        var msg = exports.format.apply(exports, arguments);
+        console.error('%s %d: %s', set, pid, msg);
+      };
+    } else {
+      debugs[set] = function() {};
+    }
+  }
+  return debugs[set];
+};
+
+
+/**
+ * Echos the value of a value. Trys to print the value out
+ * in the best way possible given the different types.
+ *
+ * @param {Object} obj The object to print out.
+ * @param {Object} opts Optional options object that alters the output.
+ */
+/* legacy: obj, showHidden, depth, colors*/
+function inspect(obj, opts) {
+  // default options
+  var ctx = {
+    seen: [],
+    stylize: stylizeNoColor
+  };
+  // legacy...
+  if (arguments.length >= 3) ctx.depth = arguments[2];
+  if (arguments.length >= 4) ctx.colors = arguments[3];
+  if (isBoolean(opts)) {
+    // legacy...
+    ctx.showHidden = opts;
+  } else if (opts) {
+    // got an "options" object
+    exports._extend(ctx, opts);
+  }
+  // set default options
+  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+  if (isUndefined(ctx.depth)) ctx.depth = 2;
+  if (isUndefined(ctx.colors)) ctx.colors = false;
+  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+  if (ctx.colors) ctx.stylize = stylizeWithColor;
+  return formatValue(ctx, obj, ctx.depth);
+}
+exports.inspect = inspect;
+
+
+// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+inspect.colors = {
+  'bold' : [1, 22],
+  'italic' : [3, 23],
+  'underline' : [4, 24],
+  'inverse' : [7, 27],
+  'white' : [37, 39],
+  'grey' : [90, 39],
+  'black' : [30, 39],
+  'blue' : [34, 39],
+  'cyan' : [36, 39],
+  'green' : [32, 39],
+  'magenta' : [35, 39],
+  'red' : [31, 39],
+  'yellow' : [33, 39]
+};
+
+// Don't use 'blue' not visible on cmd.exe
+inspect.styles = {
+  'special': 'cyan',
+  'number': 'yellow',
+  'boolean': 'yellow',
+  'undefined': 'grey',
+  'null': 'bold',
+  'string': 'green',
+  'date': 'magenta',
+  // "name": intentionally not styling
+  'regexp': 'red'
+};
+
+
+function stylizeWithColor(str, styleType) {
+  var style = inspect.styles[styleType];
+
+  if (style) {
+    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
+           '\u001b[' + inspect.colors[style][1] + 'm';
+  } else {
+    return str;
+  }
+}
+
+
+function stylizeNoColor(str, styleType) {
+  return str;
+}
+
+
+function arrayToHash(array) {
+  var hash = {};
+
+  array.forEach(function(val, idx) {
+    hash[val] = true;
+  });
+
+  return hash;
+}
+
+
+function formatValue(ctx, value, recurseTimes) {
+  // Provide a hook for user-specified inspect functions.
+  // Check that value is an object with an inspect function on it
+  if (ctx.customInspect &&
+      value &&
+      isFunction(value.inspect) &&
+      // Filter out the util module, it's inspect function is special
+      value.inspect !== exports.inspect &&
+      // Also filter out any prototype objects using the circular check.
+      !(value.constructor && value.constructor.prototype === value)) {
+    var ret = value.inspect(recurseTimes, ctx);
+    if (!isString(ret)) {
+      ret = formatValue(ctx, ret, recurseTimes);
+    }
+    return ret;
+  }
+
+  // Primitive types cannot have properties
+  var primitive = formatPrimitive(ctx, value);
+  if (primitive) {
+    return primitive;
+  }
+
+  // Look up the keys of the object.
+  var keys = Object.keys(value);
+  var visibleKeys = arrayToHash(keys);
+
+  if (ctx.showHidden) {
+    keys = Object.getOwnPropertyNames(value);
+  }
+
+  // IE doesn't make error fields non-enumerable
+  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
+  if (isError(value)
+      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+    return formatError(value);
+  }
+
+  // Some type of object without properties can be shortcutted.
+  if (keys.length === 0) {
+    if (isFunction(value)) {
+      var name = value.name ? ': ' + value.name : '';
+      return ctx.stylize('[Function' + name + ']', 'special');
+    }
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    }
+    if (isDate(value)) {
+      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+    }
+    if (isError(value)) {
+      return formatError(value);
+    }
+  }
+
+  var base = '', array = false, braces = ['{', '}'];
+
+  // Make Array say that they are Array
+  if (isArray(value)) {
+    array = true;
+    braces = ['[', ']'];
+  }
+
+  // Make functions say that they are functions
+  if (isFunction(value)) {
+    var n = value.name ? ': ' + value.name : '';
+    base = ' [Function' + n + ']';
+  }
+
+  // Make RegExps say that they are RegExps
+  if (isRegExp(value)) {
+    base = ' ' + RegExp.prototype.toString.call(value);
+  }
+
+  // Make dates with properties first say the date
+  if (isDate(value)) {
+    base = ' ' + Date.prototype.toUTCString.call(value);
+  }
+
+  // Make error with message first say the error
+  if (isError(value)) {
+    base = ' ' + formatError(value);
+  }
+
+  if (keys.length === 0 && (!array || value.length == 0)) {
+    return braces[0] + base + braces[1];
+  }
+
+  if (recurseTimes < 0) {
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    } else {
+      return ctx.stylize('[Object]', 'special');
+    }
+  }
+
+  ctx.seen.push(value);
+
+  var output;
+  if (array) {
+    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+  } else {
+    output = keys.map(function(key) {
+      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+    });
+  }
+
+  ctx.seen.pop();
+
+  return reduceToSingleString(output, base, braces);
+}
+
+
+function formatPrimitive(ctx, value) {
+  if (isUndefined(value))
+    return ctx.stylize('undefined', 'undefined');
+  if (isString(value)) {
+    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+                                             .replace(/'/g, "\\'")
+                                             .replace(/\\"/g, '"') + '\'';
+    return ctx.stylize(simple, 'string');
+  }
+  if (isNumber(value))
+    return ctx.stylize('' + value, 'number');
+  if (isBoolean(value))
+    return ctx.stylize('' + value, 'boolean');
+  // For some reason typeof null is "object", so special case here.
+  if (isNull(value))
+    return ctx.stylize('null', 'null');
+}
+
+
+function formatError(value) {
+  return '[' + Error.prototype.toString.call(value) + ']';
+}
+
+
+function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+  var output = [];
+  for (var i = 0, l = value.length; i < l; ++i) {
+    if (hasOwnProperty(value, String(i))) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          String(i), true));
+    } else {
+      output.push('');
+    }
+  }
+  keys.forEach(function(key) {
+    if (!key.match(/^\d+$/)) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          key, true));
+    }
+  });
+  return output;
+}
+
+
+function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+  var name, str, desc;
+  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+  if (desc.get) {
+    if (desc.set) {
+      str = ctx.stylize('[Getter/Setter]', 'special');
+    } else {
+      str = ctx.stylize('[Getter]', 'special');
+    }
+  } else {
+    if (desc.set) {
+      str = ctx.stylize('[Setter]', 'special');
+    }
+  }
+  if (!hasOwnProperty(visibleKeys, key)) {
+    name = '[' + key + ']';
+  }
+  if (!str) {
+    if (ctx.seen.indexOf(desc.value) < 0) {
+      if (isNull(recurseTimes)) {
+        str = formatValue(ctx, desc.value, null);
+      } else {
+        str = formatValue(ctx, desc.value, recurseTimes - 1);
+      }
+      if (str.indexOf('\n') > -1) {
+        if (array) {
+          str = str.split('\n').map(function(line) {
+            return '  ' + line;
+          }).join('\n').substr(2);
+        } else {
+          str = '\n' + str.split('\n').map(function(line) {
+            return '   ' + line;
+          }).join('\n');
+        }
+      }
+    } else {
+      str = ctx.stylize('[Circular]', 'special');
+    }
+  }
+  if (isUndefined(name)) {
+    if (array && key.match(/^\d+$/)) {
+      return str;
+    }
+    name = JSON.stringify('' + key);
+    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+      name = name.substr(1, name.length - 2);
+      name = ctx.stylize(name, 'name');
+    } else {
+      name = name.replace(/'/g, "\\'")
+                 .replace(/\\"/g, '"')
+                 .replace(/(^"|"$)/g, "'");
+      name = ctx.stylize(name, 'string');
+    }
+  }
+
+  return name + ': ' + str;
+}
+
+
+function reduceToSingleString(output, base, braces) {
+  var numLinesEst = 0;
+  var length = output.reduce(function(prev, cur) {
+    numLinesEst++;
+    if (cur.indexOf('\n') >= 0) numLinesEst++;
+    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+  }, 0);
+
+  if (length > 60) {
+    return braces[0] +
+           (base === '' ? '' : base + '\n ') +
+           ' ' +
+           output.join(',\n  ') +
+           ' ' +
+           braces[1];
+  }
+
+  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+
+// NOTE: These type checking functions intentionally don't use `instanceof`
+// because it is fragile and can be easily faked with `Object.create()`.
+function isArray(ar) {
+  return Array.isArray(ar);
+}
+exports.isArray = isArray;
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+exports.isBoolean = isBoolean;
+
+function isNull(arg) {
+  return arg === null;
+}
+exports.isNull = isNull;
+
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+exports.isNullOrUndefined = isNullOrUndefined;
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+exports.isNumber = isNumber;
+
+function isString(arg) {
+  return typeof arg === 'string';
+}
+exports.isString = isString;
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+exports.isSymbol = isSymbol;
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+exports.isUndefined = isUndefined;
+
+function isRegExp(re) {
+  return isObject(re) && objectToString(re) === '[object RegExp]';
+}
+exports.isRegExp = isRegExp;
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+exports.isObject = isObject;
+
+function isDate(d) {
+  return isObject(d) && objectToString(d) === '[object Date]';
+}
+exports.isDate = isDate;
+
+function isError(e) {
+  return isObject(e) &&
+      (objectToString(e) === '[object Error]' || e instanceof Error);
+}
+exports.isError = isError;
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+exports.isFunction = isFunction;
+
+function isPrimitive(arg) {
+  return arg === null ||
+         typeof arg === 'boolean' ||
+         typeof arg === 'number' ||
+         typeof arg === 'string' ||
+         typeof arg === 'symbol' ||  // ES6 symbol
+         typeof arg === 'undefined';
+}
+exports.isPrimitive = isPrimitive;
+
+exports.isBuffer = __webpack_require__("./node_modules/util/support/isBufferBrowser.js");
+
+function objectToString(o) {
+  return Object.prototype.toString.call(o);
+}
+
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+// 26 Feb 16:19:34
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
+
+// log is just a thin wrapper to console.log that prepends a timestamp
+exports.log = function() {
+  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+};
+
+
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * The Function.prototype.inherits from lang.js rewritten as a standalone
+ * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * during bootstrapping this function needs to be rewritten using some native
+ * functions as prototype setup using normal JavaScript does not work as
+ * expected during bootstrapping (see mirror.js in r114903).
+ *
+ * @param {function} ctor Constructor function which needs to inherit the
+ *     prototype.
+ * @param {function} superCtor Constructor function to inherit prototype from.
+ */
+exports.inherits = __webpack_require__("./node_modules/inherits/inherits_browser.js");
+
+exports._extend = function(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = Object.keys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
+};
+
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/next/node_modules/webpack/buildin/global.js"), __webpack_require__("./node_modules/process/browser.js")))
+
+/***/ }),
+
 /***/ "./node_modules/whatwg-fetch/fetch.js":
 /***/ (function(module, exports) {
 
@@ -27196,7 +30214,17 @@ module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server
 
 /***/ }),
 
-/***/ "./pages/project/list-project-filter.js":
+/***/ "./pages/project/detail.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}b{font-weight:bolder}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}.list-unstyled{padding-left:0;list-style:none}.img-fluid,.img-thumbnail{max-width:100%;height:auto}.img-thumbnail{padding:.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:.25rem}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-4,.col-8,.col-lg-9,.col-md-4,.col-md-8,.col-md-9,.col-md-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-4{flex:0 0 33.33333%;max-width:33.33333%}.col-8{flex:0 0 66.66667%;max-width:66.66667%}@media (min-width:768px){.col-md-4{flex:0 0 33.33333%;max-width:33.33333%}.col-md-8{flex:0 0 66.66667%;max-width:66.66667%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:.5rem 1rem}.nav-tabs{border-bottom:1px solid #dee2e6}.nav-tabs .nav-item{margin-bottom:-1px}.nav-tabs .nav-link{border:1px solid transparent;border-top-left-radius:.25rem;border-top-right-radius:.25rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.media{display:flex;align-items:flex-start}.media-body{flex:1}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-inline{display:inline!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.justify-content-end{justify-content:flex-end!important}.float-left{float:left!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-100{height:100%!important}.mt-0{margin-top:0!important}.mt-1{margin-top:.25rem!important}.mx-1{margin-right:.25rem!important}.mb-1{margin-bottom:.25rem!important}.mx-1{margin-left:.25rem!important}.my-2{margin-top:.5rem!important}.mb-2,.my-2{margin-bottom:.5rem!important}.mt-3,.my-3{margin-top:1rem!important}.mr-3{margin-right:1rem!important}.my-3{margin-bottom:1rem!important}.p-0{padding:0!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.px-2{padding-right:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.px-4{padding-right:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto,.mx-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.mx-auto{margin-left:auto!important}.text-left{text-align:left!important}.text-center{text-align:center!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-normal{font-weight:400!important}.font-weight-bold{font-weight:700!important}.text-white{color:#fff!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}@font-face{font-family:FontAwesome;src:url(\"/static/fonts/fontawesome-webfont.eot?v=4.7.0\");src:url(\"/static/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0\") format(\"embedded-opentype\"),url(\"/static/fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"),url(\"/static/fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"),url(\"/static/fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"),url(\"/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular\") format(\"svg\");font-weight:400;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-star:before{content:\"\\F005\"}.fa-picture-o:before{content:\"\\F03E\"}.fa-map-marker:before{content:\"\\F041\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body,h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder,input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.font-25{font-size:25px!important}.text-black{color:#000!important}.text-black-100{color:#333!important}.text-gray-200{color:#999!important}.bg-indigo{background-color:#664cc7!important}.bg-yellow-green{background-color:#bdc74c!important}.bg-red-100{background-color:#c74c4c!important}.bg-teal{background-color:#47be84!important}.bg-cyan{background-color:#4cb1c7!important}.bg-gray{background-color:#ddd!important}.text-yellow{color:#fc0!important}.bg-blue-200{background-color:#4c91c7!important}.navbar-9houzz{color:#666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}.banner{height:361px}.gradient-animate{height:100px;background:-webkit-linear-gradient(transparent,#000);background:-o-linear-gradient(transparent,#000);background:linear-gradient(transparent,#000);bottom:0;z-index:0}.provider-nav{height:50px;line-height:34px}.provider-details .banner{max-height:290px;height:290px;position:relative;overflow:hidden}.provider-avatar{width:165px;height:165px;top:-127px;border:1px solid #d3d3d3;left:20px;background:#fff}.provider-info{bottom:4rem;left:13rem;z-index:1}.project-title{font-weight:700;font-size:12px!important;text-transform:uppercase}.provider-details .nav-link{color:#666!important;padding:.5rem 1.5rem!important}span{font-size:13px!important}@media (max-width:575.98px){.provider-avatar{width:80px!important;height:80px!important;top:-105px!important}.provider-details .banner{height:185px!important}.banner img{height:100%!important}.provider-info{bottom:4rem;left:7rem;z-index:1}.provider-info p{font-size:18px!important;font-weight:700!important}#myTab.nav{overflow-x:scroll;overflow-y:hidden;white-space:nowrap;display:block!important}#myTab.nav li{display:inline-block;color:#fff;text-align:center}.provider-nav{height:45px!important;line-height:34px}.provider-main{padding-left:0!important;padding-right:0!important;margin-right:0!important;margin-left:0!important}}@media (max-width:767.98px){.media{padding:0!important}.media .media-body{padding-left:2rem}}.fa-star{color:#fc0}.disable{color:#ddd!important}@media (max-width:767.98px){.media-body{margin-top:1rem}}img{vertical-align:middle}.project-detail-main .sub-title{font-size:25px;margin-bottom:20px;font-weight:500}.project-detail-main .sub-title:after{position:absolute;background:#b953a4;bottom:-10px!important;content:\"\";left:0!important;height:3px!important;width:2.5rem!important;margin:3px auto!important}.project-detail-main .project-title{width:80%!important}.project-detail-main .project-title h2 span{text-transform:lowercase!important;font-size:20px!important;font-weight:500!important;position:relative}.project-detail-main .project-title h2 span:before{content:\"\";width:4px;height:19px;background:#b953a4;position:absolute;left:-.75rem;margin-top:8px}.project-detail-main .project-title h2:first-letter{text-transform:uppercase!important;color:#b953a4;font-weight:700}.project-detail-main .project-description{font-size:15px!important;line-height:1.5rem!important}.project-detail-main .project-image{width:80%;margin:0 auto}.project-detail-main .project-image img{object-fit:cover;object-position:center}.project-detail-main .project-sidebar .media-image{width:80px;height:80px}.project-detail-main .project-sidebar .media-image img{width:100%;height:100%;object-fit:cover;object-position:center}.project-detail-main .project-sidebar .pro-info .info{font-size:14px!important;color:#6f7293}.project-detail-main .project-sidebar .pro-info .info i{color:#b953a4!important;margin-right:5px}";
+
+/***/ }),
+
+/***/ "./pages/project/detail.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27207,109 +30235,551 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _style = _interopRequireDefault(__webpack_require__("./node_modules/next/node_modules/styled-jsx/style.js"));
+
 var _regenerator = _interopRequireDefault(__webpack_require__("./node_modules/@babel/runtime/regenerator/index.js"));
 
 var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/index.js"));
 
-var _layout = _interopRequireDefault(__webpack_require__("./components/layout.js"));
+var _proDetail = _interopRequireDefault(__webpack_require__("./components/pro-detail.js"));
 
-var _sideBar = _interopRequireDefault(__webpack_require__("./components/sideBar.js"));
+var _helpers = __webpack_require__("./libraries/helpers.js");
+
+var _routes = __webpack_require__("./routes.js");
+
+var _imageModal = _interopRequireDefault(__webpack_require__("./components/image-modal.js"));
 
 __webpack_require__("./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
 
-var _ListProjectComponent = _interopRequireDefault(__webpack_require__("./components/ListProjectComponent.js"));
+var _detail = _interopRequireDefault(__webpack_require__("./pages/project/detail.css"));
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/project/list-project-filter.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/project/detail.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var APIURL = "https://api.9houz.com/" + "api/";
+var APIPROJECT = APIURL + 'project/';
+var APIPRO = APIURL + 'provider/';
 
 var _default =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(_default, _React$Component);
 
-  _createClass(_default, null, [{
+  function _default() {
+    _classCallCheck(this, _default);
+
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).apply(this, arguments));
+  }
+
+  _createClass(_default, [{
+    key: "showPhoto",
+    value: function showPhoto(e, id, slug) {
+      e.preventDefault();
+
+      _routes.Router.push("/project?id=".concat(this.props.id, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+    }
+  }, {
+    key: "dismissModal",
+    value: function dismissModal(id, slug) {
+      _routes.Router.pushRoute('project.detail', {
+        id: id,
+        slug: "".concat(slug)
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var _props = this.props,
+          url = _props.url,
+          provider = _props.provider,
+          data = _props.data,
+          project = _props.project,
+          images = _props.images,
+          relateData = _props.relateData,
+          listProjects = _props.listProjects;
+      return _react.default.createElement(_proDetail.default, _extends({
+        provider_id: provider.id,
+        provider_slug: provider.slug,
+        data: data
+      }, this.props, {
+        css: _detail.default,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49
+        }
+      }), url.query.photoId && _react.default.createElement(_imageModal.default, {
+        id: url.query.photoId,
+        slug: url.query.slug,
+        detail: false,
+        popup: false,
+        currentPath: url.pathname,
+        onDismiss: function onDismiss() {
+          return _this.dismissModal(url.query.id, url.query.slug);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        }
+      }), _react.default.createElement("div", {
+        id: "cat",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 61
+        },
+        className: "jsx-3233782465" + " " + "project-detail-main"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 62
+        },
+        className: "jsx-3233782465" + " " + "project-detail-container"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69
+        },
+        className: "jsx-3233782465" + " " + "row"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 70
+        },
+        className: "jsx-3233782465" + " " + "col-12 col-md-8"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 71
+        },
+        className: "jsx-3233782465" + " " + "about bg-white p-3 border border-gray"
+      }, _react.default.createElement("h1", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 72
+        },
+        className: "jsx-3233782465" + " " + "font-25 font-weight-normal"
+      }, project.name), _react.default.createElement("p", {
+        dangerouslySetInnerHTML: {
+          __html: project.descriptions
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73
+        },
+        className: "jsx-3233782465" + " " + "font-weight-normal my-3 project-description"
+      }), project.address && _react.default.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76
+        },
+        className: "jsx-3233782465" + " " + "font-14 font-weight-normal"
+      }, _react.default.createElement("strong", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76
+        },
+        className: "jsx-3233782465"
+      }, "\u0110\u1ECBa ch\u1EC9"), ": " + project.address), project.more_infos && (0, _helpers.mapObject)(project.more_infos, function (index, value) {
+        if (value != '') return _react.default.createElement("p", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 80
+          },
+          className: "jsx-3233782465" + " " + "font-14 font-weight-normal"
+        }, _react.default.createElement("strong", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 81
+          },
+          className: "jsx-3233782465"
+        }, (0, _helpers.ucfirst)(index)), ": " + value);
+      }), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
+        },
+        className: "jsx-3233782465" + " " + "about bg-white py-3"
+      }, _react.default.createElement("ul", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 85
+        },
+        className: "jsx-3233782465" + " " + "list-unstyled"
+      }, images && images.map(function (value, index) {
+        return _react.default.createElement("li", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 88
+          },
+          className: "jsx-3233782465" + " " + "my-3"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 89
+          },
+          className: "jsx-3233782465" + " " + "project-title text-center mx-auto"
+        }, _react.default.createElement("h2", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 90
+          },
+          className: "jsx-3233782465" + " " + "font-22 text-black-100 position-relative"
+        }, _react.default.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 91
+          },
+          className: "jsx-3233782465"
+        }, " ", value.name && value.name, " "))), _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 94
+          },
+          className: "jsx-3233782465" + " " + "project-image my-3"
+        }, value.status == 1 ? _react.default.createElement(_routes.Link, {
+          route: "image",
+          params: {
+            id: value.id,
+            slug: "".concat(value.slug)
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97
+          }
+        }, _react.default.createElement("a", {
+          onClick: function onClick(e) {
+            return _this.showPhoto(e, value.id, value.slug);
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98
+          },
+          className: "jsx-3233782465" + " " + 'photoLink'
+        }, _react.default.createElement("img", {
+          src: value.large_path,
+          alt: value.name,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99
+          },
+          className: "jsx-3233782465" + " " + "img-fluid"
+        }))) : _react.default.createElement("a", {
+          href: "javascript:void(0)",
+          rel: "nofollow",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 103
+          },
+          className: "jsx-3233782465" + " " + 'photoLink'
+        }, _react.default.createElement("img", {
+          src: value.large_path,
+          alt: value.name,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 104
+          },
+          className: "jsx-3233782465" + " " + "img-fluid"
+        }))), _react.default.createElement("div", {
+          dangerouslySetInnerHTML: {
+            __html: value.descriptions
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 108
+          },
+          className: "jsx-3233782465" + " " + "project-description"
+        }));
+      }))))), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 140
+        },
+        className: "jsx-3233782465" + " " + "col-12 col-md-4 project-sidebar"
+      }, _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 141
+        },
+        className: "jsx-3233782465" + " " + "bg-white p-3"
+      }, _react.default.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 142
+        },
+        className: "jsx-3233782465" + " " + "sub-title position-relative"
+      }, "D\u1EF1 \xE1n c\xF9ng chuy\xEAn gia"), _react.default.createElement("ul", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 143
+        },
+        className: "jsx-3233782465" + " " + "list-unstyled mt-3"
+      }, listProjects && listProjects.map(function (value, index) {
+        return _react.default.createElement("li", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 146
+          },
+          className: "jsx-3233782465" + " " + "my-3 listProject"
+        }, _react.default.createElement(_routes.Link, {
+          route: "project.detail",
+          params: {
+            id: value.id,
+            slug: value.slug
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 147
+          }
+        }, _react.default.createElement("a", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 148
+          },
+          className: "jsx-3233782465" + " " + "nav-link border-0 font-14 font-weight-bold"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 149
+          },
+          className: "jsx-3233782465" + " " + "media"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 150
+          },
+          className: "jsx-3233782465" + " " + "media-image mr-3"
+        }, _react.default.createElement("img", {
+          src: value.avatar,
+          alt: "Generic placeholder image",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 151
+          },
+          className: "jsx-3233782465"
+        })), _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 153
+          },
+          className: "jsx-3233782465" + " " + "media-body"
+        }, _react.default.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 154
+          },
+          className: "jsx-3233782465" + " " + "mt-0 mb-2 font-14 text-black"
+        }, value.name), _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 155
+          },
+          className: "jsx-3233782465" + " " + "d-inline pro-info"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 156
+          },
+          className: "jsx-3233782465" + " " + "info project-info mr-3 float-left"
+        }, _react.default.createElement("i", {
+          "aria-hidden": "true",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 157
+          },
+          className: "jsx-3233782465" + " " + "fa fa-picture-o my-auto"
+        }), " ", value.total + ' ảnh'), value.address && _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 160
+          },
+          className: "jsx-3233782465" + " " + "info location-info"
+        }, _react.default.createElement("i", {
+          "aria-hidden": "true",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 161
+          },
+          className: "jsx-3233782465" + " " + "fa fa-map-marker my-auto"
+        }), " ", value.address)))))));
+      }), _react.default.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 172
+        },
+        className: "jsx-3233782465" + " " + "text-right border border-bottom-0 border-left-0 border-right-0 pt-3"
+      }, _react.default.createElement(_routes.Link, {
+        route: "pro.project",
+        params: {
+          id: provider.id,
+          slug: provider.slug
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 173
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 174
+        },
+        className: "jsx-3233782465" + " " + "text-primary"
+      }, " Xem th\xEAm "))))))), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 181
+        },
+        className: "jsx-3233782465" + " " + "project-more mt-3"
+      }, _react.default.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 182
+        },
+        className: "jsx-3233782465" + " " + "font-25"
+      }, "M\u1ECDi ng\u01B0\u1EDDi th\u01B0\u1EDDng xem th\xEAm"), _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 183
+        },
+        className: "jsx-3233782465" + " " + "row"
+      }, relateData && (0, _helpers.mapObject)(relateData, function (index, value) {
+        return _react.default.createElement("div", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 186
+          },
+          className: "jsx-3233782465" + " " + "col-12 col-md-3"
+        }, _react.default.createElement(_routes.Link, {
+          route: "project.detail",
+          params: {
+            id: index,
+            slug: "".concat(value.slug)
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 187
+          }
+        }, _react.default.createElement("a", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 188
+          },
+          className: "jsx-3233782465" + " " + "nav-link border-0 font-14 font-weight-bold px-0"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 189
+          },
+          className: "jsx-3233782465" + " " + "card border-none"
+        }, _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 190
+          },
+          className: "jsx-3233782465" + " " + "card-image"
+        }, _react.default.createElement("img", {
+          src: value.avatar,
+          alt: "Card image cap",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 191
+          },
+          className: "jsx-3233782465" + " " + "card-img-top"
+        })), _react.default.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 193
+          },
+          className: "jsx-3233782465" + " " + "card-body bg-gray px-0 py-2"
+        }, _react.default.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 194
+          },
+          className: "jsx-3233782465" + " " + "card-title text-black"
+        }, value.name))))));
+      }))))), _react.default.createElement(_style.default, {
+        styleId: "3233782465",
+        css: ".provider{background-color:#ddd !important;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL3Byb2plY3QvZGV0YWlsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTZNMkIsQUFFb0MsaUNBQUMiLCJmaWxlIjoicGFnZXMvcHJvamVjdC9kZXRhaWwuanMiLCJzb3VyY2VSb290IjoiL0FwcGxpY2F0aW9ucy9NQU1QL2h0ZG9jcy9teS1uZXh0LWFwcCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCBQcm92aWRlckRldGFpbCBmcm9tICcuLi8uLi9jb21wb25lbnRzL3Byby1kZXRhaWwnXG5pbXBvcnQge21hcE9iamVjdCwgdWNmaXJzdH0gZnJvbSBcIi4uLy4uL2xpYnJhcmllcy9oZWxwZXJzXCI7XG5pbXBvcnQge0xpbmssIFJvdXRlcn0gZnJvbSAnLi4vLi4vcm91dGVzJ1xuaW1wb3J0IEltYWdlTW9kYWwgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9pbWFnZS1tb2RhbCc7XG5pbXBvcnQgJ2lzb21vcnBoaWMtZmV0Y2gnXG5pbXBvcnQgY3NzIGZyb20gXCIuL2RldGFpbC5jc3NcIjtcblxuY29uc3QgQVBJVVJMID0gcHJvY2Vzcy5lbnYuRE9NQUlOICsgcHJvY2Vzcy5lbnYuQVBJVVJJXG5jb25zdCBBUElQUk9KRUNUID0gQVBJVVJMICsgJ3Byb2plY3QvJ1xuY29uc3QgQVBJUFJPID0gQVBJVVJMICsgJ3Byb3ZpZGVyLydcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuICBzdGF0aWMgYXN5bmMgZ2V0SW5pdGlhbFByb3BzKHtxdWVyeX0pIHtcbiAgICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaChBUElQUk9KRUNUICsgcXVlcnkuaWQpXG4gICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKClcbiAgICBjb25zdCByZXNQcm8gPSBhd2FpdCBmZXRjaChBUElQUk8gKyBkYXRhLnByb2plY3QudXNlcl9pZClcbiAgICBjb25zdCBkYXRhUHJvID0gYXdhaXQgcmVzUHJvLmpzb24oKVxuICAgIHJldHVybiB7XG4gICAgICBpZDogcXVlcnkuaWRcbiAgICAgICwgZGF0YTogZGF0YVByb1xuICAgICAgLCBwcm92aWRlcjogZGF0YVByby5wcm92aWRlclxuICAgICAgLCBwcm9qZWN0OiBkYXRhLnByb2plY3RcbiAgICAgICwgaW1hZ2VzOiBkYXRhLmltYWdlcy5kYXRhXG4gICAgICAsIHNsdWc6IHF1ZXJ5LnNsdWdcbiAgICAgICwgdGl0bGU6IGRhdGEuc2VvLnRpdGxlXG4gICAgICAsIGRlczogZGF0YS5zZW8uZGVzXG4gICAgICAsIGNhbm9uaWNhbDogZGF0YS5zZW8uY2Fub25pY2FsXG4gICAgICAsIHJvYm90czogZGF0YS5zZW8ucm9ib3RzXG4gICAgICAsIG9nX3VybDogZGF0YS5zZW8udXJsXG4gICAgICAsIHVybF9pbWFnZXM6IGRhdGEuc2VvLnVybF9pbWFnZVxuICAgICAgLCBoZWFkZXJQcm9qZWN0czogZGF0YVByby5oZWFkZXJQcm9qZWN0c1xuICAgICAgLCBoZWFkZXJDYXRlZ29yaWVzOiBkYXRhUHJvLmhlYWRlckNhdGVnb3JpZXNcbiAgICAgICwgZGF0YUJhc2U6IGRhdGFQcm8uZGF0YUJhc2VcbiAgICAgICwgcmVsYXRlRGF0YSA6IGRhdGEucmVsYXRlRGF0YVxuICAgICAgLCBsaXN0UHJvamVjdHMgOiBkYXRhLmxpc3RQcm9qZWN0c1xuICAgIH1cbiAgfVxuICBzaG93UGhvdG8gKGUsIGlkICwgc2x1Zykge1xuICAgIGUucHJldmVudERlZmF1bHQoKVxuICAgIFJvdXRlci5wdXNoKGAvcHJvamVjdD9pZD0ke3RoaXMucHJvcHMuaWR9JnBob3RvSWQ9JHtpZH0mc2x1Zz0ke3NsdWd9YCxgL2FuaC8ke2lkfS0ke3NsdWd9YClcbiAgfVxuICBkaXNtaXNzTW9kYWwgKGlkICwgc2x1Zykge1xuICAgIFJvdXRlci5wdXNoUm91dGUoJ3Byb2plY3QuZGV0YWlsJywge2lkOiBpZCAsIHNsdWcgOiBgJHtzbHVnfWB9KVxuICB9XG4gIHJlbmRlcigpIHtcbiAgICBjb25zdCB7dXJsICwgcHJvdmlkZXIsIGRhdGEsIHByb2plY3QsIGltYWdlcyAscmVsYXRlRGF0YSAsIGxpc3RQcm9qZWN0c30gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxQcm92aWRlckRldGFpbCBwcm92aWRlcl9pZD17cHJvdmlkZXIuaWR9IHByb3ZpZGVyX3NsdWc9e3Byb3ZpZGVyLnNsdWd9IGRhdGE9e2RhdGF9IHsuLi50aGlzLnByb3BzfSBjc3M9e2Nzc30+XG4gICAgICAgIHtcbiAgICAgICAgICB1cmwucXVlcnkucGhvdG9JZCAmJlxuICAgICAgICAgIDxJbWFnZU1vZGFsXG4gICAgICAgICAgICBpZD17dXJsLnF1ZXJ5LnBob3RvSWR9XG4gICAgICAgICAgICBzbHVnPXt1cmwucXVlcnkuc2x1Z31cbiAgICAgICAgICAgIGRldGFpbD17ZmFsc2V9XG4gICAgICAgICAgICBwb3B1cD17ZmFsc2V9XG4gICAgICAgICAgICBjdXJyZW50UGF0aD17dXJsLnBhdGhuYW1lfVxuICAgICAgICAgICAgb25EaXNtaXNzPXsoKSA9PiB0aGlzLmRpc21pc3NNb2RhbCh1cmwucXVlcnkuaWQsdXJsLnF1ZXJ5LnNsdWcpfVxuICAgICAgICAgIC8+XG4gICAgICAgIH1cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwcm9qZWN0LWRldGFpbC1tYWluXCIgaWQ9XCJjYXRcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInByb2plY3QtZGV0YWlsLWNvbnRhaW5lclwiPlxuICAgICAgICAgICAgey8qPG5hdiBhcmlhLWxhYmVsPVwiYnJlYWRjcnVtYlwiPiovfVxuICAgICAgICAgICAgICB7Lyo8b2wgY2xhc3NOYW1lPVwiYnJlYWRjcnVtYiBwLTAgcGwtMFwiPiovfVxuICAgICAgICAgICAgICAgIHsvKjxsaSBjbGFzc05hbWU9XCJicmVhZGNydW1iLWl0ZW1cIj48YSBocmVmPVwiI1wiPkhvbWU8L2E+PC9saT4qL31cbiAgICAgICAgICAgICAgICB7Lyo8bGkgY2xhc3NOYW1lPVwiYnJlYWRjcnVtYi1pdGVtIGFjdGl2ZVwiIGFyaWEtY3VycmVudD1cInBhZ2VcIj5MaWJyYXJ5PC9saT4qL31cbiAgICAgICAgICAgICAgey8qPC9vbD4qL31cbiAgICAgICAgICAgIHsvKjwvbmF2PiovfVxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyb3dcIj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2wtMTIgY29sLW1kLThcIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFib3V0IGJnLXdoaXRlIHAtMyBib3JkZXIgYm9yZGVyLWdyYXlcIj5cbiAgICAgICAgICAgICAgICAgIDxoMSBjbGFzc05hbWU9XCJmb250LTI1IGZvbnQtd2VpZ2h0LW5vcm1hbFwiPntwcm9qZWN0Lm5hbWV9PC9oMT5cbiAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZvbnQtd2VpZ2h0LW5vcm1hbCBteS0zIHByb2plY3QtZGVzY3JpcHRpb25cIlxuICAgICAgICAgICAgICAgICAgICAgZGFuZ2Vyb3VzbHlTZXRJbm5lckhUTUw9e3tfX2h0bWw6IHByb2plY3QuZGVzY3JpcHRpb25zfX0vPlxuICAgICAgICAgICAgICAgICAge3Byb2plY3QuYWRkcmVzcyAmJlxuICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC0xNCBmb250LXdlaWdodC1ub3JtYWxcIj48c3Ryb25nPsSQ4buLYSBjaOG7iTwvc3Ryb25nPntcIjogXCIgKyBwcm9qZWN0LmFkZHJlc3N9PC9wPn1cbiAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgcHJvamVjdC5tb3JlX2luZm9zICYmIG1hcE9iamVjdChwcm9qZWN0Lm1vcmVfaW5mb3MsIGZ1bmN0aW9uIChpbmRleCwgdmFsdWUpIHtcbiAgICAgICAgICAgICAgICAgICAgICBpZiAodmFsdWUgIT0gJycpXG4gICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gPHAgY2xhc3NOYW1lPVwiZm9udC0xNCBmb250LXdlaWdodC1ub3JtYWxcIiBrZXk9e2luZGV4fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPHN0cm9uZz57dWNmaXJzdChpbmRleCl9PC9zdHJvbmc+e1wiOiBcIiArIHZhbHVlfTwvcD5cbiAgICAgICAgICAgICAgICAgICAgfSlcbiAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYWJvdXQgYmctd2hpdGUgcHktM1wiPlxuICAgICAgICAgICAgICAgICAgICA8dWwgY2xhc3NOYW1lPVwibGlzdC11bnN0eWxlZFwiPlxuICAgICAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGltYWdlcyAmJiBpbWFnZXMubWFwKCh2YWx1ZSwgaW5kZXgpID0+IChcbiAgICAgICAgICAgICAgICAgICAgICAgICAgPGxpIGtleT17aW5kZXh9IGNsYXNzTmFtZT1cIm15LTNcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInByb2plY3QtdGl0bGUgdGV4dC1jZW50ZXIgbXgtYXV0b1wiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGgyIGNsYXNzTmFtZT1cImZvbnQtMjIgdGV4dC1ibGFjay0xMDAgcG9zaXRpb24tcmVsYXRpdmVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4+IHt2YWx1ZS5uYW1lICYmIHZhbHVlLm5hbWV9IDwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvaDI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwcm9qZWN0LWltYWdlIG15LTNcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsdWUuc3RhdHVzID09IDEgP1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxMaW5rIHJvdXRlPSdpbWFnZScgcGFyYW1zPXt7aWQ6IHZhbHVlLmlkLCBzbHVnOiBgJHt2YWx1ZS5zbHVnfWB9fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGNsYXNzTmFtZT0ncGhvdG9MaW5rJyBvbkNsaWNrPXsoZSkgPT4gdGhpcy5zaG93UGhvdG8oZSwgdmFsdWUuaWQsIHZhbHVlLnNsdWcpfT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBzcmM9e3ZhbHVlLmxhcmdlX3BhdGh9IGFsdD17dmFsdWUubmFtZX0gY2xhc3NOYW1lPVwiaW1nLWZsdWlkXCIvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA6XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj1cImphdmFzY3JpcHQ6dm9pZCgwKVwiIGNsYXNzTmFtZT0ncGhvdG9MaW5rJyByZWw9XCJub2ZvbGxvd1wiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBzcmM9e3ZhbHVlLmxhcmdlX3BhdGh9IGFsdD17dmFsdWUubmFtZX0gY2xhc3NOYW1lPVwiaW1nLWZsdWlkXCIvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvYT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInByb2plY3QtZGVzY3JpcHRpb25cIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGFuZ2Vyb3VzbHlTZXRJbm5lckhUTUw9e3tfX2h0bWw6IHZhbHVlLmRlc2NyaXB0aW9uc319Lz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPC9saT5cbiAgICAgICAgICAgICAgICAgICAgICAgICkpXG4gICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICA8L3VsPlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgey8qPGRpdiBjbGFzc05hbWU9XCJwcm9qZWN0LWtleXdvcmQgYmctd2hpdGUgcC0zIG15LTRcIj4qL31cbiAgICAgICAgICAgICAgICAgIHsvKjxwIGNsYXNzTmFtZT1cImtleXdvcmQtdGl0bGUgZm9udC0yNVwiPlThu6sga2jDs2E8L3A+Ki99XG4gICAgICAgICAgICAgICAgICB7Lyo8ZGl2IGNsYXNzTmFtZT1cInB0LTAga2V5d29yZC10YWdzXCI+Ki99XG4gICAgICAgICAgICAgICAgICAgICAgICB7Lyo8c3BhbiovfVxuICAgICAgICAgICAgICAgICAgICAgICAgICB7LypjbGFzc05hbWU9XCJ0ZXh0LWNlbnRlciBmb250LTEyIGZvbnQtd2VpZ2h0LW5vcm1hbCBiYWRnZSBiYWRnZS1waWxsIGJhZGdlLXdoaXRlIGJvcmRlciBib3JkZXItcHJpbWFyeSBweS0yIHB4LTMgbWItMlwiPiovfVxuICAgICAgICAgICAgICAgICAgICAgICAgICB7LypUaGnhur90IGvhur8gbuG7mWkgdGjhuqV0IGNodW5nIGPGsCovfVxuICAgICAgICAgICAgICAgICAgICAgICAgey8qPC9zcGFuPiovfVxuICAgICAgICAgICAgICAgICAgICB7Lyo8c3BhbiovfVxuICAgICAgICAgICAgICAgICAgICAgIHsvKmNsYXNzTmFtZT1cInRleHQtY2VudGVyIGZvbnQtMTIgZm9udC13ZWlnaHQtbm9ybWFsIGJhZGdlIGJhZGdlLXBpbGwgYmFkZ2Utd2hpdGUgYm9yZGVyIGJvcmRlci1wcmltYXJ5IHB5LTIgcHgtMyBtYi0yXCI+Ki99XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHsvKlRoaeG6v3Qga+G6vyBu4buZaSB0aOG6pXQgY2h1bmcgY8awKi99XG4gICAgICAgICAgICAgICAgICAgICAgICB7Lyo8L3NwYW4+Ki99XG4gICAgICAgICAgICAgICAgICAgIHsvKjxzcGFuKi99XG4gICAgICAgICAgICAgICAgICAgICAgey8qY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgZm9udC0xMiBmb250LXdlaWdodC1ub3JtYWwgYmFkZ2UgYmFkZ2UtcGlsbCBiYWRnZS13aGl0ZSBib3JkZXIgYm9yZGVyLXByaW1hcnkgcHktMiBweC0zIG1iLTJcIj4qL31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgey8qVGhp4bq/dCBr4bq/IG7hu5lpIHRo4bqldCBjaHVuZyBjxrAqL31cbiAgICAgICAgICAgICAgICAgICAgICAgIHsvKjwvc3Bhbj48c3BhbiovfVxuICAgICAgICAgICAgICAgICAgICB7LypjbGFzc05hbWU9XCJ0ZXh0LWNlbnRlciBmb250LTEyIGZvbnQtd2VpZ2h0LW5vcm1hbCBiYWRnZSBiYWRnZS1waWxsIGJhZGdlLXdoaXRlIGJvcmRlciBib3JkZXItcHJpbWFyeSBweS0yIHB4LTMgbWItMlwiPiovfVxuICAgICAgICAgICAgICAgICAgICAgICAgICB7LypUaGnhur90IGvhur8gbuG7mWkgdGjhuqV0IGNodW5nIGPGsCovfVxuICAgICAgICAgICAgICAgICAgICAgICAgey8qPC9zcGFuPjxzcGFuKi99XG4gICAgICAgICAgICAgICAgICAgIHsvKmNsYXNzTmFtZT1cInRleHQtY2VudGVyIGZvbnQtMTIgZm9udC13ZWlnaHQtbm9ybWFsIGJhZGdlIGJhZGdlLXBpbGwgYmFkZ2Utd2hpdGUgYm9yZGVyIGJvcmRlci1wcmltYXJ5IHB5LTIgcHgtMyBtYi0yXCI+Ki99XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHsvKlRoaeG6v3Qga+G6vyBu4buZaSB0aOG6pXQgY2h1bmcgY8awKi99XG4gICAgICAgICAgICAgICAgICAgICAgICB7Lyo8L3NwYW4+Ki99XG4gICAgICAgICAgICAgICAgICB7Lyo8L2Rpdj4qL31cbiAgICAgICAgICAgICAgICB7Lyo8L2Rpdj4qL31cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLTEyIGNvbC1tZC00IHByb2plY3Qtc2lkZWJhclwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgcC0zXCI+XG4gICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJzdWItdGl0bGUgcG9zaXRpb24tcmVsYXRpdmVcIj5E4buxIMOhbiBjw7luZyBjaHV5w6puIGdpYTwvcD5cbiAgICAgICAgICAgICAgICAgIDx1bCBjbGFzc05hbWU9XCJsaXN0LXVuc3R5bGVkIG10LTNcIj5cbiAgICAgICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAgIGxpc3RQcm9qZWN0cyAmJiBsaXN0UHJvamVjdHMubWFwKCh2YWx1ZSxpbmRleCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cIm15LTMgbGlzdFByb2plY3RcIiBrZXk9e2luZGV4fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPExpbmsgcm91dGU9J3Byb2plY3QuZGV0YWlsJyBwYXJhbXM9e3tpZDogdmFsdWUuaWQgLCBzbHVnOiB2YWx1ZS5zbHVnIH19PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGNsYXNzTmFtZT1cIm5hdi1saW5rIGJvcmRlci0wIGZvbnQtMTQgZm9udC13ZWlnaHQtYm9sZFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtZWRpYVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1lZGlhLWltYWdlIG1yLTNcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8aW1nIHNyYz17dmFsdWUuYXZhdGFyfSBhbHQ9XCJHZW5lcmljIHBsYWNlaG9sZGVyIGltYWdlXCIvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtZWRpYS1ib2R5XCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwibXQtMCBtYi0yIGZvbnQtMTQgdGV4dC1ibGFja1wiPnt2YWx1ZS5uYW1lfTwvcD5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtaW5saW5lIHByby1pbmZvXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImluZm8gcHJvamVjdC1pbmZvIG1yLTMgZmxvYXQtbGVmdFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8aSBjbGFzc05hbWU9XCJmYSBmYS1waWN0dXJlLW8gbXktYXV0b1wiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPjwvaT4ge3ZhbHVlLnRvdGFsICsgJyDhuqNuaCd9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHt2YWx1ZS5hZGRyZXNzICYmXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaW5mbyBsb2NhdGlvbi1pbmZvXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGkgY2xhc3NOYW1lPVwiZmEgZmEtbWFwLW1hcmtlciBteS1hdXRvXCIgYXJpYS1oaWRkZW49XCJ0cnVlXCI+PC9pPiB7dmFsdWUuYWRkcmVzc31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAgICAgICAgICAgICA8L0xpbms+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L2xpPlxuICAgICAgICAgICAgICAgICAgICAgICkpXG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cInRleHQtcmlnaHQgYm9yZGVyIGJvcmRlci1ib3R0b20tMCBib3JkZXItbGVmdC0wIGJvcmRlci1yaWdodC0wIHB0LTNcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8TGluayByb3V0ZT1cInByby5wcm9qZWN0XCIgcGFyYW1zPXt7IGlkOiBwcm92aWRlci5pZCAsIHNsdWcgOiBwcm92aWRlci5zbHVnIH19ID5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9XCJcIiBjbGFzc05hbWU9XCJ0ZXh0LXByaW1hcnlcIj4gWGVtIHRow6ptIDwvYT5cbiAgICAgICAgICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgICAgICAgICAgPC9saT5cbiAgICAgICAgICAgICAgICAgIDwvdWw+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInByb2plY3QtbW9yZSBtdC0zXCI+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC0yNVwiPk3hu41pIG5nxrDhu51pIHRoxrDhu51uZyB4ZW0gdGjDqm08L3A+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyb3dcIj5cbiAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgcmVsYXRlRGF0YSAmJiBtYXBPYmplY3QocmVsYXRlRGF0YSwoaW5kZXgsdmFsdWUpID0+IChcbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC0xMiBjb2wtbWQtM1wiIGtleT17aW5kZXh9PlxuICAgICAgICAgICAgICAgICAgICAgICAgPExpbmsgcm91dGU9J3Byb2plY3QuZGV0YWlsJyBwYXJhbXM9e3tpZDogaW5kZXggLCBzbHVnOiBgJHt2YWx1ZS5zbHVnfWB9fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgY2xhc3NOYW1lPVwibmF2LWxpbmsgYm9yZGVyLTAgZm9udC0xNCBmb250LXdlaWdodC1ib2xkIHB4LTBcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkIGJvcmRlci1ub25lXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkLWltYWdlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT1cImNhcmQtaW1nLXRvcFwiIHNyYz17dmFsdWUuYXZhdGFyfSBhbHQ9XCJDYXJkIGltYWdlIGNhcFwiIC8+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkLWJvZHkgYmctZ3JheSBweC0wIHB5LTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImNhcmQtdGl0bGUgdGV4dC1ibGFja1wiPnt2YWx1ZS5uYW1lfTwvcD5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvYT5cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgKSlcbiAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPHN0eWxlIGdsb2JhbCBqc3g+e2BcbiAgICAgICAgICAgICAgICAgICAgLnByb3ZpZGVyIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNkZGQgIWltcG9ydGFudDtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvUHJvdmlkZXJEZXRhaWw+XG4gICAgKVxuICB9XG59Il19 */\n/*@ sourceURL=pages/project/detail.js */"
+      }));
+    }
+  }], [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _regenerator.default.mark(function _callee(_ref) {
-        var query, res, url_path, data;
+        var query, res, data, resPro, dataPro;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
-                res = null;
-                url_path = '/danh-sach-du-an/' + query.slug;
+                _context.next = 3;
+                return fetch(APIPROJECT + query.id);
 
-                if (!query.page) {
-                  _context.next = 9;
-                  break;
-                }
-
+              case 3:
+                res = _context.sent;
                 _context.next = 6;
-                return fetch(APIURL + 'danh-sach-du-an/' + encodeURIComponent(query.slug) + "?page=".concat(query.page));
-
-              case 6:
-                res = _context.sent;
-                _context.next = 12;
-                break;
-
-              case 9:
-                _context.next = 11;
-                return fetch(APIURL + 'danh-sach-du-an/' + encodeURIComponent(query.slug));
-
-              case 11:
-                res = _context.sent;
-
-              case 12:
-                _context.next = 14;
                 return res.json();
 
-              case 14:
+              case 6:
                 data = _context.sent;
-                console.log(data);
+                _context.next = 9;
+                return fetch(APIPRO + data.project.user_id);
+
+              case 9:
+                resPro = _context.sent;
+                _context.next = 12;
+                return resPro.json();
+
+              case 12:
+                dataPro = _context.sent;
                 return _context.abrupt("return", {
-                  data: data,
-                  projects: data.datas ? data.datas.data : null,
-                  title: data.seo ? data.seo.title : null,
-                  des: data.seo ? data.seo.des : null,
-                  canonical: data.seo ? data.seo.canonical : null,
-                  robots: data.seo ? data.seo.robots : null,
-                  og_url: data.seo ? data.seo.url : null,
-                  url_images: data.seo ? data.seo.url_image : null,
-                  headerProjects: data.headerProjects,
-                  headerCategories: data.headerCategories,
-                  dataBase: data.dataBase,
-                  h1: data.h1,
-                  filterDefault: data.filter_default,
-                  page: data.page,
-                  url_path: url_path,
-                  breadcrumb: data.breadcumb
+                  id: query.id,
+                  data: dataPro,
+                  provider: dataPro.provider,
+                  project: data.project,
+                  images: data.images.data,
+                  slug: query.slug,
+                  title: data.seo.title,
+                  des: data.seo.des,
+                  canonical: data.seo.canonical,
+                  robots: data.seo.robots,
+                  og_url: data.seo.url,
+                  url_images: data.seo.url_image,
+                  headerProjects: dataPro.headerProjects,
+                  headerCategories: dataPro.headerCategories,
+                  dataBase: dataPro.dataBase,
+                  relateData: data.relateData,
+                  listProjects: data.listProjects
                 });
 
-              case 17:
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -27321,57 +30791,6 @@ function (_React$Component) {
         return _getInitialProps.apply(this, arguments);
       };
     }()
-  }]);
-
-  function _default(props) {
-    _classCallCheck(this, _default);
-
-    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
-  }
-
-  _createClass(_default, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var showChar = 200; // How many characters are shown by default
-
-      var ellipsestext = "";
-      var moretext = "Xem thêm >";
-      var lesstext = "Rút gọn <";
-      $('.more').each(function () {
-        var content = $(this).html();
-
-        if (content.length > showChar) {
-          var c = content.substr(0, showChar);
-          var h = content.substr(showChar, content.length - showChar);
-          var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink font-14">' + moretext + '</a></span>';
-          $(this).html(html);
-        }
-      });
-      $(".morelink").click(function () {
-        if ($(this).hasClass("less")) {
-          $(this).removeClass("less");
-          $(this).html(moretext);
-        } else {
-          $(this).addClass("less");
-          $(this).html(lesstext);
-        }
-
-        $(this).parent().prev().toggle();
-        $(this).prev().toggle();
-        return false;
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react.default.createElement(_ListProjectComponent.default, _extends({}, this.props, {
-        detail: true,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 77
-        }
-      }));
-    }
   }]);
 
   return _default;
@@ -27394,7 +30813,7 @@ exports.default = _default;
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/project/list-project-filter")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/project/detail")
   
 
 /***/ }),
@@ -27418,7 +30837,7 @@ module.exports = routes() // ----   ----      -----
 /***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/project/list-project-filter.js");
+module.exports = __webpack_require__("./pages/project/detail.js");
 
 
 /***/ })
@@ -27427,4 +30846,4 @@ module.exports = __webpack_require__("./pages/project/list-project-filter.js");
           return { page: comp.default }
         })
       ;
-//# sourceMappingURL=list-project-filter.js.map
+//# sourceMappingURL=detail.js.map

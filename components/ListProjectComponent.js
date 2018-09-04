@@ -4,6 +4,7 @@ import Sidebar from "./sideBar";
 import Pagination from "./pagination";
 import {Link} from "../routes"
 import $ from "jquery";
+import css from "../pages/project/list-project.css"
 
 export default class extends React.Component {
 
@@ -85,7 +86,7 @@ export default class extends React.Component {
     const {h1, filterDefault, page, breadcrumb} = this.props;
     const {projects, nextPage, nextPageLink, backPageLink} = this.state;
     return (
-      <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink}>
+      <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink} css={css}>
         <div className="container-fluid service project-list px-4 bg-gray">
           <div className="row">
             <div className="col-0 col-md-3 col-lg-3 px-3" id="sidebar">
@@ -123,7 +124,7 @@ export default class extends React.Component {
                         className="media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container"
                         key={index}>
                         <div className="row">
-                          <div className="col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0">
+                          <div className="project-relate col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0">
                             <Link route="project.detail" params={{id: value.id, slug: value.slug}}>
                               <a className="link"><img src={value.public_avatar} alt="" className="mr-3"/></a>
                             </Link>
