@@ -11,8 +11,8 @@ export default class MyDocument extends Document {
         <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
-        <link rel="stylesheet" type="text/css" charSet="UTF-8" href="/vendor/slick.min.css" />
-        <link rel="stylesheet" type="text/css" href="/vendor/slick-theme.min.css" />
+        {/*<link rel="stylesheet" type="text/css" charSet="UTF-8" href="/vendor/slick.min.css" />*/}
+        {/*<link rel="stylesheet" type="text/css" href="/vendor/slick-theme.min.css" />*/}
         </Head>
         <body>
           <Main />
