@@ -72,6 +72,7 @@ export default class extends React.Component {
         <Head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <meta name="fragment" content="!" />
           <title>{this.props.title || '9houz'}</title>
           {des && <meta name='description' itemProp='description' content={des} />}
           {canonical && <link rel="canonical" href={process.env.CURRENTDOMAIN + canonical} />}

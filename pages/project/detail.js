@@ -46,8 +46,6 @@ class Detail extends React.Component {
   }
   render() {
     const {router , provider, data, project, images ,relateData , listProjects} = this.props;
-    // const {router} = this.props;
-    console.log(router);
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
         {

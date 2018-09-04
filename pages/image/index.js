@@ -4,7 +4,8 @@ import ImageDetail from '../../components/image-detail'
 import 'isomorphic-fetch'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'image/'
 import css from './index.css'
-export default class Image extends React.Component{
+import { withRouter } from 'next/router';
+class Image extends React.Component{
     static async getInitialProps({query}){
         const res = await fetch(APIURL+query.id)
         const data = await res.json()
@@ -29,12 +30,12 @@ export default class Image extends React.Component{
                 }
     }
     render(){
-        const {url} = this.props
+      const {router} = this.props
       return(
             <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div className="main-image">
                 <div id="lightbox">
-                    <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false} popup={false} path={url.pathname} isImage={true}></ImageDetail>
+                    <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false} popup={false} path={router.pathname} isImage={true}></ImageDetail>
                     <style global jsx>{`
                         #lightbox {
                             top: 105px !important;
@@ -51,3 +52,4 @@ export default class Image extends React.Component{
         )
     }
 }
+export default withRouter(Image)
