@@ -1,10 +1,11 @@
 import React from 'react'
 import IdeaComponent from '../components/IdeaComponent'
 import 'isomorphic-fetch'
+import { withRouter } from 'next/router'
 
 const APIURL = process.env.DOMAIN + process.env.APIURI
 
-export default class extends React.Component{
+class Idea extends React.Component{
     static async getInitialProps({query}){
         const res = await fetch(APIURL+"y-tuong")
         const data = await res.json()
@@ -34,18 +35,21 @@ export default class extends React.Component{
     }
     
    render(){
-       const { url } = this.props
+       const { router } = this.props
        return(
             <IdeaComponent 
                 {...this.props}
-                photoId={this.props.url.query && this.props.url.query.photoId}
-                asPath={url.asPath} 
-                path={url.pathname}
+                photoId={this.props.router.query && this.props.router.query.photoId}
+                asPath={router.asPath}
+                path={router.pathname}
                 nextUrl={this.state.nextUrl}
                 images={this.state.images}
                 detail={true}
                 changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
-                ></IdeaComponent>
+                >
+            </IdeaComponent>
        )
    }
 }
+
+export  default withRouter(Idea)

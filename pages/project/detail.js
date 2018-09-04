@@ -1,21 +1,22 @@
-import React from 'react'
-import ProviderDetail from '../../components/pro-detail'
+import React from 'react';
+import ProviderDetail from '../../components/pro-detail';
 import {mapObject, ucfirst} from "../../libraries/helpers";
-import {Link, Router} from '../../routes'
+import {Link, Router} from '../../routes';
 import ImageModal from '../../components/image-modal';
-import 'isomorphic-fetch'
+import 'isomorphic-fetch';
 import css from "./detail.css";
+import { withRouter } from 'next/router';
 
-const APIURL = process.env.DOMAIN + process.env.APIURI
-const APIPROJECT = APIURL + 'project/'
-const APIPRO = APIURL + 'provider/'
+const APIURL = process.env.DOMAIN + process.env.APIURI;
+const APIPROJECT = APIURL + 'project/';
+const APIPRO = APIURL + 'provider/';
 
-export default class extends React.Component {
+class Detail extends React.Component {
   static async getInitialProps({query}) {
-    const res = await fetch(APIPROJECT + query.id)
-    const data = await res.json()
-    const resPro = await fetch(APIPRO + data.project.user_id)
-    const dataPro = await resPro.json()
+    const res = await fetch(APIPROJECT + query.id);
+    const data = await res.json();
+    const resPro = await fetch(APIPRO + data.project.user_id);
+    const dataPro = await resPro.json();
     return {
       id: query.id
       , data: dataPro
@@ -44,28 +45,24 @@ export default class extends React.Component {
     Router.pushRoute('project.detail', {id: id , slug : `${slug}`})
   }
   render() {
-    const {url , provider, data, project, images ,relateData , listProjects} = this.props
+    const {router , provider, data, project, images ,relateData , listProjects} = this.props;
+    // const {router} = this.props;
+    console.log(router);
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
         {
-          url.query.photoId &&
+          router.query.photoId &&
           <ImageModal
-            id={url.query.photoId}
-            slug={url.query.slug}
+            id={router.query.photoId}
+            slug={router.query.slug}
             detail={false}
             popup={false}
-            currentPath={url.pathname}
-            onDismiss={() => this.dismissModal(url.query.id,url.query.slug)}
+            currentPath={router.pathname}
+            onDismiss={() => this.dismissModal(router.query.id,router.query.slug)}
           />
         }
         <div className="project-detail-main" id="cat">
           <div className="project-detail-container">
-            {/*<nav aria-label="breadcrumb">*/}
-              {/*<ol className="breadcrumb p-0 pl-0">*/}
-                {/*<li className="breadcrumb-item"><a href="#">Home</a></li>*/}
-                {/*<li className="breadcrumb-item active" aria-current="page">Library</li>*/}
-              {/*</ol>*/}
-            {/*</nav>*/}
             <div className="row">
               <div className="col-12 col-md-8">
                 <div className="about bg-white p-3 border border-gray">
@@ -113,29 +110,6 @@ export default class extends React.Component {
                     </ul>
                   </div>
                 </div>
-                {/*<div className="project-keyword bg-white p-3 my-4">*/}
-                  {/*<p className="keyword-title font-25">Từ khóa</p>*/}
-                  {/*<div className="pt-0 keyword-tags">*/}
-                        {/*<span*/}
-                          {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
-                          {/*Thiết kế nội thất chung cư*/}
-                        {/*</span>*/}
-                    {/*<span*/}
-                      {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
-                          {/*Thiết kế nội thất chung cư*/}
-                        {/*</span>*/}
-                    {/*<span*/}
-                      {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
-                          {/*Thiết kế nội thất chung cư*/}
-                        {/*</span><span*/}
-                    {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
-                          {/*Thiết kế nội thất chung cư*/}
-                        {/*</span><span*/}
-                    {/*className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">*/}
-                          {/*Thiết kế nội thất chung cư*/}
-                        {/*</span>*/}
-                  {/*</div>*/}
-                {/*</div>*/}
               </div>
               <div className="col-12 col-md-4 project-sidebar">
                 <div className="bg-white p-3">
@@ -212,3 +186,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default withRouter(Detail)

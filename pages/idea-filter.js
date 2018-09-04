@@ -1,8 +1,9 @@
 import React from 'react'
 import IdeaComponent from '../components/IdeaComponent'
 const APIURL = process.env.DOMAIN + process.env.APIURI
+import { withRouter } from 'next/router'
 
-export default class IdeaFilter extends React.Component{
+class IdeaFilter extends React.Component{
     static async getInitialProps({query}){
         let res = null;
         if(query.f){
@@ -47,20 +48,22 @@ export default class IdeaFilter extends React.Component{
         }
     }
     render(){
-        const { params , url ,subParams} = this.props   
+        const { params , router ,subParams} = this.props
         return(
             <IdeaComponent 
                 {...this.props}
-                photoId={this.props.url.query && this.props.url.query.photoId}
+                photoId={this.props.router.query && this.props.router.query.photoId}
                 ideaParams={params}
                 subParams={subParams}
-                asPath={url.asPath}
+                asPath={router.asPath}
                 nextUrl={this.state.nextUrl}
                 images={this.state.images}
                 detail={true}
                 changeState={(images,nextPage)=>{this.setState({images : images , nextUrl : nextPage})}}
-                path={url.pathname}>
+                path={router.pathname}>
             </IdeaComponent>
         )
     }
 }
+
+export default withRouter(IdeaFilter)

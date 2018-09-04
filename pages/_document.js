@@ -23,20 +23,7 @@ export default class MyDocument extends Document {
       <html lang="vi">
         <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <noscript id="deferred-styles">
-            <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
-        </noscript>
-        <script dangerouslySetInnerHTML={{__html: `var loadDeferredStyles = function() {
-            var addStylesNode = document.getElementById("deferred-styles");
-            var replacement = document.createElement("div");
-            replacement.innerHTML = addStylesNode.textContent;
-            document.body.appendChild(replacement)
-            addStylesNode.parentElement.removeChild(addStylesNode);
-        };
-        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-        else window.addEventListener('load', loadDeferredStyles);`}} />
+        <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
         <link rel="stylesheet" type="text/css" charSet="UTF-8" href="/vendor/slick.min.css" />
         <link rel="stylesheet" type="text/css" href="/vendor/slick-theme.min.css" />
         </Head>

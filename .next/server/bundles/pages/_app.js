@@ -16,6 +16,8 @@ module.exports=/******/function(modules){// webpackBootstrap
 /******/__webpack_require__.n=function(module){/******/var getter=module&&module.__esModule?/******/function getDefault(){return module['default'];}:/******/function getModuleExports(){return module;};/******/__webpack_require__.d(getter,'a',getter);/******/return getter;/******/};/******/ /******/ // Object.prototype.hasOwnProperty.call
 /******/__webpack_require__.o=function(object,property){return Object.prototype.hasOwnProperty.call(object,property);};/******/ /******/ // __webpack_public_path__
 /******/__webpack_require__.p="";/******/ /******/ // Load entry module and return exports
-/******/return __webpack_require__(__webpack_require__.s=82);/******/}(/************************************************************************/ /******/{/***/82:/***/function _(module,exports,__webpack_require__){module.exports=__webpack_require__(83);/***/},/***/83:/***/function _(module,exports,__webpack_require__){module.exports=__webpack_require__(84);/***/},/***/84:/***/function _(module,exports){module.exports=require("next/app");/***/}/******/});
+/******/return __webpack_require__(__webpack_require__.s=2);/******/}(/************************************************************************/ /******/{/***/"./node_modules/next/dist/pages/_app.js":/***/function node_modulesNextDistPages_appJs(module,exports,__webpack_require__){module.exports=__webpack_require__("next/app");/***/},/***/2:/***/function _(module,exports,__webpack_require__){module.exports=__webpack_require__("./node_modules/next/dist/pages/_app.js");/***/},/***/"next/app":/***/function nextApp(module,exports){module.exports=require("next/app");/***/}/******/});
 
 }());
+
+//# sourceMappingURL=_app.js.map

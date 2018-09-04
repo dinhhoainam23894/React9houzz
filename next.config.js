@@ -24,11 +24,11 @@ module.exports = withSass({
 
     config.plugins.push(new webpack.DefinePlugin(env));
 
-    if (!dev) {
+    // if (dev) {
       config.plugins.push(new TargetsPlugin({
-        browsers: ["last 2 versions", "chrome >= 41"]
-      }))
-    }
+        browsers: ["last 2 versions", "chrome >= 40"]
+      }));
+    // }
 
     return config
   }
