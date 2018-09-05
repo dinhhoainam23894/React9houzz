@@ -86,8 +86,7 @@ export default class Image extends React.Component{
         }else{
             this.nextIdea(this.state.currentValue.id)
         }
-    } 
-   
+    }
     nextIdea = async (id) => {
         var startIndex = 0 ;
         var currentIndex = 0;
@@ -106,7 +105,6 @@ export default class Image extends React.Component{
         }
         
     }
-    
     nextProject = async (id,slug) => {
         var image_size = this.state.image_thumb.length - 1;
         var currentIndex = this.state.currentImage;
@@ -321,7 +319,6 @@ class ImageInfo extends React.PureComponent{
                 }
             });
     }
-  
     changeImage (e , value) {
         e.preventDefault()
         var $this = $(e.target).parents('li');
@@ -350,14 +347,17 @@ class ImageInfo extends React.PureComponent{
                         <div className="content-scroll">
                             <div className="content-detail">
                                 <div className="media">
-                                    { provider.auth_avatar && <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" /> }
+                                    { provider && <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" /> }
                                     <div className="media-body">
                                         <div className="media-content">
-                                            <Link prefetch route={ `/pro/${provider.id}-${provider.slug}` }>
-                                                <a className="font-weight-bold font-14 text-black-100">{ provider.name ? provider.name : 'Chưa có tên'  }</a>
-                                            </Link>
+                                          {
+                                              provider &&
+                                              <Link prefetch route={ `/pro/${provider.id}-${provider.slug}` }>
+                                                <a className="font-weight-bold font-14 text-black-100">{ provider ? provider.name : 'Chưa có tên'  }</a>
+                                              </Link>
+                                          }
                                             <div className="star-rating font-14">
-                                                <span className="text-black-100 font-14">{provider.avg_rate && rating(provider.avg_rate)}{provider.total_rate ? "("+provider.total_rate+" người đánh giá"+")" : "(0 người đánh giá)"}</span>
+                                                <span className="text-black-100 font-14">{provider && rating(provider.avg_rate)}{provider ? "("+provider.total_rate+" người đánh giá"+")" : "(0 người đánh giá)"}</span>
                                             </div>
                                         </div>
                                     </div>

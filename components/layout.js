@@ -65,7 +65,8 @@ export default class extends React.Component {
             headerCategories , 
             dataBase,
           backPageLink,
-      nextPageLink
+      nextPageLink,
+      slick
           } = this.props
     return (
       <React.Fragment>
@@ -84,6 +85,13 @@ export default class extends React.Component {
           {nextPageLink && <link rel="next" href={process.env.CURRENTDOMAIN + nextPageLink} />}
           {backPageLink && <link rel="prev" href={process.env.CURRENTDOMAIN + backPageLink} />}
           <style dangerouslySetInnerHTML={{__html: css}}/>
+          { slick &&
+            <link rel="stylesheet" type="text/css" charset="UTF-8" href="/vendor/slick.min.css"/>
+          }
+          {
+            slick &&
+            <link rel="stylesheet" type="text/css" href="/vendor/slick-theme.min.css" />
+          }
         </Head>
         <header>
         <div>

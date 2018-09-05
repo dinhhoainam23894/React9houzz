@@ -112,7 +112,7 @@ class Detail extends React.Component {
               <div className="col-12 col-md-4 project-sidebar">
                 <div className="bg-white p-3">
                   <p className="sub-title position-relative">Dự án cùng chuyên gia</p>
-                  <ul className="list-unstyled mt-3">
+                  <ul className="list-unstyled mt-3 project-relate">
                     {
                       listProjects && listProjects.map((value,index) => (
                         <li className="my-3 listProject" key={index}>
@@ -120,6 +120,7 @@ class Detail extends React.Component {
                             <a className="nav-link border-0 font-14 font-weight-bold">
                                  <div className="media">
                                 <div className="media-image mr-3">
+
                                   <img src={value.avatar} alt="Generic placeholder image"/>
                                 </div>
                                 <div className="media-body">
@@ -141,7 +142,7 @@ class Detail extends React.Component {
                         </li>
                       ))
                     }
-                    <li className="text-right border border-bottom-0 border-left-0 border-right-0 pt-3">
+                    <li className="text-right border border-bottom-0 border-left-0 border-right-0 pt-3 d-none d-md-block">
                       <Link route="pro.project" params={{ id: provider.id , slug : provider.slug }} >
                         <a href="" className="text-primary"> Xem thêm </a>
                      </Link>
@@ -150,12 +151,12 @@ class Detail extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="project-more mt-3">
+            <div className="project-more mt-3 p-3">
                 <p className="font-25">Mọi người thường xem thêm</p>
-                <div className="row">
+                <div className="row project-more-detail">
                   {
                     relateData && mapObject(relateData,(index,value) => (
-                      <div className="col-12 col-md-3" key={index}>
+                      <div className="col-12 col-md-3 project-more-items" key={index}>
                         <Link route='project.detail' params={{id: index , slug: `${value.slug}`}}>
                           <a className="nav-link border-0 font-14 font-weight-bold px-0">
                           <div className="card border-none">

@@ -6,6 +6,10 @@
           "preset-env": {
             "modules": "commonjs"
           },
+          "targets-webpack-plugin": {
+            "browsers": ["last 2 versions", "chrome >= 39"],
+            "node": true
+          },
           "styled-jsx": {
             "plugins": [
               "styled-jsx-plugin-sass"
@@ -24,7 +28,6 @@
           }
         }
       ]
-      
     ]
   }
   

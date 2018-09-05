@@ -24,7 +24,7 @@ export default class  extends React.Component {
       , dataBase: data.dataBase,
       providers: data.providers,
       listType: data.listType,
-      images : data.images.data
+      images : data.images
     }
   }
 
@@ -81,12 +81,12 @@ export default class  extends React.Component {
     };
     const {providers, listType , images} = this.props
     return (
-      <Layout {...this.props} navmenu={false} container={false} css={css}>
+      <Layout {...this.props} navmenu={false} container={false} css={css} slick={true}>
         <div className="homepage">
           <Slider {...banner}>
             <div className="slide d-flex">
               <div className="overlay"></div>
-              <img src="/images/home-banner1.png" alt="" className="img-fluid"/>
+              <img src="/images/home-banner1.jpg" alt="" className="img-fluid"/>
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>1000+ ý tưởng đẹp cho ngôi nhà của bạn</p>
@@ -100,7 +100,7 @@ export default class  extends React.Component {
             </div>
             <div className="slide d-flex">
               <div className="overlay"></div>
-              <img src="/images/home-banner2.png" alt="" className="img-fluid"/>
+              <img src="/images/home-banner2.jpg" alt="" className="img-fluid"/>
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành</p>

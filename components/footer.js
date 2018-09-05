@@ -11,7 +11,7 @@ export default class footer extends React.Component{
                                 <div className="about_widget">
                                     <div className="logo d-none d-md-block">
                                         <a href="/" title="Trở về trang chủ">
-                                            <img src="/static/images/logo9houz.png" alt="9HOUZ.COM - Nguồn cảm hứng thiết kế nội thất, trang hoàng nhà cửa | 9houz.com" title="9houzz.com" width="140"/>
+                                            <img src="/images/logo9houz.png" alt="9HOUZ.COM - Nguồn cảm hứng thiết kế nội thất, trang hoàng nhà cửa | 9houz.com" title="9houzz.com" width="140"/>
                                         </a>
                                     </div>
                                     <p className="font-13">Copyright &copy; 2018 9houz Inc.</p>
