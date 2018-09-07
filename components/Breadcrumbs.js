@@ -13,18 +13,24 @@ export default class extends React.Component {
         {
           breadcrumb &&
           <ol className="breadcrumb bg-white mb-0">
-            <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-              <Link prefetch route={breadcrumb.home.uri}><a itemProp="url">
-                <span itemProp="title" className="font-13">{breadcrumb.home.name}</span></a>
-              </Link>
-            </li>
-            <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-              <Link prefetch route={breadcrumb.sub_items.uri}>
-                <a itemProp="url">
-                  <span itemProp="title" className="font-13">{breadcrumb.sub_items.name}</span>
-                </a>
-              </Link>
-            </li>
+            {
+              breadcrumb.home &&
+              <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
+                <Link prefetch route={breadcrumb.home.uri}><a itemProp="url">
+                  <span itemProp="title" className="font-13">{breadcrumb.home.name}</span></a>
+                </Link>
+              </li>
+            }
+            {
+              breadcrumb.sub_items &&
+              <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
+                <Link prefetch route={breadcrumb.sub_items.uri}>
+                  <a itemProp="url">
+                    <span itemProp="title" className="font-13">{breadcrumb.sub_items.name}</span>
+                  </a>
+                </Link>
+              </li>
+            }
           </ol>
         }
       </div>
