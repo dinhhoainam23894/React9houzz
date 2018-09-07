@@ -1,5 +1,6 @@
 .provider-list .media{
     border: 1px solid #e8e8e8 !important;
+
     .media-header {
         display: flex;
         .logo {
@@ -68,6 +69,20 @@
     }
 }
 .provider-list{
+    .child-sidebar-service{
+        ul li:nth-child(n+5) {
+            display: block !important;
+        }
+        .loadmore {
+            display: none !important;
+        }
+        border-bottom: none;
+        .widget {
+            h3 {
+                font-size: 16px !important;
+            }
+        }
+    }
     .project-list{
         li{
             &:hover{
@@ -79,7 +94,7 @@
             margin-right: 0.75rem;
             transition: .3s;
             cursor: pointer;
-            max-height: 100% !important;
+            height: 155px !important;
             width: 33%;
             min-height: 155px !important;
             img{

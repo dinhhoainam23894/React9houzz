@@ -1,6 +1,8 @@
 import React from 'react'
 import Layout from "./layout";
 import Sidebar from "./sideBar";
+import Breadcrumbs from './Breadcrumbs'
+
 import Pagination from "./pagination";
 import {Link} from "../routes"
 import $ from "jquery";
@@ -32,37 +34,8 @@ export default class extends React.Component {
       });
     }
   }
-
-  // componentDidMount(){
-  //   $('.sidebar-service ul').each(function(e){
-  //     if ($(this).find('li').length == $(this).find($('li:visible')).length) {
-  //       $(this).find('.loadmore').hide();
-  //     }
-  //   });
-  //   $('.sidebar-service').on('click','.loadmore',function () {
-  //     var list = $(this).parent().find($('li'));
-  //     $(this).parent().find($('li:hidden')).show();
-  //     if (list.length == $(this).parent().find($('li:visible')).length) {
-  //       $(this).removeClass('loadmore');
-  //       $(this).addClass('hidemore');
-  //       $(this).html('Thu gọn');
-  //     }
-  //   });
-  //   $('.sidebar-service').on('click','.hidemore',function () {
-  //     var list = $(this).parent().find($('li'));
-  //     $(this).parent().find($('li:visible')).slice(5, list.length).hide();
-  //     $(this).removeClass('hidemore');
-  //     $(this).addClass('loadmore');
-  //     $(this).html('Xem thêm');
-  //   });
-  //   $(".close").click(function(event) {
-  //     $(this).parent().toggle();
-  //   });
-  // }
   handlePageChange(pageNumber) {
-    console.log(`active page is ${pageNumber}`);
     this.setState({activePage: pageNumber});
-    // this.getData(pageNumber)
   }
 
   getPageUrl(i) {
@@ -83,7 +56,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const {h1, filterDefault, page, breadcrumb} = this.props;
+    const {h1, filterDefault, page, breadcrumb , listBadge} = this.props;
     const {projects, nextPage, nextPageLink, backPageLink} = this.state;
     return (
       <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink} css={css}>
@@ -95,28 +68,18 @@ export default class extends React.Component {
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
               {
                 breadcrumb &&
-                <ol className="breadcrumb bg-white mb-0">
-                  <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                    <Link prefetch route={breadcrumb.home.uri}><a itemProp="url">
-                      <span itemProp="title" className="font-13">{breadcrumb.home.name}</span></a>
-                    </Link>
-                  </li>
-                  <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                    <Link prefetch route={breadcrumb.sub_items.uri}>
-                      <a itemProp="url">
-                        <span itemProp="title" className="font-13">{breadcrumb.sub_items.name}</span>
-                      </a>
-                    </Link>
-                  </li>
-                </ol>
+                <Breadcrumbs breadcrumb={breadcrumb}></Breadcrumbs>
               }
-              <div className="bg-white px-3 py-4">
+              <div className="bg-white px-3 py-1">
                 <h1 className="font-25 font-weight-normal text-black-100">{h1}</h1>
-                {/*<div className="service-tag pt-0">*/}
-                {/*<span className="text-center font-12 font-weight-normal badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">mầu tối <i className="close font-weight-normal font-15"></i></span>*/}
-                {/*<span className="text-center font-12 font-weight-normal badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">Phòng khách <i className="close font-weight-normal font-15"></i></span>*/}
-                {/*<span className="text-center font-12 font-weight-normal badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">Phòng họp <i className="close font-weight-normal font-15"></i></span>*/}
-                {/*</div>*/}
+                <div className="list-tag service ml-3">
+                  {  listBadge && listBadge.map((value,index) => (
+                    <Link prefetch route={value.uri} key={index}>
+                      <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                    </Link>
+                  ))
+                  }
+                </div>
                 <ul className="list-unstyled my-3">
                   {
                     projects && projects.map((value, index) => (
@@ -180,7 +143,7 @@ export default class extends React.Component {
                   activePage={this.state.activePage}
                   itemsCountPerPage={this.props.data.datas.per_page}
                   totalItemsCount={this.props.data.datas.total}
-                  pageRangeDisplayed={8}
+                  pageRangeDisplayed={5}
                   onChange={(e) => this.handlePageChange(e)}
                   getPageUrl={(i) => this.getPageUrl(i)}
                   nextPageLink={nextPageLink}

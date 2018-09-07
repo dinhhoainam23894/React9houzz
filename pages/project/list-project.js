@@ -3,12 +3,12 @@ import Layout from '../../components/layout'
 import Sidebar from '../../components/sideBar'
 import 'isomorphic-fetch'
 import ListProjectComponent from "../../components/ListProjectComponent";
-const APIURL = process.env.DOMAIN + process.env.APIURI + 'danh-sach-du-an/'
+const APIURL = process.env.DOMAIN + process.env.APIURI + 'danh-sach-du-an/';
 import css from "./list-project.css";
 
 export default class extends React.Component{
     static async getInitialProps({query}){
-        let res = null;
+      let res = null;
       if(query.page){
         res = await fetch(APIURL + `?page=${query.page}`)
       }else{

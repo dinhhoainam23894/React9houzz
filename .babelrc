@@ -6,9 +6,8 @@
           "preset-env": {
             "modules": "commonjs"
           },
-          "targets-webpack-plugin": {
-            "browsers": ["last 2 versions", "chrome >= 39"],
-            "node": true
+          "targets": {
+            "browsers": ["last 2 versions", "chrome >= 39"]
           },
           "styled-jsx": {
             "plugins": [

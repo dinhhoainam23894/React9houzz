@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 73);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -89,7 +89,7 @@ var routes = __webpack_require__(14); // Name   Page      Pattern
 module.exports = routes() // ----   ----      -----
 .add('index', '/', 'index') // about  about     /about
 .add('news', '/news').add('image', '/anh/:id-:slug', 'image/index').add('y-tuong', '/y-tuong', 'idea') // y-tuong   idea   /y-tuong
-.add('idea.detail', '/y-tuong/:params', 'idea-filter').add('pro.detail', '/pro/:id-:slug', 'pro/index').add('pro.project', '/pro/:id-:slug/d%E1%BB%B1-%C3%A1n', 'pro/project').add('pro.review', '/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t', 'pro/review').add('project.detail', '/du-an/:id-:slug', 'project/detail').add('static', '/about/:slug', 'static-page').add('list-project', '/danh-sach-du-an', 'project/list-project').add('list-project.detail', '/danh-sach-du-an/:slug', 'project/list-project-filter').add('list-provider', '/danh-sach-pro', 'pro/provider-list');
+.add('idea.detail', '/y-tuong/:params', 'idea-filter').add('pro.detail', '/pro/:id-:slug', 'pro/index').add('pro.project', '/pro/:id-:slug/d%E1%BB%B1-%C3%A1n', 'pro/project').add('pro.review', '/pro/:id-:slug/nh%E1%BA%ADn-x%C3%A9t', 'pro/review').add('project.detail', '/du-an/:id-:slug', 'project/detail').add('static', '/about/:slug', 'static-page').add('list-project', '/danh-sach-du-an', 'project/list-project').add('list-project.detail', '/danh-sach-du-an/:slug', 'project/list-project-filter').add('list-provider', '/danh-sach-chuyen-gia', 'pro/list-provider').add('list-provider.detail', '/danh-sach-chuyen-gia/:slug', 'pro/list-provider-filter');
 
 /***/ }),
 /* 2 */
@@ -480,6 +480,8 @@ function (_React$Component) {
         src: "/mystatic/popper.min.js"
       }), _react.default.createElement("script", {
         src: "/mystatic/bootstrap.min.js"
+      }), _react.default.createElement("script", {
+        src: "/mystatic/polyfill.min.js"
       }));
     }
   }]);
@@ -615,7 +617,7 @@ module.exports = require("universal-cookie");
 /* 16 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server.js","build":"next build","start":"NODE_ENV=production node server.js","prod":"next build ; NODE_ENV=production node server.js","export":"npm run build && next export"},"dependencies":{"@zeit/next-css":"^0.2.0","@zeit/next-sass":"^0.2.0","@zeit/next-typescript":"^1.1.0","axios":"^0.18.0","babel-plugin-inline-import":"^3.0.0","babel-plugin-module-resolver":"^3.1.1","bootstrap":"^4.1.1","classnames":"^2.2.6","css-loader":"^0.28.11","dotenv":"^6.0.0","es6-promise":"^4.2.4","express":"^4.16.3","font-awesome":"^4.7.0","ionicons":"^4.2.4","isomorphic-fetch":"^2.2.1","jquery":"^3.3.1","lru-cache":"^4.1.3","merge-files-webpack-plugin":"^1.1.2","next":"^6.1.1","next-compose":"0.0.2","next-routes":"^1.4.2","nprogress":"^0.2.0","popper.js":"^1.14.3","postcss-loader":"^2.1.6","prop-types":"^15.6.2","purify-css":"^1.2.5","purifycss-webpack":"^0.7.0","raw-loader":"^0.5.1","react":"^16.4.1","react-breadcrumbs-dynamic":"^1.1.1","react-document-meta":"^3.0.0-beta.2","react-dom":"^16.4.1","react-helmet":"^5.2.0","react-infinite":"^0.13.0","react-infinite-scroller":"^1.2.0","react-js-pagination":"^3.0.2","react-masonry-component":"^6.2.1","react-modal":"^3.5.1","react-responsive-carousel":"^3.1.41","react-router-dom":"^4.3.1","react-slick":"^0.23.1","react-through":"^1.1.1","reactstrap":"^6.3.0","serve-favicon":"^2.5.0","slick-carousel":"^1.8.1","style-loader":"^0.21.0","styled-jsx":"^2.2.7","styled-jsx-css-loader":"^0.3.0","styled-jsx-plugin-sass":"^0.2.4","tunnel-agent":"^0.6.0","universal-cookie":"^2.2.0","webpack":"^3.10.0"},"devDependencies":{"@babel/core":"^7.0.0-beta.53","create-next":"^0.1.4","node-sass":"^4.9.2","sass-loader":"^7.0.3","targets-webpack-plugin":"^1.0.3"}}
+module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server.js","build":"next build","start":"NODE_ENV=production node server.js","prod":"next build ; NODE_ENV=production node server.js"},"dependencies":{"@zeit/next-css":"^0.2.0","@zeit/next-sass":"^0.2.0","@zeit/next-typescript":"^1.1.0","axios":"^0.18.0","babel-plugin-inline-import":"^3.0.0","babel-plugin-module-resolver":"^3.1.1","bootstrap":"^4.1.1","classnames":"^2.2.6","css-loader":"^0.28.11","dotenv":"^6.0.0","es6-promise":"^4.2.4","express":"^4.16.3","font-awesome":"^4.7.0","ionicons":"^4.2.4","isomorphic-fetch":"^2.2.1","jquery":"^3.3.1","lru-cache":"^4.1.3","merge-files-webpack-plugin":"^1.1.2","next":"^6.1.1","next-compose":"0.0.2","next-routes":"^1.4.2","nprogress":"^0.2.0","popper.js":"^1.14.3","postcss-loader":"^2.1.6","prop-types":"^15.6.2","purify-css":"^1.2.5","purifycss-webpack":"^0.7.0","raw-loader":"^0.5.1","react":"^16.4.1","react-breadcrumbs-dynamic":"^1.1.1","react-document-meta":"^3.0.0-beta.2","react-dom":"^16.4.1","react-helmet":"^5.2.0","react-infinite":"^0.13.0","react-infinite-scroller":"^1.2.0","react-js-pagination":"^3.0.2","react-masonry-component":"^6.2.1","react-modal":"^3.5.1","react-responsive-carousel":"^3.1.41","react-router-dom":"^4.3.1","react-slick":"^0.23.1","react-through":"^1.1.1","reactstrap":"^6.3.0","serve-favicon":"^2.5.0","slick-carousel":"^1.8.1","style-loader":"^0.21.0","styled-jsx":"^2.2.7","styled-jsx-css-loader":"^0.3.0","styled-jsx-plugin-sass":"^0.2.4","tunnel-agent":"^0.6.0","universal-cookie":"^2.2.0","webpack":"^3.10.0"},"devDependencies":{"@babel/core":"^7.0.0-beta.53","babel-preset-env":"^1.7.0","create-next":"^0.1.4","node-sass":"^4.9.2","sass-loader":"^7.0.3","targets-webpack-plugin":"^1.0.3"}}
 
 /***/ }),
 /* 17 */
@@ -1125,7 +1127,8 @@ module.exports = require("axios");
 
 /***/ }),
 /* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1152,7 +1155,7 @@ var _routes = __webpack_require__(1);
 
 __webpack_require__(9);
 
-var _assert = __webpack_require__(24);
+var _assert = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2078,13 +2081,13 @@ function (_React$PureComponent) {
 }(_react.default.PureComponent);
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("assert");
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2291,7 +2294,89 @@ var _default = (0, _router.withRouter)(ProDetail);
 exports.default = _default;
 
 /***/ }),
-/* 26 */
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(0));
+
+var _routes = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _default =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(_default, _React$Component);
+
+  function _default(props) {
+    _classCallCheck(this, _default);
+
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+  }
+
+  _createClass(_default, [{
+    key: "render",
+    value: function render() {
+      var breadcrumb = this.props.breadcrumb;
+      return _react.default.createElement("div", null, breadcrumb && _react.default.createElement("ol", {
+        className: "breadcrumb bg-white mb-0"
+      }, _react.default.createElement("li", {
+        className: "breadcrumb-item",
+        itemScope: true,
+        itemType: "http://data-vocabulary.org/Breadcrumb"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: breadcrumb.home.uri
+      }, _react.default.createElement("a", {
+        itemProp: "url"
+      }, _react.default.createElement("span", {
+        itemProp: "title",
+        className: "font-13"
+      }, breadcrumb.home.name)))), _react.default.createElement("li", {
+        className: "breadcrumb-item",
+        itemScope: true,
+        itemType: "http://data-vocabulary.org/Breadcrumb"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: breadcrumb.sub_items.uri
+      }, _react.default.createElement("a", {
+        itemProp: "url"
+      }, _react.default.createElement("span", {
+        itemProp: "title",
+        className: "font-13"
+      }, breadcrumb.sub_items.name))))));
+    }
+  }]);
+
+  return _default;
+}(_react.default.Component);
+
+exports.default = _default;
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2308,7 +2393,7 @@ var _regenerator = _interopRequireDefault(__webpack_require__(3));
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _imageDetail = _interopRequireDefault(__webpack_require__(23));
+var _imageDetail = _interopRequireDefault(__webpack_require__(24));
 
 var _layout = _interopRequireDefault(__webpack_require__(8));
 
@@ -2430,8 +2515,6 @@ function (_React$Component) {
 exports.default = _default;
 
 /***/ }),
-/* 27 */,
-/* 28 */,
 /* 29 */,
 /* 30 */,
 /* 31 */,
@@ -2472,14 +2555,18 @@ exports.default = _default;
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(70);
+module.exports = __webpack_require__(74);
 
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2496,19 +2583,21 @@ var _regenerator = _interopRequireDefault(__webpack_require__(3));
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _proDetail = _interopRequireDefault(__webpack_require__(25));
+var _proDetail = _interopRequireDefault(__webpack_require__(26));
 
 var _helpers = __webpack_require__(4);
 
 var _routes = __webpack_require__(1);
 
-var _imageModal = _interopRequireDefault(__webpack_require__(26));
+var _imageModal = _interopRequireDefault(__webpack_require__(28));
 
 __webpack_require__(9);
 
-var _detail = _interopRequireDefault(__webpack_require__(71));
+var _detail = _interopRequireDefault(__webpack_require__(75));
 
 var _router = __webpack_require__(2);
+
+var _Breadcrumbs = _interopRequireDefault(__webpack_require__(27));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2572,7 +2661,8 @@ function (_React$Component) {
           project = _props.project,
           images = _props.images,
           relateData = _props.relateData,
-          listProjects = _props.listProjects;
+          listProjects = _props.listProjects,
+          breadcrumb = _props.breadcrumb;
       return _react.default.createElement(_proDetail.default, _extends({
         provider_id: provider.id,
         provider_slug: provider.slug,
@@ -2593,7 +2683,9 @@ function (_React$Component) {
         className: "jsx-3233782465" + " " + "project-detail-main"
       }, _react.default.createElement("div", {
         className: "jsx-3233782465" + " " + "project-detail-container"
-      }, _react.default.createElement("div", {
+      }, breadcrumb && _react.default.createElement(_Breadcrumbs.default, {
+        breadcrumb: breadcrumb
+      }), _react.default.createElement("div", {
         className: "jsx-3233782465" + " " + "row"
       }, _react.default.createElement("div", {
         className: "jsx-3233782465" + " " + "col-12 col-md-8"
@@ -2803,7 +2895,8 @@ function (_React$Component) {
                   headerCategories: dataPro.headerCategories,
                   dataBase: dataPro.dataBase,
                   relateData: data.relateData,
-                  listProjects: data.listProjects
+                  listProjects: data.listProjects,
+                  breadcrumb: data.breadcumbs
                 });
 
               case 14:
@@ -2828,7 +2921,7 @@ var _default = (0, _router.withRouter)(Detail);
 exports.default = _default;
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

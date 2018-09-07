@@ -4,8 +4,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "prod": "next build ; NODE_ENV=production node server.js",
-    "export": "npm run build && next export"
+    "prod": "next build ; NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^0.2.0",
@@ -63,6 +62,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.53",
+    "babel-preset-env": "^1.7.0",
     "create-next": "^0.1.4",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",

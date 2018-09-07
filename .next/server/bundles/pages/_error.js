@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -93,22 +93,22 @@ module.exports = require("next/router");
 
 /***/ }),
 
-/***/ 29:
+/***/ 33:
 /***/ (function(module, exports) {
 
 module.exports = require("next/link");
 
 /***/ }),
 
-/***/ 45:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(48);
 
 
 /***/ }),
 
-/***/ 46:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -125,7 +125,7 @@ var _react = _interopRequireDefault(__webpack_require__(0));
 
 var _head = _interopRequireDefault(__webpack_require__(6));
 
-var _link = _interopRequireDefault(__webpack_require__(29));
+var _link = _interopRequireDefault(__webpack_require__(33));
 
 var _reactstrap = __webpack_require__(11);
 

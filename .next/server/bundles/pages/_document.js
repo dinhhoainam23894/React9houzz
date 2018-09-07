@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -86,15 +86,15 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ 42:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(45);
 
 
 /***/ }),
 
-/***/ 43:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105,17 +105,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__(0));
-
-var _document = _interopRequireWildcard(__webpack_require__(44));
+var _document = _interopRequireWildcard(__webpack_require__(46));
 
 var _jquery = _interopRequireDefault(__webpack_require__(5));
 
 var _style = _interopRequireDefault(__webpack_require__(10));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _react = _interopRequireDefault(__webpack_require__(0));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -143,29 +143,11 @@ function (_Document) {
   }
 
   _createClass(MyDocument, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      var loadDeferredStyles = function loadDeferredStyles() {
-        var addStylesNode = document.getElementById("deferred-styles");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement);
-        addStylesNode.parentElement.removeChild(addStylesNode);
-      };
-
-      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-      if (raf) raf(function () {
-        window.setTimeout(loadDeferredStyles, 0);
-      });else window.addEventListener('load', loadDeferredStyles);
-    }
-  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("html", {
         lang: "vi"
-      }, _react.default.createElement(_document.Head, null, _react.default.createElement("script", {
-        src: "/mystatic/polyfill.min.js"
-      }), _react.default.createElement("link", {
+      }, _react.default.createElement(_document.Head, null, _react.default.createElement("link", {
         rel: "shortcut icon",
         href: "/favicon.ico"
       }), _react.default.createElement("noscript", {
@@ -183,7 +165,7 @@ function (_Document) {
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1"
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
-          __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n\n            gtag('config', 'UA-120211455-1');\n        "
+          __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'UA-120211455-1');\n        "
         }
       }));
     }
@@ -196,7 +178,7 @@ exports.default = MyDocument;
 
 /***/ }),
 
-/***/ 44:
+/***/ 46:
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");

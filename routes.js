@@ -14,7 +14,8 @@ module.exports = routes()                           // ----   ----      -----
 .add('static','/about/:slug','static-page')
 .add('list-project','/danh-sach-du-an','project/list-project')
 .add('list-project.detail','/danh-sach-du-an/:slug','project/list-project-filter')
-.add('list-provider','/danh-sach-pro','pro/provider-list')
+.add('list-provider','/danh-sach-chuyen-gia','pro/list-provider')
+.add('list-provider.detail','/danh-sach-chuyen-gia/:slug','pro/list-provider-filter')
 
 
 

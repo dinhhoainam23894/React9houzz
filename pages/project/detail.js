@@ -6,6 +6,7 @@ import ImageModal from '../../components/image-modal';
 import 'isomorphic-fetch';
 import css from "./detail.css";
 import { withRouter } from 'next/router';
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 const APIURL = process.env.DOMAIN + process.env.APIURI;
 const APIPROJECT = APIURL + 'project/';
@@ -35,6 +36,7 @@ class Detail extends React.Component {
       , dataBase: dataPro.dataBase
       , relateData : data.relateData
       , listProjects : data.listProjects
+      , breadcrumb: data.breadcumbs
     }
   }
   showPhoto (e, id , slug) {
@@ -45,7 +47,7 @@ class Detail extends React.Component {
     Router.pushRoute('project.detail', {id: id , slug : `${slug}`})
   }
   render() {
-    const {router , provider, data, project, images ,relateData , listProjects} = this.props;
+    const {router , provider, data, project, images ,relateData , listProjects ,breadcrumb} = this.props;
     return (
       <ProviderDetail provider_id={provider.id} provider_slug={provider.slug} data={data} {...this.props} css={css}>
         {
@@ -59,8 +61,13 @@ class Detail extends React.Component {
             onDismiss={() => this.dismissModal(router.query.id,router.query.slug)}
           />
         }
+
         <div className="project-detail-main" id="cat">
           <div className="project-detail-container">
+            {
+              breadcrumb &&
+              <Breadcrumbs breadcrumb={breadcrumb}/>
+            }
             <div className="row">
               <div className="col-12 col-md-8">
                 <div className="about bg-white p-3 border border-gray">

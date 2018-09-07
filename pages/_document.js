@@ -2,27 +2,13 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import jQuery from 'jquery'
 import css from 'styles/style.scss';
+import React from "react";
 
 export default class MyDocument extends Document {
-    componentDidUpdate(){
-        var loadDeferredStyles = function() {
-            var addStylesNode = document.getElementById("deferred-styles");
-            var replacement = document.createElement("div");
-            replacement.innerHTML = addStylesNode.textContent;
-            document.body.appendChild(replacement)
-            addStylesNode.parentElement.removeChild(addStylesNode);
-        };
-        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-        else window.addEventListener('load', loadDeferredStyles);
-    }
   render() {
-
     return (
       <html lang="vi">
         <Head>
-        <script src="/mystatic/polyfill.min.js" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <noscript id="deferred-styles">
             <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
@@ -38,7 +24,6 @@ export default class MyDocument extends Document {
             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
         if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
         else window.addEventListener('load', loadDeferredStyles);`}} />
-
         </Head>
         <body>
           <Main />
@@ -49,7 +34,6 @@ export default class MyDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'UA-120211455-1');
         ` }}>
         </script>

@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const TargetsPlugin = require("targets-webpack-plugin");
 require('dotenv').config({
   path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
 });
@@ -8,7 +9,7 @@ module.exports = withSass({
   sassLoaderOptions: {
     outputStyle: 'compressed'
   },
-  webpack: (config) => {
+  webpack: (config ,{ dev }) => {
     config.module.rules.push(
       {
         test: /\.css$/,
@@ -20,6 +21,11 @@ module.exports = withSass({
       return acc;
     }, {});
     config.plugins.push(new webpack.DefinePlugin(env));
+    if (dev) {
+      config.plugins.push(new TargetsPlugin({
+        browsers: ["last 2 versions", "chrome >= 41"]
+      }))
+    }
     return config;
   }
 })
