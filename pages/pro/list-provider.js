@@ -4,7 +4,7 @@ import Sidebar from '../../components/sideBar'
 import 'isomorphic-fetch'
 import ListProviderComponent from "../../components/ListProviderComponent";
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'danh-sach-chuyen-gia/'
-
+import css from './list-provider.css';
 export default class extends React.Component{
   static async getInitialProps({query}){
     let res = null;
@@ -41,6 +41,7 @@ export default class extends React.Component{
       <ListProviderComponent
         {...this.props}
         detail={true}
+        css={css}
       />
     )
   }

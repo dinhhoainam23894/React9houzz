@@ -55,13 +55,13 @@ export default class extends React.Component {
   }
 
   render() {
-    const {h1, filterDefault, page , breadcrumb , listBadge} = this.props;
+    const {h1, filterDefault, page , breadcrumb , listBadge , css} = this.props;
     const {providers, nextPage, nextPageLink, backPageLink} = this.state;
     return (
-      <Layout {...this.props} navmenu={false} container={false}>
+      <Layout {...this.props} navmenu={false} container={false} css={css}>
         <div className="container-fluid provider-list px-4 bg-gray">
           <div className="row">
-            <div className="col-0 col-md-3 col-lg-3 px-3 mt-3" id="sidebar">
+            <div className="col-0 col-md-3 col-lg-3 px-3 pt-3" id="sidebar">
               <Sidebar filter={filterDefault} page={page}></Sidebar>
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
@@ -95,15 +95,19 @@ export default class extends React.Component {
                                 </div>
                                 <div className="media-title ml-3">
                                   <Link route="pro.detail" params={{id: value.id, slug: value.slug}}>
-                                    <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">{value.name}</a>
+                                    <a className="mt-0 mb-1 h6"><h2 className="font-20 text-black-100 font-weight-bold">{value.name}</h2></a>
                                   </Link>
                                 </div>
                               </div>
                               <div className="media-content mt-3">
                                 <div className="d-flex pro-info my-2">
-                                  <div className="info project-info mr-4">
-                                    <i className="fa fa-briefcase my-auto" aria-hidden="true"></i> {value.total_project} dự án
-                                  </div>
+                                  {
+                                    value.total_project > 0 &&
+                                    <div className="info project-info mr-4">
+                                      <i className="fa fa-briefcase my-auto" aria-hidden="true"></i> {value.total_project} dự án
+                                    </div>
+                                  }
+
                                   {/*<div className="info contact-info mr-4">*/}
                                   {/*<i className="fa fa-phone my-auto" aria-hidden="true"></i> Liên hệ*/}
                                   {/*</div>*/}
@@ -140,9 +144,11 @@ export default class extends React.Component {
                                   </ul>
                                   :
                                   <ul className="list-unstyled d-flex project-list">
-                                    <li/>
-                                    <li/>
-                                    <li/>
+                                    <li className="d-flex justify-content-center align-items-center">
+                                        <p className="text-white font-weight-bold font-20">0 CÓ DỰ ÁN</p>
+                                    </li>
+                                    {/*<li/>*/}
+                                    {/*<li/>*/}
                                   </ul>
                               }
                           </div>

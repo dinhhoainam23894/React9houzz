@@ -108,7 +108,7 @@ export default class extends React.Component {
                             </Link>
                             <div className="media-header my-3 p-2">
                               <div className="rounded-circle logo">
-                                <img src={value.providers && value.providers.path_avatar}
+                                <img src={value.providers && value.providers.auth_avatar}
                                      className="img-fluid h-100 rounded-circle"/>
                               </div>
 

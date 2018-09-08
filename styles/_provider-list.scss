@@ -90,7 +90,7 @@
                 cursor : pointer;
             }
             float: left;
-            background: #808080;
+            background: #BDBDBD;
             margin-right: 0.75rem;
             transition: .3s;
             cursor: pointer;
@@ -106,4 +106,18 @@
         }
     }
 }
-  
+
+@include media-breakpoint-down(md){
+    .media{
+        .media-body{
+            padding-left: 0 !important;
+        }
+    }
+    .provider-list .project-list{
+        display: block !important;
+        li{
+            width: 100% !important;
+            margin-top: 0.5rem;
+        }
+    }
+}

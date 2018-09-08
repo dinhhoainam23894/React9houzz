@@ -2,7 +2,9 @@ import React from 'react'
 import ListProviderComponent from "../../components/ListProviderComponent";
 const path_name = "danh-sach-chuyen-gia/"
 import 'isomorphic-fetch'
+import css from './list-provider.css';
 const APIURL = process.env.DOMAIN + process.env.APIURI;
+
 export default class extends React.Component{
   static async getInitialProps({query}){
     let res = null;
@@ -41,6 +43,7 @@ export default class extends React.Component{
       <ListProviderComponent
         {...this.props}
         detail={true}
+        css={css}
       >
       </ListProviderComponent>
     )
