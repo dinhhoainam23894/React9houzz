@@ -46,11 +46,11 @@ export default class nav extends React.Component {
                   {
                     dataBase && dataBase.header_idea.map((value,index) => {
                       return <li key={index}>
-                        <Link prefetch route={value.uri}> 
-                        <a ids={value.original} href={value.uri} className={`font-15 font-weight-bold text-uppercase nav-idea ${value.class}`}>
-                          {value.name_tag}
-                        </a>
-                        </Link>
+                        {/*<Link prefetch route={value.uri}> */}
+                        {/*<a ids={value.original} href={value.uri} className={`font-15 font-weight-bold text-uppercase nav-idea ${value.class}`}>*/}
+                          {/*{value.name_tag}*/}
+                        {/*</a>*/}
+                        {/*</Link>*/}
                       </li>
                     })
                   }

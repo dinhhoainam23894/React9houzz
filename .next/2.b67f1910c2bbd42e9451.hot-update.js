@@ -5,4 +5,4 @@ webpackHotUpdate(2,[]);
 
 }());
 
-//# sourceMappingURL=2.dfc3f5e4612c16f12490.hot-update.js.map
+//# sourceMappingURL=2.b67f1910c2bbd42e9451.hot-update.js.map
