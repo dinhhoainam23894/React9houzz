@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
         <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
         {/*<noscript id="deferred-styles">*/}
-            <link rel="stylesheet" type="text/css" href="/_next/static/style.css"/>
+            <link rel="stylesheet" type="text/css" href="https://9houz.com/_next/static/style.css"/>
         {/*</noscript>*/}
         {/*<script dangerouslySetInnerHTML={{__html: `var loadDeferredStyles = function() {*/}
             {/*var addStylesNode = document.getElementById("deferred-styles");*/}
@@ -29,6 +29,10 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <script src="https://9houz.com/mystatic/jquery-3.2.1.min.js" defer async />
+        <script src="https://9houz.com/mystatic/popper.min.js" defer async />
+        <script src="https://9houz.com/mystatic/bootstrap.min.js" defer async />
+        <script src="https://9houz.com/mystatic/polyfill.min.js" defer async/>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />
         <script dangerouslySetInnerHTML={{__html : `
             window.dataLayer = window.dataLayer || [];

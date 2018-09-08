@@ -127,10 +127,6 @@ export default class extends React.Component {
           {this.props.children}
         </MainBody>
        <Footer />
-      <script src="/mystatic/jquery-3.2.1.min.js" defer="defer" async="async"></script>
-      <script src="/mystatic/popper.min.js" defer="defer" async="async"></script>
-      <script src="/mystatic/bootstrap.min.js" defer="defer" async="async"></script>
-      <script src="/mystatic/polyfill.min.js" defer="defer" async="async"/>
       </React.Fragment>
     )
   }
