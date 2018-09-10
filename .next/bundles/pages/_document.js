@@ -12073,7 +12073,7 @@ function (_Document) {
       }), _react.default.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
-        href: "https://9houz.com/_next/static/style.css",
+        href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 14

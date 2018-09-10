@@ -44,7 +44,7 @@ export default class nav extends React.Component {
                 <div className="collapse navbar-collapse" id="nav-product-2">
                 <ul className="nav-child container list-unstyled" role="menu">
                   {
-                    dataBase && dataBase.header_idea.map((value,index) => {
+                    dataBase && dataBase.map((value,index) => {
                       return <li key={index}>
                         <Link route={value.uri}>
                         <a ids={value.original} href={value.uri} className={`font-15 font-weight-bold text-uppercase nav-idea ${value.class}`}>
@@ -71,7 +71,11 @@ export default class nav extends React.Component {
                         <ul className="list-unstyled">
                           {
                               headerProjects && mapObject(headerProjects,function(index,value){
-                                return <li className="mt-1" key={value.id}><a href="#" className="text-dark font-14">{value.name.vi}</a></li>
+                                return <li className="mt-1" key={value.id}>
+                                  <Link route={value.uri}>
+                                    <a href="#" className="text-dark font-14">{value.name_tag}</a>
+                                  </Link>
+                                </li>
                               })
                           }
                         </ul>
@@ -95,7 +99,11 @@ export default class nav extends React.Component {
                         <ul className="list-unstyled">
                         {
                           headerCategories && mapObject(headerCategories,function(index,value){
-                            return <li className="mt-1" key={value.id}><a href="#" className="text-dark font-14">{value.name}</a></li>
+                            return <li className="mt-1" key={value.id}>
+                              <Link route={value.uri}>
+                              <a href="#" className="text-dark font-14">{value.name_tag}</a>
+                              </Link>
+                            </li>
                           })
                         }
                         </ul>

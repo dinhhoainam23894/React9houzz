@@ -2,10 +2,8 @@ import React from 'react'
 import Layout from "./layout";
 import Sidebar from "./sideBar";
 import Breadcrumbs from './Breadcrumbs'
-
 import Pagination from "./pagination";
 import {Link} from "../routes"
-import $ from "jquery";
 import css from "../pages/project/list-project.css"
 
 export default class extends React.Component {
@@ -70,7 +68,7 @@ export default class extends React.Component {
                 breadcrumb &&
                 <Breadcrumbs breadcrumb={breadcrumb}></Breadcrumbs>
               }
-              <div className="bg-white px-3 py-1">
+              <div className="bg-white px-3 py-3">
                 <h1 className="font-25 font-weight-normal text-black-100">{h1}</h1>
                 <div className="list-tag service ml-3">
                   {  listBadge && listBadge.map((value,index) => (

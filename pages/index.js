@@ -108,7 +108,9 @@ export default class  extends React.Component {
                   <p className="font-20 d-none d-md-block">9Houz sẽ giúp bạn kết nối với hơn 1000 Chuyên gia trong lĩnh
                     vực Thiết kế & thi
                     công nội thất trên 63 tỉnh thành</p>
-                  <a className="btn btn-primary mt-3 px-4">Tìm chuyên gia</a>
+                  <Link route='list-provider'>
+                    <a className="btn btn-primary mt-3 px-4">Tìm chuyên gia</a>
+                  </Link>
                 </div>
               </div>
             </div>
