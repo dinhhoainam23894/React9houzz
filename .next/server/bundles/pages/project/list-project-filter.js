@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1476,29 +1476,29 @@ function (_React$Component) {
           lineNumber: 129
         }
       }), _react.default.createElement("script", {
-        src: "/mystatic/jquery-3.2.1.min.js",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 130
-        }
-      }), _react.default.createElement("script", {
-        src: "/mystatic/popper.min.js",
+        src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 131
         }
       }), _react.default.createElement("script", {
-        src: "/mystatic/bootstrap.min.js",
+        src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/esm/popper.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 132
         }
       }), _react.default.createElement("script", {
-        async: true,
-        src: "/mystatic/polyfill.min.js",
+        src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133
+          lineNumber: 134
+        }
+      }), _react.default.createElement("script", {
+        async: true,
+        src: "https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.42/polyfill.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 136
         }
       }));
     }
@@ -1527,7 +1527,7 @@ function (_React$Component2) {
         return _react.default.createElement(_react.default.Fragment, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 143
+            lineNumber: 146
           }
         }, this.props.children);
       } else if (this.props.navmenu === false) {
@@ -1538,7 +1538,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 153
           }
         }, this.props.children);
       } else {
@@ -1549,7 +1549,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 156
+            lineNumber: 159
           }
         }, this.props.children);
       }
@@ -1902,7 +1902,6 @@ function (_React$Component) {
             lineNumber: 75
           }
         }, _react.default.createElement("a", {
-          href: "#",
           className: "text-dark font-14",
           __source: {
             fileName: _jsxFileName,
@@ -1999,7 +1998,6 @@ function (_React$Component) {
             lineNumber: 103
           }
         }, _react.default.createElement("a", {
-          href: "#",
           className: "text-dark font-14",
           __source: {
             fileName: _jsxFileName,
@@ -3465,7 +3463,7 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/project/list-project-filter.js");

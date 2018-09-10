@@ -1,7 +1,7 @@
 module.exports =
-__NEXT_REGISTER_PAGE('/project/list-project', function() {
+__NEXT_REGISTER_PAGE('/pro/list-provider', function() {
           var comp =
-      webpackJsonp([6],{
+      webpackJsonp([7],{
 
 /***/ "./components/Breadcrumbs.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -129,7 +129,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./components/ListProjectComponent.js":
+/***/ "./components/ListProviderComponent.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -154,9 +154,9 @@ var _pagination = _interopRequireDefault(__webpack_require__("./components/pagin
 
 var _routes = __webpack_require__("./routes.js");
 
-var _listProject = _interopRequireDefault(__webpack_require__("./pages/project/list-project.css"));
+var _jquery = _interopRequireDefault(__webpack_require__("./node_modules/jquery/dist/jquery.js"));
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/components/ListProviderComponent.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -202,7 +202,7 @@ function (_React$Component) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-du-an/?page=';
+                  APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-chuyen-gia/?page=';
                   _context.next = 3;
                   return fetch(APIURL + pageNumber);
 
@@ -215,7 +215,7 @@ function (_React$Component) {
                   data = _context.sent;
 
                   _this.setState({
-                    'projects': data.datas.data
+                    'providers': data.datas.data
                   });
 
                 case 8:
@@ -237,7 +237,7 @@ function (_React$Component) {
       nextPageLink: datas.next_page_url ? _this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
       backPageLink: datas.prev_page_url ? _this.props.url_path + "?page=" + (datas.current_page - 1) : undefined,
       activePage: datas.current_page,
-      projects: _this.props.projects
+      providers: _this.props.providers
     };
     return _this;
   }
@@ -252,7 +252,7 @@ function (_React$Component) {
           nextPageLink: datas.next_page_url ? this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
           backPageLink: datas.prev_page_url ? this.props.url_path + "?page=" + (datas.current_page - 1) : undefined,
           activePage: datas.current_page,
-          projects: nextProps.projects
+          providers: nextProps.providers
         });
       }
     }
@@ -284,78 +284,83 @@ function (_React$Component) {
           filterDefault = _props.filterDefault,
           page = _props.page,
           breadcrumb = _props.breadcrumb,
-          listBadge = _props.listBadge;
+          listBadge = _props.listBadge,
+          css = _props.css;
       var _state = this.state,
-          projects = _state.projects,
+          providers = _state.providers,
           nextPage = _state.nextPage,
           nextPageLink = _state.nextPageLink,
           backPageLink = _state.backPageLink;
       return _react.default.createElement(_layout.default, _extends({}, this.props, {
         navmenu: false,
         container: false,
-        nextPageLink: nextPageLink,
-        backPageLink: backPageLink,
-        css: _listProject.default,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        }
-      }), _react.default.createElement("div", {
-        className: "container-fluid service project-list px-4 bg-gray",
+        css: css,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 61
         }
-      }, _react.default.createElement("div", {
-        className: "row project-list-container",
+      }), _react.default.createElement("div", {
+        className: "container-fluid provider-list px-4 bg-gray",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 62
         }
       }, _react.default.createElement("div", {
-        className: "col-0 col-md-3 col-lg-3 px-3",
-        id: "sidebar",
+        className: "row",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 63
+        }
+      }, _react.default.createElement("div", {
+        className: "col-0 col-md-3 col-lg-3 px-3 pt-3",
+        id: "sidebar",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64
         }
       }, _react.default.createElement(_sideBar.default, {
         filter: filterDefault,
         page: page,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 65
         }
       })), _react.default.createElement("div", {
         className: "col-12 col-md-9 col-lg-9 px-0",
         id: "cat",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 67
+        }
+      }, _react.default.createElement("div", {
+        className: "px-3 py-2 provider-main",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68
+        }
+      }, _react.default.createElement("div", {
+        className: "bg-white py-2 mb-4",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69
         }
       }, breadcrumb && _react.default.createElement(_Breadcrumbs.default, {
         breadcrumb: breadcrumb,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
-        }
-      }), _react.default.createElement("div", {
-        className: "bg-white px-3 py-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 71
-        }
-      }, _react.default.createElement("h1", {
-        className: "font-25 font-weight-normal text-black-100",
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 72
         }
-      }, h1), _react.default.createElement("div", {
+      }), _react.default.createElement("h1", {
+        className: "text-dark title ml-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74
+        }
+      }, h1 && h1), _react.default.createElement("div", {
         className: "list-tag service ml-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 75
         }
       }, listBadge && listBadge.map(function (value, index) {
         return _react.default.createElement(_routes.Link, {
@@ -363,191 +368,232 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 77
           }
         }, _react.default.createElement("a", {
           href: value.uri,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 78
           }
         }, _react.default.createElement("span", {
           className: "badge badge-pill badge-light border border-primary mr-2 my-1 service-tag",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 78
           }
         }, value.name_tag, " ", _react.default.createElement("i", {
           className: "close",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 78
           }
         }))));
-      })), _react.default.createElement("ul", {
-        className: "list-unstyled my-3",
+      }))), _react.default.createElement("ul", {
+        className: "list-unstyled",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 84
         }
-      }, projects && projects.map(function (value, index) {
+      }, providers && providers.map(function (value, index) {
         return _react.default.createElement("li", {
-          className: "media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container",
+          className: " bg-white media border px-3 py-2 position-relative my-2 mb-4 container",
           key: index,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 84
-          }
-        }, _react.default.createElement("div", {
-          className: "row",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 87
           }
         }, _react.default.createElement("div", {
-          className: "project-relate col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0",
+          className: "row w-100 provider-content mx-0",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 88
           }
-        }, _react.default.createElement(_routes.Link, {
-          route: "project.detail",
-          params: {
-            id: value.id,
-            slug: value.slug
-          },
+        }, _react.default.createElement("div", {
+          className: "col-md-6 col-lg-6 col-12 col-sm-12",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 89
           }
-        }, _react.default.createElement("a", {
-          className: "link",
+        }, _react.default.createElement("div", {
+          className: "media-body position-relative",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 90
           }
-        }, _react.default.createElement("img", {
-          src: value.public_avatar,
-          alt: "",
-          className: "mr-3",
+        }, _react.default.createElement("div", {
+          className: "media-header mt-2",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 90
-          }
-        }))), _react.default.createElement("div", {
-          className: "position-absolute image-actions py-4",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 92
-          }
-        }, _react.default.createElement("span", {
-          className: "actions-detail font-16 d-flex justify-content-center",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 93
-          }
-        }, _react.default.createElement("i", {
-          className: "fa fa-picture-o mr-2",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 94
-          }
-        }), " ", value.total_images + " ảnh"))), _react.default.createElement("div", {
-          className: "media-body col-md-7 col-lg-7 col-12 col-sm-12 position-relative",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 101
-          }
-        }, _react.default.createElement(_routes.Link, {
-          route: "project.detail",
-          params: {
-            id: value.id,
-            slug: value.slug
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 102
-          }
-        }, _react.default.createElement("a", {
-          className: "link",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 103
-          }
-        }, _react.default.createElement("h2", {
-          className: "font-18",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 104
-          }
-        }, value && value.name))), _react.default.createElement("div", {
-          className: "media-header my-3 p-2",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 107
+            lineNumber: 91
           }
         }, _react.default.createElement("div", {
           className: "rounded-circle logo",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 108
+            lineNumber: 92
           }
         }, _react.default.createElement("img", {
-          src: value.providers && value.providers.auth_avatar,
+          src: value.auth_avatar,
           className: "img-fluid h-100 rounded-circle",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 109
+            lineNumber: 93
           }
         })), _react.default.createElement("div", {
-          className: "media-title pl-3 d-flex align-items-center",
+          className: "media-title ml-3",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 113
+            lineNumber: 95
           }
         }, _react.default.createElement(_routes.Link, {
           route: "pro.detail",
           params: {
-            id: value.providers.id,
-            slug: value.providers.slug
+            id: value.id,
+            slug: value.slug
           },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 96
+          }
+        }, _react.default.createElement("a", {
+          className: "mt-0 mb-1 h6",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97
+          }
+        }, _react.default.createElement("h2", {
+          className: "font-20 text-black-100 font-weight-bold",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97
+          }
+        }, value.name))))), _react.default.createElement("div", {
+          className: "media-content mt-3",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 101
+          }
+        }, _react.default.createElement("div", {
+          className: "d-flex pro-info my-2",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102
+          }
+        }, value.total_project > 0 && _react.default.createElement("div", {
+          className: "info project-info mr-4",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 105
+          }
+        }, _react.default.createElement("i", {
+          className: "fa fa-briefcase my-auto",
+          "aria-hidden": "true",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 106
+          }
+        }), " ", value.total_project, " d\u1EF1 \xE1n"), value.address && _react.default.createElement("div", {
+          className: "info location-info",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 114
           }
-        }, _react.default.createElement("a", {
-          className: "mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold",
+        }, _react.default.createElement("i", {
+          className: "fa fa-map-marker my-auto",
+          "aria-hidden": "true",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 115
           }
-        }, value.providers && value.providers.name)))), _react.default.createElement("div", {
-          className: "media-content mt-3",
+        }), " ", value.address)), _react.default.createElement("div", {
+          className: "text ellipsis",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 128
+            lineNumber: 119
           }
         }, _react.default.createElement("span", {
-          className: "more font-14 font-weight-light",
+          className: "text-concat more font-13 font-weight-light",
           dangerouslySetInnerHTML: {
-            __html: value.descriptions && value.descriptions
+            __html: value.descriptions
           },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 120
+          }
+        }))))), _react.default.createElement("div", {
+          className: "col-md-6 col-lg-6 col-12 col-sm-12 images-service position-relative p-2",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 126
+          }
+        }, value.projects_intro.length > 0 ? _react.default.createElement("ul", {
+          className: "list-unstyled d-flex project-list",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 129
           }
-        })))));
+        }, value.projects_intro.map(function (value, index) {
+          return _react.default.createElement("li", {
+            key: index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 132
+            }
+          }, _react.default.createElement(_routes.Link, {
+            route: "project.detail",
+            params: {
+              id: value.id,
+              slug: value.slug
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 133
+            }
+          }, _react.default.createElement("a", {
+            className: "mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 134
+            }
+          }, _react.default.createElement("img", {
+            src: value.public_avatar,
+            className: "img-fluid",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 135
+            }
+          }))));
+        })) : _react.default.createElement("ul", {
+          className: "list-unstyled d-flex project-list",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 143
+          }
+        }, _react.default.createElement("li", {
+          className: "d-flex justify-content-center align-items-center",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 144
+          }
+        }, _react.default.createElement("p", {
+          className: "text-white font-weight-bold font-20",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 145
+          }
+        }, "0 C\xD3 D\u1EF0 \xC1N"))))));
       }))), _react.default.createElement("div", {
         className: "pagi_desktop my-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139
+          lineNumber: 158
         }
       }, _react.default.createElement(_pagination.default, {
         activePage: this.state.activePage,
         itemsCountPerPage: this.props.data.datas.per_page,
         totalItemsCount: this.props.data.datas.total,
-        pageRangeDisplayed: 5,
+        pageRangeDisplayed: 3,
         onChange: function onChange(e) {
           return _this2.handlePageChange(e);
         },
@@ -558,7 +604,7 @@ function (_React$Component) {
         backPageLink: backPageLink,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 159
         }
       }))))));
     }
@@ -1407,29 +1453,29 @@ function (_React$Component) {
           lineNumber: 129
         }
       }), _react.default.createElement("script", {
-        src: "/mystatic/jquery-3.2.1.min.js",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 130
-        }
-      }), _react.default.createElement("script", {
-        src: "/mystatic/popper.min.js",
+        src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 131
         }
       }), _react.default.createElement("script", {
-        src: "/mystatic/bootstrap.min.js",
+        src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/esm/popper.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 132
         }
       }), _react.default.createElement("script", {
-        async: true,
-        src: "/mystatic/polyfill.min.js",
+        src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133
+          lineNumber: 134
+        }
+      }), _react.default.createElement("script", {
+        async: true,
+        src: "https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.42/polyfill.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 136
         }
       }));
     }
@@ -1458,7 +1504,7 @@ function (_React$Component2) {
         return _react.default.createElement(_react.default.Fragment, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 143
+            lineNumber: 146
           }
         }, this.props.children);
       } else if (this.props.navmenu === false) {
@@ -1469,7 +1515,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 153
           }
         }, this.props.children);
       } else {
@@ -1480,7 +1526,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 156
+            lineNumber: 159
           }
         }, this.props.children);
       }
@@ -1833,7 +1879,6 @@ function (_React$Component) {
             lineNumber: 75
           }
         }, _react.default.createElement("a", {
-          href: "#",
           className: "text-dark font-14",
           __source: {
             fileName: _jsxFileName,
@@ -1930,7 +1975,6 @@ function (_React$Component) {
             lineNumber: 103
           }
         }, _react.default.createElement("a", {
-          href: "#",
           className: "text-dark font-14",
           __source: {
             fileName: _jsxFileName,
@@ -27312,17 +27356,17 @@ module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server
 
 /***/ }),
 
-/***/ "./pages/project/list-project.css":
+/***/ "./pages/pro/list-provider.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = ":root{--blue:#3baac6;--indigo:#664cc7;--purple:#b953a4;--pink:#e83e8c;--red:#f33b3b;--orange:#f90;--yellow:#fc0;--green:#00a888;--teal:#47be84;--cyan:#4cb1c7;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#b953a4;--secondary:#6c757d;--success:#00a888;--info:#4cb1c7;--warning:#fc0;--danger:#f33b3b;--light:#f3f3f3;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace}*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:.5rem}ol,ul{margin-bottom:1rem}ol,ul{margin-top:0}ul ul{margin-bottom:0}b{font-weight:bolder}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}label{display:inline-block;margin-bottom:.5rem}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}.h6,h1,h2,h3{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.h6{font-size:1rem}.list-unstyled{padding-left:0;list-style:none}.img-fluid{max-width:100%;height:auto}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-lg-3,.col-lg-5,.col-lg-7,.col-lg-9,.col-md-3,.col-md-5,.col-md-7,.col-md-9,.col-md-12,.col-sm-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:576px){.col-sm-12{flex:0 0 100%;max-width:100%}}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-5{flex:0 0 41.66667%;max-width:41.66667%}.col-md-7{flex:0 0 58.33333%;max-width:58.33333%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-5{flex:0 0 41.66667%;max-width:41.66667%}.col-lg-7{flex:0 0 58.33333%;max-width:58.33333%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:.5rem 1rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.breadcrumb{display:flex;flex-wrap:wrap;padding:.75rem 1rem;margin-bottom:1rem;list-style:none;background-color:#e9ecef;border-radius:.25rem}.breadcrumb-item+.breadcrumb-item{padding-left:.5rem}.breadcrumb-item+.breadcrumb-item:before{display:inline-block;padding-right:.5rem;color:#6c757d;content:\"/\"}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.media{display:flex;align-items:flex-start}.media-body{flex:1}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-bottom-0{border-bottom:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.justify-content-center{justify-content:center!important}.align-items-center{align-items:center!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-100{height:100%!important}.mt-0{margin-top:0!important}.mb-0{margin-bottom:0!important}.mt-1{margin-top:.25rem!important}.mb-1{margin-bottom:.25rem!important}.mt-2,.my-2{margin-top:.5rem!important}.mr-2{margin-right:.5rem!important}.my-2{margin-bottom:.5rem!important}.mt-3,.my-3{margin-top:1rem!important}.mr-3{margin-right:1rem!important}.mb-3,.my-3{margin-bottom:1rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.pb-1,.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.p-2{padding:.5rem!important}.px-2{padding-right:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.pr-3,.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.pl-3,.px-3{padding-left:1rem!important}.py-4{padding-top:1.5rem!important}.px-4{padding-right:1.5rem!important}.py-4{padding-bottom:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-light{font-weight:300!important}.font-weight-normal{font-weight:400!important}.font-weight-bold{font-weight:700!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25}.widget h3{margin-bottom:10px!important}}.project-list ul{line-height:20px!important}.project-list ul li{margin-bottom:10px}.project-list a{font-size:12px!important}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-.5rem!important;border-top:none!important}}#sidebar{max-width:23%}.sidebar-service{width:100%;margin-left:5px}.sidebar-service .widget ul{line-height:13px!important}.widget h3{font-weight:600!important;font-size:14px!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul label.active{color:#b953a4!important}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.service #sidebar{max-width:100%!important;margin-top:.5rem!important;border-top:none!important;margin-bottom:.5rem!important}.media{padding:0!important}.media .images-service{margin:0!important}.media .media-body{padding-left:2rem}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:#000!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label,.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.service.project-list .media-body .media-content span{color:#666!important}.service.project-list .breadcrumb-item a span{font-size:15px!important}.service.project-list .child-sidebar-service{border-bottom:none}.service.project-list .child-sidebar-service ul li:nth-child(n+5){display:block!important}.service.project-list .child-sidebar-service .loadmore{display:none!important}.service.project-list .child-sidebar-service .widget h3{font-size:16px!important}.service{font-size:13px}.service .image-actions{bottom:-75px;width:100%;color:#fff!important;background:rgba(0,0,0,.5)}.service .image-actions .actions-detail{width:100%!important;padding-left:0!important;float:left;display:inline-block}.service .image-actions .actions-detail:first-child{border-right:none!important}.service .images-service{max-height:250px!important;overflow:hidden;position:relative;overlow:hidden}.service .images-service:before{position:absolute;top:0;left:-100%;z-index:2;display:block;content:\"\";width:50%;height:100%;background:-webkit-linear-gradient(left,hsla(0,0%,100%,0),hsla(0,0%,100%,.6));background:linear-gradient(90deg,hsla(0,0%,100%,0) 0,hsla(0,0%,100%,.6));-webkit-transform:skewX(-25deg);transform:skewX(-25deg)}.service .images-service img{height:100%!important;object-fit:cover;object-position:center center}.service h3{font-weight:inherit}.service .media .media-body h2{font-size:18px!important;color:#333!important}.service .media .media-title{width:90%}.service .media .media-title a{font-family:roboto-bold;font-size:15px!important}.service .media img{width:100%;height:auto;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}.service .media .media-header{display:flex}.service .media .media-header .logo{width:50px;height:50px}@media (max-width:767.98px){.media-body{margin-top:1rem}}img{vertical-align:middle}@media (max-width:767.98px){.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}}";
+module.exports = ":root{--blue: #3baac6;--indigo: #664cc7;--purple: #b953a4;--pink: #e83e8c;--red: #f33b3b;--orange: #f90;--yellow: #fc0;--green: #00a888;--teal: #47be84;--cyan: #4cb1c7;--white: #fff;--gray: #6c757d;--gray-dark: #343a40;--primary: #b953a4;--secondary: #6c757d;--success: #00a888;--info: #4cb1c7;--warning: #fc0;--danger: #f33b3b;--light: #f3f3f3;--dark: #343a40;--breakpoint-xs: 0;--breakpoint-sm: 576px;--breakpoint-md: 768px;--breakpoint-lg: 992px;--breakpoint-xl: 1200px;--font-family-sans-serif: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace}*,*::before,*::after{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h3{margin-top:0;margin-bottom:.5rem}ul{margin-top:0;margin-bottom:1rem}ul ul{margin-bottom:0}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{vertical-align:middle;border-style:none}label{display:inline-block;margin-bottom:.5rem}button{border-radius:0}input,button{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=\"button\"]{-webkit-appearance:button}button::-moz-focus-inner,[type=\"button\"]::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h3,.h6{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h3{font-size:1.75rem}.h6{font-size:1rem}.list-unstyled{padding-left:0;list-style:none}.img-fluid{max-width:100%;height:auto}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-sm-12,.col-md-3,.col-md-6,.col-md-9,.col-md-12,.col-lg-3,.col-lg-6,.col-lg-9{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:576px){.col-sm-12{flex:0 0 100%;max-width:100%}}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-6{flex:0 0 50%;max-width:50%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-6{flex:0 0 50%;max-width:50%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:.5rem 1rem}.navbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:.5rem 1rem}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:rgba(17,17,17,0.9)}.navbar-light .navbar-nav .nav-link{color:rgba(17,17,17,0.5)}.navbar-light .navbar-toggler{color:rgba(17,17,17,0.5);border-color:rgba(17,17,17,0.1)}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.media{display:flex;align-items:flex-start}.media-body{flex:1}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.position-relative{position:relative!important}.w-100{width:100%!important}.h-100{height:100%!important}.mt-0{margin-top:0!important}.mx-0{margin-right:0!important}.mb-0{margin-bottom:0!important}.mx-0{margin-left:0!important}.mt-1{margin-top:.25rem!important}.mb-1{margin-bottom:.25rem!important}.mt-2,.my-2{margin-top:.5rem!important}.my-2{margin-bottom:.5rem!important}.mt-3{margin-top:1rem!important}.mb-3{margin-bottom:1rem!important}.ml-3{margin-left:1rem!important}.mr-4{margin-right:1.5rem!important}.mb-4{margin-bottom:1.5rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.pb-1,.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.p-2{padding:.5rem!important}.py-2{padding-top:.5rem!important}.px-2{padding-right:.5rem!important}.py-2{padding-bottom:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.pr-3,.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.px-4{padding-right:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-light{font-weight:300!important}.font-weight-bold{font-weight:700!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,0.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:white;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:white;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:0.5rem 0.5rem!important;font-size:14px!important;color:white!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:white;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px 10px;float:left;position:relative;background-position:center;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:white!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .navbar-toggler,.nav-9houzz .header-menu .nav-item .navbar-toggler{padding:0.25rem 0.25rem!important}.nav-9houzz .header-menu .navbar-toggler span,.nav-9houzz .header-menu .nav-item .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0px;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0px!important;color:white!important;text-transform:none!important;font-size:16px!important;margin-bottom:25px;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0px!important;left:0px!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0%!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25;margin-bottom:10px!important}}.project-list a{font-family:Roboto-Light!important;font-size:12px!important}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-0.5rem!important;border-top:none!important}}.provider-list .media{border:1px solid #e8e8e8!important}.provider-list .media .media-header{display:flex}.provider-list .media .media-header .logo{width:45px;height:45px}.provider-list .media img{width:100%;height:auto;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}.provider-list .media .media-title a{font-size:20px!important;font-weight:600}.provider-list .media .media-content .pro-info .info{font-size:14px!important;color:#6f7293}.provider-list .media .media-content .pro-info .info i{color:#b953a4!important;margin-right:5px}.provider-list .media .media-content .text{position:relative;font-weight:lighter!important;font-size:14px;color:#333;width:100%}.provider-list .media .media-content .text-concat{position:relative;display:inline-block;word-wrap:break-word;overflow:hidden;max-height:2.9em;line-height:1.5em;text-align:justify}.provider-list .media .media-content .text.ellipsis::after{content:\"...\";position:absolute;right:-13px;bottom:5px}.provider-list .child-sidebar-service{border-bottom:none}.provider-list .child-sidebar-service ul li:nth-child(n+5){display:block!important}.provider-list .child-sidebar-service .loadmore{display:none!important}.provider-list .child-sidebar-service .widget h3{font-size:16px!important}.provider-list .project-list li{float:left;background:#808080;margin-right:0.75rem;height:155px!important;width:33%;min-height:155px!important}.provider-list .project-list li img{width:100%;height:100%;object-fit:cover;object-position:center center}img{vertical-align:middle}@media (max-width:767.98px){.service{padding-right:30px!important;padding-left:15px!important}}#sidebar{max-width:23%}.sidebar-service{width:100%;margin-left:5px}.sidebar-service .widget ul{line-height:13px!important}.widget h3{font-weight:600!important;font-size:14px!important}#cat .title{font-size:21px!important;font-weight:400!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.media{padding:0!important}.media .images-service{margin:0!important}.media .media-body{padding-left:2rem}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:black!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:0.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:0.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label{font-size:16px!important}.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:0.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.service{font-size:13px}@media (max-width:767.98px){.media-body{margin-top:1rem}}img{vertical-align:middle}@media (max-width:767.98px){.service{padding-right:30px!important;padding-left:15px!important}}";
 
 /***/ }),
 
-/***/ "./pages/project/list-project.js":
+/***/ "./pages/pro/list-provider.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27343,11 +27387,11 @@ var _sideBar = _interopRequireDefault(__webpack_require__("./components/sideBar.
 
 __webpack_require__("./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
 
-var _ListProjectComponent = _interopRequireDefault(__webpack_require__("./components/ListProjectComponent.js"));
+var _ListProviderComponent = _interopRequireDefault(__webpack_require__("./components/ListProviderComponent.js"));
 
-var _listProject = _interopRequireDefault(__webpack_require__("./pages/project/list-project.css"));
+var _listProvider = _interopRequireDefault(__webpack_require__("./pages/pro/list-provider.css"));
 
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/project/list-project.js";
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/pro/list-provider.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27369,7 +27413,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-du-an/';
+var APIURL = "https://api.9houz.com/" + "api/" + 'danh-sach-chuyen-gia/';
 
 var _default =
 /*#__PURE__*/
@@ -27416,10 +27460,10 @@ function (_React$Component) {
 
               case 13:
                 data = _context.sent;
-                url_path = '/danh-sach-du-an/';
+                url_path = '/danh-sach-chuyen-gia/';
                 return _context.abrupt("return", {
                   data: data,
-                  projects: data.datas ? data.datas.data : null,
+                  providers: data.datas.data,
                   title: data.seo ? data.seo.title : null,
                   des: data.seo ? data.seo.des : null,
                   canonical: data.seo ? data.seo.canonical : null,
@@ -27456,46 +27500,14 @@ function (_React$Component) {
   }
 
   _createClass(_default, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var showChar = 200; // How many characters are shown by default
-
-      var ellipsestext = "";
-      var moretext = "Xem thêm >";
-      var lesstext = "Rút gọn <";
-      $('.more').each(function () {
-        var content = $(this).html();
-
-        if (content.length > showChar) {
-          var c = content.substr(0, showChar);
-          var h = content.substr(showChar, content.length - showChar);
-          var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink font-14">' + moretext + '</a></span>';
-          $(this).html(html);
-        }
-      });
-      $(".morelink").click(function () {
-        if ($(this).hasClass("less")) {
-          $(this).removeClass("less");
-          $(this).html(moretext);
-        } else {
-          $(this).addClass("less");
-          $(this).html(lesstext);
-        }
-
-        $(this).parent().prev().toggle();
-        $(this).prev().toggle();
-        return false;
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement(_ListProjectComponent.default, _extends({}, this.props, {
+      return _react.default.createElement(_ListProviderComponent.default, _extends({}, this.props, {
         detail: true,
-        css: _listProject.default,
+        css: _listProvider.default,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 41
         }
       }));
     }
@@ -27521,7 +27533,7 @@ exports.default = _default;
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/project/list-project")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/pro/list-provider")
   
 
 /***/ }),
@@ -27542,16 +27554,16 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/project/list-project.js");
+module.exports = __webpack_require__("./pages/pro/list-provider.js");
 
 
 /***/ })
 
-},[5])
+},[6])
           return { page: comp.default }
         })
       ;
-//# sourceMappingURL=list-project.js.map
+//# sourceMappingURL=list-provider.js.map

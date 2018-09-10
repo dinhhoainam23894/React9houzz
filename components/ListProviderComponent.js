@@ -66,7 +66,7 @@ export default class extends React.Component {
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
               <div className="px-3 py-2 provider-main">
-                <div className="bg-white py-2">
+                <div className="bg-white py-2 mb-4">
                   {
                     breadcrumb &&
                     <Breadcrumbs breadcrumb={breadcrumb}></Breadcrumbs>
