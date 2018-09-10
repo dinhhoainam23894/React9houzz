@@ -110,6 +110,9 @@
   }
 }
 @include media-breakpoint-down(md){
+  .project-detail-main{
+    background: white !important;
+  }
   .project-detail-container{
     .row{
       margin-left: 0 !important;
@@ -118,7 +121,8 @@
     .about{
       padding-left: 0 !important;
       padding-right: 0 !important;
-      background: #ddd !important;
+      border: none !important;
+      //background: #ddd !important;
       .project-image{
         width: 100%;
       }

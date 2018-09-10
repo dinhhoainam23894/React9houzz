@@ -8,7 +8,7 @@ export default class extends React.Component{
         const {project} = this.props
         return (
             <div className="rounded-2">
-            <Link prefetch route='project.detail' params={{ id: project.id , slug : `${project.slug}`}}>
+            <Link route='project.detail' params={{ id: project.id , slug : `${project.slug}`}}>
                 <a className="nav-link border-0 font-14 font-weight-bold">
                     <div className="rounded-2 border provider-project">
                         <div className="row project position-relative mx-auto">

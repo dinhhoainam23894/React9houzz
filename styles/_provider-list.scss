@@ -6,6 +6,7 @@
         .logo {
             width: 45px;
             height: 45px;
+            flex: 0 0 45px;
         }
     }
     img {
@@ -113,11 +114,26 @@
             padding-left: 0 !important;
         }
     }
-    .provider-list .project-list{
-        display: block !important;
-        li{
-            width: 100% !important;
-            margin-top: 0.5rem;
+    .provider-list
+    {
+        #sidebar{
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            .sidebar-service{
+                margin-left:0 !important;
+            }
+        }
+
+        .provider-main{
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .project-list {
+            display: block !important;
+            li {
+                width: 100% !important;
+                margin-top: 0.5rem;
+            }
         }
     }
 }

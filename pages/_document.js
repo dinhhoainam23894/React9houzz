@@ -29,10 +29,6 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-        <script src="https://9houz.com/mystatic/jquery-3.2.1.min.js" defer async />
-        <script src="https://9houz.com/mystatic/popper.min.js" defer async />
-        <script src="https://9houz.com/mystatic/bootstrap.min.js" defer async />
-        <script src="https://9houz.com/mystatic/polyfill.min.js" defer async/>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />
         <script dangerouslySetInnerHTML={{__html : `
             window.dataLayer = window.dataLayer || [];

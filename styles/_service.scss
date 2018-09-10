@@ -163,6 +163,7 @@
       .logo {
         width: 50px;
         height: 50px;
+        flex : 0 0 50px !important;
       }
     }
     .morecontent span {
@@ -192,6 +193,26 @@
 @include media-breakpoint-down(sm) {
   .media-body {
     margin-top: 1rem;
+  }
+  .project-list.service{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    #sidebar{
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      .sidebar-service{
+        margin-left: 0 !important;
+      }
+    }
+    .project-list-container{
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 10px;
+      padding-right: 10px;
+      .media-body{
+        padding-left: 10px !important;
+      }
+    }
   }
 }
 

@@ -352,7 +352,7 @@ class ImageInfo extends React.PureComponent{
                                         <div className="media-content">
                                           {
                                               provider &&
-                                              <Link prefetch route={ `/pro/${provider.id}-${provider.slug}` }>
+                                              <Link route={ `/pro/${provider.id}-${provider.slug}` }>
                                                 <a className="font-weight-bold font-14 text-black-100">{ provider ? provider.name : 'Chưa có tên'  }</a>
                                               </Link>
                                           }
@@ -363,14 +363,13 @@ class ImageInfo extends React.PureComponent{
                                     </div>
                                 </div>
                             </div>
-                           
                             <div className="content-detail border-0">
                             <ol className="breadcrumb bg-white pl-0 mb-0 pt-0 mt-0">
                                 <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                                    <Link prefetch route={'y-tuong'}><a  itemProp="url"><span itemProp="title" className="font-13">Tất cả</span></a></Link>
+                                    <Link route={'y-tuong'}><a  itemProp="url"><span itemProp="title" className="font-13">Tất cả</span></a></Link>
                                 </li>
                                 {tag.breadcrumbs && <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                                    <Link prefetch route={tag.breadcrumbs.uri}><a  itemProp="url"><span itemProp="title" className="font-13">{tag.breadcrumbs.name_tag}</span></a></Link>
+                                    <Link route={tag.breadcrumbs.uri}><a  itemProp="url"><span itemProp="title" className="font-13">{tag.breadcrumbs.name_tag}</span></a></Link>
                                 </li>}
                             </ol>
                                 <h1 className="font-16 text-black-100">{currentValue && currentValue.name}</h1>
@@ -390,7 +389,7 @@ class ImageInfo extends React.PureComponent{
                             </div>
                             <div className="content-detail border-0">
                                 <h2 className="font-14">
-                                Ảnh trong "<Link prefetch route={ `/du-an/${project.id}-${project.slug}` }>
+                                Ảnh trong "<Link route={ `/du-an/${project.id}-${project.slug}` }>
                                  <a className="text-black-100">{project.name}</a>
                                 </Link>"
                                 </h2>
@@ -410,14 +409,14 @@ class ImageInfo extends React.PureComponent{
                                 <div className="pt-0">
                                 {  
                                     tag.breadcrumbs &&
-                                    <Link prefetch route={tag.breadcrumbs.uri}><a href={tag.breadcrumbs.uri} className="mr-2">
+                                    <Link route={tag.breadcrumbs.uri}><a href={tag.breadcrumbs.uri} className="mr-2">
                                     <span className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
                                         { tag.breadcrumbs.name_tag }
                                     </span></a></Link>
                                 }
                                 {   tag.other  && tag.other.map((value,index) => (
                                         value.is_seo == 1 ?
-                                        <Link prefetch route={value.uri} key={index}><a href={value.uri} className="mr-2" key={index}>
+                                        <Link route={value.uri} key={index}><a href={value.uri} className="mr-2" key={index}>
                                             <span className="text-center font-12 font-weight-normal badge badge-pill badge-white border border-primary py-2 px-3 mb-2">
                                             { value.name_tag }
                                             </span>

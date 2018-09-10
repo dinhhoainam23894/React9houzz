@@ -5,7 +5,7 @@ const APIURL = process.env.DOMAIN + process.env.APIURI + 'home/'
 import css from './home.css'
 import 'isomorphic-fetch'
 import Slider from "react-slick";
-import { mapObject } from "../libraries/helpers";
+import {mapObject} from "../libraries/helpers";
 import {Link} from "../routes";
 
 export default class  extends React.Component {
@@ -24,7 +24,7 @@ export default class  extends React.Component {
       , dataBase: data.dataBase,
       providers: data.providers,
       listType: data.listType,
-      images : data.images
+      images: data.images
     }
   }
 
@@ -79,7 +79,7 @@ export default class  extends React.Component {
         }
       ]
     };
-    const {providers, listType , images} = this.props
+    const {providers, listType, images} = this.props
     return (
       <Layout {...this.props} navmenu={false} container={false} css={css} slick={true}>
         <div className="homepage">
@@ -90,7 +90,8 @@ export default class  extends React.Component {
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>1000+ ý tưởng đẹp cho ngôi nhà của bạn</p>
-                  <p className="font-20 d-none d-md-block">9houz cung cấp một kho ý tưởng khổng lồ với hơn 1000 bức ảnh đẹp cho ngôi nhà
+                  <p className="font-20 d-none d-md-block">9houz cung cấp một kho ý tưởng khổng lồ với hơn 1000 bức ảnh
+                    đẹp cho ngôi nhà
                     của bạn</p>
                   <Link route='y-tuong'>
                     <a className="btn btn-primary mt-3 px-4">Tìm ý tưởng</a>
@@ -104,7 +105,8 @@ export default class  extends React.Component {
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành</p>
-                  <p className="font-20 d-none d-md-block">9Houz sẽ giúp bạn kết nối với hơn 1000 Chuyên gia trong lĩnh vực Thiết kế & thi
+                  <p className="font-20 d-none d-md-block">9Houz sẽ giúp bạn kết nối với hơn 1000 Chuyên gia trong lĩnh
+                    vực Thiết kế & thi
                     công nội thất trên 63 tỉnh thành</p>
                   <a className="btn btn-primary mt-3 px-4">Tìm chuyên gia</a>
                 </div>
@@ -123,7 +125,7 @@ export default class  extends React.Component {
                       </div>
                       <div className="card-contend mt-3 text-center">
                         <p>{value.name}</p>
-                        <Link route='pro.detail' params={{id:  value.id  , slug : value.slug}}>
+                        <Link route='pro.detail' params={{id: value.id, slug: value.slug}}>
                           <a className='photoLink'>
                             <button className="btn btn-primary badge-pill badge-primary">
                               Xem thêm
@@ -141,7 +143,7 @@ export default class  extends React.Component {
                 <div className="container">
                   <div className="row">
                     {
-                      listType && mapObject(listType,(index, value) => (
+                      listType && mapObject(listType, (index, value) => (
                         <div className="col-12 col-md-4" key={index}>
                           <h2 className="my-4 position-relative sub-title">{index}</h2>
                           <div className="card my-4">
@@ -150,33 +152,42 @@ export default class  extends React.Component {
                             {/*T2*/}
                             {/*</div>*/}
                             <div className="folding-edge"></div>
-                            <Link route='project.detail' params={{id:  value.main_project && value.main_project.id  , slug : value.main_project && value.main_project.slug}}>
+                            <Link route='project.detail' params={{
+                              id: value.main_project && value.main_project.id,
+                              slug: value.main_project && value.main_project.slug
+                            }}>
                               <a className='photoLink'>
                                 <div className="card-img-top">
-                                  <img className="img-fluid" src={value.main_project && value.main_project.avatar} alt="Card image cap"/>
+                                  <img className="img-fluid" src={value.main_project && value.main_project.avatar}
+                                       alt="Card image cap"/>
                                 </div>
                               </a>
                             </Link>
                             <div className="card-body">
-                              <Link route='project.detail' params={{id:  value.main_project && value.main_project.id  , slug : value.main_project && value.main_project.slug}}>
+                              <Link route='project.detail' params={{
+                                id: value.main_project && value.main_project.id,
+                                slug: value.main_project && value.main_project.slug
+                              }}>
                                 <a className='photoLink'>
                                   <p className="card-title font-15">{value.main_project && value.main_project.name}</p>
                                 </a>
                               </Link>
                               <div className="text ellipsis position-relative">
-                                <p className="card-text font-14" dangerouslySetInnerHTML={{__html: value.main_project && value.main_project.descriptions}}/>
+                                <p className="card-text font-14"
+                                   dangerouslySetInnerHTML={{__html: value.main_project && value.main_project.descriptions}}/>
                               </div>
                               <ul className="list-unstyled">
                                 {
-                                  value.projects && value.projects.map((value,index) => (
-                                    <Link route='project.detail' params={{id:  value.id  , slug : value.slug}} key={index}>
+                                  value.projects && value.projects.map((value, index) => (
+                                    <Link route='project.detail' params={{id: value.id, slug: value.slug}} key={index}>
                                       <a className='photoLink'>
                                         <li className="media py-3">
                                           <div className="img-project mr-3">
                                             <img src={value.avatar && value.avatar} alt="Generic placeholder image"/>
                                           </div>
                                           <div className="media-body">
-                                            <p className="mt-0 mb-1 text-black font-14 media-title">{value.name && value.name}</p>
+                                            <p
+                                              className="mt-0 mb-1 text-black font-14 media-title">{value.name && value.name}</p>
                                           </div>
                                         </li>
                                       </a>
@@ -198,9 +209,9 @@ export default class  extends React.Component {
                 <div className="container py-5">
                   <Slider {...settings}>
                     {
-                      images && images.map((value,index) => (
+                      images && images.map((value, index) => (
                         <div className="p-2 idea-slide-items" key={index}>
-                          <Link route='image' params={{id:  value.id  , slug : value.slug}}>
+                          <Link route='image' params={{id: value.id, slug: value.slug}}>
                             <a className='photoLink'>
                               <img src={value.large_path} className="img-fluid"/>
                             </a>

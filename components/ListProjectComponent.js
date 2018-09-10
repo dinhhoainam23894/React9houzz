@@ -61,7 +61,7 @@ export default class extends React.Component {
     return (
       <Layout {...this.props} navmenu={false} container={false} nextPageLink={nextPageLink} backPageLink={backPageLink} css={css}>
         <div className="container-fluid service project-list px-4 bg-gray">
-          <div className="row">
+          <div className="row project-list-container">
             <div className="col-0 col-md-3 col-lg-3 px-3" id="sidebar">
               <Sidebar filter={filterDefault} page={page}></Sidebar>
             </div>
@@ -74,7 +74,7 @@ export default class extends React.Component {
                 <h1 className="font-25 font-weight-normal text-black-100">{h1}</h1>
                 <div className="list-tag service ml-3">
                   {  listBadge && listBadge.map((value,index) => (
-                    <Link prefetch route={value.uri} key={index}>
+                    <Link route={value.uri} key={index}>
                       <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
                     </Link>
                   ))

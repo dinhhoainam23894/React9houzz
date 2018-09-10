@@ -188,7 +188,7 @@ export default class IdeaComponent extends React.Component{
                     <h1 className="text-dark title ml-1">{ h1 && h1 }</h1>
                         <div className="list-tag">
                             {  listBadge && listBadge.map((value,index) => (
-                                    <Link prefetch route={value.uri} key={index}>
+                                    <Link route={value.uri} key={index}>
                                         <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
                                     </Link>
                                 ))
@@ -218,7 +218,7 @@ export default class IdeaComponent extends React.Component{
                                             <a onClick={(e) =>  this.showPhoto(e, value.id , value.slug)}>
                                             <img className="rounded card-img-top" src={value.medium_path} alt={value.name} />
                                             </a>
-                                            </Link>
+                                        </Link>
                                         <div className="card-body idea-content px-1 pt-1">
                                             <h2 className="mt-2 font-15 text-black-100" data-title={value.name}>{value.name}</h2>
                                             <p className="mt-2 images-title font-14 text-black-100 moreDes" dangerouslySetInnerHTML={{__html: value.descriptions}}></p>

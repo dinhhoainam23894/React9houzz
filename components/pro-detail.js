@@ -58,17 +58,17 @@ class ProDetail extends React.Component {
                     <ul className="nav nav-tabs border-0" id="myTab" role="tablist">
                       <li
                         className={classnames("nav-item position-relative", {active: activePath(pathname, `/pro`, {strict: true})})}>
-                        <Link prefetch route='pro.detail' params={{id: provider_id, slug: `${provider_slug}`}}><a
+                        <Link route='pro.detail' params={{id: provider_id, slug: `${provider_slug}`}}><a
                           className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
                       </li>
                       <li
                         className={classnames("nav-item position-relative", {active: activePath(pathname, [`/pro/project`, '/project'], {strict: true})})}>
-                        <Link prefetch route='pro.project' params={{id: provider_id, slug: `${provider_slug}`}}><a
+                        <Link route='pro.project' params={{id: provider_id, slug: `${provider_slug}`}}><a
                           className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
                       </li>
                       <li
                         className={classnames("nav-item position-relative", {active: activePath(pathname, `/pro/review`, {strict: true})})}>
-                        <Link prefetch route='pro.review' params={{id: provider_id, slug: `${provider_slug}`}}><a
+                        <Link route='pro.review' params={{id: provider_id, slug: `${provider_slug}`}}><a
                           className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
                       </li>
                       <li className="nav-item mx-1 position-relative">

@@ -65,8 +65,7 @@ export default class extends React.Component {
               <Sidebar filter={filterDefault} page={page}></Sidebar>
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
-
-              <div className="px-3 py-2">
+              <div className="px-3 py-2 provider-main">
                 <div className="bg-white py-2">
                   {
                     breadcrumb &&
@@ -75,7 +74,7 @@ export default class extends React.Component {
                   <h1 className="text-dark title ml-3">{ h1 && h1 }</h1>
                   <div className="list-tag service ml-3">
                     {  listBadge && listBadge.map((value,index) => (
-                      <Link prefetch route={value.uri} key={index}>
+                      <Link route={value.uri} key={index}>
                         <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
                       </Link>
                     ))
@@ -107,7 +106,6 @@ export default class extends React.Component {
                                       <i className="fa fa-briefcase my-auto" aria-hidden="true"></i> {value.total_project} dự án
                                     </div>
                                   }
-
                                   {/*<div className="info contact-info mr-4">*/}
                                   {/*<i className="fa fa-phone my-auto" aria-hidden="true"></i> Liên hệ*/}
                                   {/*</div>*/}
@@ -126,7 +124,6 @@ export default class extends React.Component {
                             </div>
                           </div>
                           <div className="col-md-6 col-lg-6 col-12 col-sm-12 images-service position-relative p-2">
-
                               {
                                 value.projects_intro.length > 0 ?
                                   <ul className="list-unstyled d-flex project-list">
@@ -163,7 +160,7 @@ export default class extends React.Component {
                   activePage={this.state.activePage}
                   itemsCountPerPage={this.props.data.datas.per_page}
                   totalItemsCount={this.props.data.datas.total}
-                  pageRangeDisplayed={5}
+                  pageRangeDisplayed={3}
                   onChange={(e) => this.handlePageChange(e)}
                   getPageUrl={(i) => this.getPageUrl(i)}
                   nextPageLink={nextPageLink}

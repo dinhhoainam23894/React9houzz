@@ -37,7 +37,7 @@ export default class nav extends React.Component {
               <li className="offset-0 offset-md-1 nav-item py-1 px-1">
                 <div className="d-flex w-100">
                   <i className="fa fa-lightbulb-o my-auto" aria-hidden="true" style={{"paddingBottom": "1px"}}></i>
-                  <Link prefetch route='/y-tuong'><a className="nav-link mr-auto">Ý TƯỞNG</a></Link>
+                  <Link route='/y-tuong'><a className="nav-link mr-auto">Ý TƯỞNG</a></Link>
                   <a className="navbar-toggler menu-toggle" data-toggle="collapse" data-target="#nav-product-2" aria-controls="collapse-login" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="fa fa-chevron-right"></span></a>
                 </div>
@@ -46,11 +46,11 @@ export default class nav extends React.Component {
                   {
                     dataBase && dataBase.header_idea.map((value,index) => {
                       return <li key={index}>
-                        {/*<Link prefetch route={value.uri}> */}
-                        {/*<a ids={value.original} href={value.uri} className={`font-15 font-weight-bold text-uppercase nav-idea ${value.class}`}>*/}
-                          {/*{value.name_tag}*/}
-                        {/*</a>*/}
-                        {/*</Link>*/}
+                        <Link route={value.uri}>
+                        <a ids={value.original} href={value.uri} className={`font-15 font-weight-bold text-uppercase nav-idea ${value.class}`}>
+                          {value.name_tag}
+                        </a>
+                        </Link>
                       </li>
                     })
                   }
@@ -129,10 +129,10 @@ export default class nav extends React.Component {
                     <div className="row py-1 px-2 nav-service d-flex">
                       <div className="col-md-12 text-left">
                         <ul className="list-unstyled">
-                          <li><Link prefetch route='/about/gioi-thieu'><a target="_blank" title="Giới thiệu">Giới thiệu</a></Link></li>
+                          <li><Link route='/about/gioi-thieu'><a target="_blank" title="Giới thiệu">Giới thiệu</a></Link></li>
                           <li><a target="_blank" title="Liên hệ" rel="nofollow">Liên hệ</a></li>
-                          <li><Link prefetch route='/about/chinh-sach-bao-mat'><a href="#" target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a></Link></li>
-                          <li><Link prefetch route='/about/dieu-khoan-su-dung'><a href="#" target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a></Link></li>
+                          <li><Link route='/about/chinh-sach-bao-mat'><a href="#" target="_blank" title="Chính sách bảo mật">Chính sách bảo mật</a></Link></li>
+                          <li><Link route='/about/dieu-khoan-su-dung'><a href="#" target="_blank" title="Điều khoản sử dụng">Điều khoản sử dụng</a></Link></li>
                         </ul>
                       </div>
                     </div>

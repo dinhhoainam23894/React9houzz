@@ -140,7 +140,6 @@ export default class Pro extends Component {
               </div>
             </div>
       </ProviderDetail>
-     
     )
   }
 }
