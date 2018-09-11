@@ -13,9 +13,8 @@ var path = require('path');
 const LRUCache = require('lru-cache');
 
 const ssrCache = new LRUCache({
-  max: 1000,
   maxAge: 1000 * 60 * 60 // 1hour
-})
+});
 // let cacheTime = 1000 * 60 * 60 // 1 hour
 //
 // if (dev) {
@@ -23,7 +22,7 @@ const ssrCache = new LRUCache({
 // }
 
 app.prepare().then(() => {
-  const server = express()
+  const server = express();
   // server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
   const faviconOptions = {
     root: __dirname + '/static/'
