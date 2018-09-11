@@ -93,6 +93,11 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 29
         }
+      }), _react.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        }
       })), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
@@ -138,4 +143,4 @@ exports.default = MyDocument;
 /***/ })
 
 })
-//# sourceMappingURL=2.747a8ddaf7eddc9e243e.hot-update.js.map
+//# sourceMappingURL=2.3ccdaff45bcb5e255470.hot-update.js.map
