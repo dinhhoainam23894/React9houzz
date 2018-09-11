@@ -66,7 +66,7 @@ export default class extends React.Component {
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
               <div className="px-3 py-2 provider-main">
-                <div className="bg-white py-2 mb-4">
+                <div className="bg-white py-2 mb-2">
                   {
                     breadcrumb &&
                     <Breadcrumbs breadcrumb={breadcrumb}></Breadcrumbs>
@@ -84,7 +84,7 @@ export default class extends React.Component {
                 <ul className="list-unstyled">
                   {
                     providers && providers.map((value,index) => (
-                      <li className=" bg-white media border px-3 py-2 position-relative my-2 mb-4 container" key={index}>
+                      <li className=" bg-white media border px-3 py-2 position-relative my-2 mb-2 container" key={index}>
                         <div className="row w-100 provider-content mx-0">
                           <div className="col-md-6 col-lg-6 col-12 col-sm-12">
                             <div className="media-body position-relative">
@@ -141,11 +141,12 @@ export default class extends React.Component {
                                   </ul>
                                   :
                                   <ul className="list-unstyled d-flex project-list">
-                                    <li className="d-flex justify-content-center align-items-center">
-                                        <p className="text-white font-weight-bold font-20">0 CÓ DỰ ÁN</p>
-                                    </li>
-                                    {/*<li/>*/}
-                                    {/*<li/>*/}
+                                    {/*<li className="d-flex justify-content-center align-items-center">*/}
+                                        {/*<p className="text-white font-weight-bold font-20">0 CÓ DỰ ÁN</p>*/}
+                                    {/*</li>*/}
+                                    <li/>
+                                    <li/>
+                                    <li/>
                                   </ul>
                               }
                           </div>

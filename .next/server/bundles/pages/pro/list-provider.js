@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -408,7 +408,7 @@ function (_React$Component) {
           lineNumber: 68
         }
       }, _react.default.createElement("div", {
-        className: "bg-white py-2 mb-4",
+        className: "bg-white py-2 mb-2",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 69
@@ -466,7 +466,7 @@ function (_React$Component) {
         }
       }, providers && providers.map(function (value, index) {
         return _react.default.createElement("li", {
-          className: " bg-white media border px-3 py-2 position-relative my-2 mb-4 container",
+          className: " bg-white media border px-3 py-2 position-relative my-2 mb-2 container",
           key: index,
           __source: {
             fileName: _jsxFileName,
@@ -640,23 +640,26 @@ function (_React$Component) {
             lineNumber: 143
           }
         }, _react.default.createElement("li", {
-          className: "d-flex justify-content-center align-items-center",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 144
+            lineNumber: 147
           }
-        }, _react.default.createElement("p", {
-          className: "text-white font-weight-bold font-20",
+        }), _react.default.createElement("li", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 145
+            lineNumber: 148
           }
-        }, "0 C\xD3 D\u1EF0 \xC1N"))))));
+        }), _react.default.createElement("li", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 149
+          }
+        })))));
       }))), _react.default.createElement("div", {
         className: "pagi_desktop my-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 158
+          lineNumber: 159
         }
       }, _react.default.createElement(_pagination.default, {
         activePage: this.state.activePage,
@@ -673,7 +676,7 @@ function (_React$Component) {
         backPageLink: backPageLink,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 159
+          lineNumber: 160
         }
       }))))));
     }
@@ -1522,29 +1525,29 @@ function (_React$Component) {
           lineNumber: 129
         }
       }), _react.default.createElement("script", {
-        src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
+        src: "/mystatic/jquery-3.2.1.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 130
+        }
+      }), _react.default.createElement("script", {
+        src: "/mystatic/popper.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 131
         }
       }), _react.default.createElement("script", {
-        src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/esm/popper.min.js",
+        src: "/mystatic/bootstrap.min.js",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 132
         }
       }), _react.default.createElement("script", {
-        src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 134
-        }
-      }), _react.default.createElement("script", {
         async: true,
-        src: "https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.42/polyfill.min.js",
+        src: "/mystatic/polyfill.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136
+          lineNumber: 133
         }
       }));
     }
@@ -1573,7 +1576,7 @@ function (_React$Component2) {
         return _react.default.createElement(_react.default.Fragment, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 146
+            lineNumber: 143
           }
         }, this.props.children);
       } else if (this.props.navmenu === false) {
@@ -1584,7 +1587,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 153
+            lineNumber: 150
           }
         }, this.props.children);
       } else {
@@ -1595,7 +1598,7 @@ function (_React$Component2) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 159
+            lineNumber: 156
           }
         }, this.props.children);
       }
@@ -3478,7 +3481,7 @@ module.exports = routes() // ----   ----      -----
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/pro/list-provider.js");

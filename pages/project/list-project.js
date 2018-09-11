@@ -38,7 +38,7 @@ export default class extends React.Component{
         super(props)
     }
     componentDidMount(){
-        var showChar = 200;  // How many characters are shown by default
+        var showChar = 200;
 		    var ellipsestext = "";
 		    var moretext = "Xem thêm >";
 		    var lesstext = "Rút gọn <";
@@ -54,7 +54,6 @@ export default class extends React.Component{
 		 
 		            $(this).html(html);
 		        }
-		 
 		    });
 		 
 		    $(".morelink").click(function(){

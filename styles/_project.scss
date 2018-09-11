@@ -129,7 +129,7 @@
     }
     .project-sidebar{
       &>div{
-        background: #ddd !important;
+        background: white !important;
         padding:0 !important;
       }
     }
@@ -143,8 +143,8 @@
       flex-wrap: wrap;
       li{
         float: none!important;
-        width: 130px!important;
-        height: 130px!important;
+        width: 80px!important;
+        height: 80px!important;
         display: inline-block;
         vertical-align: top;
         margin-right: 6px;

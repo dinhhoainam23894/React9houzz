@@ -78,7 +78,7 @@ class Detail extends React.Component {
                   <p className="font-14 font-weight-normal"><strong>Địa chỉ</strong>{": " + project.address}</p>}
                   {
                     project.more_infos && mapObject(project.more_infos, function (index, value) {
-                      if (value != '')
+                      if (value != '' && index != 'total_images')
                         return <p className="font-14 font-weight-normal" key={index}>
                           <strong>{ucfirst(index)}</strong>{": " + value}</p>
                     })
@@ -90,7 +90,7 @@ class Detail extends React.Component {
                           <li key={index} className="my-3">
                             <div className="project-title text-center mx-auto">
                               <h2 className="font-22 text-black-100 position-relative">
-                                <span> {value.name && value.name} </span>
+                                <span>{ value.name && value.name }</span>
                               </h2>
                             </div>
                             <div className="project-image my-3">

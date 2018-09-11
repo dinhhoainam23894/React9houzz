@@ -131,9 +131,15 @@
         .project-list {
             display: block !important;
             li {
-                width: 100% !important;
+                width: 29% !important;
                 margin-top: 0.5rem;
+                margin-right: 0.9rem;
+                min-height: 100px !important;
+                height: 100px !important;
             }
+        }
+        .pagi_desktop ul.pagination li .page-link{
+            font-size: 13px !important;
         }
     }
 }

@@ -1,24 +1,26 @@
 /* jshint esversion: 6 */
-const express = require('express')
-const next = require('next')
-const LRUCache = require('lru-cache')
-const routes = require('./routes')
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({dev: process.env.NODE_ENV !== 'production'})
-const handler = routes.getRequestHandler(app)
-var path = require('path')
+const express = require('express');
+const next = require('next');
+const routes = require('./routes');
+// const dev = process.env.NODE_ENV !== 'production';
+// const app = next({dev: process.env.NODE_ENV !== 'production'});
+// const handler = routes.getRequestHandler();
 
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dir: '.', dev })
+const handle = app.getRequestHandler()
+var path = require('path');
+const LRUCache = require('lru-cache');
+
+const ssrCache = new LRUCache({
+  max: 100,
+  maxAge: 1000 * 60 * 60 // 1hour
+})
 let cacheTime = 1000 * 60 * 60 // 1 hour
 
 if (dev) {
   cacheTime = 100
 }
-
-// This is where we cache our rendered HTML pages
-const ssrCache = new LRUCache({
-  max: 100,
-  maxAge: cacheTime
-})
 
 app.prepare().then(() => {
   const server = express()
@@ -39,10 +41,29 @@ app.prepare().then(() => {
     res.status(200).sendFile('robots.txt', options)
   ));
   server.use(express.static('static'));
-  
-  server.use(handler).listen(3000)
-})
 
+  // express().use(renderAndCache).listen(3000)
+  server.use(renderAndCache).listen(3000);
+});
+
+
+function renderAndCache (req, res) {
+  if (ssrCache.has(req.url)) {
+    return res.send(ssrCache.get(req.url))
+  }
+
+  // Match route + parse params
+  const {route, params} = routes.match(req.url)
+  if (!route) return handle(req, res)
+
+  app.renderToHTML(req, res, route.page, params).then((html) => {
+    ssrCache.set(req.url, html)
+    res.send(html)
+  })
+    .catch((err) => {
+      app.renderError(err, req, res, route.page, params)
+    })
+}
 /*
  * NB: make sure to modify this to take into account anything that should trigger
  * an immediate page change (e.g a locale stored in req.session)
