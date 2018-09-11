@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <NextScript />
+          {/*<NextScript />*/}
         </body>
         {/*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />*/}
         <script dangerouslySetInnerHTML={{__html : `

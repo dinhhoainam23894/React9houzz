@@ -67,12 +67,12 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/_document.js":
+/***/ "./pages/news.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,13 +83,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _document = _interopRequireWildcard(__webpack_require__("next/document"));
+var _react = _interopRequireWildcard(__webpack_require__("react"));
 
-var _react = _interopRequireDefault(__webpack_require__("react"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/_document.js";
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/news.js";
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -107,79 +103,46 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var MyDocument =
+var _default =
 /*#__PURE__*/
-function (_Document) {
-  _inherits(MyDocument, _Document);
+function (_Component) {
+  _inherits(_default, _Component);
 
-  function MyDocument() {
-    _classCallCheck(this, MyDocument);
+  function _default() {
+    _classCallCheck(this, _default);
 
-    return _possibleConstructorReturn(this, (MyDocument.__proto__ || Object.getPrototypeOf(MyDocument)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).apply(this, arguments));
   }
 
-  _createClass(MyDocument, [{
+  _createClass(_default, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("html", {
-        lang: "vi",
+      return _react.default.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 6
         }
-      }, _react.default.createElement(_document.Head, {
+      }, _react.default.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 7
         }
-      }, _react.default.createElement("link", {
-        rel: "shortcut icon",
-        href: "/favicon.ico",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        }
-      })), _react.default.createElement("body", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28
-        }
-      }, _react.default.createElement(_document.Main, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        }
-      })), _react.default.createElement("script", {
-        dangerouslySetInnerHTML: {
-          __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'UA-120211455-1');\n        "
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        }
-      }));
+      }, "This is test"));
     }
   }]);
 
-  return MyDocument;
-}(_document.default);
+  return _default;
+}(_react.Component);
 
-exports.default = MyDocument;
+exports.default = _default;
 
 /***/ }),
 
-/***/ 0:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/_document.js");
+module.exports = __webpack_require__("./pages/news.js");
 
-
-/***/ }),
-
-/***/ "next/document":
-/***/ (function(module, exports) {
-
-module.exports = require("next/document");
 
 /***/ }),
 
@@ -191,4 +154,4 @@ module.exports = require("react");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map
+//# sourceMappingURL=news.js.map
