@@ -10,8 +10,8 @@ export default class MyDocument extends Document {
         <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
         {/*<noscript id="deferred-styles">*/}
-            {/*<link rel="stylesheet" type="text/css" href="https://9houz.com/_next/static/style.css"/>*/}
-            {/*<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>*/}
+            <link rel="stylesheet" type="text/css" href="https://9houz.com/_next/static/style.css"/>
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         {/*</noscript>*/}
         {/*<script dangerouslySetInnerHTML={{__html: `var loadDeferredStyles = function() {*/}
             {/*var addStylesNode = document.getElementById("deferred-styles");*/}
@@ -27,9 +27,9 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          {/*<NextScript />*/}
+          <NextScript />
         </body>
-        {/*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />*/}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />
         <script dangerouslySetInnerHTML={{__html : `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
