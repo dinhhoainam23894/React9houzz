@@ -13,14 +13,14 @@ var path = require('path');
 const LRUCache = require('lru-cache');
 
 const ssrCache = new LRUCache({
-  max: 100,
+  max: 1000,
   maxAge: 1000 * 60 * 60 // 1hour
 })
-let cacheTime = 1000 * 60 * 60 // 1 hour
-
-if (dev) {
-  cacheTime = 100
-}
+// let cacheTime = 1000 * 60 * 60 // 1 hour
+//
+// if (dev) {
+//   cacheTime = 100
+// }
 
 app.prepare().then(() => {
   const server = express()

@@ -70,7 +70,7 @@ function (_Document) {
       }), _react.default.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
-        href: "https://9houz.com/_next/static/style.css",
+        href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 13
@@ -92,11 +92,6 @@ function (_Document) {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 29
-        }
-      }), _react.default.createElement(_document.NextScript, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 30
         }
       })), _react.default.createElement("script", {
         async: true,
@@ -143,4 +138,4 @@ exports.default = MyDocument;
 /***/ })
 
 })
-//# sourceMappingURL=2.e3f5bd406210c6f7112d.hot-update.js.map
+//# sourceMappingURL=2.747a8ddaf7eddc9e243e.hot-update.js.map
