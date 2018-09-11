@@ -84,7 +84,7 @@ export default class extends React.Component {
           {robots && <meta name="robots" content={robots} />}
           {nextPageLink && <link rel="next" href={process.env.CURRENTDOMAIN + nextPageLink} />}
           {backPageLink && <link rel="prev" href={process.env.CURRENTDOMAIN + backPageLink} />}
-          {/*<style dangerouslySetInnerHTML={{__html: css}}/>*/}
+          <style dangerouslySetInnerHTML={{__html: css}}/>
           { slick &&
             <link rel="stylesheet" type="text/css" charset="UTF-8" href="/vendor/slick.min.css"/>
           }

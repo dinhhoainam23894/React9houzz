@@ -27,13 +27,11 @@ export default class extends React.Component{
     render(){
         const { data } = this.props
         return (
-            <Layout navmenu={false} container={false} css={css}>
+            <Layout {...this.props} navmenu={false} container={false} css={css}>
                 <div className="bg-gray pt-3 pb-3">
                     <div className="col-10 col-md-8 offset-1 offset-md-2 text-left bg-white pt-4 pb-3 static-page">
-                        {/*<h1 className="font-28">{data.name}</h1>*/}
-                        <h1 className="font-28" />
-                        {/*<div className="text-justify pt-3 font-14" dangerouslySetInnerHTML={{__html : data.content }} />*/}
-                        <div className="text-justify pt-3 font-14" />
+                        <h1 className="font-28">{data.name}</h1>
+                        <div className="text-justify pt-3 font-14" dangerouslySetInnerHTML={{__html : data.content }} />
                     </div>
                     <style global jsx>{`
                         .static-page ul{

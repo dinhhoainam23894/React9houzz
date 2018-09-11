@@ -1697,6 +1697,14 @@ function (_Document) {
       }), _react.default.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
+        href: "https://9houz.com/_next/static/style.css",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        }
+      }), _react.default.createElement("link", {
+        rel: "stylesheet",
+        type: "text/css",
         href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
         __source: {
           fileName: _jsxFileName,
@@ -1707,7 +1715,12 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 28
         }
-      }), _react.default.createElement("script", {
+      }, _react.default.createElement(_document.Main, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      })), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
