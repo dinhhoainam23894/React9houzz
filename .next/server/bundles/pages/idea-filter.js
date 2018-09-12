@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 50);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2817,16 +2817,14 @@ module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-s
 /* 45 */,
 /* 46 */,
 /* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(51);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2842,8 +2840,6 @@ var _regenerator = _interopRequireDefault(__webpack_require__(3));
 var _react = _interopRequireDefault(__webpack_require__(0));
 
 var _IdeaComponent = _interopRequireDefault(__webpack_require__(34));
-
-__webpack_require__(9);
 
 var _router = __webpack_require__(2);
 
@@ -2869,12 +2865,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var APIURL = "https://api.9houz.com/" + "api/";
 
-var Idea =
+var IdeaFilter =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Idea, _React$Component);
+  _inherits(IdeaFilter, _React$Component);
 
-  _createClass(Idea, null, [{
+  _createClass(IdeaFilter, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
@@ -2886,15 +2882,33 @@ function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
-                _context.next = 3;
-                return fetch(APIURL + "y-tuong");
+                res = null;
 
-              case 3:
+                if (!query.f) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _context.next = 5;
+                return fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params) + "?f=".concat(query.f));
+
+              case 5:
                 res = _context.sent;
-                _context.next = 6;
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.next = 10;
+                return fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params));
+
+              case 10:
+                res = _context.sent;
+
+              case 11:
+                _context.next = 13;
                 return res.json();
 
-              case 6:
+              case 13:
                 data = _context.sent;
                 return _context.abrupt("return", {
                   h1: data.h1,
@@ -2903,6 +2917,9 @@ function (_React$Component) {
                   images: data.images.data,
                   page: data.page,
                   nextUrl: data.images.next_page_url,
+                  params: query.params,
+                  subParams: query.f,
+                  listBadge: data.listBadge,
                   title: data.seo.title,
                   des: data.seo.des,
                   canonical: data.seo.canonical,
@@ -2914,7 +2931,7 @@ function (_React$Component) {
                   dataBase: data.dataBase
                 });
 
-              case 8:
+              case 15:
               case "end":
                 return _context.stop();
             }
@@ -2928,12 +2945,12 @@ function (_React$Component) {
     }()
   }]);
 
-  function Idea(props) {
+  function IdeaFilter(props) {
     var _this;
 
-    _classCallCheck(this, Idea);
+    _classCallCheck(this, IdeaFilter);
 
-    _this = _possibleConstructorReturn(this, (Idea.__proto__ || Object.getPrototypeOf(Idea)).call(this, props));
+    _this = _possibleConstructorReturn(this, (IdeaFilter.__proto__ || Object.getPrototypeOf(IdeaFilter)).call(this, props));
     _this.state = {
       nextUrl: _this.props.nextUrl,
       images: _this.props.images
@@ -2941,16 +2958,30 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(Idea, [{
+  _createClass(IdeaFilter, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps) {
+        this.setState({
+          nextUrl: nextProps.nextUrl,
+          images: nextProps.images
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var router = this.props.router;
+      var _props = this.props,
+          params = _props.params,
+          router = _props.router,
+          subParams = _props.subParams;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.router.query && this.props.router.query.photoId,
+        ideaParams: params,
+        subParams: subParams,
         asPath: router.asPath,
-        path: router.pathname,
         nextUrl: this.state.nextUrl,
         images: this.state.images,
         detail: true,
@@ -2959,15 +2990,16 @@ function (_React$Component) {
             images: images,
             nextUrl: nextPage
           });
-        }
+        },
+        path: router.pathname
       }));
     }
   }]);
 
-  return Idea;
+  return IdeaFilter;
 }(_react.default.Component);
 
-var _default = (0, _router.withRouter)(Idea);
+var _default = (0, _router.withRouter)(IdeaFilter);
 
 exports.default = _default;
 

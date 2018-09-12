@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 50);
+/******/ 	return __webpack_require__(__webpack_require__.s = 74);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1120,217 +1120,7 @@ exports.default = footer;
 module.exports = require("axios");
 
 /***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(0));
-
-var _helpers = __webpack_require__(4);
-
-var _routes = __webpack_require__(1);
-
-var _classnames = _interopRequireDefault(__webpack_require__(11));
-
-var _jquery = _interopRequireDefault(__webpack_require__(6));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Sidebar =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Sidebar, _React$Component);
-
-  function Sidebar(props) {
-    _classCallCheck(this, Sidebar);
-
-    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
-  }
-
-  _createClass(Sidebar, [{
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          filter = _props.filter,
-          color = _props.color,
-          page = _props.page;
-      return _react.default.createElement("div", {
-        className: "sidebar-service row bg-white"
-      }, _react.default.createElement("div", {
-        className: "d-md-block px-2 w-100 sidebar-service-content"
-      }, this.props.test && _react.default.createElement("div", {
-        "class": "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0"
-      }, _react.default.createElement("div", {
-        "class": "mt-2 widget p-3"
-      }, _react.default.createElement("h3", {
-        "class": "font-15 mb-3"
-      }, "Locale ", _react.default.createElement("span", {
-        "class": "fa fa-chevron-right d-block d-md-none",
-        "data-toggle": "collapse",
-        "data-target": "#demoTest"
-      })), _react.default.createElement("ul", {
-        "class": "list-unstyled mb-0 collapse d-md-block",
-        id: "demoTest"
-      }, _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "H\xE0 N\u1ED9i", _react.default.createElement("span", null, "10")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "TPHCM", _react.default.createElement("span", null, "20")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "\u0110\xE0 N\u1EAFng", _react.default.createElement("span", null, "11")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "Ninh B\xECnh", _react.default.createElement("span", null, "12")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "H\xE0 T\u0129nh", _react.default.createElement("span", null, "21")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "H\xE0 Nam", _react.default.createElement("span", null, "21")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "B\u1EAFc Ninh", _react.default.createElement("span", null, "23")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, " ", _react.default.createElement("label", {
-        "class": "px-3"
-      }, "Qu\xE3ng Ng\xE3i", _react.default.createElement("span", null, "44")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, " ", _react.default.createElement("label", {
-        "class": "px-3"
-      }, "Nam \u0110\u1ECBnh", _react.default.createElement("span", null, "12")))), _react.default.createElement("li", {
-        "class": "py-1 radio"
-      }, _react.default.createElement("a", {
-        href: "",
-        "class": "font-13 font-weight-light text-gray"
-      }, _react.default.createElement("label", {
-        "class": "px-3"
-      }, "Th\xE1i B\xECnh", _react.default.createElement("span", null, "12")))), _react.default.createElement("span", {
-        "class": "more loadmore d-none d-md-block"
-      }, "Xem th\xEAm ", _react.default.createElement("i", {
-        "class": "la la-arrow-circle-right"
-      }))))), filter && filter.map(function (value, index) {
-        return value.data.length != 0 && _react.default.createElement("div", {
-          className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0",
-          key: index
-        }, _react.default.createElement("div", {
-          className: "mt-2 widget p-3"
-        }, _react.default.createElement("h3", {
-          className: "font-15 mb-3"
-        }, value.textName, _react.default.createElement("span", {
-          className: "fa fa-chevron-right d-block d-md-none",
-          "data-toggle": "collapse",
-          "data-target": "#demo" + index
-        })), _react.default.createElement("ul", {
-          className: "list-unstyled mb-0 collapse d-md-block",
-          id: "demo" + index
-        }, value.data && (0, _helpers.mapObject)(value.data, function (index, value) {
-          return _react.default.createElement("li", {
-            className: "py-1 radio",
-            key: index
-          }, _react.default.createElement(_routes.Link, {
-            prefetch: true,
-            route: value.uri
-          }, _react.default.createElement("a", {
-            className: "font-13 font-weight-light text-gray",
-            rel: value.is_seo == 0 ? "nofollow" : "dofollow"
-          }, _react.default.createElement("label", {
-            className: (0, _classnames.default)('pr-3', {
-              active: page.currentsId.includes(value.original)
-            })
-          }, value.name_tag, _react.default.createElement("span", null, value.total_doc)))));
-        }), _react.default.createElement("span", {
-          className: "more loadmore d-none d-md-block"
-        }, "Xem th\xEAm ", _react.default.createElement("i", {
-          className: "la la-arrow-circle-right"
-        })))));
-      }), _react.default.createElement("div", {
-        className: "child-sidebar-service pb-1 col-12 offset-md-0 col-md-12 px-0"
-      }, color && _react.default.createElement("div", {
-        className: "mt-2 widget p-3"
-      }, _react.default.createElement("h3", {
-        className: "font-15"
-      }, "M\xC0U S\u1EAEC"), _react.default.createElement("span", {
-        className: "expand-list"
-      }), _react.default.createElement("div", {
-        className: "service-color mt-3"
-      }, (0, _helpers.mapObject)(color, function (index, value) {
-        return _react.default.createElement("a", {
-          href: value.uri,
-          className: "text-dark border border-gray",
-          key: index
-        }, _react.default.createElement("span", {
-          className: "float-left " + value.class,
-          "data-toggle": "tooltip",
-          title: value.name_tag
-        }));
-      }))))));
-    }
-  }]);
-
-  return Sidebar;
-}(_react.default.Component);
-
-exports.default = Sidebar;
-
-/***/ }),
+/* 22 */,
 /* 23 */,
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2285,8 +2075,292 @@ function (_React$PureComponent) {
 module.exports = require("assert");
 
 /***/ }),
-/* 26 */,
-/* 27 */,
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(0));
+
+var _routes = __webpack_require__(1);
+
+var _layout = _interopRequireDefault(__webpack_require__(8));
+
+var _helpers = __webpack_require__(4);
+
+var _classnames = _interopRequireDefault(__webpack_require__(11));
+
+var _router = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var ProDetail =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProDetail, _React$Component);
+
+  function ProDetail(props) {
+    var _this;
+
+    _classCallCheck(this, ProDetail);
+
+    _this = _possibleConstructorReturn(this, (ProDetail.__proto__ || Object.getPrototypeOf(ProDetail)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        data: {},
+        provider: {}
+      }
+    });
+    return _this;
+  }
+
+  _createClass(ProDetail, [{
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          provider_id = _props.provider_id,
+          provider_slug = _props.provider_slug,
+          router = _props.router;
+      var pathname = router.pathname;
+      var itemStar = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "itemScope itemType='http://schema.org/AggregateRating'" : '';
+      var itemStarProp = Math.ceil(this.props.data.provider.avg_rate) >= 1 ? "<meta  itemProp=\"ratingValue\" content=".concat(this.props.data.provider.avg_rate, ">") : null;
+      return _react.default.createElement(_layout.default, _extends({}, this.props, {
+        navmenu: false,
+        container: false
+      }), _react.default.createElement("div", {
+        className: "container-fluid px-4 bg-gray provider-main"
+      }, _react.default.createElement("div", {
+        className: "bg-white",
+        itemScope: true,
+        itemType: "http://schema.org/localbusiness"
+      }, _react.default.createElement("div", {
+        className: "border border-right-0 border-left-0 border-gray provider-details"
+      }, _react.default.createElement("div", {
+        className: "banner position-relative p-0"
+      }, _react.default.createElement("img", {
+        src: this.props.data.cover && this.props.data.cover,
+        className: "w-100"
+      }), _react.default.createElement("div", {
+        className: "position-absolute gradient-animate w-100"
+      })), _react.default.createElement("div", {
+        className: "container position-relative"
+      }, _react.default.createElement("div", {
+        className: "position-absolute provider-info"
+      }, _react.default.createElement(_routes.Link, {
+        route: "pro.detail",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        }
+      }, _react.default.createElement("a", {
+        className: "provider-name text-white font-weight-bold"
+      }, (0, _helpers.activePath)(pathname, "/pro", {
+        strict: true
+      }) ? _react.default.createElement("h1", {
+        className: "font-22 mb-1",
+        itemProp: "name"
+      }, this.props.data.provider && this.props.data.provider.name) : _react.default.createElement("p", {
+        className: "font-22 mb-1",
+        itemProp: "name"
+      }, this.props.data.provider && this.props.data.provider.name))), _react.default.createElement("div", {
+        className: "star-rating " + itemStar
+      }, this.props.data.provider && (0, _helpers.rating)(this.props.data.provider.avg_rate), itemStarProp, _react.default.createElement("span", {
+        className: "text-yellow font-weight-bold"
+      }, " 0(0) \u0111\xE1nh gi\xE1) "), _react.default.createElement("a", {
+        className: "text-gray-200"
+      }, _react.default.createElement("span", null, " \u0110\xE1nh gi\xE1 chi ti\u1EBFt >")))), _react.default.createElement("div", {
+        className: "row position-relative justify-content-end"
+      }, _react.default.createElement("div", {
+        className: "position-absolute provider-avatar rounded-circle"
+      }, _react.default.createElement("img", {
+        itemProp: "image",
+        src: this.props.data.avatar,
+        className: "img-thumbnail rounded-circle h-100",
+        alt: ""
+      })), _react.default.createElement("div", {
+        className: "col-md-9 col-lg-9 provider-nav"
+      }, _react.default.createElement("ul", {
+        className: "nav nav-tabs border-0",
+        id: "myTab",
+        role: "tablist"
+      }, _react.default.createElement("li", {
+        className: (0, _classnames.default)("nav-item position-relative", {
+          active: (0, _helpers.activePath)(pathname, "/pro", {
+            strict: true
+          })
+        })
+      }, _react.default.createElement(_routes.Link, {
+        route: "pro.detail",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        }
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, "T\u1ED5ng quan"))), _react.default.createElement("li", {
+        className: (0, _classnames.default)("nav-item position-relative", {
+          active: (0, _helpers.activePath)(pathname, ["/pro/project", '/project'], {
+            strict: true
+          })
+        })
+      }, _react.default.createElement(_routes.Link, {
+        route: "pro.project",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        }
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, "D\u1EF1 \xE1n"))), _react.default.createElement("li", {
+        className: (0, _classnames.default)("nav-item position-relative", {
+          active: (0, _helpers.activePath)(pathname, "/pro/review", {
+            strict: true
+          })
+        })
+      }, _react.default.createElement(_routes.Link, {
+        route: "pro.review",
+        params: {
+          id: provider_id,
+          slug: "".concat(provider_slug)
+        }
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold"
+      }, "Nh\u1EADn x\xE9t"))), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative"
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#"
+      }, "S\u1ED5 tay \xFD t\u01B0\u1EDFng")), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative"
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#"
+      }, "H\u1ECFi \u0111\xE1p")), _react.default.createElement("li", {
+        className: "nav-item mx-1 position-relative"
+      }, _react.default.createElement("a", {
+        className: "nav-link border-0 font-14 font-weight-bold",
+        href: "#"
+      }, "Ho\u1EA1t \u0111\u1ED9ng"))))))), _react.default.createElement("div", {
+        className: "w-100 py-3 provider"
+      }, _react.default.createElement(_react.default.Fragment, null, this.props.children)))));
+    }
+  }]);
+
+  return ProDetail;
+}(_react.default.Component);
+
+var _default = (0, _router.withRouter)(ProDetail);
+
+exports.default = _default;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(0));
+
+var _routes = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _default =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(_default, _React$Component);
+
+  function _default(props) {
+    _classCallCheck(this, _default);
+
+    return _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, props));
+  }
+
+  _createClass(_default, [{
+    key: "render",
+    value: function render() {
+      var breadcrumb = this.props.breadcrumb;
+      return _react.default.createElement("div", null, breadcrumb && _react.default.createElement("ol", {
+        className: "breadcrumb bg-white mb-0"
+      }, breadcrumb.home && _react.default.createElement("li", {
+        className: "breadcrumb-item",
+        itemScope: true,
+        itemType: "http://data-vocabulary.org/Breadcrumb"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: breadcrumb.home.uri
+      }, _react.default.createElement("a", {
+        itemProp: "url"
+      }, _react.default.createElement("span", {
+        itemProp: "title",
+        className: "font-13"
+      }, breadcrumb.home.name)))), breadcrumb.sub_items && _react.default.createElement("li", {
+        className: "breadcrumb-item",
+        itemScope: true,
+        itemType: "http://data-vocabulary.org/Breadcrumb"
+      }, _react.default.createElement(_routes.Link, {
+        prefetch: true,
+        route: breadcrumb.sub_items.uri
+      }, _react.default.createElement("a", {
+        itemProp: "url"
+      }, _react.default.createElement("span", {
+        itemProp: "title",
+        className: "font-13"
+      }, breadcrumb.sub_items.name))))));
+    }
+  }]);
+
+  return _default;
+}(_react.default.Component);
+
+exports.default = _default;
+
+/***/ }),
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2431,382 +2505,10 @@ exports.default = _default;
 /* 31 */,
 /* 32 */,
 /* 33 */,
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _style = _interopRequireDefault(__webpack_require__(7));
-
-var _react = _interopRequireDefault(__webpack_require__(0));
-
-var _axios = _interopRequireDefault(__webpack_require__(21));
-
-__webpack_require__(9);
-
-var _layout = _interopRequireDefault(__webpack_require__(8));
-
-var _sideBar = _interopRequireDefault(__webpack_require__(22));
-
-var _reactMasonryComponent = _interopRequireDefault(__webpack_require__(35));
-
-var _reactInfiniteScroller = _interopRequireDefault(__webpack_require__(36));
-
-var _imageModal = _interopRequireDefault(__webpack_require__(28));
-
-var _routes = __webpack_require__(1);
-
-var _jquery = _interopRequireDefault(__webpack_require__(6));
-
-var _fscreen_idea = _interopRequireDefault(__webpack_require__(37));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var APIURL = "https://api.9houz.com/" + "api/";
-var currentPath = '/';
-var asPath = '/';
-
-var IdeaComponent =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(IdeaComponent, _React$Component);
-
-  function IdeaComponent(props) {
-    var _this;
-
-    _classCallCheck(this, IdeaComponent);
-
-    _this = _possibleConstructorReturn(this, (IdeaComponent.__proto__ || Object.getPrototypeOf(IdeaComponent)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        images: [],
-        nextUrl: null,
-        hasMoreItems: true,
-        h1: null,
-        filter_default: [],
-        listBadge: []
-      }
-    });
-    currentPath = _this.props.path;
-    asPath = _this.props.asPath;
-    return _this;
-  }
-
-  _createClass(IdeaComponent, [{
-    key: "loadItems",
-    value: function loadItems(page) {
-      var self = this;
-      var url = '';
-
-      if (this.props.nextUrl) {
-        url = this.props.nextUrl;
-      }
-
-      if (this.props.nextUrl != null) {
-        _axios.default.get(url).then(function (resp) {
-          if (resp) {
-            var tracks = self.props.images;
-            var data = resp.data;
-            data.images.data.map(function (track) {
-              tracks.push(track);
-            });
-
-            if (data.images.next_page_url && data.images.next_page_url != null) {
-              self.props.changeState(tracks, data.images.next_page_url);
-            } else {
-              self.setState({
-                hasMoreItems: false
-              });
-            }
-          }
-        });
-      }
-    }
-  }, {
-    key: "showPhoto",
-    value: function showPhoto(e, id, slug) {
-      e.preventDefault();
-
-      if (this.props.ideaParams) {
-        var params = this.props.ideaParams;
-
-        if (this.props.subParams) {
-          _routes.Router.push("".concat(currentPath, "?params=").concat(params, "&f=").concat(this.props.subParams, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
-        } else {
-          _routes.Router.push("".concat(currentPath, "?params=").concat(params, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
-        }
-      } else {
-        _routes.Router.push("".concat(currentPath, "?photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
-      }
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var showChar = 150; // How many characters are shown by default
-
-      var ellipsestext = "";
-      var moretext = "Xem thêm >";
-      var lesstext = "Rút gọn <";
-      var self = this;
-      (0, _jquery.default)('.moreDes').each(function (e) {
-        var content = (0, _jquery.default)(this).html();
-
-        if (content.length > showChar) {
-          var c = content.substr(0, showChar);
-          var h = content.substr(showChar, content.length - showChar);
-          var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-          (0, _jquery.default)(this).html(html);
-        }
-      });
-      (0, _jquery.default)(".morelink").click(function (e) {
-        e.preventDefault();
-
-        if ((0, _jquery.default)(this).hasClass("less")) {
-          (0, _jquery.default)(this).removeClass("less");
-          (0, _jquery.default)(this).html(moretext);
-        } else {
-          (0, _jquery.default)(this).addClass("less");
-          (0, _jquery.default)(this).html(lesstext);
-        }
-
-        (0, _jquery.default)(this).parent().prev().toggle();
-        (0, _jquery.default)(this).prev().toggle();
-        self.masonry.performLayout();
-        return false;
-      });
-      (0, _jquery.default)('.sidebar-service ul').each(function (e) {
-        if ((0, _jquery.default)(this).find('li').length == (0, _jquery.default)(this).find((0, _jquery.default)('li:visible')).length) {
-          (0, _jquery.default)(this).find('.loadmore').hide();
-        }
-      });
-      (0, _jquery.default)('.sidebar-service').on('click', '.loadmore', function () {
-        var list = (0, _jquery.default)(this).parent().find((0, _jquery.default)('li'));
-        (0, _jquery.default)(this).parent().find((0, _jquery.default)('li:hidden')).show();
-
-        if (list.length == (0, _jquery.default)(this).parent().find((0, _jquery.default)('li:visible')).length) {
-          (0, _jquery.default)(this).removeClass('loadmore');
-          (0, _jquery.default)(this).addClass('hidemore');
-          (0, _jquery.default)(this).html('Thu gọn');
-        }
-      });
-      (0, _jquery.default)('.sidebar-service').on('click', '.hidemore', function () {
-        var list = (0, _jquery.default)(this).parent().find((0, _jquery.default)('li'));
-        (0, _jquery.default)(this).parent().find((0, _jquery.default)('li:visible')).slice(5, list.length).hide();
-        (0, _jquery.default)(this).removeClass('hidemore');
-        (0, _jquery.default)(this).addClass('loadmore');
-        (0, _jquery.default)(this).html('Xem thêm');
-      });
-      (0, _jquery.default)(".close").click(function (event) {
-        (0, _jquery.default)(this).parent().toggle();
-      });
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      // var list = $('.idea-content').find('.moreDes').length;
-      (0, _jquery.default)('.idea-content').find((0, _jquery.default)('.moreDes:visible')).hide();
-      (0, _jquery.default)('.idea-content').find((0, _jquery.default)('.moreDes')).slice(0, 20).show();
-    }
-  }, {
-    key: "dismissModal",
-    value: function dismissModal() {
-      if (this.props.ideaParams) {
-        var params = this.props.ideaParams;
-
-        if (this.props.subParams) {
-          _routes.Router.pushRoute("/y-tuong/".concat(params, "?f=").concat(this.props.subParams));
-        } else {
-          _routes.Router.pushRoute('idea.detail', {
-            params: params
-          });
-        }
-      } else {
-        _routes.Router.push('/idea', '/y-tuong');
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var masonryOptions = {
-        gutter: '.grid__gutter-sizer',
-        isOriginLeft: true
-      };
-      var _props = this.props,
-          images = _props.images,
-          h1 = _props.h1,
-          filter_default = _props.filter_default,
-          colors = _props.colors,
-          listBadge = _props.listBadge,
-          detail = _props.detail,
-          page = _props.page;
-      var _props2 = this.props,
-          photoId = _props2.photoId,
-          slug = _props2.slug;
-      return _react.default.createElement(_layout.default, _extends({}, this.props, {
-        navmenu: false,
-        container: false,
-        css: _fscreen_idea.default
-      }), photoId ? _react.default.createElement(_imageModal.default, {
-        id: photoId,
-        slug: slug,
-        detail: detail,
-        images: images,
-        currentPath: currentPath,
-        ideaParams: this.props.ideaParams,
-        subParams: this.props.subParams,
-        nextPageUrl: this.state.nextUrl,
-        onDismiss: function onDismiss() {
-          return _this2.dismissModal();
-        }
-      }) : '', _react.default.createElement(_style.default, {
-        styleId: "352178927",
-        css: ["#lightbox .nav-link:first-child{border-left:1px solid #e2e2e2 !important;}", "#lightbox .nav-link{display:block;padding:0.4rem 0.7rem !important;border-left:none !important;border-color:#e2e2e2;}"]
-      }), _react.default.createElement("div", {
-        className: "jsx-352178927" + " " + "container-fluid service px-4 bg-gray"
-      }, _react.default.createElement("div", {
-        className: "jsx-352178927" + " " + "row"
-      }, _react.default.createElement("div", {
-        id: "sidebar",
-        className: "jsx-352178927" + " " + "col-0 col-md-3 col-lg-3 px-3"
-      }, _react.default.createElement(_sideBar.default, {
-        filter: filter_default,
-        color: colors,
-        page: page
-      })), _react.default.createElement("div", {
-        id: "cat",
-        className: "jsx-352178927" + " " + "col-12 col-md-9 col-lg-9 px-0"
-      }, _react.default.createElement("div", {
-        className: "jsx-352178927" + " " + "bg-white px-3 py-4"
-      }, _react.default.createElement("h1", {
-        className: "jsx-352178927" + " " + "text-dark title ml-1"
-      }, h1 && h1), _react.default.createElement("div", {
-        className: "jsx-352178927" + " " + "list-tag"
-      }, listBadge && listBadge.map(function (value, index) {
-        return _react.default.createElement(_routes.Link, {
-          route: value.uri,
-          key: index
-        }, _react.default.createElement("a", {
-          href: value.uri,
-          className: "jsx-352178927"
-        }, _react.default.createElement("span", {
-          className: "jsx-352178927" + " " + "badge badge-pill badge-light border border-primary mr-2 my-1 service-tag"
-        }, value.name_tag, " ", _react.default.createElement("i", {
-          className: "jsx-352178927" + " " + "close"
-        }))));
-      })), _react.default.createElement(_reactInfiniteScroller.default, {
-        pageStart: 0,
-        loadMore: this.loadItems.bind(this),
-        hasMore: this.state.hasMoreItems,
-        loader: _react.default.createElement("div", {
-          key: "cx",
-          className: "jsx-352178927" + " " + "loader"
-        }, "Loading ...")
-      }, _react.default.createElement(_reactMasonryComponent.default, {
-        className: '.grid are-images-unloaded mt-3',
-        disableImagesLoaded: false,
-        options: masonryOptions,
-        ref: function ref(c) {
-          return _this2.masonry = c;
-        },
-        updateOnEachImageLoad: false
-      }, _react.default.createElement("div", {
-        className: "jsx-352178927" + " " + "grid__col-sizer"
-      }), _react.default.createElement("div", {
-        className: "jsx-352178927" + " " + "grid__gutter-sizer"
-      }), images && images.map(function (value, index) {
-        return _react.default.createElement("div", {
-          key: index,
-          className: "jsx-352178927" + " " + "grid__item rounded"
-        }, _react.default.createElement("div", {
-          className: "jsx-352178927" + " " + "card"
-        }, _react.default.createElement("span", {
-          className: "jsx-352178927" + " " + "position-absolute rounded d-none upload"
-        }, " ", _react.default.createElement("i", {
-          className: "jsx-352178927" + " " + "fa fa-upload"
-        }), " L\u01B0u \u1EA3nh"), _react.default.createElement(_routes.Link, {
-          route: "image",
-          params: {
-            id: value.id,
-            slug: value.slug
-          }
-        }, _react.default.createElement("a", {
-          onClick: function onClick(e) {
-            return _this2.showPhoto(e, value.id, value.slug);
-          },
-          className: "jsx-352178927"
-        }, _react.default.createElement("img", {
-          src: value.medium_path,
-          alt: value.name,
-          className: "jsx-352178927" + " " + "rounded card-img-top"
-        }))), _react.default.createElement("div", {
-          className: "jsx-352178927" + " " + "card-body idea-content px-1 pt-1"
-        }, _react.default.createElement("h2", {
-          "data-title": value.name,
-          className: "jsx-352178927" + " " + "mt-2 font-15 text-black-100"
-        }, value.name), _react.default.createElement("p", {
-          dangerouslySetInnerHTML: {
-            __html: value.descriptions
-          },
-          className: "jsx-352178927" + " " + "mt-2 images-title font-14 text-black-100 moreDes"
-        }))));
-      }))))))));
-    }
-  }]);
-
-  return IdeaComponent;
-}(_react.default.Component);
-
-exports.default = IdeaComponent;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-masonry-component");
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-infinite-scroller");
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2,h3{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}label{display:inline-block;margin-bottom:.5rem}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2,h3{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.75rem}.list-unstyled{padding-left:0;list-style:none}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-12,.col-lg-3,.col-lg-9,.col-md-3,.col-md-9,.col-md-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width:768px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-3{flex:0 0 25%;max-width:25%}.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav-link{display:block;padding:.5rem 1rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge{display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.badge-light{color:#212529;background-color:#f3f3f3}.close{float:right;font-size:1.5rem;font-weight:700;line-height:1;color:#111;text-shadow:0 1px 0 #fff;opacity:.5}.card{position:relative;display:flex;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid hsla(0,0%,7%,.125);border-radius:.25rem}.card-body{flex:1 1 auto;padding:1.25rem}.card-img-top{width:100%;border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px)}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-primary{border-color:#b953a4!important}.rounded{border-radius:.25rem!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.mb-0{margin-bottom:0!important}.mt-1,.my-1{margin-top:.25rem!important}.my-1{margin-bottom:.25rem!important}.ml-1{margin-left:.25rem!important}.mt-2,.my-2{margin-top:.5rem!important}.mr-2{margin-right:.5rem!important}.my-2{margin-bottom:.5rem!important}.mt-3{margin-top:1rem!important}.mb-3{margin-bottom:1rem!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.pt-1,.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.pb-1,.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.p-2{padding:.5rem!important}.px-2{padding-right:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.pr-3,.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.py-4{padding-top:1.5rem!important}.px-4{padding-right:1.5rem!important}.py-4{padding-bottom:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.text-left{text-align:left!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-light{font-weight:300!important}.font-weight-bold{font-weight:700!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}@media (max-width:767.98px){.widget h3{display:inline-block;font-size:16px!important;font-weight:600!important;line-height:1.25}.widget h3{margin-bottom:10px!important}}span{font-size:13px!important}@media (max-width:575.98px){#sidebar{max-width:100%!important;margin-top:-.5rem!important;border-top:none!important}}#sidebar{max-width:23%!important}.sidebar-service{width:100%;margin-left:5px}.sidebar-service .widget ul{line-height:13px!important}.widget h3{font-weight:600!important;font-size:14px!important}#cat .title{font-size:21px!important;font-weight:400!important}.child-sidebar-service{overflow:hidden;border-bottom:1px solid #e6e6e6}.child-sidebar-service ul{overflow:hidden;clear:both}.child-sidebar-service ul label{color:#333!important;font-size:13px!important;font-weight:400}.child-sidebar-service ul li:nth-child(n+5){display:none}.child-sidebar-service ul .loadmore{float:right;font-size:13px;color:#b953a4!important;margin-top:10px}.child-sidebar-service ul .radio{width:100%;position:relative}.child-sidebar-service ul .radio a{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:87%}.child-sidebar-service ul .radio a span{position:absolute;right:0}@media (max-width:767.98px){.service #sidebar{max-width:100%!important;margin-top:.5rem!important;border-top:none!important;margin-bottom:.5rem!important}.sidebar-service{background:none!important}.sidebar-service .sidebar-service-content{padding-left:0!important;padding-right:0!important}.sidebar-service a{color:#000!important;text-decoration:none}.child-sidebar-service{background:#fff!important;padding:.5rem!important;padding-bottom:0!important}.child-sidebar-service .widget{margin-top:0!important;padding:.5rem!important}.child-sidebar-service .widget h3{font-size:17px!important}.child-sidebar-service .widget h3 span{font-size:18px!important}.child-sidebar-service ul li:nth-child(n+5){display:block!important}.child-sidebar-service ul label,.child-sidebar-service ul label span{font-size:16px!important}.child-sidebar-service h3{margin-bottom:.5rem!important;font-size:17px!important}.child-sidebar-service h3 span{position:absolute;right:6px;top:13px;padding:7px}}.service{font-size:13px}.service h3{font-weight:inherit}.service .service-tag{background:#fff;font-size:13px!important;font-weight:lighter;color:#b953a4;padding:8px;padding-right:35px;padding-left:17px;position:relative}.service .service-tag i{position:absolute;right:15px;font-size:13px;top:6px;font-style:normal!important;font-weight:300;color:#b953a4!important;opacity:1!important}.service .service-tag i:before{transform:rotate(45deg)}.service .service-tag i:after{transform:rotate(-45deg)}.service .service-tag i:after,.service .service-tag i:before{position:absolute;left:0;content:\" \";top:0;height:16px;width:2px;background-color:#b953a4}.idea-content h2{font-weight:600!important;font-size:15px!important;line-height:20px!important}img{vertical-align:middle}.card{border:none!important}.grid__col-sizer,.grid__item{width:32.5%}.grid__gutter-sizer{width:1%}.grid__item{margin-bottom:20px;float:left ;padding:8px !important; }.grid__item .upload{padding:.5rem .75rem;background:#fff;top:10px;left:10px;z-index:100}.grid__item img{display:block;max-width:100%;width:100%}@media (min-width:992px) and (max-width:1199.98px){.grid__col-sizer,.grid__item{width:24%}}@media (min-width:768px) and (max-width:991.98px){.grid__col-sizer,.grid__item{width:33%}}@media (max-width:767.98px){.grid__col-sizer,.grid__item{width:99%}.service{padding-right:30px!important;padding-left:15px!important}.service .sidebar-service{width:100%;margin-left:8px}.service .idea-content h2{font-size:16px!important}.service .idea-content p{display:none!important;font-size:15px!important}}";
-
-/***/ }),
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
 /* 38 */,
 /* 39 */,
 /* 40 */,
@@ -2819,14 +2521,38 @@ module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-s
 /* 47 */,
 /* 48 */,
 /* 49 */,
-/* 50 */
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(51);
+module.exports = __webpack_require__(75);
 
 
 /***/ }),
-/* 51 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2837,57 +2563,289 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _style = _interopRequireDefault(__webpack_require__(7));
+
 var _regenerator = _interopRequireDefault(__webpack_require__(3));
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _IdeaComponent = _interopRequireDefault(__webpack_require__(34));
+var _proDetail = _interopRequireDefault(__webpack_require__(26));
+
+var _helpers = __webpack_require__(4);
+
+var _routes = __webpack_require__(1);
+
+var _imageModal = _interopRequireDefault(__webpack_require__(28));
 
 __webpack_require__(9);
 
+var _detail = _interopRequireDefault(__webpack_require__(76));
+
 var _router = __webpack_require__(2);
+
+var _Breadcrumbs = _interopRequireDefault(__webpack_require__(27));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var APIURL = "https://api.9houz.com/" + "api/";
+var APIPROJECT = APIURL + 'project/';
+var APIPRO = APIURL + 'provider/';
 
-var Idea =
+var Detail =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Idea, _React$Component);
+  _inherits(Detail, _React$Component);
 
-  _createClass(Idea, null, [{
+  function Detail() {
+    _classCallCheck(this, Detail);
+
+    return _possibleConstructorReturn(this, (Detail.__proto__ || Object.getPrototypeOf(Detail)).apply(this, arguments));
+  }
+
+  _createClass(Detail, [{
+    key: "showPhoto",
+    value: function showPhoto(e, id, slug) {
+      e.preventDefault();
+
+      _routes.Router.push("/project?id=".concat(this.props.id, "&photoId=").concat(id, "&slug=").concat(slug), "/anh/".concat(id, "-").concat(slug));
+    }
+  }, {
+    key: "dismissModal",
+    value: function dismissModal(id, slug) {
+      _routes.Router.pushRoute('project.detail', {
+        id: id,
+        slug: "".concat(slug)
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var _props = this.props,
+          router = _props.router,
+          provider = _props.provider,
+          data = _props.data,
+          project = _props.project,
+          images = _props.images,
+          relateData = _props.relateData,
+          listProjects = _props.listProjects,
+          breadcrumb = _props.breadcrumb;
+      return _react.default.createElement(_proDetail.default, _extends({
+        provider_id: provider.id,
+        provider_slug: provider.slug,
+        data: data
+      }, this.props, {
+        css: _detail.default
+      }), router.query.photoId && _react.default.createElement(_imageModal.default, {
+        id: router.query.photoId,
+        slug: router.query.slug,
+        detail: false,
+        popup: false,
+        currentPath: router.pathname,
+        onDismiss: function onDismiss() {
+          return _this.dismissModal(router.query.id, router.query.slug);
+        }
+      }), _react.default.createElement("div", {
+        id: "cat",
+        className: "jsx-3233782465" + " " + "project-detail-main"
+      }, _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "project-detail-container"
+      }, breadcrumb && _react.default.createElement(_Breadcrumbs.default, {
+        breadcrumb: breadcrumb
+      }), _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "row"
+      }, _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "col-12 col-md-8"
+      }, _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "about bg-white p-3 border border-gray"
+      }, _react.default.createElement("h1", {
+        className: "jsx-3233782465" + " " + "font-25 font-weight-normal"
+      }, project.name), _react.default.createElement("p", {
+        dangerouslySetInnerHTML: {
+          __html: project.descriptions
+        },
+        className: "jsx-3233782465" + " " + "font-weight-normal my-3 project-description"
+      }), project.address && _react.default.createElement("p", {
+        className: "jsx-3233782465" + " " + "font-14 font-weight-normal"
+      }, _react.default.createElement("strong", {
+        className: "jsx-3233782465"
+      }, "\u0110\u1ECBa ch\u1EC9"), ": " + project.address), project.more_infos && (0, _helpers.mapObject)(project.more_infos, function (index, value) {
+        if (value != '' && index != 'total_images') return _react.default.createElement("p", {
+          key: index,
+          className: "jsx-3233782465" + " " + "font-14 font-weight-normal"
+        }, _react.default.createElement("strong", {
+          className: "jsx-3233782465"
+        }, (0, _helpers.ucfirst)(index)), ": " + value);
+      }), _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "about bg-white py-3"
+      }, _react.default.createElement("ul", {
+        className: "jsx-3233782465" + " " + "list-unstyled"
+      }, images && images.map(function (value, index) {
+        return _react.default.createElement("li", {
+          key: index,
+          className: "jsx-3233782465" + " " + "my-3"
+        }, _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "project-title text-center mx-auto"
+        }, _react.default.createElement("h2", {
+          className: "jsx-3233782465" + " " + "font-22 text-black-100 position-relative"
+        }, _react.default.createElement("span", {
+          className: "jsx-3233782465"
+        }, value.name && value.name))), _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "project-image my-3"
+        }, value.status == 1 ? _react.default.createElement(_routes.Link, {
+          route: "image",
+          params: {
+            id: value.id,
+            slug: "".concat(value.slug)
+          }
+        }, _react.default.createElement("a", {
+          onClick: function onClick(e) {
+            return _this.showPhoto(e, value.id, value.slug);
+          },
+          className: "jsx-3233782465" + " " + 'photoLink'
+        }, _react.default.createElement("img", {
+          src: value.large_path,
+          alt: value.name,
+          className: "jsx-3233782465" + " " + "img-fluid"
+        }))) : _react.default.createElement("a", {
+          href: "javascript:void(0)",
+          rel: "nofollow",
+          className: "jsx-3233782465" + " " + 'photoLink'
+        }, _react.default.createElement("img", {
+          src: value.large_path,
+          alt: value.name,
+          className: "jsx-3233782465" + " " + "img-fluid"
+        }))), _react.default.createElement("div", {
+          dangerouslySetInnerHTML: {
+            __html: value.descriptions
+          },
+          className: "jsx-3233782465" + " " + "project-description"
+        }));
+      }))))), _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "col-12 col-md-4 project-sidebar"
+      }, _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "bg-white p-3"
+      }, _react.default.createElement("p", {
+        className: "jsx-3233782465" + " " + "sub-title position-relative"
+      }, "D\u1EF1 \xE1n c\xF9ng chuy\xEAn gia"), _react.default.createElement("ul", {
+        className: "jsx-3233782465" + " " + "list-unstyled mt-3 project-relate"
+      }, listProjects && listProjects.map(function (value, index) {
+        return _react.default.createElement("li", {
+          key: index,
+          className: "jsx-3233782465" + " " + "my-3 listProject"
+        }, _react.default.createElement(_routes.Link, {
+          route: "project.detail",
+          params: {
+            id: value.id,
+            slug: value.slug
+          }
+        }, _react.default.createElement("a", {
+          className: "jsx-3233782465" + " " + "nav-link border-0 font-14 font-weight-bold"
+        }, _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "media"
+        }, _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "media-image mr-3"
+        }, _react.default.createElement("img", {
+          src: value.avatar,
+          alt: "Generic placeholder image",
+          className: "jsx-3233782465"
+        })), _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "media-body"
+        }, _react.default.createElement("p", {
+          className: "jsx-3233782465" + " " + "mt-0 mb-2 font-14 text-black"
+        }, value.name), _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "d-inline pro-info"
+        }, _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "info project-info mr-3 float-left"
+        }, _react.default.createElement("i", {
+          "aria-hidden": "true",
+          className: "jsx-3233782465" + " " + "fa fa-picture-o my-auto"
+        }), " ", value.total + ' ảnh'), value.address && _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "info location-info"
+        }, _react.default.createElement("i", {
+          "aria-hidden": "true",
+          className: "jsx-3233782465" + " " + "fa fa-map-marker my-auto"
+        }), " ", value.address)))))));
+      }), _react.default.createElement("li", {
+        className: "jsx-3233782465" + " " + "text-right border border-bottom-0 border-left-0 border-right-0 pt-3 d-none d-md-block"
+      }, _react.default.createElement(_routes.Link, {
+        route: "pro.project",
+        params: {
+          id: provider.id,
+          slug: provider.slug
+        }
+      }, _react.default.createElement("a", {
+        href: "",
+        className: "jsx-3233782465" + " " + "text-primary"
+      }, " Xem th\xEAm "))))))), _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "project-more mt-3 p-3"
+      }, _react.default.createElement("p", {
+        className: "jsx-3233782465" + " " + "font-25"
+      }, "M\u1ECDi ng\u01B0\u1EDDi th\u01B0\u1EDDng xem th\xEAm"), _react.default.createElement("div", {
+        className: "jsx-3233782465" + " " + "row project-more-detail"
+      }, relateData && (0, _helpers.mapObject)(relateData, function (index, value) {
+        return _react.default.createElement("div", {
+          key: index,
+          className: "jsx-3233782465" + " " + "col-12 col-md-3 project-more-items"
+        }, _react.default.createElement(_routes.Link, {
+          route: "project.detail",
+          params: {
+            id: index,
+            slug: "".concat(value.slug)
+          }
+        }, _react.default.createElement("a", {
+          className: "jsx-3233782465" + " " + "nav-link border-0 font-14 font-weight-bold px-0"
+        }, _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "card border-none"
+        }, _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "card-image"
+        }, _react.default.createElement("img", {
+          src: value.avatar,
+          alt: "Card image cap",
+          className: "jsx-3233782465" + " " + "card-img-top"
+        })), _react.default.createElement("div", {
+          className: "jsx-3233782465" + " " + "card-body bg-gray px-0 py-2"
+        }, _react.default.createElement("p", {
+          className: "jsx-3233782465" + " " + "card-title text-black"
+        }, value.name))))));
+      }))))), _react.default.createElement(_style.default, {
+        styleId: "3233782465",
+        css: [".provider{background-color:#ddd !important;}"]
+      }));
+    }
+  }], [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _regenerator.default.mark(function _callee(_ref) {
-        var query, res, data;
+        var query, res, data, resPro, dataPro;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
                 _context.next = 3;
-                return fetch(APIURL + "y-tuong");
+                return fetch(APIPROJECT + query.id);
 
               case 3:
                 res = _context.sent;
@@ -2896,25 +2854,38 @@ function (_React$Component) {
 
               case 6:
                 data = _context.sent;
+                _context.next = 9;
+                return fetch(APIPRO + data.project.user_id);
+
+              case 9:
+                resPro = _context.sent;
+                _context.next = 12;
+                return resPro.json();
+
+              case 12:
+                dataPro = _context.sent;
                 return _context.abrupt("return", {
-                  h1: data.h1,
-                  filter_default: data.filter_default,
-                  colors: data.colors,
+                  id: query.id,
+                  data: dataPro,
+                  provider: dataPro.provider,
+                  project: data.project,
                   images: data.images.data,
-                  page: data.page,
-                  nextUrl: data.images.next_page_url,
+                  slug: query.slug,
                   title: data.seo.title,
                   des: data.seo.des,
                   canonical: data.seo.canonical,
                   robots: data.seo.robots,
                   og_url: data.seo.url,
                   url_images: data.seo.url_image,
-                  headerProjects: data.headerProjects,
-                  headerCategories: data.headerCategories,
-                  dataBase: data.dataBase
+                  headerProjects: dataPro.headerProjects,
+                  headerCategories: dataPro.headerCategories,
+                  dataBase: dataPro.dataBase,
+                  relateData: data.relateData,
+                  listProjects: data.listProjects,
+                  breadcrumb: data.breadcumbs
                 });
 
-              case 8:
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -2928,48 +2899,21 @@ function (_React$Component) {
     }()
   }]);
 
-  function Idea(props) {
-    var _this;
-
-    _classCallCheck(this, Idea);
-
-    _this = _possibleConstructorReturn(this, (Idea.__proto__ || Object.getPrototypeOf(Idea)).call(this, props));
-    _this.state = {
-      nextUrl: _this.props.nextUrl,
-      images: _this.props.images
-    };
-    return _this;
-  }
-
-  _createClass(Idea, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var router = this.props.router;
-      return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
-        photoId: this.props.router.query && this.props.router.query.photoId,
-        asPath: router.asPath,
-        path: router.pathname,
-        nextUrl: this.state.nextUrl,
-        images: this.state.images,
-        detail: true,
-        changeState: function changeState(images, nextPage) {
-          _this2.setState({
-            images: images,
-            nextUrl: nextPage
-          });
-        }
-      }));
-    }
-  }]);
-
-  return Idea;
+  return Detail;
 }(_react.default.Component);
 
-var _default = (0, _router.withRouter)(Idea);
+var _default = (0, _router.withRouter)(Detail);
 
 exports.default = _default;
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar}@-ms-viewport{width:device-width}header,nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:#333;text-align:left;background-color:#fff}h1,h2{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-bottom:1rem}ul{margin-top:0}ul ul{margin-bottom:0}b{font-weight:bolder}a{color:#b953a4;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{border-style:none}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1,h2{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{font-size:2.5rem}h2{font-size:2rem}.list-unstyled{padding-left:0;list-style:none}.img-fluid,.img-thumbnail{max-width:100%;height:auto}.img-thumbnail{padding:.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:.25rem}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col-4,.col-8,.col-lg-9,.col-md-4,.col-md-8,.col-md-9,.col-md-12{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px}.col-4{flex:0 0 33.33333%;max-width:33.33333%}.col-8{flex:0 0 66.66667%;max-width:66.66667%}@media (min-width:768px){.col-md-4{flex:0 0 33.33333%;max-width:33.33333%}.col-md-8{flex:0 0 66.66667%;max-width:66.66667%}.col-md-9{flex:0 0 75%;max-width:75%}.col-md-12{flex:0 0 100%;max-width:100%}.offset-md-1{margin-left:8.33333%}}@media (min-width:992px){.col-lg-9{flex:0 0 75%;max-width:75%}}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem}.form-control::-ms-expand{background-color:transparent;border:0}.collapse:not(.show){display:none}.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:.5rem 1rem}.nav-tabs{border-bottom:1px solid #dee2e6}.nav-tabs .nav-item{margin-bottom:-1px}.nav-tabs .nav-link{border:1px solid transparent;border-top-left-radius:.25rem;border-top-right-radius:.25rem}.navbar{position:relative;padding:.5rem 1rem}.navbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.25rem .75rem;font-size:1.25rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:768px){.navbar-expand-md{flex-flow:row nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-nav .nav-link{padding-right:.5rem;padding-left:.5rem}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-md .navbar-toggler{display:none}}.navbar-light .navbar-brand{color:hsla(0,0%,7%,.9)}.navbar-light .navbar-nav .nav-link{color:hsla(0,0%,7%,.5)}.navbar-light .navbar-toggler{color:hsla(0,0%,7%,.5);border-color:hsla(0,0%,7%,.1)}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.media{display:flex;align-items:flex-start}.media-body{flex:1}.bg-primary{background-color:#b953a4!important}.bg-white{background-color:#fff!important}.border{border:1px solid #dee2e6!important}.border-0{border:0!important}.border-right-0{border-right:0!important}.border-left-0{border-left:0!important}.rounded-circle{border-radius:50%!important}.d-none{display:none!important}.d-inline{display:inline!important}.d-block{display:block!important}.d-flex{display:flex!important}@media (min-width:576px){.d-sm-none{display:none!important}}@media (min-width:768px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.justify-content-start{justify-content:flex-start!important}.justify-content-end{justify-content:flex-end!important}.float-left{float:left!important}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.w-100{width:100%!important}.h-100{height:100%!important}.mt-0{margin-top:0!important}.mt-1{margin-top:.25rem!important}.mx-1{margin-right:.25rem!important}.mb-1{margin-bottom:.25rem!important}.mx-1{margin-left:.25rem!important}.my-2{margin-top:.5rem!important}.mb-2,.my-2{margin-bottom:.5rem!important}.mt-3,.my-3{margin-top:1rem!important}.mr-3{margin-right:1rem!important}.my-3{margin-bottom:1rem!important}.p-0{padding:0!important}.py-0{padding-top:0!important}.px-0{padding-right:0!important}.py-0{padding-bottom:0!important}.px-0{padding-left:0!important}.py-1{padding-top:.25rem!important}.px-1{padding-right:.25rem!important}.py-1{padding-bottom:.25rem!important}.px-1{padding-left:.25rem!important}.px-2{padding-right:.5rem!important}.px-2{padding-left:.5rem!important}.p-3{padding:1rem!important}.py-3{padding-top:1rem!important}.px-3{padding-right:1rem!important}.py-3{padding-bottom:1rem!important}.px-3{padding-left:1rem!important}.px-4{padding-right:1.5rem!important}.px-4{padding-left:1.5rem!important}.my-auto{margin-top:auto!important}.mr-auto,.mx-auto{margin-right:auto!important}.my-auto{margin-bottom:auto!important}.mx-auto{margin-left:auto!important}.text-left{text-align:left!important}.text-center{text-align:center!important}@media (min-width:768px){.text-md-center{text-align:center!important}}.text-uppercase{text-transform:uppercase!important}.font-weight-normal{font-weight:400!important}.font-weight-bold{font-weight:700!important}.text-white{color:#fff!important}.text-primary{color:#b953a4!important}.text-dark{color:#343a40!important};font-weight:400;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1FontAw esome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-2x{font-size:2em}.fa-search:before{content:\"\\F002\"}.fa-star:before{content:\"\\F005\"}.fa-picture-o:before{content:\"\\F03E\"}.fa-map-marker:before{content:\"\\F041\"}.fa-pencil-square-o:before{content:\"\\F044\"}.fa-chevron-right:before{content:\"\\F054\"}.fa-info-circle:before{content:\"\\F05A\"}.fa-rss:before{content:\"\\F09E\"}.fa-briefcase:before{content:\"\\F0B1\"}.fa-bars:before{content:\"\\F0C9\"}.fa-lightbulb-o:before{content:\"\\F0EB\"}.fa-graduation-cap:before{content:\"\\F19D\"}.fa-user-circle-o:before{content:\"\\F2BE\"}body,h1{font-family:helvetica-ttf,sans-serif!important}input{outline:none;border:none}input::-webkit-input-placeholder{color:#adadad}input:-moz-placeholder,input::-moz-placeholder{color:#adadad}input:-ms-input-placeholder{color:#adadad}button{outline:none!important;border:none;background:transparent}.font-14{font-size:14px!important}.font-15{font-size:15px!important}.font-22{font-size:22px!important}.font-25{font-size:25px!important}.text-black{color:#000!important}.text-black-100{color:#333!important}.text-gray-200{color:#999!important}.bg-indigo{background-color:#664cc7!important}.bg-yellow-green{background-color:#bdc74c!important}.bg-red-100{background-color:#c74c4c!important}.bg-teal{background-color:#47be84!important}.bg-cyan{background-color:#4cb1c7!important}.bg-gray{background-color:#ddd!important}.text-yellow{color:#fc0!important}.bg-blue-200{background-color:#4c91c7!important}.navbar-9houzz{color:#666!important;height:60px}.header-search .input-radius{border:1px solid!important;border-radius:4em/5em}.header-search{position:relative;width:550px;margin-left:15px;display:block}.header-search .input-radius{width:100%;height:40px;border:1px solid #ddd!important}.header-search .icon-search{position:absolute;right:10px;top:22%;color:#b953a4;z-index:10;font-weight:lighter}.header-left{padding:0!important}.StoreNavigation-overlay{position:fixed;top:0;left:-999px;width:100%;height:100%;-ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";background:rgba(0,0,0,.8);overflow:hidden;z-index:1111;opacity:0;display:none}@media (min-width:1300px){.container{max-width:1265px}}@media (min-width:768px) and (max-width:992px){.container{max-width:868px}}@media (min-width:768px) and (max-width:991.98px){.header-search{margin-left:50px!important}}@media (min-width:576px) and (max-width:767.98px){.navbar-9houzz{max-width:100%}header{height:60px!important}}@media (max-width:575.98px){header{height:60px!important}}.living-room{background-image:url(\"/static/images/outdoor-room.png\")!important}.kitchen{background-image:url(\"/static/images/kitchen.png\")!important}.bedroom{background-image:url(\"/static/images/bedroom.png\")!important}.bathroom{background-image:url(\"/static/images/bathroom.png\")!important}.workroom{background-image:url(\"/static/images/workroom.png\")!important}.baby-room{background-image:url(\"/static/images/babyroom.png\")!important}.outdoor-room{background-image:url(\"/static/images/outdoor-room.png\")!important}header{position:relative;height:105px;background:#fff;z-index:1000000}.nav-9houzz{background-color:#b953a4!important;color:#fff;position:relative;margin-left:0!important;margin-right:0!important}.nav-9houzz .navbar-nav{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu{padding:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:7%!important}.nav-9houzz .header-menu .nav-item{display:block;padding-left:40px!important;padding-right:40px!important}.nav-9houzz .header-menu .nav-item .nav-link{padding:.5rem!important;font-size:14px!important;color:#fff!important}.nav-9houzz .header-menu .nav-item .nav-prof{position:relative!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{top:4px!important;left:-40px!important;width:270px!important;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#666!important}.nav-9houzz .header-menu .nav-item .nav-child{position:absolute;display:none!important;top:100%;left:0;background:#fff;list-style:none;border:1px solid #ddd;border-top:none;padding:10px 14px 20px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:112px;margin:10px;float:left;position:relative;background-position:50%;background-repeat:no-repeat;vertical-align:middle;line-height:112px;background-size:cover!important;color:#fff!important}@media (min-width:768px){.nav-idea{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@media (max-width:767.98px){.nav-9houzz{padding-left:0!important;padding-right:0!important}.nav-9houzz .navbar>.navbar-collapse{padding-bottom:20px!important}.nav-9houzz .header-menu,.nav-9houzz .header-menu .nav-item{padding-left:10px!important;padding-right:10px!important}.nav-9houzz .header-menu .nav-child,.nav-9houzz .header-menu .nav-item .nav-child{position:relative!important;top:0!important;display:block!important;overflow:hidden!important}.nav-9houzz .header-menu .nav-item .navbar-toggler,.nav-9houzz .header-menu .navbar-toggler{padding:.25rem!important}.nav-9houzz .header-menu .nav-item .navbar-toggler span,.nav-9houzz .header-menu .navbar-toggler span{font-size:13px!important}.nav-idea{width:90%!important;text-align:center;padding:57px 0;margin:12px auto;float:none;line-height:0!important}.navbar-toggler{border:none!important}.navbar-toggler span{font-size:18px!important;margin-top:3px!important}.nav-9houzz .header-menu .nav-item .nav-child{background:none!important;border:none!important}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{width:18%;height:0!important;float:left;line-height:112px;text-align:left;padding:0!important;color:#fff!important;margin-bottom:25px}.nav-9houzz .header-menu .nav-item .nav-child .nav-idea{text-transform:none!important;font-size:16px!important;font-weight:400!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child{padding-top:0!important;top:0!important;left:0!important;width:100%;-webkit-box-shadow:none;box-shadow:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:11111111111}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child a{color:#fff!important;font-size:16px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .nav-service{padding-left:0!important;line-height:30px!important}.nav-9houzz .header-menu .nav-item .nav-prof .nav-child .text-left{padding-left:0!important}.nav-9houzz .header-menu .nav-item:first-child{margin-left:0!important}}.banner{height:361px}.gradient-animate{height:100px;background:-webkit-linear-gradient(transparent,#000);background:-o-linear-gradient(transparent,#000);background:linear-gradient(transparent,#000);bottom:0;z-index:0}.provider-nav{height:50px;line-height:34px}.provider-details .banner{max-height:290px;height:290px;position:relative;overflow:hidden}.provider-avatar{width:165px;height:165px;top:-127px;border:1px solid #d3d3d3;left:20px;background:#fff}.provider-info{bottom:4rem;left:13rem;z-index:1}.project-title{font-weight:700;font-size:12px!important;text-transform:uppercase}.provider-details .nav-link{color:#666!important;padding:.5rem 1.5rem!important}span{font-size:13px!important}@media (max-width:575.98px){.provider-avatar{width:80px!important;height:80px!important;top:-105px!important}.provider-details .banner{height:185px!important}.banner img{height:100%!important}.provider-info{bottom:4rem;left:7rem;z-index:1}.provider-info p{font-size:18px!important;font-weight:700!important}#myTab.nav{overflow-x:scroll;overflow-y:hidden;white-space:nowrap;display:block!important}#myTab.nav li{display:inline-block;color:#fff;text-align:center}.provider-nav{height:45px!important;line-height:34px}.provider-main{padding-left:0!important;padding-right:0!important;margin-right:0!important;margin-left:0!important}}@media (max-width:767.98px){.media{padding:0!important}.media .media-body{padding-left:2rem}}.fa-star{color:#fc0}.disable{color:#ddd!important}@media (max-width:767.98px){.media-body{margin-top:1rem}}img{vertical-align:middle}.project-detail-main .sub-title{font-size:25px;margin-bottom:20px;font-weight:500}.project-detail-main .sub-title:after{position:absolute;background:#b953a4;bottom:-10px!important;content:\"\";left:0!important;height:3px!important;width:2.5rem!important;margin:3px auto!important}.project-detail-main .project-title{width:80%!important}.project-detail-main .project-title h2 span{text-transform:lowercase!important;font-size:20px!important;font-weight:500!important;position:relative}.project-detail-main .project-title h2 span:before{content:\"\";width:4px;height:19px;background:#b953a4;position:absolute;left:-.75rem;margin-top:8px}.project-detail-main .project-title h2:first-letter{text-transform:uppercase!important;color:#b953a4;font-weight:700}.project-detail-main .project-description{font-size:15px!important;line-height:1.5rem!important}.project-detail-main .project-image{width:80%;margin:0 auto}.project-detail-main .project-image img{object-fit:cover;object-position:center}.project-detail-main .project-sidebar .media-image{width:80px;height:80px}.project-detail-main .project-sidebar .media-image img{width:100%;height:100%;object-fit:cover;object-position:center}.project-detail-main .project-sidebar .pro-info .info{font-size:14px!important;color:#6f7293}.project-detail-main .project-sidebar .pro-info .info i{color:#b953a4!important;margin-right:5px}";
 
 /***/ })
 /******/ ]);
