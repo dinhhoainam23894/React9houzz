@@ -6,9 +6,10 @@
           "preset-env": {
             "modules": "commonjs"
           },
-          "targets": {
-            "browsers": ["last 2 versions", "chrome >= 39"]
-          },
+          "targets": "> 0.25%, not dead",
+//          "targets": {
+//            "browsers": ["last 2 versions", "chrome >= 39"]
+//          },
           "styled-jsx": {
             "plugins": [
               "styled-jsx-plugin-sass"

@@ -71,7 +71,7 @@ export default class nav extends React.Component {
                         <ul className="list-unstyled">
                           {
                               headerProjects && mapObject(headerProjects,function(index,value){
-                                return <li className="mt-1" key={value.id}>
+                                return <li className="mt-1" key={index}>
                                   <Link route={value.uri}>
                                     <a href="#" className="text-dark font-14">{value.name_tag}</a>
                                   </Link>
@@ -99,7 +99,7 @@ export default class nav extends React.Component {
                         <ul className="list-unstyled">
                         {
                           headerCategories && mapObject(headerCategories,function(index,value){
-                            return <li className="mt-1" key={value.id}>
+                            return <li className="mt-1" key={index}>
                               <Link route={value.uri}>
                               <a href="#" className="text-dark font-14">{value.name_tag}</a>
                               </Link>

@@ -1697,32 +1697,30 @@ function (_Document) {
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 30
         }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 31
         }
       }), _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 31
+          lineNumber: 40
         }
       })), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
-        defer: true,
-        async: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 42
         }
       }), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 43
         }
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -1730,7 +1728,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 44
         }
       }));
     }
