@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
         {/*<script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer async />*/}
         <body>
           <Main />
-          <NextScript />
+          {/*<NextScript />*/}
         </body>
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer async />
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />
