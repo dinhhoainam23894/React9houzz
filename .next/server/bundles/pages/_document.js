@@ -149,11 +149,6 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 31
         }
-      }), _react.default.createElement(_document.NextScript, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 40
-        }
       })), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
         __source: {

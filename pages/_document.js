@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
               {/*console.log('the user agent is a crawler!');*/}
           {/*}*/}
          {/*`}} />*/}
-          <NextScript />
+          {/*<NextScript />*/}
         </body>
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />
