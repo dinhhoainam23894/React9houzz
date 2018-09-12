@@ -67,12 +67,27 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 59);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/news.js":
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 59:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(60);
+
+
+/***/ }),
+
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,9 +98,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(__webpack_require__("react"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/news.js";
+var _react = _interopRequireWildcard(__webpack_require__(0));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -117,17 +130,7 @@ function (_Component) {
   _createClass(_default, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 6
-        }
-      }, _react.default.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 7
-        }
-      }, "This is test"));
+      return _react.default.createElement("div", null, _react.default.createElement("p", null, "This is test"));
     }
   }]);
 
@@ -136,22 +139,6 @@ function (_Component) {
 
 exports.default = _default;
 
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/news.js");
-
-
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
 /***/ })
 
 /******/ });
-//# sourceMappingURL=news.js.map

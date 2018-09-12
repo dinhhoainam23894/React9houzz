@@ -6,9 +6,9 @@ const routes = require('./routes');
 // const app = next({dev: process.env.NODE_ENV !== 'production'});
 // const handler = routes.getRequestHandler();
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dir: '.', dev })
-const handle = app.getRequestHandler()
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dir: '.', dev  });
+const handle = app.getRequestHandler();
 var path = require('path');
 const LRUCache = require('lru-cache');
 
@@ -20,7 +20,6 @@ const ssrCache = new LRUCache({
 // if (dev) {
 //   cacheTime = 100
 // }
-
 app.prepare().then(() => {
   const server = express();
   // server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
@@ -36,6 +35,7 @@ app.prepare().then(() => {
       'Content-Type': 'text/plain;charset=UTF-8',
     }
   };
+  server.disable('x-powered-by')
   server.get('/robots.txt', (req, res) => (
     res.status(200).sendFile('robots.txt', options)
   ));

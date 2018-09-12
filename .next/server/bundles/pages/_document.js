@@ -67,12 +67,27 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 43);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/_document.js":
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(44);
+
+
+/***/ }),
+
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,11 +98,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _document = _interopRequireWildcard(__webpack_require__("next/document"));
+var _document = _interopRequireWildcard(__webpack_require__(45));
 
-var _react = _interopRequireDefault(__webpack_require__("react"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/_document.js";
+var _react = _interopRequireDefault(__webpack_require__(0));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -122,40 +135,24 @@ function (_Document) {
     key: "render",
     value: function render() {
       return _react.default.createElement("html", {
-        lang: "vi",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 9
-        }
-      }, _react.default.createElement(_document.Head, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      }, _react.default.createElement("link", {
+        lang: "vi"
+      }, _react.default.createElement(_document.Head, null, _react.default.createElement("link", {
         rel: "shortcut icon",
-        href: "/favicon.ico",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        }
-      })), _react.default.createElement("body", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28
-        }
-      }, _react.default.createElement(_document.Main, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        }
-      })), _react.default.createElement("script", {
+        href: "/favicon.ico"
+      }), _react.default.createElement("link", {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "https://9houz.com/_next/static/style.css"
+      }), _react.default.createElement("link", {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      })), _react.default.createElement("body", null, _react.default.createElement(_document.Main, null), _react.default.createElement(_document.NextScript, null)), _react.default.createElement("script", {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1"
+      }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
           __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'UA-120211455-1');\n        "
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
         }
       }));
     }
@@ -168,27 +165,11 @@ exports.default = MyDocument;
 
 /***/ }),
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/_document.js");
-
-
-/***/ }),
-
-/***/ "next/document":
+/***/ 45:
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
 
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map
