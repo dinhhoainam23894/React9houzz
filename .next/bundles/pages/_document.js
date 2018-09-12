@@ -1694,22 +1694,6 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 11
         }
-      }), _react.default.createElement("link", {
-        rel: "stylesheet",
-        type: "text/css",
-        href: "https://9houz.com/_next/static/style.css",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        }
-      }), _react.default.createElement("link", {
-        rel: "stylesheet",
-        type: "text/css",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 14
-        }
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
@@ -1726,6 +1710,14 @@ function (_Document) {
           lineNumber: 31
         }
       })), _react.default.createElement("script", {
+        src: "https://cdn.polyfill.io/v2/polyfill.min.js",
+        defer: true,
+        async: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      }), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {

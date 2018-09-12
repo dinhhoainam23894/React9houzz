@@ -28,17 +28,17 @@ export default class MyDocument extends Document {
         {/*<script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer async />*/}
         <body>
           <Main />
-          {/*<NextScript />*/}
+          <NextScript />
         </body>
-        {/*<script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer async />*/}
-        {/*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />*/}
-        {/*<script dangerouslySetInnerHTML={{__html : `*/}
-            {/*window.dataLayer = window.dataLayer || [];*/}
-            {/*function gtag(){dataLayer.push(arguments);}*/}
-            {/*gtag('js', new Date());*/}
-            {/*gtag('config', 'UA-120211455-1');*/}
-        {/*` }}>*/}
-        {/*</script>*/}
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer async />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />
+        <script dangerouslySetInnerHTML={{__html : `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-120211455-1');
+        ` }}>
+        </script>
       </html>
     )
   }
