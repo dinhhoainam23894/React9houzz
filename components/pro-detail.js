@@ -68,9 +68,13 @@ class ProDetail extends React.Component {
                       </li>
                       <li
                         className={classnames("nav-item position-relative", {active: activePath(pathname, `/pro/review`, {strict: true})})}>
-                        <Link route='pro.review' params={{id: provider_id, slug: `${provider_slug}`}}><a
-                          className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>
+                       <a href="#" className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a>
                       </li>
+                      {/*<li*/}
+                        {/*className={classnames("nav-item position-relative", {active: activePath(pathname, `/pro/review`, {strict: true})})}>*/}
+                        {/*<Link route='pro.review' params={{id: provider_id, slug: `${provider_slug}`}}><a*/}
+                          {/*className="nav-link border-0 font-14 font-weight-bold">Nhận xét</a></Link>*/}
+                      {/*</li>*/}
                       <li className="nav-item mx-1 position-relative">
                         <a className="nav-link border-0 font-14 font-weight-bold" href="#">Sổ tay ý tưởng</a>
                       </li>

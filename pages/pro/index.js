@@ -11,7 +11,7 @@ import css from './provider.css'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class Pro extends Component {
     
-  static async getInitialProps({ query }) {
+  static async getInitialProps({ query , req }) {
     const res  = await fetch(APIURL+query.id)
     const data = await res.json()
     const resProject = await fetch(APIURL+query.id+"?projects")
@@ -29,7 +29,8 @@ export default class Pro extends Component {
             , url_images : data.seo.url_image
             , headerProjects : data.headerProjects
             , headerCategories : data.headerCategories
-            , dataBase : data.dataBase
+            , dataBase : data.dataBase,
+            headers : req.headers
             }
   } 
   constructor(props){

@@ -24,8 +24,8 @@ class Idea extends React.Component{
                     , url_images : data.seo.url_image
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
-                    , dataBase : data.dataBase,
-                    headers : req.headers
+                    , dataBase : data.dataBase
+                    , headers : req.headers
         }
     }
     constructor(props){
@@ -37,6 +37,7 @@ class Idea extends React.Component{
     }
     
    render(){
+      console.log(this.props);
        const { router } = this.props
        return(
             <IdeaComponent 

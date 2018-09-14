@@ -1678,39 +1678,37 @@ function (_Document) {
   _createClass(MyDocument, [{
     key: "render",
     value: function render() {
-      var _props$__NEXT_DATA__$ = this.props.__NEXT_DATA__.props.pageProps,
-          h1 = _props$__NEXT_DATA__$.h1,
-          headers = _props$__NEXT_DATA__$.headers;
+      var headers = this.props.__NEXT_DATA__.props.pageProps.headers;
       return _react.default.createElement("html", {
         lang: "vi",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 10
         }
       }, _react.default.createElement(_document.Head, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 11
         }
       }, _react.default.createElement("link", {
         rel: "shortcut icon",
         href: "/favicon.ico",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 12
         }
       }), _react.default.createElement("noscript", {
         id: "deferred-styles",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 13
         }
       }, _react.default.createElement("link", {
         rel: "stylesheet",
         href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 14
         }
       }), _react.default.createElement("link", {
         rel: "stylesheet",
@@ -1718,7 +1716,7 @@ function (_Document) {
         href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17
+          lineNumber: 18
         }
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -1726,41 +1724,40 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 21
         }
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 34
         }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
-        }
-      }), _react.default.createElement("p", {
-        className: "lego",
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 35
         }
-      }, headers.X - Request), _react.default.createElement(_document.NextScript, {
+      }), _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 37
         }
-      })), _react.default.createElement("script", {
+      }), headers && headers.xrequest == "user" ? _react.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      }) : null), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 45
         }
       }), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 46
         }
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -1768,7 +1765,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 47
         }
       }));
     }

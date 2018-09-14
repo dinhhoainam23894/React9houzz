@@ -7,7 +7,7 @@ const APIURL = process.env.DOMAIN + process.env.APIURI + 'danh-sach-du-an/';
 import css from "./list-project.css";
 
 export default class extends React.Component{
-    static async getInitialProps({query}){
+    static async getInitialProps({query , req }){
       let res = null;
       if(query.page){
         res = await fetch(APIURL + `?page=${query.page}`)
@@ -32,6 +32,7 @@ export default class extends React.Component{
             filterDefault : data.filter_default,
             page : data.page,
             url_path : url_path,
+            headers : req.headers
         }
     }
     constructor(props){

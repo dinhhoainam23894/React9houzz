@@ -17,7 +17,6 @@ const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
   const server = express();
-  // server.use(favicon(path.join(__dirname, "static", "fav9houz.ico")));
   const faviconOptions = {
     root: __dirname + '/static/'
   };
@@ -39,7 +38,6 @@ app.prepare().then(() => {
   server.on('connection', function(socket) {
     console.log("A new connection was made by a client.");
     socket.setTimeout(30 * 1000);
-    // 30 second timeout. Change this as you see fit.
   })
   server.use(handler).listen(3000);
 });

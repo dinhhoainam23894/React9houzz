@@ -5,7 +5,7 @@ import 'isomorphic-fetch'
 import ListProjectComponent from "../../components/ListProjectComponent";
 const APIURL = process.env.DOMAIN + process.env.APIURI
 export default class extends React.Component{
-  static async getInitialProps({query}){
+  static async getInitialProps({query , req}){
     let res = null;
     let url_path= '/danh-sach-du-an/'+query.slug;
     if(query.page){
@@ -31,7 +31,8 @@ export default class extends React.Component{
       page : data.page,
       url_path : url_path,
       breadcrumb : data.breadcumbs,
-      listBadge : data.listBadge
+      listBadge : data.listBadge,
+      headers : req.headers
     }
   }
   constructor(props){

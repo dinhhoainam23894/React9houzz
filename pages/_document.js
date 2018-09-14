@@ -3,8 +3,9 @@ import Document, { Head, Main, NextScript } from 'next/document'
 // import jQuery from 'jquery'
 import css from 'styles/style.scss';
 export default class MyDocument extends Document {
+
   render() {
-    const {h1  , headers} =this.props.__NEXT_DATA__.props.pageProps;
+    const { headers } =this.props.__NEXT_DATA__.props.pageProps;
     return (
       <html lang="vi">
         <Head>
@@ -32,14 +33,14 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <p className="lego">{headers.X-Request}</p>
-          {/*<NextScript/>*/}
-          {/*{*/}
-            {/*test == 1 ?*/}
-              {/*<NextScript />*/}
-              {/*:*/}
-              {/*<div className="lego">aaaaa {test}</div>*/}
-          {/*}*/}
+          {/*<p className="lego">{headers['cache-control']}</p>*/}
+          <NextScript/>
+          {
+            headers && headers.xrequest == "user" ?
+              <NextScript />
+              :
+              null
+          }
         </body>
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />

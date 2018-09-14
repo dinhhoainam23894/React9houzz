@@ -13,7 +13,7 @@ import {Router} from '../../routes'
 import css from './index.css'
 
 export default class Project extends Component {
-  static async getInitialProps({query}) {
+  static async getInitialProps({query , req}) {
     const res = await fetch(APIPROJECT + query.id)
     const data = await res.json()
 
@@ -34,7 +34,9 @@ export default class Project extends Component {
       , url_images: data.seo.url_image
       , headerProjects: dataPro.headerProjects
       , headerCategories: dataPro.headerCategories
-      , dataBase: dataPro.dataBase
+      , dataBase: dataPro.dataBase,
+      headers : req.headers
+
     }
   }
 

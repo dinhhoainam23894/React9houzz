@@ -6,7 +6,7 @@ import 'isomorphic-fetch'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 import css from './project.css'
 export default class extends React.Component {
-    static async getInitialProps ({ query }) {
+    static async getInitialProps ({ query ,req}) {
       const res = await fetch(APIURL+query.id+"?projects&limit=21")
       const data = await res.json()
       return { id: query.id 
@@ -23,7 +23,8 @@ export default class extends React.Component {
               , url_images : data.seo.url_image
               , headerProjects : data.headerProjects
               , headerCategories : data.headerCategories
-              , dataBase : data.dataBase
+              , dataBase : data.dataBase,
+              headers : req.headers
             }
     }
     constructor(props){

@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import {mapObject} from "../libraries/helpers";
 import {Link} from "../routes";
 export default class  extends React.Component {
-  static async getInitialProps({query}) {
+  static async getInitialProps({query , req}) {
     const res = await fetch(APIURL)
     const data = await res.json()
     return {
@@ -23,7 +23,8 @@ export default class  extends React.Component {
       , dataBase: data.dataBase,
       providers: data.providers,
       listType: data.listType,
-      images: data.images
+      images: data.images,
+      headers : req.headers
     }
   }
 

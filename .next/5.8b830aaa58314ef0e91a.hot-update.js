@@ -89,8 +89,8 @@ function (_React$Component) {
                   url_images: data.seo.url_image,
                   headerProjects: data.headerProjects,
                   headerCategories: data.headerCategories,
-                  dataBase: data.dataBase,
-                  headers: req.headers
+                  dataBase: data.dataBase // headers : req.headers
+
                 });
 
               case 8:
@@ -125,6 +125,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props);
       var router = this.props.router;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.router.query && this.props.router.query.photoId,
@@ -141,7 +142,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 43
         }
       }));
     }
@@ -175,4 +176,4 @@ exports.default = _default;
 /***/ })
 
 })
-//# sourceMappingURL=5.5f16f3bf10858193d290.hot-update.js.map
+//# sourceMappingURL=5.8b830aaa58314ef0e91a.hot-update.js.map

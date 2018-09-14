@@ -90,7 +90,6 @@ function (_React$Component) {
                   headerProjects: data.headerProjects,
                   headerCategories: data.headerCategories,
                   dataBase: data.dataBase,
-                  test: 1,
                   headers: req.headers
                 });
 
@@ -126,6 +125,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props);
       var router = this.props.router;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.router.query && this.props.router.query.photoId,
@@ -176,4 +176,4 @@ exports.default = _default;
 /***/ })
 
 })
-//# sourceMappingURL=5.7ef3aa626c0576625db3.hot-update.js.map
+//# sourceMappingURL=5.87ffde900866b0b5bf7e.hot-update.js.map

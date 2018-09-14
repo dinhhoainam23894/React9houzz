@@ -13,7 +13,7 @@ const APIPROJECT = APIURL + 'project/';
 const APIPRO = APIURL + 'provider/';
 
 class Detail extends React.Component {
-  static async getInitialProps({query}) {
+  static async getInitialProps({query , req}) {
     const res = await fetch(APIPROJECT + query.id);
     const data = await res.json();
     const resPro = await fetch(APIPRO + data.project.user_id);
@@ -36,7 +36,8 @@ class Detail extends React.Component {
       , dataBase: dataPro.dataBase
       , relateData : data.relateData
       , listProjects : data.listProjects
-      , breadcrumb: data.breadcumbs
+      , breadcrumb: data.breadcumbs,
+      headers : req.headers
     }
   }
   showPhoto (e, id , slug) {

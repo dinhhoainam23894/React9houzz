@@ -6,7 +6,7 @@ const APIURL = process.env.DOMAIN + process.env.APIURI + 'image/'
 import css from './index.css'
 import { withRouter } from 'next/router';
 class Image extends React.Component{
-    static async getInitialProps({query}){
+    static async getInitialProps({query , req}){
         const res = await fetch(APIURL+query.id)
         const data = await res.json()
         return {
@@ -26,7 +26,8 @@ class Image extends React.Component{
                     , url_images : data.seo.url_image
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
-                    , dataBase : data.dataBase
+                    , dataBase : data.dataBase,
+                    headers : req.headers
                 }
     }
     render(){

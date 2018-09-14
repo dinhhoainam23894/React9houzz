@@ -4,7 +4,7 @@ const APIURL = process.env.DOMAIN + process.env.APIURI
 import { withRouter } from 'next/router'
 
 class IdeaFilter extends React.Component{
-    static async getInitialProps({query}){
+    static async getInitialProps({query , req}){
         let res = null;
         if(query.f){
              res = await fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params) + `?f=${query.f}`)
@@ -30,6 +30,7 @@ class IdeaFilter extends React.Component{
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase,
+                     headers : req.headers
         }
     }
     constructor(props){

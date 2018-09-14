@@ -6,7 +6,7 @@ import axios from 'axios'
 import css from './review.css'
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'provider/'
 export default class extends React.Component {
-    static async getInitialProps({ query }) {
+    static async getInitialProps({ query , req}) {
         const res = await fetch(APIURL+query.id+"?reviews")
         const data = await res.json()
         return { id: query.id 
@@ -25,7 +25,8 @@ export default class extends React.Component {
                 , url_images : data.seo.url_image
                 , headerProjects : data.headerProjects
                 , headerCategories : data.headerCategories
-                , dataBase : data.dataBase
+                , dataBase : data.dataBase,
+                headers : req.headers
             }
       } 
       constructor(props){
