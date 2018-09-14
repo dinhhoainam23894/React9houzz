@@ -7,7 +7,6 @@ import 'isomorphic-fetch'
 import Slider from "react-slick";
 import {mapObject} from "../libraries/helpers";
 import {Link} from "../routes";
-
 export default class  extends React.Component {
   static async getInitialProps({query}) {
     const res = await fetch(APIURL)
@@ -24,7 +23,8 @@ export default class  extends React.Component {
       , dataBase: data.dataBase,
       providers: data.providers,
       listType: data.listType,
-      images: data.images
+      images: data.images,
+      test : 0
     }
   }
 

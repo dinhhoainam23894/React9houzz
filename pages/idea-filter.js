@@ -29,8 +29,9 @@ class IdeaFilter extends React.Component{
                     , url_images : data.seo.url_image 
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
-                    , dataBase : data.dataBase
-                }
+                    , dataBase : data.dataBase,
+                      test : 0
+        }
     }
     constructor(props){
         super(props)

@@ -68,6 +68,7 @@ export default class extends React.Component {
       nextPageLink,
       slick
           } = this.props
+    console.log(this.props)
     return (
       <React.Fragment>
         <Head>

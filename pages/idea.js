@@ -2,6 +2,7 @@ import React from 'react'
 import IdeaComponent from '../components/IdeaComponent'
 import 'isomorphic-fetch'
 import { withRouter } from 'next/router'
+import { checkbot } from "../libraries/helpers";
 
 const APIURL = process.env.DOMAIN + process.env.APIURI
 
@@ -9,6 +10,7 @@ class Idea extends React.Component{
     static async getInitialProps({query}){
         const res = await fetch(APIURL+"y-tuong")
         const data = await res.json()
+      console.log(checkbot());
         return {    h1 : data.h1,
                     filter_default : data.filter_default,
                     colors : data.colors,
@@ -23,8 +25,9 @@ class Idea extends React.Component{
                     , url_images : data.seo.url_image
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
-                    , dataBase : data.dataBase
-                }
+                    , dataBase : data.dataBase,
+                    test : checkbot()
+        }
     }
     constructor(props){
         super(props)

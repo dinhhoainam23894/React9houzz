@@ -35,6 +35,12 @@ app.prepare().then(() => {
   ));
   server.use(express.static('static'));
   server.disable('x-powered-by');
+
+  server.on('connection', function(socket) {
+    console.log("A new connection was made by a client.");
+    socket.setTimeout(30 * 1000);
+    // 30 second timeout. Change this as you see fit.
+  })
   server.use(renderAndCache).listen(3000);
 });
 

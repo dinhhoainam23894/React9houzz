@@ -3,7 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="c434985d-bb64-4173-aaac-55a3a38a83f0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/build-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/bundles/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/bundles/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/bundles/pages/_document.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/bundles/pages/_document.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/static/commons/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/static/commons/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/static/commons/manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/manifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/static/commons/manifest.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/manifest.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/idea-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/idea-filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/idea.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/idea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/project/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +54,7 @@
           <entry key="css" value="41" />
           <entry key="env" value="7" />
           <entry key="gitignore" value="2" />
-          <entry key="js" value="286" />
+          <entry key="js" value="303" />
           <entry key="json" value="12" />
           <entry key="jsx" value="3" />
           <entry key="map" value="1" />
@@ -44,7 +62,7 @@
           <entry key="production" value="1" />
           <entry key="rnc" value="1" />
           <entry key="scss" value="64" />
-          <entry key="ts" value="3" />
+          <entry key="ts" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -52,13 +70,13 @@
           <entry key="CSS" value="41" />
           <entry key="Image" value="6" />
           <entry key="JSON" value="19" />
-          <entry key="JavaScript" value="286" />
+          <entry key="JavaScript" value="303" />
           <entry key="PLAIN_TEXT" value="10" />
           <entry key="RNG Compact" value="1" />
           <entry key="SCSS" value="64" />
           <entry key="Scratch" value="3" />
           <entry key="SourceMap" value="1" />
-          <entry key="TypeScript" value="3" />
+          <entry key="TypeScript" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -66,7 +84,7 @@
           <entry key="babelrc" value="82" />
           <entry key="css" value="12" />
           <entry key="env" value="114" />
-          <entry key="js" value="14076" />
+          <entry key="js" value="15876" />
           <entry key="json" value="32" />
           <entry key="scss" value="3692" />
         </counts>
@@ -75,7 +93,7 @@
         <counts>
           <entry key="CSS" value="12" />
           <entry key="JSON" value="114" />
-          <entry key="JavaScript" value="14076" />
+          <entry key="JavaScript" value="15876" />
           <entry key="PLAIN_TEXT" value="114" />
           <entry key="SCSS" value="3692" />
         </counts>
@@ -92,53 +110,39 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/_document.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="40" column="15" lean-forward="true" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
+            <state relative-caret-position="315">
+              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/next.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="23" />
+            <state relative-caret-position="76">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
+        <entry file="file://$PROJECT_DIR$/pages/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2654" column="9" selection-start-line="2654" selection-start-column="5" selection-end-line="2654" selection-end-column="9" />
+            <state relative-caret-position="520">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#134#162#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/nav.js">
+        <entry file="file://$PROJECT_DIR$/pages/idea.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.babelrc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/layout.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="136" column="66" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="66" />
+            <state relative-caret-position="175">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -147,21 +151,66 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/next.config.js">
+        <entry file="file://$PROJECT_DIR$/pages/idea-filter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state relative-caret-position="299">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.js">
+        <entry file="file://$PROJECT_DIR$/libraries/helpers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="272">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/project/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1518">
+              <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/project/detail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-150">
+              <caret line="17" column="34" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-202">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/layout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-958">
+              <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -215,10 +264,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/postcss.config.js" />
-        <option value="$PROJECT_DIR$/styles/_variables.scss" />
-        <option value="$PROJECT_DIR$/static/mystatic/polyfill.min.js" />
-        <option value="$PROJECT_DIR$/components/image-modal.js" />
         <option value="$PROJECT_DIR$/styles/_home.scss" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/routes.js" />
@@ -248,7 +293,6 @@
         <option value="$PROJECT_DIR$/styles/_provider.scss" />
         <option value="$PROJECT_DIR$/pages/project/list-project.css" />
         <option value="$PROJECT_DIR$/components/ListProjectComponent.js" />
-        <option value="$PROJECT_DIR$/pages/index.js" />
         <option value="$PROJECT_DIR$/styles/style.scss" />
         <option value="$PROJECT_DIR$/styles/_project.scss" />
         <option value="$PROJECT_DIR$/pages/project/list-project.js" />
@@ -260,11 +304,16 @@
         <option value="$PROJECT_DIR$/pages/static-page.js" />
         <option value="$PROJECT_DIR$/pages/news.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/components/nav.js" />
-        <option value="$PROJECT_DIR$/components/layout.js" />
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/next.config.js" />
+        <option value="$PROJECT_DIR$/pages/project/index.js" />
+        <option value="$PROJECT_DIR$/pages/index.js" />
+        <option value="$PROJECT_DIR$/pages/idea-filter.js" />
+        <option value="$PROJECT_DIR$/pages/idea.js" />
+        <option value="$PROJECT_DIR$/libraries/helpers.js" />
+        <option value="$PROJECT_DIR$/components/layout.js" />
+        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/pages/_document.js" />
       </list>
     </option>
@@ -314,13 +363,18 @@
             <path>
               <item name="my-next-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-next-app" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="libraries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my-next-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-next-app" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="mystatic" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-next-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-next-app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -329,7 +383,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="provider&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_provider-list.scss&#10;LIstPro&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProviderComponent.js&#10;ser&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_service.scss&#10;Li&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js&#10;_doc&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/_document.js&#10;detail&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/detail.js&#10;ListProvider&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProviderComponent.js&#10;index&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/index.js&#10;ListPro&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js&#10;project-li&#9;null&#9;null&#10;.project-li&#9;null&#9;null&#10;List&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js&#10;.project-list&#9;null&#9;null&#10;Ideac&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/IdeaComponent.js&#10;.service&#9;null&#9;null&#10;project&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_project.scss&#10;provider-li&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_provider-list.scss&#10;ImageDetai&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;IdeaCo&#9;null&#9;null&#10;lis&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/pro/list-provider-filter.js&#10;list-project&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/list-project.js&#10;detai&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/detail.js&#10;list-&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/list-project.js&#10;ImageDeta&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;Image-&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-modal.js&#10;lay&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/layout.js&#10;react-dom/cjs/react-dom.development.js&#9;null&#9;null&#10;next-route&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/node_modules/next-routes&#10;image&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;next&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/next.config.js&#10;action-d&#9;null&#9;null&#10;action-de&#9;null&#9;null&#10;image-&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;layout&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/layout.js&#10;images-s&#9;null&#9;null&#10;images-ser&#9;null&#9;null&#10;Idea&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/IdeaComponent.js&#10;P&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/node_modules/react-js-pagination/src/components/Page.js&#10;pag&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/node_modules/react-js-pagination/src/components/Page.js&#10;pagi_&#9;null&#9;null&#10;list&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/list-project-filter.js&#10;side&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/sideBar.js&#10;mapO&#9;null&#9;null&#10;mapObj&#9;null&#9;null&#10;mapOb&#9;null&#9;null&#10;Image&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/image&#10;pro-in&#9;null&#9;null&#10;.action-detail&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="idea&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/.next/bundles/pages/idea.js&#10;Idea&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/.next/bundles/pages/idea.js&#10;index&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/index.js&#10;provider&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_provider-list.scss&#10;LIstPro&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProviderComponent.js&#10;ser&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_service.scss&#10;Li&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js&#10;_doc&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/_document.js&#10;detail&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/detail.js&#10;ListProvider&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProviderComponent.js&#10;ListPro&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js&#10;project-li&#9;null&#9;null&#10;.project-li&#9;null&#9;null&#10;List&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/ListProjectComponent.js&#10;.project-list&#9;null&#9;null&#10;Ideac&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/IdeaComponent.js&#10;.service&#9;null&#9;null&#10;project&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_project.scss&#10;provider-li&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/styles/_provider-list.scss&#10;ImageDetai&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;IdeaCo&#9;null&#9;null&#10;lis&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/pro/list-provider-filter.js&#10;list-project&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/list-project.js&#10;detai&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/detail.js&#10;list-&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/list-project.js&#10;ImageDeta&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;Image-&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-modal.js&#10;lay&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/layout.js&#10;react-dom/cjs/react-dom.development.js&#9;null&#9;null&#10;next-route&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/node_modules/next-routes&#10;image&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;next&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/next.config.js&#10;action-d&#9;null&#9;null&#10;action-de&#9;null&#9;null&#10;image-&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/image-detail.js&#10;layout&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/layout.js&#10;images-s&#9;null&#9;null&#10;images-ser&#9;null&#9;null&#10;P&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/node_modules/react-js-pagination/src/components/Page.js&#10;pag&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/node_modules/react-js-pagination/src/components/Page.js&#10;pagi_&#9;null&#9;null&#10;list&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/project/list-project-filter.js&#10;side&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/components/sideBar.js&#10;mapO&#9;null&#9;null&#10;mapObj&#9;null&#9;null&#10;mapOb&#9;null&#9;null&#10;Image&#9;FILE&#9;file:///Applications/MAMP/htdocs/my-next-app/pages/image&#10;pro-in&#9;null&#9;null&#10;.action-detail&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.cucumber.cucumber_node_package_dir" value="" />
@@ -422,18 +476,18 @@
       <workItem from="1536284172501" duration="12362000" />
       <workItem from="1536370122916" duration="2820000" />
       <workItem from="1536422004003" duration="3670000" />
-      <workItem from="1536543529519" duration="37475000" />
+      <workItem from="1536543529519" duration="53168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241083000" />
+    <option name="totallyTimeSpent" value="256776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24894217" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24894217" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -445,9 +499,9 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3198324" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32960895" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4992948" visible="true" weight="0.3198324" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50070524" side_tool="true" weight="0.3198324" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -455,21 +509,22 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24894217" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24894217" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3198324" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3198324" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -478,6 +533,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -513,60 +594,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/list-project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-762">
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/image-detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4495">
-          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#1357#1786#0" />
-            <element signature="e#1823#2523#0" />
-            <element signature="n#!!block;n#componentDidMount#0;n#ImageInfo#0" />
-            <element signature="n#!!block;n#changeImage#0;n#ImageInfo#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/global.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.production">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/pro/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2737">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.next/static/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28093">
-          <caret line="3" column="56754" selection-start-line="3" selection-start-column="56754" selection-end-line="3" selection-end-column="56754" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/project/list-project-filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/_category.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -588,17 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="13047" selection-start-column="13047" selection-end-column="13047" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#134#162#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -653,13 +669,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/project/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
@@ -719,13 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/news.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -759,11 +761,6 @@
       </provider>
       <provider editor-type-id="sourcemapFileViewerProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.next/bundles/pages/idea.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/images/logo9houz.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -789,37 +786,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/next/dist/server/document.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4486">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/nav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/layout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="136" column="66" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,31 +800,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../node_modules/next/document.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/next/dist/server/document.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5760">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/next/document.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="44" selection-start-column="44" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/next-routes/typings/next-routes.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-788">
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" selection-start-column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.next/bundles/pages/idea.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
+        <state relative-caret-position="-202">
           <caret line="3" column="23" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
+    <entry file="file://$PROJECT_DIR$/pages/project/detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        <state relative-caret-position="-150">
+          <caret line="17" column="34" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/idea-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/idea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/layout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-958">
+          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#134#162#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/project/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/next.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state relative-caret-position="76">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/_document.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="40" column="15" lean-forward="true" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
+        <state relative-caret-position="315">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
         </state>
       </provider>
     </entry>
