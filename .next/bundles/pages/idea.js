@@ -41923,7 +41923,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props);
       var router = this.props.router;
       return _react.default.createElement(_IdeaComponent.default, _extends({}, this.props, {
         photoId: this.props.router.query && this.props.router.query.photoId,
@@ -41940,7 +41939,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 42
         }
       }));
     }

@@ -37,7 +37,6 @@ class Idea extends React.Component{
     }
     
    render(){
-      console.log(this.props);
        const { router } = this.props
        return(
             <IdeaComponent 

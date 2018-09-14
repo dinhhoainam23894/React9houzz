@@ -34,7 +34,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           {/*<p className="lego">{headers['cache-control']}</p>*/}
-          <NextScript/>
           {
             headers && headers.xrequest == "user" ?
               <NextScript />
