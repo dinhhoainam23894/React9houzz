@@ -32,7 +32,7 @@ export default class extends React.Component{
             filterDefault : data.filter_default,
             page : data.page,
             url_path : url_path,
-            headers : req.headers
+            headers : req && req.headers
         }
     }
     constructor(props){

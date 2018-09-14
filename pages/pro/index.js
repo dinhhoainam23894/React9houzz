@@ -30,7 +30,7 @@ export default class Pro extends Component {
             , headerProjects : data.headerProjects
             , headerCategories : data.headerCategories
             , dataBase : data.dataBase,
-            headers : req.headers
+            headers :  req && req.headers
             }
   } 
   constructor(props){

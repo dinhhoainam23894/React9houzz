@@ -35,7 +35,7 @@ export default class Project extends Component {
       , headerProjects: dataPro.headerProjects
       , headerCategories: dataPro.headerCategories
       , dataBase: dataPro.dataBase,
-      headers : req.headers
+      headers :  req && req.headers
 
     }
   }

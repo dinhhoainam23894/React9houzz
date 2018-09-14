@@ -30,7 +30,7 @@ class IdeaFilter extends React.Component{
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase,
-                     headers : req.headers
+                     headers :  req && req.headers
         }
     }
     constructor(props){

@@ -38,7 +38,7 @@ app.prepare().then(() => {
   server.on('connection', function(socket) {
     console.log("A new connection was made by a client.");
     socket.setTimeout(30 * 1000);
-  })
+  });
   server.use(handler).listen(3000);
 });
 

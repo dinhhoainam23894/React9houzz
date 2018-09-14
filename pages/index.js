@@ -24,7 +24,7 @@ export default class  extends React.Component {
       providers: data.providers,
       listType: data.listType,
       images: data.images,
-      headers : req.headers
+      headers :  req && req.headers
     }
   }
 

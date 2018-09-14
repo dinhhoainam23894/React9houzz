@@ -32,7 +32,7 @@ export default class extends React.Component{
       url_path : url_path,
       breadcrumb : data.breadcumbs,
       listBadge : data.listBadge,
-      headers : req.headers
+      headers : req && req.headers
     }
   }
   constructor(props){

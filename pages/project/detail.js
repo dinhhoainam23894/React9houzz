@@ -37,7 +37,7 @@ class Detail extends React.Component {
       , relateData : data.relateData
       , listProjects : data.listProjects
       , breadcrumb: data.breadcumbs,
-      headers : req.headers
+      headers :  req && req.headers
     }
   }
   showPhoto (e, id , slug) {
