@@ -37,7 +37,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import flush from 'styled-jsx/server';
 var MyDocument =
 /*#__PURE__*/
 function (_Document) {
@@ -51,45 +50,40 @@ function (_Document) {
 
   _createClass(MyDocument, [{
     key: "render",
-    // static async getInitialProps(ctx) {
-    //   const { html, head, errorHtml, chunks } = ctx.renderPage();
-    //   const styles = flush();
-    //   const session = ctx.req.session;
-    //   return { html, head, errorHtml, chunks, styles, session };
-    // }
     value: function render() {
-      // const {h1 , test} =this.props.__NEXT_DATA__.props.pageProps;
-      // console.log(this.props);
+      var _props$__NEXT_DATA__$ = this.props.__NEXT_DATA__.props.pageProps,
+          h1 = _props$__NEXT_DATA__$.h1,
+          headers = _props$__NEXT_DATA__$.headers;
       return _react.default.createElement("html", {
         lang: "vi",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 9
         }
       }, _react.default.createElement(_document.Head, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 10
         }
       }, _react.default.createElement("link", {
         rel: "shortcut icon",
         href: "/favicon.ico",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 11
         }
       }), _react.default.createElement("noscript", {
         id: "deferred-styles",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 12
         }
       }, _react.default.createElement("link", {
         rel: "stylesheet",
-        href: "https://9houz.com/_next/static/style.css",
+        href: "/_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 13
         }
       }), _react.default.createElement("link", {
         rel: "stylesheet",
@@ -97,7 +91,7 @@ function (_Document) {
         href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 17
         }
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -105,35 +99,41 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 20
         }
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 33
         }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 34
         }
-      }), _react.default.createElement(_document.NextScript, {
+      }), _react.default.createElement("p", {
+        className: "lego",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 35
+        }
+      }, headers.X - Request), _react.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
         }
       })), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 44
         }
       }), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 45
         }
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -141,7 +141,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 46
         }
       }));
     }
@@ -173,4 +173,4 @@ exports.default = MyDocument;
 /***/ })
 
 })
-//# sourceMappingURL=2.51de4383e97bd6e62628.hot-update.js.map
+//# sourceMappingURL=2.b36861e130e9ac55f075.hot-update.js.map

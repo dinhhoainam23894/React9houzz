@@ -13,7 +13,7 @@ import Footer from './footer';
 import css from 'styles/style.scss';
 
 export default class extends React.Component {
-  
+
   static propTypes() {
     return {
       session: React.PropTypes.object.isRequired,
@@ -57,7 +57,7 @@ export default class extends React.Component {
     const { title ,
             des ,
             canonical ,
-            og_url , 
+            og_url ,
             url_images , 
             robots , 
             css , 
@@ -68,7 +68,6 @@ export default class extends React.Component {
       nextPageLink,
       slick
           } = this.props
-    console.log(this.props)
     return (
       <React.Fragment>
         <Head>

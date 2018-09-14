@@ -7,10 +7,9 @@ import { checkbot } from "../libraries/helpers";
 const APIURL = process.env.DOMAIN + process.env.APIURI
 
 class Idea extends React.Component{
-    static async getInitialProps({query}){
+    static async getInitialProps({req , query}){
         const res = await fetch(APIURL+"y-tuong")
         const data = await res.json()
-      console.log(checkbot());
         return {    h1 : data.h1,
                     filter_default : data.filter_default,
                     colors : data.colors,
@@ -26,7 +25,7 @@ class Idea extends React.Component{
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase,
-                    test : checkbot()
+                    headers : req.headers
         }
     }
     constructor(props){

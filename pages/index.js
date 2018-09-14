@@ -23,8 +23,7 @@ export default class  extends React.Component {
       , dataBase: data.dataBase,
       providers: data.providers,
       listType: data.listType,
-      images: data.images,
-      test : 0
+      images: data.images
     }
   }
 

@@ -2,19 +2,9 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 // import jQuery from 'jquery'
 import css from 'styles/style.scss';
-// import flush from 'styled-jsx/server';
-
 export default class MyDocument extends Document {
-  // static async getInitialProps(ctx) {
-  //   const { html, head, errorHtml, chunks } = ctx.renderPage();
-  //   const styles = flush();
-  //   const session = ctx.req.session;
-  //   return { html, head, errorHtml, chunks, styles, session };
-  // }
-
   render() {
-    // const {h1 , test} =this.props.__NEXT_DATA__.props.pageProps;
-    // console.log(this.props);
+    const {h1  , headers} =this.props.__NEXT_DATA__.props.pageProps;
     return (
       <html lang="vi">
         <Head>
@@ -22,7 +12,7 @@ export default class MyDocument extends Document {
         <noscript id="deferred-styles">
           <link
             rel="stylesheet"
-            href={`https://9houz.com/_next/static/style.css`}
+            href={`/_next/static/style.css`}
           />
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         </noscript>
@@ -42,9 +32,8 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <p className="lego">{headers.X-Request}</p>
           {/*<NextScript/>*/}
-          {/*<div className="lego">{this.props.head}</div>*/}
-          {/*<div className="lego1">{this.props.data}</div>*/}
           {/*{*/}
             {/*test == 1 ?*/}
               {/*<NextScript />*/}

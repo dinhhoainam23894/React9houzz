@@ -2,25 +2,72 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c434985d-bb64-4173-aaac-55a3a38a83f0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.next/0.025669810628fe9336f5.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/0.025669810628fe9336f5.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/025669810628fe9336f5.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/1.025669810628fe9336f5.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/1.025669810628fe9336f5.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/1f959bb4486b0ee363ff.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/2.6d1a1a8badfdb8f2ab54.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/2.6d1a1a8badfdb8f2ab54.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/2.b36861e130e9ac55f075.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/2.f566b94a71e352bfead5.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.1f959bb4486b0ee363ff.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.1f959bb4486b0ee363ff.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.5f16f3bf10858193d290.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.5f16f3bf10858193d290.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.6d1a1a8badfdb8f2ab54.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.6d1a1a8badfdb8f2ab54.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.7ef3aa626c0576625db3.hot-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5.7ef3aa626c0576625db3.hot-update.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/5f16f3bf10858193d290.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/6d1a1a8badfdb8f2ab54.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/7ef3aa626c0576625db3.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/b36861e130e9ac55f075.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/bundles/pages/idea.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/bundles/pages/idea.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/f532052051504d6c52ca.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/f566b94a71e352bfead5.hot-update.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/server/bundles/pages/idea.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.next/server/bundles/pages/idea.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/05587682a9dacaa27a78.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/093373121b454cf45302.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/1d63d45115bfd31103a2.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.05587682a9dacaa27a78.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.05587682a9dacaa27a78.hot-update.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.093373121b454cf45302.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.093373121b454cf45302.hot-update.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.1d63d45115bfd31103a2.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.1d63d45115bfd31103a2.hot-update.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.51de4383e97bd6e62628.hot-update.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/2.b36861e130e9ac55f075.hot-update.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.51de4383e97bd6e62628.hot-update.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.974e5e48d43bbd00f7cd.hot-update.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/2.f566b94a71e352bfead5.hot-update.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.974e5e48d43bbd00f7cd.hot-update.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.c5f00dca0968167d4754.hot-update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/2.c5f00dca0968167d4754.hot-update.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/51de4383e97bd6e62628.hot-update.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/974e5e48d43bbd00f7cd.hot-update.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/build-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/bundles/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/bundles/pages/_document.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/bundles/pages/_document.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/bundles/pages/_document.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/bundles/pages/_error.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/bundles/pages/_error.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/c5f00dca0968167d4754.hot-update.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.next/server/pages-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/pages-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/static/commons/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/static/commons/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/static/commons/manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/manifest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/static/commons/manifest.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/commons/manifest.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/idea-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/idea-filter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/idea.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/idea.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/project/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/news.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/news.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +101,7 @@
           <entry key="css" value="41" />
           <entry key="env" value="7" />
           <entry key="gitignore" value="2" />
-          <entry key="js" value="303" />
+          <entry key="js" value="306" />
           <entry key="json" value="12" />
           <entry key="jsx" value="3" />
           <entry key="map" value="1" />
@@ -70,7 +117,7 @@
           <entry key="CSS" value="41" />
           <entry key="Image" value="6" />
           <entry key="JSON" value="19" />
-          <entry key="JavaScript" value="303" />
+          <entry key="JavaScript" value="306" />
           <entry key="PLAIN_TEXT" value="10" />
           <entry key="RNG Compact" value="1" />
           <entry key="SCSS" value="64" />
@@ -84,7 +131,7 @@
           <entry key="babelrc" value="82" />
           <entry key="css" value="12" />
           <entry key="env" value="114" />
-          <entry key="js" value="15876" />
+          <entry key="js" value="16750" />
           <entry key="json" value="32" />
           <entry key="scss" value="3692" />
         </counts>
@@ -93,7 +140,7 @@
         <counts>
           <entry key="CSS" value="12" />
           <entry key="JSON" value="114" />
-          <entry key="JavaScript" value="15876" />
+          <entry key="JavaScript" value="16750" />
           <entry key="PLAIN_TEXT" value="114" />
           <entry key="SCSS" value="3692" />
         </counts>
@@ -110,17 +157,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/_document.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/next.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state relative-caret-position="209">
+              <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -128,8 +166,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+            <state relative-caret-position="101">
+              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#134#162#0" expanded="true" />
@@ -139,10 +177,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/idea.js">
+        <entry file="file://$PROJECT_DIR$/pages/idea-filter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="259">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -151,10 +189,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/idea-filter.js">
+        <entry file="file://$PROJECT_DIR$/pages/idea.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state relative-caret-position="227">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/news.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="863">
+              <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/layout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1052">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -177,7 +248,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/project/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1518">
+            <state relative-caret-position="1579">
               <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
@@ -191,27 +262,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-150">
               <caret line="17" column="34" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-202">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/layout.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-958">
-              <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -302,18 +352,18 @@
         <option value="$PROJECT_DIR$/components/ListProviderComponent.js" />
         <option value="$PROJECT_DIR$/styles/_provider-list.scss" />
         <option value="$PROJECT_DIR$/pages/static-page.js" />
-        <option value="$PROJECT_DIR$/pages/news.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/components/nav.js" />
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/next.config.js" />
         <option value="$PROJECT_DIR$/pages/project/index.js" />
+        <option value="$PROJECT_DIR$/libraries/helpers.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/pages/news.js" />
+        <option value="$PROJECT_DIR$/components/layout.js" />
+        <option value="$PROJECT_DIR$/pages/idea.js" />
         <option value="$PROJECT_DIR$/pages/index.js" />
         <option value="$PROJECT_DIR$/pages/idea-filter.js" />
-        <option value="$PROJECT_DIR$/pages/idea.js" />
-        <option value="$PROJECT_DIR$/libraries/helpers.js" />
-        <option value="$PROJECT_DIR$/components/layout.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/pages/_document.js" />
       </list>
     </option>
@@ -476,18 +526,18 @@
       <workItem from="1536284172501" duration="12362000" />
       <workItem from="1536370122916" duration="2820000" />
       <workItem from="1536422004003" duration="3670000" />
-      <workItem from="1536543529519" duration="53168000" />
+      <workItem from="1536543529519" duration="58249000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256776000" />
+    <option name="totallyTimeSpent" value="261857000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24894217" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24894217" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -500,7 +550,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32960895" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4992948" visible="true" weight="0.3198324" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4992948" visible="true" weight="0.3198324" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50070524" side_tool="true" weight="0.3198324" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -573,7 +623,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/index.js</url>
-          <line>43</line>
+          <line>42</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -728,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/news.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/next/router.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -845,35 +888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-202">
+        <state relative-caret-position="-236">
           <caret line="3" column="23" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/project/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="17" column="34" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/idea-filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/idea.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -887,41 +903,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/layout.js">
+    <entry file="file://$PROJECT_DIR$/pages/news.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-958">
-          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#134#162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/project/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1518">
-          <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="92">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="863">
+          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -930,15 +922,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/next.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="183">
           <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/layout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1052">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/idea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/project/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="17" column="34" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/project/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1579">
+          <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/idea-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#134#162#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/_document.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        <state relative-caret-position="209">
+          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
         </state>
       </provider>
     </entry>
