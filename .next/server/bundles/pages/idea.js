@@ -3161,14 +3161,19 @@ function (_React$Component) {
           fileName: _jsxFileName,
           lineNumber: 62
         }
-      }), _react.default.createElement("a", {
-        className: "nav-link mr-auto",
-        href: "#",
+      }), _react.default.createElement(_routes.Link, {
+        route: "list-project",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 63
         }
-      }, "D\u1EF0 \xC1N"), _react.default.createElement("a", {
+      }, _react.default.createElement("a", {
+        className: "nav-link mr-auto",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64
+        }
+      }, "D\u1EF0 \xC1N")), _react.default.createElement("a", {
         className: "navbar-toggler menu-toggle",
         "data-toggle": "collapse",
         "data-target": "#nav-product",
@@ -3177,45 +3182,45 @@ function (_React$Component) {
         "aria-label": "Toggle navigation",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 66
         }
       }, _react.default.createElement("span", {
         className: "fa fa-chevron-right ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 67
         }
       }))), _react.default.createElement("div", {
         className: "collapse navbar-collapse nav-prof",
         id: "nav-product",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 69
         }
       }, _react.default.createElement("div", {
         className: "nav-child container",
         role: "menu",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 70
         }
       }, _react.default.createElement("div", {
         className: "row py-1 px-2 nav-service d-flex",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
+          lineNumber: 71
         }
       }, _react.default.createElement("div", {
         className: "col-md-12 text-left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 72
         }
       }, _react.default.createElement("ul", {
         className: "list-unstyled",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 73
         }
       }, headerProjects && (0, _helpers.mapObject)(headerProjects, function (index, value) {
         return _react.default.createElement("li", {
@@ -3223,49 +3228,53 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 74
+            lineNumber: 76
           }
         }, _react.default.createElement(_routes.Link, {
           route: value.uri,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 77
           }
         }, _react.default.createElement("a", {
-          href: "#",
           className: "text-dark font-14",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 78
           }
         }, value.name_tag)));
       }))))))), _react.default.createElement("li", {
         className: "nav-item py-1 px-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 90
         }
       }, _react.default.createElement("div", {
         className: "d-flex w-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 91
         }
       }, _react.default.createElement("i", {
         className: "fa fa-graduation-cap my-auto",
         "aria-hidden": "true",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90
+          lineNumber: 92
         }
-      }), _react.default.createElement("a", {
-        className: "nav-link mr-auto",
-        href: "#",
+      }), _react.default.createElement(_routes.Link, {
+        route: "list-provider",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 93
         }
-      }, "PRO"), _react.default.createElement("a", {
+      }, _react.default.createElement("a", {
+        className: "nav-link mr-auto",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 94
+        }
+      }, "CHUY\xCAN GIA")), _react.default.createElement("a", {
         className: "navbar-toggler menu-toggle",
         "data-toggle": "collapse",
         "data-target": "#nav-product-3",
@@ -3274,45 +3283,45 @@ function (_React$Component) {
         "aria-label": "Toggle navigation",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 96
         }
       }, _react.default.createElement("span", {
         className: "fa fa-chevron-right ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 97
         }
       }))), _react.default.createElement("div", {
         className: "collapse navbar-collapse nav-prof",
         id: "nav-product-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 95
+          lineNumber: 99
         }
       }, _react.default.createElement("div", {
         className: "nav-child container",
         role: "menu",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96
+          lineNumber: 100
         }
       }, _react.default.createElement("div", {
         className: "row py-1 px-2 nav-service d-flex",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 101
         }
       }, _react.default.createElement("div", {
         className: "col-md-12 text-left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 102
         }
       }, _react.default.createElement("ul", {
         className: "list-unstyled",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 103
         }
       }, headerCategories && (0, _helpers.mapObject)(headerCategories, function (index, value) {
         return _react.default.createElement("li", {
@@ -3320,99 +3329,98 @@ function (_React$Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 102
+            lineNumber: 106
           }
         }, _react.default.createElement(_routes.Link, {
           route: value.uri,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 103
+            lineNumber: 107
           }
         }, _react.default.createElement("a", {
-          href: "#",
           className: "text-dark font-14",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 104
+            lineNumber: 108
           }
         }, value.name_tag)));
       }))))))), _react.default.createElement("li", {
         className: "nav-item py-1 px-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116
+          lineNumber: 120
         }
       }, _react.default.createElement("div", {
         className: "d-flex w-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 121
         }
       }, _react.default.createElement("i", {
         className: "fa fa-pencil-square-o my-auto",
         "aria-hidden": "true",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 122
         }
       }), _react.default.createElement("a", {
         className: "nav-link",
         href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119
+          lineNumber: 123
         }
       }, "BLOG"))), _react.default.createElement("li", {
         className: "nav-item py-1 px-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122
+          lineNumber: 126
         }
       }, _react.default.createElement("div", {
         className: "d-flex w-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 123
+          lineNumber: 127
         }
       }, _react.default.createElement("i", {
         className: "fa fa-rss my-auto",
         "aria-hidden": "true",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 124
+          lineNumber: 128
         }
       }), _react.default.createElement("a", {
         className: "nav-link",
         href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125
+          lineNumber: 129
         }
       }, "TIN T\u1EE8C"))), _react.default.createElement("li", {
         className: "nav-item py-1 px-1 d-block d-md-none",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 128
+          lineNumber: 132
         }
       }, _react.default.createElement("div", {
         className: "d-flex w-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129
+          lineNumber: 133
         }
       }, _react.default.createElement("i", {
         className: "fa fa-info-circle my-auto",
         "aria-hidden": "true",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130
+          lineNumber: 134
         }
       }), _react.default.createElement("a", {
         className: "nav-link mr-auto",
         href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 131
+          lineNumber: 135
         }
       }, "V\u1EC0 CH\xDANG T\xD4I"), _react.default.createElement("a", {
         className: "navbar-toggler menu-toggle",
@@ -3423,68 +3431,68 @@ function (_React$Component) {
         "aria-label": "Toggle navigation",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 132
+          lineNumber: 136
         }
       }, _react.default.createElement("span", {
         className: "fa fa-chevron-right ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133
+          lineNumber: 137
         }
       }))), _react.default.createElement("div", {
         className: "collapse navbar-collapse nav-prof",
         id: "nav-product-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 135
+          lineNumber: 139
         }
       }, _react.default.createElement("div", {
         className: "nav-child container",
         role: "menu",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136
+          lineNumber: 140
         }
       }, _react.default.createElement("div", {
         className: "row py-1 px-2 nav-service d-flex",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 137
+          lineNumber: 141
         }
       }, _react.default.createElement("div", {
         className: "col-md-12 text-left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138
+          lineNumber: 142
         }
       }, _react.default.createElement("ul", {
         className: "list-unstyled",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139
+          lineNumber: 143
         }
       }, _react.default.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 144
         }
       }, _react.default.createElement(_routes.Link, {
         route: "/about/gioi-thieu",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 144
         }
       }, _react.default.createElement("a", {
         target: "_blank",
         title: "Gi\u1EDBi thi\u1EC7u",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 144
         }
       }, "Gi\u1EDBi thi\u1EC7u"))), _react.default.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 145
         }
       }, _react.default.createElement("a", {
         target: "_blank",
@@ -3492,18 +3500,18 @@ function (_React$Component) {
         rel: "nofollow",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 145
         }
       }, "Li\xEAn h\u1EC7")), _react.default.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 146
         }
       }, _react.default.createElement(_routes.Link, {
         route: "/about/chinh-sach-bao-mat",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 146
         }
       }, _react.default.createElement("a", {
         href: "#",
@@ -3511,18 +3519,18 @@ function (_React$Component) {
         title: "Ch\xEDnh s\xE1ch b\u1EA3o m\u1EADt",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 146
         }
       }, "Ch\xEDnh s\xE1ch b\u1EA3o m\u1EADt"))), _react.default.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143
+          lineNumber: 147
         }
       }, _react.default.createElement(_routes.Link, {
         route: "/about/dieu-khoan-su-dung",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143
+          lineNumber: 147
         }
       }, _react.default.createElement("a", {
         href: "#",
@@ -3530,7 +3538,7 @@ function (_React$Component) {
         title: "\u0110i\u1EC1u kho\u1EA3n s\u1EED d\u1EE5ng",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143
+          lineNumber: 147
         }
       }, "\u0110i\u1EC1u kho\u1EA3n s\u1EED d\u1EE5ng")))))))))))));
     }
@@ -4154,7 +4162,7 @@ function checkbot() {
 /***/ "./package.json":
 /***/ (function(module, exports) {
 
-module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server.js","build":"next build","start":"NODE_ENV=production node server.js","prod":"next build ; NODE_ENV=production node server.js"},"dependencies":{"@zeit/next-css":"^0.2.0","@zeit/next-sass":"^0.2.0","@zeit/next-typescript":"^1.1.0","axios":"^0.18.0","babel-plugin-inline-import":"^3.0.0","babel-plugin-module-resolver":"^3.1.1","bootstrap":"^4.1.1","classnames":"^2.2.6","css-loader":"^0.28.11","dotenv":"^6.0.0","es6-promise":"^4.2.4","express":"^4.16.3","font-awesome":"^4.7.0","ionicons":"^4.2.4","isomorphic-fetch":"^2.2.1","jquery":"^3.3.1","lru-cache":"^4.1.3","merge-files-webpack-plugin":"^1.1.2","next":"^6.1.1","next-compose":"0.0.2","next-routes":"^1.4.2","nprogress":"^0.2.0","popper.js":"^1.14.3","postcss-loader":"^2.1.6","prop-types":"^15.6.2","purify-css":"^1.2.5","purifycss-webpack":"^0.7.0","raw-loader":"^0.5.1","react":"^16.4.1","react-breadcrumbs-dynamic":"^1.1.1","react-document-meta":"^3.0.0-beta.2","react-dom":"^16.4.1","react-helmet":"^5.2.0","react-infinite":"^0.13.0","react-infinite-scroller":"^1.2.0","react-js-pagination":"^3.0.2","react-masonry-component":"^6.2.1","react-modal":"^3.5.1","react-responsive-carousel":"^3.1.41","react-router-dom":"^4.3.1","react-slick":"^0.23.1","react-through":"^1.1.1","reactstrap":"^6.3.0","serve-favicon":"^2.5.0","slick-carousel":"^1.8.1","style-loader":"^0.21.0","styled-jsx":"^2.2.7","styled-jsx-css-loader":"^0.3.0","styled-jsx-plugin-sass":"^0.2.4","tunnel-agent":"^0.6.0","universal-cookie":"^2.2.0","webpack":"^3.10.0"},"devDependencies":{"@babel/core":"^7.0.0-beta.53","babel-preset-env":"^1.7.0","create-next":"^0.1.4","node-sass":"^4.9.2","sass-loader":"^7.0.3","targets-webpack-plugin":"^1.0.3"}}
+module.exports = {"name":"create-next-example-app","scripts":{"dev":"node server.js","build":"next build","start":"NODE_ENV=production node server.js","prod":"next build ; NODE_ENV=production node server.js"},"dependencies":{"@zeit/next-css":"^0.2.0","@zeit/next-sass":"^0.2.0","@zeit/next-typescript":"^1.1.0","axios":"^0.18.0","babel-plugin-inline-import":"^3.0.0","babel-plugin-module-resolver":"^3.1.1","bootstrap":"^4.1.1","classnames":"^2.2.6","css-loader":"^0.28.11","dotenv":"^6.0.0","es6-promise":"^4.2.4","express":"^4.16.3","font-awesome":"^4.7.0","ionicons":"^4.2.4","isomorphic-fetch":"^2.2.1","jquery":"^3.3.1","lru-cache":"^4.1.3","merge-files-webpack-plugin":"^1.1.2","next":"^6.1.1","next-compose":"0.0.2","next-routes":"^1.4.2","nprogress":"^0.2.0","popper.js":"^1.14.3","postcss-loader":"^2.1.6","prop-types":"^15.6.2","purify-css":"^1.2.5","purifycss-webpack":"^0.7.0","raw-loader":"^0.5.1","react":"^16.4.1","react-breadcrumbs-dynamic":"^1.1.1","react-document-meta":"^3.0.0-beta.2","react-dom":"^16.4.1","react-helmet":"^5.2.0","react-infinite":"^0.13.0","react-infinite-scroller":"^1.2.0","react-js-pagination":"^3.0.2","react-masonry-component":"^6.2.1","react-modal":"^3.5.1","react-redux":"^5.0.7","react-responsive-carousel":"^3.1.41","react-router-dom":"^4.3.1","react-slick":"^0.23.1","react-through":"^1.1.1","reactstrap":"^6.3.0","redux":"^4.0.0","redux-thunk":"^2.3.0","serve-favicon":"^2.5.0","slick-carousel":"^1.8.1","style-loader":"^0.21.0","styled-jsx":"^2.2.7","styled-jsx-css-loader":"^0.3.0","styled-jsx-plugin-sass":"^0.2.4","tunnel-agent":"^0.6.0","universal-cookie":"^2.2.0","webpack":"^3.10.0"},"devDependencies":{"@babel/core":"^7.0.0-beta.53","babel-preset-env":"^1.7.0","create-next":"^0.1.4","node-sass":"^4.9.2","sass-loader":"^7.0.3","targets-webpack-plugin":"^1.0.3"}}
 
 /***/ }),
 

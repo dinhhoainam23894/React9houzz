@@ -1736,7 +1736,7 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 35
         }
-      }), headers && headers.host == "localhost:3000" ? _react.default.createElement(_document.NextScript, {
+      }), headers && headers.xrequest == "user" ? _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 39

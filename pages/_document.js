@@ -2,8 +2,8 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 // import jQuery from 'jquery'
 import css from 'styles/style.scss';
-export default class MyDocument extends Document {
 
+export default class MyDocument extends Document {
   render() {
     const { headers } =this.props.__NEXT_DATA__.props.pageProps;
     return (

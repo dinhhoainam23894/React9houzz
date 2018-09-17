@@ -60,7 +60,9 @@ export default class nav extends React.Component {
               <li className="nav-item py-1 px-1">
                 <div className="d-flex w-100">
                   <i className="fa fa-briefcase my-auto" aria-hidden="true"></i>
-                  <a className="nav-link mr-auto" href="#">DỰ ÁN</a>
+                  <Link route="list-project">
+                   <a className="nav-link mr-auto">DỰ ÁN</a>
+                  </Link>
                   <a className="navbar-toggler menu-toggle" data-toggle="collapse" data-target="#nav-product" aria-controls="collapse-login" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="fa fa-chevron-right "></span></a>
                 </div>
@@ -73,7 +75,7 @@ export default class nav extends React.Component {
                               headerProjects && mapObject(headerProjects,function(index,value){
                                 return <li className="mt-1" key={index}>
                                   <Link route={value.uri}>
-                                    <a href="#" className="text-dark font-14">{value.name_tag}</a>
+                                    <a className="text-dark font-14">{value.name_tag}</a>
                                   </Link>
                                 </li>
                               })
@@ -88,7 +90,9 @@ export default class nav extends React.Component {
               <li className="nav-item py-1 px-1">
                 <div className="d-flex w-100">
                   <i className="fa fa-graduation-cap my-auto" aria-hidden="true"></i>
-                  <a className="nav-link mr-auto" href="#">PRO</a>
+                  <Link route="list-provider">
+                    <a className="nav-link mr-auto">CHUYÊN GIA</a>
+                  </Link>
                   <a className="navbar-toggler menu-toggle" data-toggle="collapse" data-target="#nav-product-3" aria-controls="collapse-login" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="fa fa-chevron-right "></span></a>
                 </div>
@@ -101,7 +105,7 @@ export default class nav extends React.Component {
                           headerCategories && mapObject(headerCategories,function(index,value){
                             return <li className="mt-1" key={index}>
                               <Link route={value.uri}>
-                              <a href="#" className="text-dark font-14">{value.name_tag}</a>
+                              <a className="text-dark font-14">{value.name_tag}</a>
                               </Link>
                             </li>
                           })
