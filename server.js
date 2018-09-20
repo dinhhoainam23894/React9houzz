@@ -33,12 +33,7 @@ app.prepare().then(() => {
     res.status(200).sendFile('robots.txt', options)
   ));
   server.use(express.static('static'));
-  server.disable('x-powered-by');
-
-  server.on('connection', function(socket) {
-    console.log("A new connection was made by a client.");
-    socket.setTimeout(30 * 1000);
-  });
+  // server.disable('x-powered-by');
 
   server.use(handler).listen(3000);
 });

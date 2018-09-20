@@ -67,12 +67,34 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/_document.js":
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 13:
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 45:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(46);
+
+
+/***/ }),
+
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,13 +105,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__("react"));
+var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _document = _interopRequireWildcard(__webpack_require__("next/document"));
+var _document = _interopRequireWildcard(__webpack_require__(47));
 
-var _style = _interopRequireDefault(__webpack_require__("./styles/style.scss"));
-
-var _jsxFileName = "/Applications/MAMP/htdocs/my-next-app/pages/_document.js";
+var _style = _interopRequireDefault(__webpack_require__(13));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -125,87 +145,31 @@ function (_Document) {
     value: function render() {
       var headers = this.props.__NEXT_DATA__.props.pageProps.headers;
       return _react.default.createElement("html", {
-        lang: "vi",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      }, _react.default.createElement(_document.Head, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        }
-      }, _react.default.createElement("link", {
+        lang: "vi"
+      }, _react.default.createElement(_document.Head, null, _react.default.createElement("link", {
         rel: "shortcut icon",
-        href: "/favicon.ico",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 12
-        }
+        href: "/favicon.ico"
       }), _react.default.createElement("noscript", {
-        id: "deferred-styles",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        }
+        id: "deferred-styles"
       }, _react.default.createElement("link", {
         rel: "stylesheet",
-        href: "/_next/static/style.css",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 14
-        }
+        href: "/_next/static/style.css"
       }), _react.default.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 18
-        }
+        href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
           __html: "var loadDeferredStyles = function() {\n            var addStylesNode = document.getElementById(\"deferred-styles\");\n            var replacement = document.createElement(\"div\");\n            replacement.innerHTML = addStylesNode.textContent;\n            document.body.appendChild(replacement)\n            addStylesNode.parentElement.removeChild(addStylesNode);\n        };\n        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||\n            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;\n        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });\n        else window.addEventListener('load', loadDeferredStyles);"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
         }
-      })), _react.default.createElement("body", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 34
-        }
-      }, _react.default.createElement(_document.Main, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }), headers && headers.xrequest == "user" ? _react.default.createElement(_document.NextScript, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        }
-      }) : null), _react.default.createElement("script", {
-        src: "https://cdn.polyfill.io/v2/polyfill.min.js",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44
-        }
+      })), _react.default.createElement("body", null, _react.default.createElement(_document.Main, null), _react.default.createElement(_document.NextScript, null)), _react.default.createElement("script", {
+        src: "https://cdn.polyfill.io/v2/polyfill.min.js"
       }), _react.default.createElement("script", {
         async: true,
-        src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        }
+        src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1"
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
           __html: "\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'UA-120211455-1');\n        "
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
         }
       }));
     }
@@ -218,34 +182,11 @@ exports.default = MyDocument;
 
 /***/ }),
 
-/***/ "./styles/style.scss":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/_document.js");
-
-
-/***/ }),
-
-/***/ "next/document":
+/***/ 47:
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
 
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map

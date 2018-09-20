@@ -80,7 +80,7 @@ export default class Pro extends Component {
         projects.map(function(e){
             if(i< 6){
                 movieItems.push(<div className="col-md-6 col-lg-6 col-12 pl-0 pr-4 pb-3 project-image rounded-2" key={e.id}>
-                    <ListProject project={e}></ListProject>
+                    <ListProject project={e} />
                 </div>);
             }
             i++;
@@ -99,7 +99,7 @@ export default class Pro extends Component {
       <div className="container">
               <div className="row">
                   <div className="col-0 col-md-3 col-lg-3 provider-sidebar p-0 mt-2" id="sidebar">
-                      <ProviderSidebar provider={provider}></ProviderSidebar>
+                      <ProviderSidebar provider={provider} />
                   </div>
                   <div className="col-12 col-md-9 col-lg-9 mt-2">
                     <div className="provider-about">
@@ -107,11 +107,11 @@ export default class Pro extends Component {
                             <div id="readMore">
                                 <div className="readMoreWrapper">
                                     <div id="readMoreText" className="font-14">
-                                        <div dangerouslySetInnerHTML={{__html: provider.about_content}}></div>
+                                        <div dangerouslySetInnerHTML={{__html: provider.about_content}} />
                                     </div>
-                                    <div className="readMoreGradient"></div>
+                                    <div className="readMoreGradient" />
                                 </div>
-                                <button id="readMoreBtn" className="float-left mt-4"></button>
+                                <button id="readMoreBtn" className="float-left mt-4" />
                                 <span id="readLessBtnText" style={ {display: "none" } }>Rút gọn <span className="fa fa-angle-up"></span></span>
                                 <span id="readMoreBtnText" style={ {display: "none" } }>Xem thêm <span className="fa fa-angle-down"></span></span>
                             </div>
@@ -123,7 +123,7 @@ export default class Pro extends Component {
                   <div className="float-right left-info">
                       <div className="header-6 top mb-3">
                           <a className="text-dark font-25" href="">
-                              {data.project_count+" Dự án"}<span className="fa fa-angle-right font-22"></span>
+                              {data.project_count+" Dự án"} <span className="fa fa-angle-right font-22" />
                           </a>
                       </div>
                       <div className="row m-0">

@@ -16,7 +16,7 @@ export default class extends React.Component {
             {
               breadcrumb.home &&
               <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                <Link prefetch route={breadcrumb.home.uri}><a itemProp="url">
+                <Link route={breadcrumb.home.uri}><a itemProp="url">
                   <span itemProp="title" className="font-13">{breadcrumb.home.name}</span></a>
                 </Link>
               </li>
@@ -24,7 +24,7 @@ export default class extends React.Component {
             {
               breadcrumb.sub_items &&
               <li className="breadcrumb-item" itemScope itemType="http://data-vocabulary.org/Breadcrumb">
-                <Link prefetch route={breadcrumb.sub_items.uri}>
+                <Link route={breadcrumb.sub_items.uri}>
                   <a itemProp="url">
                     <span itemProp="title" className="font-13">{breadcrumb.sub_items.name}</span>
                   </a>

@@ -65,7 +65,7 @@ export default class Sidebar extends React.Component{
                                 {
                                     value.data && mapObject(value.data, function (index, value) {
                                         return <li className="py-1 radio" key={index}>
-                                            <Link prefetch route={value.uri}>
+                                            <Link route={value.uri}>
                                             <a className="font-13 font-weight-light text-gray"  rel={value.is_seo == 0 ? "nofollow" : "dofollow"}>
                                                 <label className={classnames('pr-3', {active: page.currentsId.includes(value.original)
                                                 })}>{value.name_tag}<span>{value.total_doc}</span></label>

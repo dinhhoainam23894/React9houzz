@@ -7,6 +7,8 @@ import Router from 'next/router'
 import {Link} from '../routes'
 import 'isomorphic-fetch'
 import { throws } from 'assert';
+import LazyLoad from "react-lazyload";
+import Placeholder from "./PlaceHolder";
 
 export default class Image extends React.Component{
     constructor(props) {
@@ -256,8 +258,10 @@ export default class Image extends React.Component{
                 <div id="image-container">
                     <div className="image">
                         {
-                           this.state.currentValue &&  
-                           <img className="image-detail" src={ this.state.currentValue.path_for_size} alt={this.state.currentValue.name} />
+                           this.state.currentValue &&
+                           <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder />} debounce={0}>
+                            <img className="image-detail" src={ this.state.currentValue.path_for_size} alt={this.state.currentValue.name} />
+                           </LazyLoad>
                         }
                     </div>
                     <div className="lb-navDiv">
@@ -289,7 +293,7 @@ export default class Image extends React.Component{
                     currentValue={this.state.currentValue}
                     detail={this.props.detail}
                     pushStateProject={(id,slug,nextId,nextSlug)=>{this.pushStateProject(id,slug,nextId,nextSlug)}}
-                ></ImageInfo>
+                />
             </div>
         )
     }
@@ -347,7 +351,10 @@ class ImageInfo extends React.PureComponent{
                         <div className="content-scroll">
                             <div className="content-detail">
                                 <div className="media">
-                                    { provider && <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" /> }
+                                    { provider &&
+                                    <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder />} debounce={0}>
+                                      <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" />
+                                    </LazyLoad>}
                                     <div className="media-body">
                                         <div className="media-content">
                                           {
@@ -376,13 +383,11 @@ class ImageInfo extends React.PureComponent{
                                 <div className="media-content" id="readMore">
                                         <div className="readMoreWrapper">
                                             {currentValue &&
-                                                <p id="readMoreText" className="font-14 normalText" dangerouslySetInnerHTML={{__html: currentValue.descriptions}}> 
-                                                    
-                                                </p>
+                                                <p id="readMoreText" className="font-14 normalText" dangerouslySetInnerHTML={{__html: currentValue.descriptions}}/>
                                             }
-                                            <div className="readMoreGradient"></div>
+                                            <div className="readMoreGradient" />
                                         </div>
-                                        <button id="readMoreBtn" className="pl-0"></button>
+                                        <button id="readMoreBtn" className="pl-0"/>
                                         <span id="readLessBtnText" style={{'display': 'none'}}>Rút gọn </span>
                                         <span id="readMoreBtnText" style={{'display': 'none'}}>Xem thêm ></span>
                                 </div>
@@ -398,8 +403,13 @@ class ImageInfo extends React.PureComponent{
                                        images && images.map((value,index) =>(
                                             <li className="thumb project-thumb" data-id={value.id} ref="'image'+image.id" data-slug={value.slug} key={index}>
                                                 <a className="link" href={`/anh/${value.id}-${value.slug}`} onClick={(e) =>  this.changeImage(e,value)}>
-                                                    <div className="img-responsive-wrapper img-responsive-square progressive">
-                                                        {value.small_path && <img src={value.small_path} className="img-respontive" id={"image-"+value.id} width="71" height="71"></img>}
+                                                    <div className="img-responsive-wrapper img-responsive-square">
+                                                        {
+                                                            value.small_path &&
+                                                            <LazyLoad once={value.once} offset={200}  placeholder={<Placeholder />} debounce={0}>
+                                                                <img src={value.small_path} className="img-respontive" id={"image-"+value.id} width="71" height="71"/>
+                                                            </LazyLoad>
+                                                        }
                                                     </div>
                                                 </a>
                                             </li>

@@ -6,6 +6,8 @@ import Breadcrumbs from './Breadcrumbs'
 import Pagination from "./pagination";
 import {Link} from "../routes"
 import $ from "jquery";
+import LazyLoad from "react-lazyload";
+import Placeholder from "./PlaceHolder";
 
 export default class extends React.Component {
 
@@ -89,9 +91,11 @@ export default class extends React.Component {
                           <div className="col-md-6 col-lg-6 col-12 col-sm-12">
                             <div className="media-body position-relative">
                               <div className="media-header mt-2">
-                                <div className="rounded-circle logo">
-                                  <img src={value.auth_avatar} className="img-fluid h-100 rounded-circle" />
-                                </div>
+                                  <div className="rounded-circle logo">
+                                    <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.auth_avatar} alt={value.name}/>}  debounce={0}>
+                                      <img src={value.auth_avatar} className="img-fluid h-100 rounded-circle" />
+                                    </LazyLoad>
+                                  </div>
                                 <div className="media-title ml-3">
                                   <Link route="pro.detail" params={{id: value.id, slug: value.slug}}>
                                     <a className="mt-0 mb-1 h6"><h2 className="font-20 text-black-100 font-weight-bold">{value.name}</h2></a>
@@ -132,7 +136,9 @@ export default class extends React.Component {
                                       <li key={index}>
                                         <Link route="project.detail" params={{id: value.id, slug: value.slug}}>
                                           <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">
-                                            <img src={value.public_avatar} className="img-fluid"/>
+                                            <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.public_avatar} alt={value.name}/>}  debounce={0}>
+                                              <img src={value.public_avatar} className="img-fluid"/>
+                                            </LazyLoad>
                                           </a>
                                         </Link>
                                       </li>

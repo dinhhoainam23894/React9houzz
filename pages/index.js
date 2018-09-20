@@ -1,12 +1,13 @@
 import Layout from '../components/layout'
 import React from 'react'
-
+import LazyLoad from 'react-lazyload';
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'home/'
 import css from './home.css'
 import 'isomorphic-fetch'
 import Slider from "react-slick";
 import {mapObject} from "../libraries/helpers";
 import {Link} from "../routes";
+import Placeholder from "../components/PlaceHolder";
 export default class  extends React.Component {
   static async getInitialProps({query , req}) {
     const res = await fetch(APIURL)
@@ -86,7 +87,9 @@ export default class  extends React.Component {
           <Slider {...banner}>
             <div className="slide d-flex">
               <div className="overlay"></div>
-              <img src="/images/home-banner1.jpg" alt="" className="img-fluid"/>
+              <LazyLoad once height={500} offset={[-200, 0]} placeholder={<Placeholder dataSrc="/images/home-banner1.jpg" alt="1000+ ý tưởng đẹp cho ngôi nhà của bạn"/>} debounce={100}>
+                <img src="/images/home-banner1.jpg" alt="1000+ ý tưởng đẹp cho ngôi nhà của bạn" className="img-fluid"/>
+              </LazyLoad>
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>1000+ ý tưởng đẹp cho ngôi nhà của bạn</p>
@@ -101,7 +104,9 @@ export default class  extends React.Component {
             </div>
             <div className="slide d-flex">
               <div className="overlay"></div>
-              <img src="/images/home-banner2.jpg" alt="" className="img-fluid"/>
+              <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc="/images/home-banner2.jpg" alt="Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành"/>} debounce={100}>
+                <img src="/images/home-banner2.jpg" alt="Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành" className="img-fluid"/>
+              </LazyLoad>
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
                   <p>Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành</p>
@@ -122,9 +127,11 @@ export default class  extends React.Component {
                 {
                   providers && providers.map((value, index) => (
                     <div className="card-professional card p-3" key={index}>
-                      <div className="embed-responsive embed-responsive-1by1 image-pro rounded-circle">
-                        <img src={value.avatar_cover} alt="" className="embed-responsive-item rounded-circle"/>
-                      </div>
+                      <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.avatar_cover} alt={value.name}/>} debounce={100}>
+                        <div className="embed-responsive embed-responsive-1by1 image-pro rounded-circle">
+                            <img src={value.avatar_cover} alt={value.name} className="embed-responsive-item rounded-circle"/>
+                        </div>
+                      </LazyLoad>
                       <div className="card-contend mt-3 text-center">
                         <p>{value.name}</p>
                         <Link route='pro.detail' params={{id: value.id, slug: value.slug}}>
@@ -160,8 +167,10 @@ export default class  extends React.Component {
                             }}>
                               <a className='photoLink'>
                                 <div className="card-img-top">
-                                  <img className="img-fluid" src={value.main_project && value.main_project.avatar}
-                                       alt="Card image cap"/>
+                                  <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.main_project && value.main_project.avatar} alt={value.main_project && value.main_project.name}/>} debounce={100}>
+                                    <img className="img-fluid" src={value.main_project && value.main_project.avatar}
+                                         alt={value.main_project && value.main_project.name}/>
+                                  </LazyLoad>
                                 </div>
                               </a>
                             </Link>
@@ -185,7 +194,9 @@ export default class  extends React.Component {
                                       <a className='photoLink'>
                                         <li className="media py-3">
                                           <div className="img-project mr-3">
-                                            <img src={value.avatar && value.avatar} alt="Generic placeholder image"/>
+                                            <LazyLoad once={value.once} placeholder={<Placeholder dataSrc={value.avatar && value.avatar} alt={value.name && value.name} />}  height={1000} offset={[-100, 0]} debounce={100}>
+                                              <img src={value.avatar && value.avatar} alt={value.name && value.name}/>
+                                            </LazyLoad>
                                           </div>
                                           <div className="media-body">
                                             <p
@@ -215,7 +226,9 @@ export default class  extends React.Component {
                         <div className="p-2 idea-slide-items" key={index}>
                           <Link route='image' params={{id: value.id, slug: value.slug}}>
                             <a className='photoLink'>
-                              <img src={value.large_path} className="img-fluid"/>
+                              <LazyLoad once height={500} offset={[-200, 0]} placeholder={<Placeholder />} debounce={100}>
+                               <img src={value.large_path} className="img-fluid"/>
+                              </LazyLoad>
                             </a>
                           </Link>
                         </div>

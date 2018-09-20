@@ -1,0 +1,1 @@
+module.exports=__NEXT_REGISTER_PAGE("/news",function(){return{page:webpackJsonp([15],{529:function(e,n,t){e.exports=t(530)},530:function(e,n,t){"use strict"}},[529]).default}});

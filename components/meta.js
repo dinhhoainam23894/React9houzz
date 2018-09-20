@@ -17,8 +17,8 @@ export default () => (
       #nprogress .bar {
         background: #b953a4;
         position: fixed;
-        z-index: 1031;
-        top: 0;
+        z-index: 1111111111111;
+        top:0;
         left: 0;
         width: 100%;
         height: 4px;

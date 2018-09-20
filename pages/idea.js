@@ -8,9 +8,17 @@ const APIURL = process.env.DOMAIN + process.env.APIURI
 
 class Idea extends React.Component{
     static async getInitialProps({req , query}){
-        const res = await fetch(APIURL+"y-tuong")
+      let res = "";
+      if(query.page){
+         res = await fetch(APIURL+`y-tuong?page=${query.page}`)
+      }else{
+         res = await fetch(APIURL+"y-tuong")
+      }
+
         const data = await res.json()
-        return {    h1 : data.h1,
+      let url_path= '/y-tuong/';
+        return {    data : data,
+                    h1 : data.h1,
                     filter_default : data.filter_default,
                     colors : data.colors,
                     images: data.images.data,
@@ -25,7 +33,8 @@ class Idea extends React.Component{
                     , headerProjects : data.headerProjects
                     , headerCategories : data.headerCategories
                     , dataBase : data.dataBase
-                    , headers : req && req.headers
+                    , headers : req && req.headers,
+                    url_path : url_path,
         }
     }
     constructor(props){

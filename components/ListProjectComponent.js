@@ -5,6 +5,8 @@ import Breadcrumbs from './Breadcrumbs'
 import Pagination from "./pagination";
 import {Link} from "../routes"
 import css from "../pages/project/list-project.css"
+import LazyLoad, {forceCheck} from "react-lazyload";
+import Placeholder from "./PlaceHolder";
 
 export default class extends React.Component {
 
@@ -19,7 +21,6 @@ export default class extends React.Component {
       projects: this.props.projects
     };
   }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
       const datas = nextProps.data.datas
@@ -61,12 +62,12 @@ export default class extends React.Component {
         <div className="container-fluid service project-list px-4 bg-gray">
           <div className="row project-list-container">
             <div className="col-0 col-md-3 col-lg-3 px-3" id="sidebar">
-              <Sidebar filter={filterDefault} page={page}></Sidebar>
+              <Sidebar filter={filterDefault} page={page} />
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
               {
                 breadcrumb &&
-                <Breadcrumbs breadcrumb={breadcrumb}></Breadcrumbs>
+                <Breadcrumbs breadcrumb={breadcrumb} />
               }
               <div className="bg-white px-3 py-3">
                 <h1 className="font-25 font-weight-normal text-black-100">{h1}</h1>
@@ -81,13 +82,16 @@ export default class extends React.Component {
                 <ul className="list-unstyled my-3">
                   {
                     projects && projects.map((value, index) => (
-                      <li
-                        className="media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container"
+                      <li className="media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container"
                         key={index}>
                         <div className="row">
                           <div className="project-relate col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0">
                             <Link route="project.detail" params={{id: value.id, slug: value.slug}}>
-                              <a className="link"><img src={value.public_avatar} alt="" className="mr-3"/></a>
+                              <a className="link">
+                                <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.public_avatar} alt={value.name} />}  debounce={0}>
+                                  <img src={value.public_avatar} alt={value.name} className="mr-3"/>
+                                </LazyLoad>
+                              </a>
                             </Link>
                             <div className="position-absolute image-actions py-4">
                               <span className="actions-detail font-16 d-flex justify-content-center">
@@ -106,14 +110,14 @@ export default class extends React.Component {
                             </Link>
                             <div className="media-header my-3 p-2">
                               <div className="rounded-circle logo">
-                                <img src={value.providers && value.providers.auth_avatar}
-                                     className="img-fluid h-100 rounded-circle"/>
+                                <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.providers && value.providers.auth_avatar} alt={value.providers && value.providers.name} />} debounce={0}>
+                                  <img src={value.providers && value.providers.auth_avatar} className="img-fluid h-100 rounded-circle"/>
+                                </LazyLoad>
                               </div>
 
                               <div className="media-title pl-3 d-flex align-items-center">
                                 <Link route="pro.detail" params={{id: value.providers.id, slug: value.providers.slug}}>
-                                  <a
-                                    className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">{value.providers && value.providers.name}</a>
+                                  <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">{value.providers && value.providers.name}</a>
                                 </Link>
                                 {/*<div className="star-rating">*/}
                                 {/*<span className="fa fa-star" data-rating="1"></span>*/}

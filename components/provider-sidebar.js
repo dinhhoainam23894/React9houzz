@@ -41,26 +41,41 @@ export default class extends React.Component{
                 </div>
                     <div className="provider-contact">
                         <ul className="list-unstyled pb-3 my-2">
+                          {
+                          this.props.provider.phone &&
                             <li className="info-special">
                                 <i className="fa fa-phone text-secondary"></i>
                                 <span itemProp="telephone">{this.props.provider.phone}</span>
                             </li>
-                            <li itemScope itemType="http://schema.org/PostalAddress" itemProp="address">
+                          }
+                          {
+                              this.props.provider.address &&
+                              <li itemScope itemType="http://schema.org/PostalAddress" itemProp="address">
                                 <i className="fa fa-map-marker text-secondary"></i>
                                 <span itemProp="streetAddress">{this.props.provider.address}</span>
-                            </li>
-                            <li>
+                              </li>
+                          }
+                          {
+                              this.props.provider.email &&
+                              <li>
                                 <i className="fa fa-envelope-o text-secondary"></i>
                                 <span>{this.props.provider.email}</span>
-                            </li>
-                            <li>
+                              </li>
+                          }
+                          {
+                              this.props.provider.work_time &&
+                              <li>
                                 <i className="fa fa-clock-o text-secondary"></i>
                                 <span>{this.props.provider.work_time}</span>
-                            </li>
-                                <li>
-                                    <i className=" fa fa-globe text-secondary"></i>
-                                    <span><a target="_blank" rel="nofollow"  href={this.props.provider.website} className="text-white">{this.props.provider.website}</a></span>
-                                </li>
+                              </li>
+                          }
+                          {
+                              this.props.provider.website &&
+                              <li>
+                                <i className=" fa fa-globe text-secondary"></i>
+                                <span><a target="_blank" rel="nofollow"  href={this.props.provider.website} className="text-white">{this.props.provider.website}</a></span>
+                              </li>
+                          }
                             <li>
                                 <i className="fa fa-pencil text-secondary"></i>
                                 <a href="javascript:void(0)" className="text-primary">Quản lý trang này</a>

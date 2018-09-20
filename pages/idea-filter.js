@@ -6,13 +6,27 @@ import { withRouter } from 'next/router'
 class IdeaFilter extends React.Component{
     static async getInitialProps({query , req}){
         let res = null;
+      let url_path= '/y-tuong/'+query.params;
         if(query.f){
-             res = await fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params) + `?f=${query.f}`)
+          if(query.page){
+            res = await fetch(APIURL+'y-tuong/'+ encodeURIComponent(query.params) + `?f=${query.f}` + `&page=${query.page}`)
+          }else{
+            res = await fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params) + `?f=${query.f}`)
+          }
+          url_path = '/y-tuong/'+query.slug + `?f=${query.f}`;
         }else{
+          if(query.page){
+            res = await fetch(APIURL+'y-tuong/'+ encodeURIComponent(query.params) + `?page=${query.page}`)
+          }else{
             res = await fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params))
+          }
         }
+
         const data = await res.json()
-        return {    h1 : data.h1,
+        return {
+                    data : data,
+                    url_path : url_path,
+                    h1 : data.h1,
                     filter_default : data.filter_default,
                     colors : data.colors,
                     images: data.images.data,

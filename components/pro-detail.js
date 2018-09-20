@@ -4,6 +4,8 @@ import Layout from './layout'
 import {rating, activePath} from '../libraries/helpers'
 import classnames from "classnames";
 import {withRouter} from 'next/router'
+import LazyLoad from "react-lazyload";
+import Placeholder from "./PlaceHolder";
 
 class ProDetail extends React.Component {
   state = {
@@ -26,8 +28,10 @@ class ProDetail extends React.Component {
           <div className="bg-white" itemScope itemType="http://schema.org/localbusiness">
             <div className="border border-right-0 border-left-0 border-gray provider-details">
               <div className="banner position-relative p-0">
-                <img src={this.props.data.cover && this.props.data.cover} className="w-100"/>
-                <div className="position-absolute gradient-animate w-100"></div>
+                <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={this.props.data.cover && this.props.data.cover} alt={this.props.data && this.props.data.name}/>} debounce={0}>
+                  <img src={this.props.data.cover && this.props.data.cover} className="w-100"/>
+                </LazyLoad>
+                <div className="position-absolute gradient-animate w-100" />
               </div>
               <div className="container position-relative">
                 <div className="position-absolute provider-info">
@@ -51,8 +55,10 @@ class ProDetail extends React.Component {
                 </div>
                 <div className="row position-relative justify-content-end">
                   <div className="position-absolute provider-avatar rounded-circle">
+                    <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={this.props.data.avatar && this.props.data.avatar} alt={this.props.data && this.props.data.name}/>} debounce={0}>
                     <img itemProp="image" src={this.props.data.avatar} className="img-thumbnail rounded-circle h-100"
                          alt=""/>
+                    </LazyLoad>
                   </div>
                   <div className="col-md-9 col-lg-9 provider-nav">
                     <ul className="nav nav-tabs border-0" id="myTab" role="tablist">

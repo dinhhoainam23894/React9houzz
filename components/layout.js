@@ -3,14 +3,14 @@ import Meta from './meta'
 import Router from 'next/router'
 import Head from 'next/head'
 import {Link} from '../routes'
-import { Container, Row, Col, Nav, NavItem, Button, Form, NavLink, Collapse,
-         Navbar, NavbarToggler, NavbarBrand, Modal, ModalHeader, ModalBody,
-         ModalFooter, ListGroup, ListGroupItem } from 'reactstrap'
+import { Container } from 'reactstrap'
 import Cookies from 'universal-cookie'
 import Package from '../package'
 import NavHeader from './nav';
 import Footer from './footer';
 import css from 'styles/style.scss';
+import $ from "jquery";
+import {forceCheck} from 'react-lazyload'
 
 export default class extends React.Component {
 
@@ -36,7 +36,18 @@ export default class extends React.Component {
     this.toggleModal = this.toggleModal.bind(this)
   }
   componentDidMount() {
-    this.setState({domain : window.location.origin})
+    this.setState({domain : window.location.origin});
+    $('.header-menu .nav-item').click(function(e){
+      $(this).find('.nav-child').css("cssText", "display: none !important;");
+      $('.StoreNavigation-overlay').removeClass('is-open');
+    })
+    $('.header-menu .nav-item').hover(function(){
+      $('.StoreNavigation-overlay').addClass('is-open');
+      $(this).find('.nav-child').css("cssText", "display: block !important;");
+    },function(){
+      $('.StoreNavigation-overlay').removeClass('is-open');
+      $(this).find('.nav-child').css("cssText", "display: none !important;");
+    });
   }
   async toggleModal(e) {
     if (e) e.preventDefault()
@@ -122,7 +133,7 @@ export default class extends React.Component {
         <NavHeader headerProjects={headerProjects} headerCategories={headerCategories} dataBase={dataBase}/>
       </header>
       <Meta />
-      <div className="StoreNavigation-overlay" role="button" tabIndex="0" aria-label="Close"></div>
+      <div className="StoreNavigation-overlay" role="button" tabIndex="0" aria-label="Close" />
         <MainBody navmenu={this.props.navmenu} fluid={this.props.fluid} container={this.props.container}>
           {this.props.children}
         </MainBody>
