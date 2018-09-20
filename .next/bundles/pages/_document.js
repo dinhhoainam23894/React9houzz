@@ -1736,12 +1736,12 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 35
         }
-      }), _react.default.createElement(_document.NextScript, {
+      }), headers && headers.xrequest == "user" ? _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 40
         }
-      })), _react.default.createElement("script", {
+      }) : null), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
         __source: {
           fileName: _jsxFileName,
