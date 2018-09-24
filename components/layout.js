@@ -1,19 +1,14 @@
 import React from 'react'
 import Meta from './meta'
-import Router from 'next/router'
 import Head from 'next/head'
 import {Link} from '../routes'
 import { Container } from 'reactstrap'
 import Cookies from 'universal-cookie'
-import Package from '../package'
 import NavHeader from './nav';
 import Footer from './footer';
-import css from 'styles/style.scss';
 import $ from "jquery";
-import {forceCheck} from 'react-lazyload'
 
 export default class extends React.Component {
-
   static propTypes() {
     return {
       session: React.PropTypes.object.isRequired,
@@ -85,6 +80,8 @@ export default class extends React.Component {
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <meta name="fragment" content="!" />
+          <meta http-equiv="content-language" content="vi" />
+          <link rel="alternate" href="https://9houz.com" hrefLang="vn-vi"/>
           <title>{this.props.title || '9houz'}</title>
           {des && <meta name='description' itemProp='description' content={des} />}
           {canonical && <link rel="canonical" href={process.env.CURRENTDOMAIN + canonical} />}
@@ -97,7 +94,7 @@ export default class extends React.Component {
           {backPageLink && <link rel="prev" href={process.env.CURRENTDOMAIN + backPageLink} />}
           <style dangerouslySetInnerHTML={{__html: css}}/>
           { slick &&
-            <link rel="stylesheet" type="text/css" charset="UTF-8" href="/vendor/slick.min.css"/>
+            <link rel="stylesheet" type="text/css" charSet="UTF-8" href="/vendor/slick.min.css"/>
           }
           {
             slick &&

@@ -7,7 +7,7 @@ import Router from 'next/router'
 import {Link} from '../routes'
 import 'isomorphic-fetch'
 import { throws } from 'assert';
-import LazyLoad from "react-lazyload";
+import LazyLoad , {forceCheck} from "react-lazyload";
 import Placeholder from "./PlaceHolder";
 
 export default class Image extends React.Component{
@@ -61,6 +61,7 @@ export default class Image extends React.Component{
         }
     }
     componentDidMount = async () => {
+        setTimeout(forceCheck, 1000)
         if(!this.props.data){
             await this.getValue(this.props.id)
         }
@@ -259,7 +260,7 @@ export default class Image extends React.Component{
                     <div className="image">
                         {
                            this.state.currentValue &&
-                           <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder />} debounce={0}>
+                           <LazyLoad once placeholder={<Placeholder />} debounce={0}>
                             <img className="image-detail" src={ this.state.currentValue.path_for_size} alt={this.state.currentValue.name} />
                            </LazyLoad>
                         }
@@ -267,12 +268,12 @@ export default class Image extends React.Component{
                     <div className="lb-navDiv">
                         <a className="link next lbNavigation nav-arrow" onClick={(e) =>  this.nextImage(e,id,slug)}>
                             <div className="">
-                                <span className="fa fa-angle-right"></span>
+                                <span className="fa fa-angle-right" />
                             </div>
                         </a>
                         <a className="link back lbNavigation nav-arrow" onClick={(e) =>  this.backImage(e)}>
                             <div className="">
-                                <span className="fa fa-angle-left"></span>
+                                <span className="fa fa-angle-left" />
                             </div>
                         </a>
                     </div>
@@ -352,7 +353,7 @@ class ImageInfo extends React.PureComponent{
                             <div className="content-detail">
                                 <div className="media">
                                     { provider &&
-                                    <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder />} debounce={0}>
+                                    <LazyLoad once placeholder={<Placeholder dataSrc={provider.auth_avatar}/>}>
                                       <img src={provider.auth_avatar} className="align-self-start mr-2 rounded-circle detail-user mt-1" />
                                     </LazyLoad>}
                                     <div className="media-body">
@@ -406,8 +407,8 @@ class ImageInfo extends React.PureComponent{
                                                     <div className="img-responsive-wrapper img-responsive-square">
                                                         {
                                                             value.small_path &&
-                                                            <LazyLoad once={value.once} offset={200}  placeholder={<Placeholder />} debounce={0}>
-                                                                <img src={value.small_path} className="img-respontive" id={"image-"+value.id} width="71" height="71"/>
+                                                            <LazyLoad placeholder={<Placeholder dataSrc={value.small_path} height={150} throttle once/>}>
+                                                                <img src={value.small_path} className="img-respontive" id={"image-"+value.id}/>
                                                             </LazyLoad>
                                                         }
                                                     </div>

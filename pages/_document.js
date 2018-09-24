@@ -11,10 +11,7 @@ export default class MyDocument extends Document {
         <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
         <noscript id="deferred-styles">
-          <link
-            rel="stylesheet"
-            href={`/_next/static/style.css`}
-          />
+              <link rel="stylesheet" href="/_next/static/style.css" />
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         </noscript>
 
@@ -34,7 +31,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           {/*<NextScript/>*/}
-          {/*<p className="lego">{headers['cache-control']}</p>*/}
           {
             headers && headers.xrequest == "user" ?
               <NextScript />

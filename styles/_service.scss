@@ -212,10 +212,21 @@
         padding-bottom : 0 !important;
         padding-left : 0 !important;
         padding-right : 0 !important;
+        position: absolute;
+        top: -80px;
+        .media-title{
+          a{
+            color: white !important;
+          }
+        }
       }
       .media-content{
         display: none !important;
       }
+    }
+    .image-actions{
+      display: block !important;
+      bottom: 0;
     }
     .project-list-container{
       margin-left: 0 !important;

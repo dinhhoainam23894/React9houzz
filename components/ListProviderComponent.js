@@ -64,7 +64,7 @@ export default class extends React.Component {
         <div className="container-fluid provider-list px-4 bg-gray">
           <div className="row">
             <div className="col-0 col-md-3 col-lg-3 px-3 pt-3" id="sidebar">
-              <Sidebar filter={filterDefault} page={page}></Sidebar>
+              <Sidebar filter={filterDefault} page={page} />
             </div>
             <div className="col-12 col-md-9 col-lg-9 px-0" id="cat">
               <div className="px-3 py-2 provider-main">
@@ -92,7 +92,7 @@ export default class extends React.Component {
                             <div className="media-body position-relative">
                               <div className="media-header mt-2">
                                   <div className="rounded-circle logo">
-                                    <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.auth_avatar} alt={value.name}/>}  debounce={0}>
+                                    <LazyLoad once  placeholder={<Placeholder dataSrc={value.auth_avatar}/>}>
                                       <img src={value.auth_avatar} className="img-fluid h-100 rounded-circle" />
                                     </LazyLoad>
                                   </div>
@@ -107,7 +107,7 @@ export default class extends React.Component {
                                   {
                                     value.total_project > 0 &&
                                     <div className="info project-info mr-4">
-                                      <i className="fa fa-briefcase my-auto" aria-hidden="true"></i> {value.total_project} dự án
+                                      <i className="fa fa-briefcase my-auto" aria-hidden="true" /> {value.total_project} dự án
                                     </div>
                                   }
                                   {/*<div className="info contact-info mr-4">*/}
@@ -116,7 +116,7 @@ export default class extends React.Component {
                                   {
                                     value.address &&
                                     <div className="info location-info">
-                                      <i className="fa fa-map-marker my-auto" aria-hidden="true"></i> {value.address}
+                                      <i className="fa fa-map-marker my-auto" aria-hidden="true" /> {value.address}
                                     </div>
                                   }
                                 </div>
@@ -136,7 +136,7 @@ export default class extends React.Component {
                                       <li key={index}>
                                         <Link route="project.detail" params={{id: value.id, slug: value.slug}}>
                                           <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">
-                                            <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.public_avatar} alt={value.name}/>}  debounce={0}>
+                                            <LazyLoad once placeholder={<Placeholder dataSrc={value.public_avatar} alt={value.name}/>}>
                                               <img src={value.public_avatar} className="img-fluid"/>
                                             </LazyLoad>
                                           </a>

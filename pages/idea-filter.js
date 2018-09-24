@@ -16,13 +16,12 @@ class IdeaFilter extends React.Component{
           url_path = '/y-tuong/'+query.slug + `?f=${query.f}`;
         }else{
           if(query.page){
-            res = await fetch(APIURL+'y-tuong/'+ encodeURIComponent(query.params) + `?page=${query.page}`)
+            res = await fetch(APIURL+'y-tuong/'+ encodeURIComponent(query.params) + `?page=${query.page}`);
           }else{
-            res = await fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params))
+            res = await fetch(APIURL + 'y-tuong/' + encodeURIComponent(query.params));
           }
         }
-
-        const data = await res.json()
+        const data = await res.json();
         return {
                     data : data,
                     url_path : url_path,

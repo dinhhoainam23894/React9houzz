@@ -11,8 +11,8 @@ import Placeholder from "./PlaceHolder";
 export default class extends React.Component {
 
   constructor(props) {
-    super(props)
-    const datas = this.props.data.datas
+    super(props);
+    const datas = this.props.data.datas;
     this.state = {
       nextPage: datas.next_page_url,
       nextPageLink: datas.next_page_url ? this.props.url_path + "?page=" + (datas.current_page + 1) : undefined,
@@ -74,7 +74,7 @@ export default class extends React.Component {
                 <div className="list-tag service ml-3">
                   {  listBadge && listBadge.map((value,index) => (
                     <Link route={value.uri} key={index}>
-                      <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close"></i></span></a>
+                      <a href={value.uri} ><span className="badge badge-pill badge-light border border-primary mr-2 my-1 service-tag">{value.name_tag} <i className="close" /></span></a>
                     </Link>
                   ))
                   }
@@ -83,19 +83,21 @@ export default class extends React.Component {
                   {
                     projects && projects.map((value, index) => (
                       <li className="media border border-right-0 border-left-0 border-bottom-0 border-gray p-3 position-relative my-3 container"
-                        key={index}>
+                          key={index}>
                         <div className="row">
                           <div className="project-relate col-md-5 col-lg-5 col-12 col-sm-12 images-service position-relative px-0">
                             <Link route="project.detail" params={{id: value.id, slug: value.slug}}>
                               <a className="link">
-                                <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.public_avatar} alt={value.name} />}  debounce={0}>
+                                <LazyLoad once placeholder={<Placeholder dataSrc={value.public_avatar} alt={value.name} />}  debounce={0}>
                                   <img src={value.public_avatar} alt={value.name} className="mr-3"/>
                                 </LazyLoad>
                               </a>
                             </Link>
                             <div className="position-absolute image-actions py-4">
                               <span className="actions-detail font-16 d-flex justify-content-center">
-                                  <i className="fa fa-picture-o mr-2"></i> {value.total_images + " ảnh"}
+                                  <p className="mb-0 d-none d-md-block">
+                                    <i className="fa fa-picture-o mr-2" /> {value.total_images + " ảnh"}
+                                  </p>
                               </span>
                               {/*<span className="actions-detail font-16">*/}
                               {/*<i className="fa fa-cog mr-1"></i> {value.name_tag_style}*/}
@@ -110,7 +112,7 @@ export default class extends React.Component {
                             </Link>
                             <div className="media-header my-3 p-2">
                               <div className="rounded-circle logo">
-                                <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.providers && value.providers.auth_avatar} alt={value.providers && value.providers.name} />} debounce={0}>
+                                <LazyLoad once  placeholder={<Placeholder dataSrc={value.providers && value.providers.auth_avatar}/>} debounce={0}>
                                   <img src={value.providers && value.providers.auth_avatar} className="img-fluid h-100 rounded-circle"/>
                                 </LazyLoad>
                               </div>
@@ -119,14 +121,6 @@ export default class extends React.Component {
                                 <Link route="pro.detail" params={{id: value.providers.id, slug: value.providers.slug}}>
                                   <a className="mt-0 mb-1 h6 font-14 text-black-100 font-weight-bold">{value.providers && value.providers.name}</a>
                                 </Link>
-                                {/*<div className="star-rating">*/}
-                                {/*<span className="fa fa-star" data-rating="1"></span>*/}
-                                {/*<span className="fa fa-star" data-rating="2"></span>*/}
-                                {/*<span className="fa fa-star" data-rating="3"></span>*/}
-                                {/*<span className="fa fa-star" data-rating="4"></span>*/}
-                                {/*<span className="fa fa-star disable" data-rating="5"></span>*/}
-                                {/*<span className="font-italic">(14 đánh giá)</span>*/}
-                                {/*</div>*/}
                               </div>
                             </div>
                             <div className="media-content mt-3">

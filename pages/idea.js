@@ -14,8 +14,7 @@ class Idea extends React.Component{
       }else{
          res = await fetch(APIURL+"y-tuong")
       }
-
-        const data = await res.json()
+      const data = await res.json()
       let url_path= '/y-tuong/';
         return {    data : data,
                     h1 : data.h1,

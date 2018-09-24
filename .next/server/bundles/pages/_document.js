@@ -107,7 +107,9 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var MyDocument =
 /*#__PURE__*/
@@ -161,7 +163,7 @@ function (_Document) {
         href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18
+          lineNumber: 15
         }
       })), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -169,35 +171,40 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 18
         }
       })), _react.default.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 31
         }
       }, _react.default.createElement(_document.Main, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 32
+        }
+      }), _react.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
         }
       }), headers && headers.xrequest == "user" ? _react.default.createElement(_document.NextScript, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 36
         }
       }) : null), _react.default.createElement("script", {
         src: "https://cdn.polyfill.io/v2/polyfill.min.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 41
         }
       }), _react.default.createElement("script", {
         async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=UA-120211455-1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 42
         }
       }), _react.default.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -205,7 +212,7 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 43
         }
       }));
     }

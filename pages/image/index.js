@@ -36,7 +36,7 @@ class Image extends React.Component{
             <Layout {...this.props} navmenu={false} container={false} css={css}>
             <div className="main-image">
                 <div id="lightbox">
-                    <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false} popup={false} path={router.pathname} isImage={true}></ImageDetail>
+                    <ImageDetail tag={this.props.tag} id={this.props.id} slug={this.props.slug} data={this.props} detail={false} popup={false} path={router.pathname} isImage={true} />
                     <style global jsx>{`
                         #lightbox {
                             top: 105px !important;

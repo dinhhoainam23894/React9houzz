@@ -28,7 +28,7 @@ class ProDetail extends React.Component {
           <div className="bg-white" itemScope itemType="http://schema.org/localbusiness">
             <div className="border border-right-0 border-left-0 border-gray provider-details">
               <div className="banner position-relative p-0">
-                <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={this.props.data.cover && this.props.data.cover} alt={this.props.data && this.props.data.name}/>} debounce={0}>
+                <LazyLoad once placeholder={<Placeholder dataSrc={this.props.data.cover && this.props.data.cover} alt={this.props.data && this.props.data.name}/>}>
                   <img src={this.props.data.cover && this.props.data.cover} className="w-100"/>
                 </LazyLoad>
                 <div className="position-absolute gradient-animate w-100" />
@@ -55,7 +55,7 @@ class ProDetail extends React.Component {
                 </div>
                 <div className="row position-relative justify-content-end">
                   <div className="position-absolute provider-avatar rounded-circle">
-                    <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={this.props.data.avatar && this.props.data.avatar} alt={this.props.data && this.props.data.name}/>} debounce={0}>
+                    <LazyLoad once placeholder={<Placeholder dataSrc={this.props.data.avatar && this.props.data.avatar} alt={this.props.data && this.props.data.name}/>}>
                     <img itemProp="image" src={this.props.data.avatar} className="img-thumbnail rounded-circle h-100"
                          alt=""/>
                     </LazyLoad>
@@ -68,7 +68,7 @@ class ProDetail extends React.Component {
                           className="nav-link border-0 font-14 font-weight-bold">Tổng quan</a></Link>
                       </li>
                       <li
-                        className={classnames("nav-item position-relative", {active: activePath(pathname, [`/pro/project`, '/project'], {strict: true})})}>
+                        className={classnames("nav-item position-relative", {active: activePath(pathname, [`/pro/project`, '/project/detail'], {strict: true})})}>
                         <Link route='pro.project' params={{id: provider_id, slug: `${provider_slug}`}}><a
                           className="nav-link border-0 font-14 font-weight-bold">Dự án</a></Link>
                       </li>

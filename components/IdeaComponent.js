@@ -8,8 +8,6 @@ import InfiniteScroll from 'react-infinite-scroller'
 import ImageModal from './image-modal'
 import {Link} from '../routes'
 import $ from 'jquery';
-
-const APIURL = process.env.DOMAIN + process.env.APIURI
 var currentPath = '/'
 var asPath = '/'
 import {Router} from '../routes'
@@ -232,9 +230,9 @@ export default class IdeaComponent extends React.Component {
                             <span className="position-absolute rounded d-none upload"> <i className="fa fa-upload"></i> Lưu ảnh</span>
                             <Link route="image" params={{id: value.id, slug: value.slug}}>
                               <a onClick={(e) => this.showPhoto(e, value.id, value.slug)}>
-                                {/*<LazyLoad once throttle placeholder={<Placeholder dataSrc={value.medium_path} alt={value.name}/>}>*/}
-                                  <img className="rounded card-img-top" src={value.medium_path} alt={value.name}/>
-                                {/*</LazyLoad>*/}
+                                <LazyLoad once throttle placeholder={<Placeholder dataSrc={value.medium_path} alt={value.name} width={value.image_infos.width} height={value.image_infos.height}/>}>
+                                  <img className="rounded card-img-top" src={value.medium_path}/>
+                                </LazyLoad>
                               </a>
                             </Link>
                             <div className="card-body idea-content px-1 pt-1">

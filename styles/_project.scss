@@ -143,8 +143,7 @@
       flex-wrap: wrap;
       li{
         float: none!important;
-        width: 80px!important;
-        height: 80px!important;
+        width: 130px!important;
         display: inline-block;
         vertical-align: top;
         margin-right: 6px;
@@ -156,13 +155,17 @@
           .media{
             width: 100%;
             padding: 0;
+            display:block !important;
             .media-image{
               width: 100%;
               height: 100%;
               margin-right: 0 !important;
             }
             .media-body{
-              display: none;
+              display: block;
+              p{
+                white-space: normal;
+              }
             }
           }
         }
@@ -184,7 +187,6 @@
       .project-more-items {
         float: none !important;
         width: 130px !important;
-        height: 130px !important;
         display: inline-block;
         vertical-align: top;
         margin-right: 6px;
@@ -192,6 +194,16 @@
         cursor: pointer;
         overflow: hidden;
         padding: 0 !important;
+        .card-image{
+          min-height: 130px  !important;
+          height: 130px !important;
+        }
+        .card-body{
+          background: white !important;
+          p{
+            white-space: normal;
+          }
+        }
       }
     }
   }

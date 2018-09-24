@@ -104,14 +104,14 @@ class Detail extends React.Component {
                                 value.status == 1 ?
                                   <Link route='image' params={{id: value.id, slug: `${value.slug}`}}>
                                     <a className='photoLink' onClick={(e) => this.showPhoto(e, value.id, value.slug)}>
-                                      <LazyLoad once={value.once} height={500} offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.large_path} alt={value.name}/>} debounce={100}>
+                                      <LazyLoad once={value.once} placeholder={<Placeholder dataSrc={value.large_path} alt={value.name}/>}>
                                         <img src={value.large_path} alt={value.name} className="img-fluid"/>
                                       </LazyLoad>
                                     </a>
                                   </Link>
                                   :
                                   <a href="javascript:void(0)" className='photoLink' rel="nofollow">
-                                    <LazyLoad once={value.once} height={500} offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.large_path} alt={value.name}/>} debounce={100}>
+                                    <LazyLoad once={value.once} placeholder={<Placeholder dataSrc={value.large_path} alt={value.name}/>}>
                                       <img src={value.large_path} alt={value.name} className="img-fluid"/>
                                     </LazyLoad>
                                   </a>
@@ -137,7 +137,7 @@ class Detail extends React.Component {
                             <a className="nav-link border-0 font-14 font-weight-bold">
                               <div className="media">
                                 <div className="media-image mr-3">
-                                  <LazyLoad once={value.once} height={500} offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.avatar} alt={value.name}/>} debounce={100}>
+                                  <LazyLoad once={value.once} placeholder={<Placeholder dataSrc={value.avatar}/>}>
                                     <img src={value.avatar} alt={value.name}/>
                                   </LazyLoad>
                                 </div>
@@ -181,7 +181,7 @@ class Detail extends React.Component {
                         <a className="nav-link border-0 font-14 font-weight-bold px-0">
                           <div className="card border-none">
                             <div className="card-image">
-                              <LazyLoad once={value.once} height={'100%'} offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.avatar} alt={value.name}/>} debounce={100}>
+                              <LazyLoad once={value.once} placeholder={<Placeholder dataSrc={value.avatar}/>}>
                                 <img className="card-img-top" src={value.avatar} alt={value.name}/>
                               </LazyLoad>
                             </div>

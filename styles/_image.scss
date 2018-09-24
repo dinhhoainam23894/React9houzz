@@ -399,7 +399,7 @@
       width: 100%;
       overflow: hidden !important;
       display: block;
-      #lightbox {
+      #lightbox{
         position: relative !important;
         width: 100%;
         overflow: hidden !important;
@@ -569,5 +569,10 @@
           font-size: 15px !important;
         }
       }
+    }
+    .lbClose {
+      width: 50px !important;
+      height: 50px !important;
+      position: fixed !important;
     }
   }

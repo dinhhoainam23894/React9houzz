@@ -1,6 +1,7 @@
 import Layout from '../components/layout'
 import React from 'react'
 import LazyLoad from 'react-lazyload';
+
 const APIURL = process.env.DOMAIN + process.env.APIURI + 'home/'
 import css from './home.css'
 import 'isomorphic-fetch'
@@ -8,10 +9,11 @@ import Slider from "react-slick";
 import {mapObject} from "../libraries/helpers";
 import {Link} from "../routes";
 import Placeholder from "../components/PlaceHolder";
+
 export default class  extends React.Component {
-  static async getInitialProps({query , req}) {
-    const res = await fetch(APIURL)
-    const data = await res.json()
+  static async getInitialProps({query, req}) {
+    const res = await fetch(APIURL);
+    const data = await res.json();
     return {
       title: data.seo ? data.seo.title : null
       , des: data.seo ? data.seo.des : null
@@ -25,7 +27,7 @@ export default class  extends React.Component {
       providers: data.providers,
       listType: data.listType,
       images: data.images,
-      headers :  req && req.headers
+      headers: req && req.headers
     }
   }
 
@@ -86,8 +88,9 @@ export default class  extends React.Component {
         <div className="homepage">
           <Slider {...banner}>
             <div className="slide d-flex">
-              <div className="overlay"></div>
-              <LazyLoad once height={500} offset={[-200, 0]} placeholder={<Placeholder dataSrc="/images/home-banner1.jpg" alt="1000+ ý tưởng đẹp cho ngôi nhà của bạn"/>} debounce={100}>
+              <div className="overlay"/>
+              <LazyLoad once placeholder={<Placeholder dataSrc="/images/home-banner1.jpg"
+                                                       alt="1000+ ý tưởng đẹp cho ngôi nhà của bạn"/>}>
                 <img src="/images/home-banner1.jpg" alt="1000+ ý tưởng đẹp cho ngôi nhà của bạn" className="img-fluid"/>
               </LazyLoad>
               <div className="caption d-flex justify-content-center">
@@ -103,9 +106,11 @@ export default class  extends React.Component {
               </div>
             </div>
             <div className="slide d-flex">
-              <div className="overlay"></div>
-              <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc="/images/home-banner2.jpg" alt="Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành"/>} debounce={100}>
-                <img src="/images/home-banner2.jpg" alt="Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành" className="img-fluid"/>
+              <div className="overlay"/>
+              <LazyLoad once placeholder={<Placeholder dataSrc="/images/home-banner2.jpg"
+                                                       alt="Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành"/>}>
+                <img src="/images/home-banner2.jpg" alt="Chuyên gia trong lĩnh vực nội thất trên 63 tỉnh thành"
+                     className="img-fluid"/>
               </LazyLoad>
               <div className="caption d-flex justify-content-center">
                 <div className="container py-3">
@@ -127,9 +132,12 @@ export default class  extends React.Component {
                 {
                   providers && providers.map((value, index) => (
                     <div className="card-professional card p-3" key={index}>
-                      <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.avatar_cover} alt={value.name}/>} debounce={100}>
+                      <LazyLoad once offset={[-200, 0]}
+                                placeholder={<Placeholder dataSrc={value.avatar_cover} alt={value.name}/>}
+                                debounce={100}>
                         <div className="embed-responsive embed-responsive-1by1 image-pro rounded-circle">
-                            <img src={value.avatar_cover} alt={value.name} className="embed-responsive-item rounded-circle"/>
+                          <img src={value.avatar_cover} alt={value.name}
+                               className="embed-responsive-item rounded-circle"/>
                         </div>
                       </LazyLoad>
                       <div className="card-contend mt-3 text-center">
@@ -156,18 +164,16 @@ export default class  extends React.Component {
                         <div className="col-12 col-md-4" key={index}>
                           <h2 className="my-4 position-relative sub-title">{index}</h2>
                           <div className="card my-4">
-                            {/*<div className="calendar">*/}
-                            {/*<p className="font-20 mb-0">27</p>*/}
-                            {/*T2*/}
-                            {/*</div>*/}
-                            <div className="folding-edge"></div>
+                            <div className="folding-edge"/>
                             <Link route='project.detail' params={{
                               id: value.main_project && value.main_project.id,
                               slug: value.main_project && value.main_project.slug
                             }}>
                               <a className='photoLink'>
                                 <div className="card-img-top">
-                                  <LazyLoad once offset={[-200, 0]} placeholder={<Placeholder dataSrc={value.main_project && value.main_project.avatar} alt={value.main_project && value.main_project.name}/>} debounce={100}>
+                                  <LazyLoad once placeholder={<Placeholder
+                                    dataSrc={value.main_project && value.main_project.avatar}
+                                    alt={value.main_project && value.main_project.name}/>}>
                                     <img className="img-fluid" src={value.main_project && value.main_project.avatar}
                                          alt={value.main_project && value.main_project.name}/>
                                   </LazyLoad>
@@ -194,7 +200,8 @@ export default class  extends React.Component {
                                       <a className='photoLink'>
                                         <li className="media py-3">
                                           <div className="img-project mr-3">
-                                            <LazyLoad once={value.once} placeholder={<Placeholder dataSrc={value.avatar && value.avatar} alt={value.name && value.name} />}  height={1000} offset={[-100, 0]} debounce={100}>
+                                            <LazyLoad once={value.once} placeholder={<Placeholder
+                                              dataSrc={value.avatar && value.avatar}/>}>
                                               <img src={value.avatar && value.avatar} alt={value.name && value.name}/>
                                             </LazyLoad>
                                           </div>
@@ -218,7 +225,7 @@ export default class  extends React.Component {
               </div>
               <h2 className="text-center my-5 position-relative title">Ý tưởng mới nhất</h2>
               <div className="new-idea position-relative">
-                <div className="overlay"></div>
+                <div className="overlay"/>
                 <div className="container py-5">
                   <Slider {...settings}>
                     {
@@ -226,8 +233,8 @@ export default class  extends React.Component {
                         <div className="p-2 idea-slide-items" key={index}>
                           <Link route='image' params={{id: value.id, slug: value.slug}}>
                             <a className='photoLink'>
-                              <LazyLoad once height={500} offset={[-200, 0]} placeholder={<Placeholder />} debounce={100}>
-                               <img src={value.large_path} className="img-fluid"/>
+                              <LazyLoad once placeholder={<Placeholder dataSrc={value.large_path} alt={value.name}/>}>
+                                <img src={value.large_path} className="img-fluid"/>
                               </LazyLoad>
                             </a>
                           </Link>
