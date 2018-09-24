@@ -30,13 +30,13 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          {/*<NextScript/>*/}
-          {
-            headers && headers.xrequest == "user" ?
-              <NextScript />
-              :
-              null
-          }
+          <NextScript/>
+          {/*{*/}
+            {/*headers && headers.xrequest == "user" ?*/}
+              {/*<NextScript />*/}
+              {/*:*/}
+              {/*null*/}
+          {/*}*/}
         </body>
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120211455-1" />

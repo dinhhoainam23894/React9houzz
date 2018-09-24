@@ -80,7 +80,7 @@ export default class extends React.Component {
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <meta name="fragment" content="!" />
-          <meta http-equiv="content-language" content="vi" />
+          <meta httpEquiv="content-language" content="vi" />
           <link rel="alternate" href="https://9houz.com" hrefLang="vn-vi"/>
           <title>{this.props.title || '9houz'}</title>
           {des && <meta name='description' itemProp='description' content={des} />}

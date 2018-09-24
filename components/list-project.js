@@ -35,8 +35,7 @@ export default class extends React.Component {
                   </div>
                   <div className="position-absolute h-50 ml-1 third-image bg-secondary right-avatar">
                     <div className="h-100 project-more text-center position-absolute w-100">
-                      <p
-                        className="font-weight-light text-white font-30">{project.count_image ? "+ " + project.count_image : ''}</p>
+                      <p className="font-weight-light text-white font-30">{project.count_image ? "+ " + project.count_image : ''}</p>
                     </div>
                     <LazyLoad once placeholder={<Placeholder
                       dataSrc={this.props.project.avatar && this.props.project.avatar[2]}
